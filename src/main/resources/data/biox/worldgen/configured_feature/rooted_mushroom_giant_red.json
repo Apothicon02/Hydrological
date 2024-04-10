@@ -62,7 +62,7 @@
       }
     },
     "trunk_placer": {
-      "type": "eco:branching_trunk_placer",
+      "type": "hydrol:branching_trunk_placer",
       "base_height": 1,
       "height_rand_a": 5,
       "height_rand_b": 0,
@@ -88,28 +88,28 @@
       }
     },
     "foliage_placer": {
-      "type": "eco:spherical_cap_foliage_placer",
+      "type": "hydrol:spherical_cap_foliage_placer",
       "radius": 3,
       "offset": 3,
       "height": 4
     },
     "decorators": [
       {
-        "type": "eco:trunk_wooden_roots",
+        "type": "hydrol:trunk_wooden_roots",
         "probability": 0.8,
         "wall_state": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "eco:mushroom_stem_wall"
+            "Name": "hydrol:mushroom_stem_wall"
           }
         }
       },
       {
-        "type": "eco:trunk_mushrooms",
+        "type": "hydrol:trunk_mushrooms",
         "probability": 1
       },
       {
-        "type": "eco:mushrooms",
+        "type": "hydrol:mushrooms",
         "probability": 1
       }
     ]

@@ -1,8 +1,8 @@
 {
   "values": [
-    "eco:caldera_cliffs",
-    "eco:caldera_hills",
-    "eco:glacial_caves",
-    "eco:frozen_plains"
+    "hydrol:caldera_cliffs",
+    "hydrol:caldera_hills",
+    "hydrol:glacial_caves",
+    "hydrol:frozen_plains"
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "type": "eco:pond",
+  "type": "hydrol:pond",
   "config": {
     "to_place": {
       "type": "minecraft:simple_state_provider",

@@ -173,16 +173,16 @@
     ],
     [
       "minecraft:glow_lichen",
-      "eco:grass_rocks",
-      "eco:grassy_terracotta",
-      "eco:terracotta_pond",
-      "eco:grassy_terracotta_pool",
-      "eco:wild_flower_patch",
+      "hydrol:grass_rocks",
+      "hydrol:grassy_terracotta",
+      "hydrol:terracotta_pond",
+      "hydrol:grassy_terracotta_pool",
+      "hydrol:wild_flower_patch",
       "biox:trees_giant_acacia",
       "biox:trees_mega_savanna",
       "biox:mangrove_bushes_dense",
-      "eco:dense_sunflowers",
-      "eco:red_flowers",
+      "hydrol:dense_sunflowers",
+      "hydrol:red_flowers",
       "biox:dry_grass"
     ],
     [

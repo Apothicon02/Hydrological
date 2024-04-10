@@ -36,26 +36,26 @@
       }
     },
     "trunk_placer": {
-      "type": "eco:straight_branching_trunk_placer",
+      "type": "hydrol:straight_branching_trunk_placer",
       "base_height": 24,
       "height_rand_a": 5,
       "height_rand_b": 2,
       "max_branch_height": 4
     },
     "foliage_placer": {
-      "type": "eco:tall_foliage_placer",
+      "type": "hydrol:tall_foliage_placer",
       "radius": 2,
       "offset": 2,
       "height": 4
     },
     "decorators": [
       {
-        "type": "eco:trunk_wooden_roots",
+        "type": "hydrol:trunk_wooden_roots",
         "probability": 0.13,
         "wall_state": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "eco:birch_wood_wall",
+            "Name": "hydrol:birch_wood_wall",
             "Properties": {
               "east": "tall",
               "north": "tall",
@@ -68,7 +68,7 @@
         }
       },
       {
-        "type": "eco:trunk_mushrooms",
+        "type": "hydrol:trunk_mushrooms",
         "probability": 0.13
       },
       {

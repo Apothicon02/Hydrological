@@ -33,7 +33,7 @@
       ]
     },
     "vegetation_feature": {
-      "feature": "eco:dripleaves",
+      "feature": "hydrol:dripleaves",
       "placement": []
     }
   }

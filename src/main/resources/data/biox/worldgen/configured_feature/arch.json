@@ -1,5 +1,5 @@
 {
-  "type": "eco:arch",
+  "type": "hydrol:arch",
   "config": {
     "to_place": {
       "type": "minecraft:weighted_state_provider",

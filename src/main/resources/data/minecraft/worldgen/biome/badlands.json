@@ -114,7 +114,7 @@
     [
     ],
     [
-      "eco:shallow_mud_patches"
+      "hydrol:shallow_mud_patches"
     ],
     [
       "minecraft:ore_coal_upper",
@@ -142,15 +142,15 @@
     ],
     [
       "minecraft:glow_lichen",
-      "eco:grass_rocks",
-      "eco:terracotta_pond",
-      "eco:red_sand",
-      "eco:basalt",
-      "eco:basalt_rubble",
-      "eco:trees_flooded_mangrove",
-      "eco:red_flowers",
-      "eco:basic_grass",
-      "eco:fern_grass",
+      "hydrol:grass_rocks",
+      "hydrol:terracotta_pond",
+      "hydrol:red_sand",
+      "hydrol:basalt",
+      "hydrol:basalt_rubble",
+      "hydrol:trees_flooded_mangrove",
+      "hydrol:red_flowers",
+      "hydrol:basic_grass",
+      "hydrol:fern_grass",
       "minecraft:patch_sugar_cane"
     ],
     [

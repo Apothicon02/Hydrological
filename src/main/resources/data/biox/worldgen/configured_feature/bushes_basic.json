@@ -2,15 +2,15 @@
   "config": {
     "features": [
       {
-        "feature": "eco:oak_bush",
+        "feature": "hydrol:oak_bush",
         "chance": 0.54
       },
       {
-        "feature": "eco:spruce_bush",
+        "feature": "hydrol:spruce_bush",
         "chance": 0.46
       }
     ],
-    "default": "eco:oak_bush"
+    "default": "hydrol:oak_bush"
   },
   "type": "minecraft:random_selector"
 }

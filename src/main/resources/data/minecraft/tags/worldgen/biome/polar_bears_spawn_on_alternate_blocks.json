@@ -1,7 +1,7 @@
 {
   "values": [
-    "eco:caldera_ocean",
-    "eco:caldera_springs",
-    "eco:caldera"
+    "hydrol:caldera_ocean",
+    "hydrol:caldera_springs",
+    "hydrol:caldera"
   ]
 }

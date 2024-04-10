@@ -1,5 +1,5 @@
 {
-  "feature": "eco:overworld_mushrooms",
+  "feature": "hydrol:overworld_mushrooms",
   "placement": [
     {
       "type": "minecraft:count",

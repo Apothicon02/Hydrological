@@ -164,18 +164,18 @@
     ],
     [
       "minecraft:glow_lichen",
-      "eco:grass_rocks",
-      "eco:calcite_pond_extra",
-      "eco:trees_tall_birch",
-      "eco:fallen_trees_birch_and_oak",
-      "eco:bushes_dense",
-      "eco:purple_flowers",
-      "eco:overworld_mushrooms",
-      "eco:basic_grass",
-      "eco:tall_grass",
+      "hydrol:grass_rocks",
+      "hydrol:calcite_pond_extra",
+      "hydrol:trees_tall_birch",
+      "hydrol:fallen_trees_birch_and_oak",
+      "hydrol:bushes_dense",
+      "hydrol:purple_flowers",
+      "hydrol:overworld_mushrooms",
+      "hydrol:basic_grass",
+      "hydrol:tall_grass",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "eco:large_pumpkin"
+      "hydrol:large_pumpkin"
     ],
     [
       "minecraft:freeze_top_layer"

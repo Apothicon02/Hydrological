@@ -1,5 +1,5 @@
 {
-  "feature": "eco:dead_rooted_bushes",
+  "feature": "hydrol:dead_rooted_bushes",
   "placement": [
     {
       "type": "minecraft:count",

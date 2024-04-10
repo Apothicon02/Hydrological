@@ -1,5 +1,5 @@
 {
-  "type": "eco:anvil_rock",
+  "type": "hydrol:anvil_rock",
   "config": {
     "material": {
       "fallback": {

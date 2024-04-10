@@ -1,5 +1,5 @@
 {
-  "feature": "eco:trees_pine_taiga",
+  "feature": "hydrol:trees_pine_taiga",
   "placement": [
     {
       "type": "minecraft:count",

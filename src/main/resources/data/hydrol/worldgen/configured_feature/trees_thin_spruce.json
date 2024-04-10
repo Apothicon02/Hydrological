@@ -1,0 +1,20 @@
+{
+  "config": {
+    "features": [
+      {
+        "feature": "minecraft:oak_bees_002",
+        "chance": 0.12
+      },
+      {
+        "feature": "hydrol:towering_spruce",
+        "chance": 0.12
+      },
+      {
+        "feature": "hydrol:oak_bush",
+        "chance": 0.66
+      }
+    ],
+    "default": "hydrol:towering_spruce"
+  },
+  "type": "minecraft:random_selector"
+}

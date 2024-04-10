@@ -1,5 +1,5 @@
 {
-  "type": "eco:basic_3x2x3_cube",
+  "type": "hydrol:basic_3x2x3_cube",
   "config": {
     "to_place": {
       "type": "minecraft:simple_state_provider",

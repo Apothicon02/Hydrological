@@ -1,15 +1,15 @@
 {
   "values": [
-    "eco:autumnal_dark_forest",
-    "eco:autumnal_dark_plains",
-    "eco:birch_plains",
-    "eco:caldera_ocean",
-    "eco:caldera_springs",
-    "eco:caldera",
-    "eco:caldera_hills",
-    "eco:caldera_cliffs",
-    "eco:cherry_swamp",
-    "eco:glacial_caves",
-    "eco:frozen_plains"
+    "hydrol:autumnal_dark_forest",
+    "hydrol:autumnal_dark_plains",
+    "hydrol:birch_plains",
+    "hydrol:caldera_ocean",
+    "hydrol:caldera_springs",
+    "hydrol:caldera",
+    "hydrol:caldera_hills",
+    "hydrol:caldera_cliffs",
+    "hydrol:cherry_swamp",
+    "hydrol:glacial_caves",
+    "hydrol:frozen_plains"
   ]
 }

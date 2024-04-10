@@ -1,0 +1,24 @@
+{
+  "config": {
+    "features": [
+      {
+        "feature": "hydrol:mangrove_bush",
+        "chance": 0.57
+      },
+      {
+        "feature": "hydrol:rooted_bush",
+        "chance": 0.22
+      },
+      {
+        "feature": "hydrol:thin_bush",
+        "chance": 0.18
+      },
+      {
+        "feature": "hydrol:thick_bush",
+        "chance": 0.03
+      }
+    ],
+    "default": "hydrol:mangrove_bush"
+  },
+  "type": "minecraft:random_selector"
+}

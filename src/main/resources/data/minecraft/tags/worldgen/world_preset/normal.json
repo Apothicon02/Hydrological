@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "eco:biocubical",
-    "eco:biocubical_large_biomes"
+    "hydrol:biocubical",
+    "hydrol:biocubical_large_biomes"
   ]
 }

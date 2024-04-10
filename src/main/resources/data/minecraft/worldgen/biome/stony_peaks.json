@@ -130,7 +130,7 @@
       "minecraft:ore_copper",
       "minecraft:underwater_magma",
       "minecraft:ore_emerald",
-      "eco:gray_mountainous_rocks"
+      "hydrol:gray_mountainous_rocks"
     ],
     [
       "minecraft:ore_infested"

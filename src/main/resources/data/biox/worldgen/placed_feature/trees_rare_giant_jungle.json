@@ -1,5 +1,5 @@
 {
-  "feature": "eco:trees_giant_jungle",
+  "feature": "hydrol:trees_giant_jungle",
   "placement": [
     {
       "type": "minecraft:rarity_filter",

@@ -1,7 +1,7 @@
 {
   "dimensions": {
     "minecraft:overworld": {
-      "type": "eco:brighter_overworld",
+      "type": "hydrol:brighter_overworld",
       "generator": {
         "type": "minecraft:noise",
         "settings": "minecraft:large_biomes",
@@ -9,7 +9,7 @@
           "type": "minecraft:multi_noise",
           "biomes": [
             {
-              "biome": "eco:wooded_mesa",
+              "biome": "hydrol:wooded_mesa",
               "parameters": {
                 "temperature": [
                   0.8,
@@ -30,7 +30,7 @@
               }
             },
             {
-              "biome": "eco:mesa",
+              "biome": "hydrol:mesa",
               "parameters": {
                 "temperature": [
                   0.8,
@@ -51,7 +51,7 @@
               }
             },
             {
-              "biome": "eco:eroded_mesa",
+              "biome": "hydrol:eroded_mesa",
               "parameters": {
                 "temperature": [
                   0.8,
@@ -199,7 +199,7 @@
               }
             },
             {
-              "biome": "eco:caldera_cliffs",
+              "biome": "hydrol:caldera_cliffs",
               "parameters": {
                 "temperature": [
                   -1,
@@ -221,7 +221,7 @@
             },
 
             {
-              "biome": "eco:fungal_hills",
+              "biome": "hydrol:fungal_hills",
               "parameters": {
                 "temperature": [
                   0.5,
@@ -242,7 +242,7 @@
               }
             },
             {
-              "biome": "eco:tropical_hills",
+              "biome": "hydrol:tropical_hills",
               "parameters": {
                 "temperature": [
                   0.5,
@@ -305,7 +305,7 @@
               }
             },
             {
-              "biome": "eco:prickly_desert",
+              "biome": "hydrol:prickly_desert",
               "parameters": {
                 "temperature": [
                   0.5,
@@ -326,7 +326,7 @@
               }
             },
             {
-              "biome": "eco:clover_hills",
+              "biome": "hydrol:clover_hills",
               "parameters": {
                 "temperature": [
                   0.33,
@@ -347,7 +347,7 @@
               }
             },
             {
-              "biome": "eco:sunflower_hills",
+              "biome": "hydrol:sunflower_hills",
               "parameters": {
                 "temperature": [
                   0.33,
@@ -389,7 +389,7 @@
               }
             },
             {
-              "biome": "eco:windswept_highlands",
+              "biome": "hydrol:windswept_highlands",
               "parameters": {
                 "temperature": [
                   0,
@@ -410,7 +410,7 @@
               }
             },
             {
-              "biome": "eco:highlands",
+              "biome": "hydrol:highlands",
               "parameters": {
                 "temperature": [
                   0,
@@ -431,7 +431,7 @@
               }
             },
             {
-              "biome": "eco:autumnal_dark_plains",
+              "biome": "hydrol:autumnal_dark_plains",
               "parameters": {
                 "temperature": [
                   -0.25,
@@ -452,7 +452,7 @@
               }
             },
             {
-              "biome": "eco:dark_plains",
+              "biome": "hydrol:dark_plains",
               "parameters": {
                 "temperature": [
                   -0.125,
@@ -515,7 +515,7 @@
               }
             },
             {
-              "biome": "eco:birch_hills",
+              "biome": "hydrol:birch_hills",
               "parameters": {
                 "temperature": [
                   -0.5,
@@ -620,7 +620,7 @@
               }
             },
             {
-              "biome": "eco:caldera_hills",
+              "biome": "hydrol:caldera_hills",
               "parameters": {
                 "temperature": [
                   -1,
@@ -642,7 +642,7 @@
             },
 
             {
-              "biome": "eco:wooded_desert",
+              "biome": "hydrol:wooded_desert",
               "parameters": {
                 "temperature": [
                   0.8,
@@ -663,7 +663,7 @@
               }
             },
             {
-              "biome": "eco:scorching_desert",
+              "biome": "hydrol:scorching_desert",
               "parameters": {
                 "temperature": [
                   0.8,
@@ -684,7 +684,7 @@
               }
             },
             {
-              "biome": "eco:eroded_desert",
+              "biome": "hydrol:eroded_desert",
               "parameters": {
                 "temperature": [
                   0.8,
@@ -768,7 +768,7 @@
               }
             },
             {
-              "biome": "eco:tropical_plains",
+              "biome": "hydrol:tropical_plains",
               "parameters": {
                 "temperature": [
                   0.5,
@@ -852,7 +852,7 @@
               }
             },
             {
-              "biome": "eco:orchard",
+              "biome": "hydrol:orchard",
               "parameters": {
                 "temperature": [
                   0.33,
@@ -894,7 +894,7 @@
               }
             },
             {
-              "biome": "eco:sedimentary_plains",
+              "biome": "hydrol:sedimentary_plains",
               "parameters": {
                 "temperature": [
                   0.28,
@@ -936,7 +936,7 @@
               }
             },
             {
-              "biome": "eco:lowlands",
+              "biome": "hydrol:lowlands",
               "parameters": {
                 "temperature": [
                   0,
@@ -957,7 +957,7 @@
               }
             },
             {
-              "biome": "eco:popping_plains",
+              "biome": "hydrol:popping_plains",
               "parameters": {
                 "temperature": [
                   0,
@@ -978,7 +978,7 @@
               }
             },
             {
-              "biome": "eco:autumnal_dark_forest",
+              "biome": "hydrol:autumnal_dark_forest",
               "parameters": {
                 "temperature": [
                   -0.25,
@@ -1041,7 +1041,7 @@
               }
             },
             {
-              "biome": "eco:flower_plains",
+              "biome": "hydrol:flower_plains",
               "parameters": {
                 "temperature": [
                   -0.33,
@@ -1104,7 +1104,7 @@
               }
             },
             {
-              "biome": "eco:birch_plains",
+              "biome": "hydrol:birch_plains",
               "parameters": {
                 "temperature": [
                   -0.5,
@@ -1251,7 +1251,7 @@
               }
             },
             {
-              "biome": "eco:frozen_plains",
+              "biome": "hydrol:frozen_plains",
               "parameters": {
                 "temperature": [
                   -1,
@@ -1272,7 +1272,7 @@
               }
             },
             {
-              "biome": "eco:caldera",
+              "biome": "hydrol:caldera",
               "parameters": {
                 "temperature": [
                   -1,
@@ -1357,7 +1357,7 @@
               }
             },
             {
-              "biome": "eco:cherry_swamp",
+              "biome": "hydrol:cherry_swamp",
               "parameters": {
                 "temperature": [
                   -0.25,
@@ -1378,7 +1378,7 @@
               }
             },
             {
-              "biome": "eco:himalayan_shore",
+              "biome": "hydrol:himalayan_shore",
               "parameters": {
                 "temperature": [
                   0.5,
@@ -1504,7 +1504,7 @@
               }
             },
             {
-              "biome": "eco:caldera_springs",
+              "biome": "hydrol:caldera_springs",
               "parameters": {
                 "temperature": [
                   -1,
@@ -1631,7 +1631,7 @@
               }
             },
             {
-              "biome": "eco:caldera_ocean",
+              "biome": "hydrol:caldera_ocean",
               "parameters": {
                 "temperature": [
                   -1,
@@ -1716,7 +1716,7 @@
               }
             },
             {
-              "biome": "eco:gravelly_river",
+              "biome": "hydrol:gravelly_river",
               "parameters": {
                 "temperature": [
                   -0.25,
@@ -1737,7 +1737,7 @@
               }
             },
             {
-              "biome": "eco:gravelly_river",
+              "biome": "hydrol:gravelly_river",
               "parameters": {
                 "temperature": [
                   -0.8,
@@ -1800,7 +1800,7 @@
               }
             },
             {
-              "biome": "eco:caldera_springs",
+              "biome": "hydrol:caldera_springs",
               "parameters": {
                 "temperature": [
                   -1,
@@ -1906,7 +1906,7 @@
               }
             },
             {
-              "biome": "eco:caldera_ocean",
+              "biome": "hydrol:caldera_ocean",
               "parameters": {
                 "temperature": [
                   -1,
@@ -1928,7 +1928,7 @@
             },
 
             {
-              "biome": "eco:geodeial_caves",
+              "biome": "hydrol:geodeial_caves",
               "parameters": {
                 "temperature": [
                   0.8,
@@ -1946,7 +1946,7 @@
               }
             },
             {
-              "biome": "eco:molten_caves",
+              "biome": "hydrol:molten_caves",
               "parameters": {
                 "temperature": [
                   0.8,
@@ -1964,7 +1964,7 @@
               }
             },
             {
-              "biome": "eco:honeyed_caves",
+              "biome": "hydrol:honeyed_caves",
               "parameters": {
                 "temperature": [
                   0.5,
@@ -2000,7 +2000,7 @@
               }
             },
             {
-              "biome": "eco:fungal_caves",
+              "biome": "hydrol:fungal_caves",
               "parameters": {
                 "temperature": [
                   0.66,
@@ -2018,7 +2018,7 @@
               }
             },
             {
-              "biome": "eco:wooded_caves",
+              "biome": "hydrol:wooded_caves",
               "parameters": {
                 "temperature": [
                   0.5,
@@ -2108,7 +2108,7 @@
               }
             },
             {
-              "biome": "eco:glacial_caves",
+              "biome": "hydrol:glacial_caves",
               "parameters": {
                 "temperature": [
                   -1,
@@ -2126,7 +2126,7 @@
               }
             },
             {
-              "biome": "eco:caldera_ocean",
+              "biome": "hydrol:caldera_ocean",
               "parameters": {
                 "temperature": [
                   -1,

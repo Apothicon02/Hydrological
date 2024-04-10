@@ -1,5 +1,5 @@
 {
-  "feature": "eco:large_melon",
+  "feature": "hydrol:large_melon",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

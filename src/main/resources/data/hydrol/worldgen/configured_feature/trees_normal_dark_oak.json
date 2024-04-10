@@ -1,0 +1,16 @@
+{
+    "config": {
+      "features": [
+        {
+          "feature": "hydrol:short_dark_oak",
+          "chance": 0.1
+        },
+        {
+          "feature": "hydrol:normal_dark_oak",
+          "chance": 0.9
+        }
+      ],
+      "default": "hydrol:normal_dark_oak"
+    },
+    "type": "minecraft:random_selector"
+  }

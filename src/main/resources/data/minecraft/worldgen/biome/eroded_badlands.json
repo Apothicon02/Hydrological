@@ -113,7 +113,7 @@
     [
     ],
     [
-      "eco:sand_patches"
+      "hydrol:sand_patches"
     ],
     [
       "minecraft:ore_coal_upper",
@@ -141,17 +141,17 @@
     ],
     [
       "minecraft:glow_lichen",
-      "eco:anvil_rocks",
-      "eco:terracotta_pond",
-      "eco:trees_dead_dark_oak",
-      "eco:dead_rooted_bushes",
-      "eco:bushes_clustered",
+      "hydrol:anvil_rocks",
+      "hydrol:terracotta_pond",
+      "hydrol:trees_dead_dark_oak",
+      "hydrol:dead_rooted_bushes",
+      "hydrol:bushes_clustered",
       "minecraft:patch_grass_badlands",
       "minecraft:patch_dead_bush_badlands",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane_badlands",
-      "eco:clustered_pumpkin",
+      "hydrol:clustered_pumpkin",
       "minecraft:patch_cactus_decorated"
     ],
     [

@@ -1,0 +1,47 @@
+{
+  "feature": "hydrol:trees_lush_jungle",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "weight": 13,
+            "data": 6
+          },
+          {
+            "weight": 5,
+            "data": 1
+          },
+          {
+            "weight": 1,
+            "data": 3
+          }
+        ]
+      }
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 3,
+          "max_inclusive": 12
+        }
+      },
+      "y_spread": 0
+    },
+    {
+      "type": "minecraft:surface_water_depth_filter",
+      "max_water_depth": 0
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

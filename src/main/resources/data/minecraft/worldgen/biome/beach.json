@@ -145,7 +145,7 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "eco:large_pumpkin"
+      "hydrol:large_pumpkin"
     ],
     [
       "minecraft:freeze_top_layer"

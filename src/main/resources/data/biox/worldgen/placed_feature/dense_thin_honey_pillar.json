@@ -1,5 +1,5 @@
 {
-  "feature": "eco:thin_honey_pillar",
+  "feature": "hydrol:thin_honey_pillar",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

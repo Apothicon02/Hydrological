@@ -36,14 +36,14 @@
       }
     },
     "trunk_placer": {
-      "type": "eco:straight_branching_trunk_placer",
+      "type": "hydrol:straight_branching_trunk_placer",
       "base_height": 1,
       "height_rand_a": 1,
       "height_rand_b": 1,
       "max_branch_height": 3
     },
     "foliage_placer": {
-      "type": "eco:tall_foliage_placer",
+      "type": "hydrol:tall_foliage_placer",
       "radius": 2,
       "offset": 3,
       "height": 4

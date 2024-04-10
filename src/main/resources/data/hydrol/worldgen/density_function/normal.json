@@ -1,0 +1,46 @@
+{
+  "type": "minecraft:max",
+  "argument1": {
+    "type": "minecraft:range_choice",
+    "input": "hydrol:rivers",
+    "min_inclusive": -100,
+    "max_exclusive": -0.01,
+    "when_in_range": -1,
+    "when_out_of_range": {
+      "type": "minecraft:interpolated",
+      "argument": {
+        "type": "minecraft:add",
+        "argument1": "hydrol:base_terrain_with_oceans",
+        "argument2": {
+          "type": "minecraft:range_choice",
+          "input": {
+            "type": "hydrol:flatten",
+            "input": "hydrol:oceans",
+            "at_y": 63
+          },
+          "min_inclusive": -100,
+          "max_exclusive": -0.01,
+          "when_in_range": 0,
+          "when_out_of_range": {
+            "type": "minecraft:add",
+            "argument1": "hydrol:swamps",
+            "argument2": {
+              "type": "minecraft:max",
+              "argument1": "hydrol:volcanoes",
+              "argument2": {
+                "type": "minecraft:max",
+                "argument1": "hydrol:caldera_cliffs",
+                "argument2": {
+                  "type": "minecraft:max",
+                  "argument1": "hydrol:badlands",
+                  "argument2": "hydrol:cliffs"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "argument2": "hydrol:caldera_springs"
+}

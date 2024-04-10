@@ -70,7 +70,7 @@
       }
     },
     "trunk_placer": {
-      "type": "eco:branching_trunk_placer",
+      "type": "hydrol:branching_trunk_placer",
       "base_height": 16,
       "height_rand_a": 5,
       "height_rand_b": 0,

@@ -149,12 +149,12 @@
     ],
     [
       "minecraft:glow_lichen",
-      "eco:white_stones",
-      "eco:calcite_pond",
+      "hydrol:white_stones",
+      "hydrol:calcite_pond",
       "biox:packed_ice_ice_spike",
-      "eco:trees_giant_spruce",
-      "eco:basic_grass",
-      "eco:fern_grass"
+      "hydrol:trees_giant_spruce",
+      "hydrol:basic_grass",
+      "hydrol:fern_grass"
     ],
     [
       "minecraft:freeze_top_layer"

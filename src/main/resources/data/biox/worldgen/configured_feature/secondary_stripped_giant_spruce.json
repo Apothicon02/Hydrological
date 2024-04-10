@@ -36,14 +36,14 @@
       }
     },
     "trunk_placer": {
-      "type": "eco:giant_straight_branching_trunk_placer",
+      "type": "hydrol:giant_straight_branching_trunk_placer",
       "base_height": 20,
       "height_rand_a": 4,
       "height_rand_b": 21,
       "max_branch_height": 24
     },
     "foliage_placer": {
-      "type": "eco:giant_pine_foliage_placer",
+      "type": "hydrol:giant_pine_foliage_placer",
       "radius": 0,
       "offset": 0,
       "crown_height": {
@@ -56,12 +56,12 @@
     },
     "decorators": [
       {
-        "type": "eco:trunk_wooden_roots",
+        "type": "hydrol:trunk_wooden_roots",
         "probability": 0.5,
         "wall_state": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "eco:spruce_wood_wall",
+            "Name": "hydrol:spruce_wood_wall",
             "Properties": {
               "east": "tall",
               "north": "tall",
@@ -74,15 +74,15 @@
         }
       },
       {
-        "type": "eco:trunk_mushrooms",
+        "type": "hydrol:trunk_mushrooms",
         "probability": 0.15
       },
       {
-        "type": "eco:mushrooms",
+        "type": "hydrol:mushrooms",
         "probability": 0.75
       },
       {
-        "type": "eco:hanging_leaves",
+        "type": "hydrol:hanging_leaves",
         "probability": 0.2
       },
       {

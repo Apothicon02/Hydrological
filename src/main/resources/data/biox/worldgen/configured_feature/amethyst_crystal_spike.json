@@ -1,5 +1,5 @@
 {
-  "type": "eco:crystal_spike",
+  "type": "hydrol:crystal_spike",
   "config": {
     "blockOn": {
       "Name": "minecraft:smooth_basalt"

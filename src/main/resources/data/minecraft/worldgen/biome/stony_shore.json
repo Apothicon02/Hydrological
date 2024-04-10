@@ -124,7 +124,7 @@
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "minecraft:underwater_magma",
-      "eco:gray_mountainous_rocks"
+      "hydrol:gray_mountainous_rocks"
     ],
     [],
     [
@@ -133,15 +133,15 @@
     ],
     [
       "minecraft:glow_lichen",
-      "eco:stony_moss",
-      "eco:stony_mangrove_shrubbery",
+      "hydrol:stony_moss",
+      "hydrol:stony_mangrove_shrubbery",
       "minecraft:flower_default",
       "minecraft:patch_grass_badlands",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "eco:large_pumpkin"
+      "hydrol:large_pumpkin"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -1,15 +1,15 @@
 {
   "values": [
-    "eco:dark_plains",
-    "eco:autumnal_dark_plains",
-    "eco:birch_plains",
-    "eco:flower_plains",
-    "eco:popping_plains",
-    "eco:sedimentary_plains",
-    "eco:tropical_plains",
-    "eco:clover_hills",
-    "eco:wooded_desert",
-    "eco:scorching_desert",
-    "eco:eroded_desert"
+    "hydrol:dark_plains",
+    "hydrol:autumnal_dark_plains",
+    "hydrol:birch_plains",
+    "hydrol:flower_plains",
+    "hydrol:popping_plains",
+    "hydrol:sedimentary_plains",
+    "hydrol:tropical_plains",
+    "hydrol:clover_hills",
+    "hydrol:wooded_desert",
+    "hydrol:scorching_desert",
+    "hydrol:eroded_desert"
   ]
 }

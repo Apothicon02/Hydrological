@@ -1,0 +1,19 @@
+{
+  "feature": "hydrol:ice_mountainous_rocks",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "offset": [
+          0,
+          -1,
+          0
+        ],
+        "blocks": [
+          "minecraft:ice"
+        ]
+      }
+    }
+  ]
+}

@@ -169,21 +169,21 @@
     ],
     [
       "minecraft:glow_lichen",
-      "eco:grass_rocks",
-      "eco:wild_flower_patch",
-      "eco:trees_branching_oak",
-      "eco:trees_clustered_tall_oak",
+      "hydrol:grass_rocks",
+      "hydrol:wild_flower_patch",
+      "hydrol:trees_branching_oak",
+      "hydrol:trees_clustered_tall_oak",
       "biox:trees_rare_giant_oak",
       "minecraft:trees_plains",
-      "eco:clustered_tall_mushrooms",
-      "eco:bushes_clustered",
-      "eco:basic_flowers",
-      "eco:clustered_overworld_mushrooms",
-      "eco:basic_grass",
-      "eco:plains_grass",
+      "hydrol:clustered_tall_mushrooms",
+      "hydrol:bushes_clustered",
+      "hydrol:basic_flowers",
+      "hydrol:clustered_overworld_mushrooms",
+      "hydrol:basic_grass",
+      "hydrol:plains_grass",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "eco:large_pumpkin"
+      "hydrol:large_pumpkin"
     ],
     [
       "minecraft:freeze_top_layer"

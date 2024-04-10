@@ -2,15 +2,15 @@
   "config": {
     "features": [
       {
-        "feature": "eco:mangrove_bush",
+        "feature": "hydrol:mangrove_bush",
         "chance": 0.75
       },
       {
-        "feature": "eco:rooted_bush",
+        "feature": "hydrol:rooted_bush",
         "chance": 0.25
       }
     ],
-    "default": "eco:mangrove_bush"
+    "default": "hydrol:mangrove_bush"
   },
   "type": "minecraft:random_selector"
 }

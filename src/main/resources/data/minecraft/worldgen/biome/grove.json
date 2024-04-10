@@ -181,19 +181,19 @@
     ],
     [
       "minecraft:glow_lichen",
-      "eco:white_stones",
-      "eco:calcite_pond",
-      "eco:tall_mushrooms",
+      "hydrol:white_stones",
+      "hydrol:calcite_pond",
+      "hydrol:tall_mushrooms",
       "biox:mushrooms_giant_red",
       "biox:sparse_azalea_bushes",
-      "eco:roses",
+      "hydrol:roses",
       "biox:sparse_trees_stripped_cherry",
       "biox:trees_dense_giant_stripped_cherry",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "eco:large_pumpkin",
+      "hydrol:large_pumpkin",
       "minecraft:patch_berry_rare",
-      "eco:lush_spore_blossom"
+      "hydrol:lush_spore_blossom"
     ],
     [
       "minecraft:freeze_top_layer"

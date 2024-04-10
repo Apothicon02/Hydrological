@@ -1,10 +1,10 @@
 {
   "values": [
-    "eco:honeyed_caves",
-    "eco:himalayan_shore",
-    "eco:prickly_desert",
-    "eco:scorching_desert",
-    "eco:wooded_desert",
-    "eco:eroded_desert"
+    "hydrol:honeyed_caves",
+    "hydrol:himalayan_shore",
+    "hydrol:prickly_desert",
+    "hydrol:scorching_desert",
+    "hydrol:wooded_desert",
+    "hydrol:eroded_desert"
   ]
 }

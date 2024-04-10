@@ -1,5 +1,5 @@
 {
-  "type": "eco:ore_spike",
+  "type": "hydrol:ore_spike",
   "config": {
     "upperState": {
       "type": "minecraft:weighted_state_provider",

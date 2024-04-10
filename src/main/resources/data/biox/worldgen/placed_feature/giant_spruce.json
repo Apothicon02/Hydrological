@@ -1,5 +1,5 @@
 {
-  "feature": "eco:giant_spruce",
+  "feature": "hydrol:giant_spruce",
   "placement": [
     {
       "type": "minecraft:block_predicate_filter",

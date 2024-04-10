@@ -1,5 +1,5 @@
 {
-  "type": "eco:thick_fallen_tree",
+  "type": "hydrol:thick_fallen_tree",
   "config": {
     "material": {
       "Name": "minecraft:stripped_spruce_log"

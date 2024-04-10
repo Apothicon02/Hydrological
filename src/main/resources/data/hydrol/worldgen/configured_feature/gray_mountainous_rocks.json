@@ -1,0 +1,16 @@
+{
+  "config": {
+    "features": [
+      {
+        "feature": "hydrol:andesite_mountainous_rocks",
+        "chance": 0.82
+      },
+      {
+        "feature": "hydrol:tuff_mountainous_rocks",
+        "chance": 0.18
+      }
+    ],
+    "default": "hydrol:andesite_mountainous_rocks"
+  },
+  "type": "minecraft:random_selector"
+}

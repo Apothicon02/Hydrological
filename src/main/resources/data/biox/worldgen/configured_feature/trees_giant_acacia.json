@@ -36,7 +36,7 @@
       }
     },
     "trunk_placer": {
-      "type": "eco:branching_trunk_placer",
+      "type": "hydrol:branching_trunk_placer",
       "base_height": 14,
       "height_rand_a": 19,
       "height_rand_b": 1,
@@ -68,12 +68,12 @@
     },
     "decorators": [
       {
-        "type": "eco:trunk_wooden_roots",
+        "type": "hydrol:trunk_wooden_roots",
         "probability": 0.2,
         "wall_state": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "eco:acacia_wood_wall",
+            "Name": "hydrol:acacia_wood_wall",
             "Properties": {
               "east": "tall",
               "north": "tall",
@@ -86,11 +86,11 @@
         }
       },
       {
-        "type": "eco:trunk_mushrooms",
+        "type": "hydrol:trunk_mushrooms",
         "probability": 0.5
       },
       {
-        "type": "eco:hanging_leaves",
+        "type": "hydrol:hanging_leaves",
         "probability": 0.1
       },
       {

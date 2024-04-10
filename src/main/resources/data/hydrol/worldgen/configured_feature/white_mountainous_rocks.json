@@ -1,0 +1,16 @@
+{
+  "config": {
+    "features": [
+      {
+        "feature": "hydrol:calcite_mountainous_rocks",
+        "chance": 0.75
+      },
+      {
+        "feature": "hydrol:diorite_mountainous_rocks",
+        "chance": 0.25
+      }
+    ],
+    "default": "hydrol:calcite_mountainous_rocks"
+  },
+  "type": "minecraft:random_selector"
+}

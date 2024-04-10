@@ -17,9 +17,9 @@ apply plugin: 'maven-publish'
 // MixinGradle:
 apply plugin: 'org.spongepowered.mixin'
 
-version = '3.0.0'
-group = 'com.Apothic0n.EcosphericalExpansion' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'ecosphericalexpansion'
+version = '0.1.0'
+group = 'com.Apothic0n.Hydrological' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'hydrological'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -64,7 +64,7 @@ minecraft {
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
-                ecosphericalexpansion {
+                hydrological {
                     source sourceSets.main
                 }
             }
@@ -86,7 +86,7 @@ minecraft {
             //property 'forge.logging.console.level', 'debug'
 
             mods {
-                ecosphericalexpansion {
+                hydrological {
                     source sourceSets.main
                 }
             }
@@ -108,10 +108,10 @@ minecraft {
             //property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'eco', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'hydrol', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                ecosphericalexpansion {
+                hydrological {
                     source sourceSets.main
                 }
             }
@@ -178,8 +178,8 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     mixin {
         // MixinGradle Settings
-        add sourceSets.main, 'mixins.eco.refmap.json'
-        config 'mixins.eco.json'
+        add sourceSets.main, 'mixins.hydrol.refmap.json'
+        config 'mixins.hydrol.json'
 
         debug.verbose = true
         debug.export = true
@@ -194,7 +194,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "Ecospherical Expansion",
+                "Specification-Title"     : "Hydrological",
                 "Specification-Vendor"    : "Apothic0n",
                 "Specification-Version"   : "1",
                 "Implementation-Title"    : project.name,

@@ -35,14 +35,14 @@
       }
     },
     "trunk_placer": {
-      "type": "eco:straight_branching_trunk_placer",
+      "type": "hydrol:straight_branching_trunk_placer",
       "base_height": 2,
       "height_rand_a": 3,
       "height_rand_b": 3,
       "max_branch_height": 3
     },
     "foliage_placer": {
-      "type": "eco:tall_foliage_placer",
+      "type": "hydrol:tall_foliage_placer",
       "radius": 2,
       "offset": 2,
       "height": 4
@@ -53,11 +53,11 @@
         "probability": 0.33
       },
       {
-        "type": "eco:trunk_mushrooms",
+        "type": "hydrol:trunk_mushrooms",
         "probability": 0.6
       },
       {
-        "type": "eco:hanging_leaves",
+        "type": "hydrol:hanging_leaves",
         "probability": 0.9
       },
       {

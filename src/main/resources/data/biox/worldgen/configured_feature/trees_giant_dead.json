@@ -77,12 +77,12 @@
         }
       },
       {
-        "type": "eco:trunk_wooden_roots",
+        "type": "hydrol:trunk_wooden_roots",
         "probability": 0.4,
         "wall_state": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "eco:oak_wood_wall",
+            "Name": "hydrol:oak_wood_wall",
             "Properties": {
               "east": "tall",
               "north": "tall",
@@ -95,7 +95,7 @@
         }
       },
       {
-        "type": "eco:hanging_leaves",
+        "type": "hydrol:hanging_leaves",
         "probability": 0.66
       },
       {

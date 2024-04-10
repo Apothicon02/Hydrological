@@ -1,5 +1,5 @@
 {
-    "feature": "eco:trees_thin_spruce",
+    "feature": "hydrol:trees_thin_spruce",
     "placement": [
       {
         "type": "minecraft:noise_based_count",

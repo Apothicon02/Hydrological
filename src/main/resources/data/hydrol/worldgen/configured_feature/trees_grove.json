@@ -1,0 +1,20 @@
+{
+  "config": {
+    "features": [
+      {
+        "feature": "hydrol:snowy_cherry_bees",
+        "chance": 0.12
+      },
+      {
+        "feature": "hydrol:trunked_spruce",
+        "chance": 0.12
+      },
+      {
+        "feature": "hydrol:towering_spruce",
+        "chance": 0.66
+      }
+    ],
+    "default": "hydrol:towering_spruce"
+  },
+  "type": "minecraft:random_selector"
+}

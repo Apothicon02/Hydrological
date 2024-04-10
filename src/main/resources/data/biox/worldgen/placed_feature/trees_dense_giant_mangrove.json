@@ -1,5 +1,5 @@
 {
-  "feature": "eco:trees_giant_mangrove",
+  "feature": "hydrol:trees_giant_mangrove",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "berries=false": {
+      "model": "hydrol:block/amethyst_vines"
+    },
+    "berries=true": {
+      "model": "hydrol:block/amethyst_vines_ripe"
+    }
+  }
+}

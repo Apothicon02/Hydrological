@@ -121,7 +121,7 @@
       "minecraft:monster_room_deep"
     ],
     [
-      "eco:clay_water_fall"
+      "hydrol:clay_water_fall"
     ],
     [],
     [
@@ -152,7 +152,7 @@
     ],
     [
       "minecraft:glow_lichen",
-      "eco:clay_pool_with_dripleaves"
+      "hydrol:clay_pool_with_dripleaves"
     ],
     [
       "minecraft:freeze_top_layer"

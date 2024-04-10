@@ -1,0 +1,23 @@
+{
+    "feature": "hydrol:tilted_tall_mushroom",
+    "placement": [
+      {
+        "type": "minecraft:block_predicate_filter",
+        "predicate": {
+          "type": "minecraft:matching_blocks",
+          "blocks": [
+            "minecraft:red_sand",
+            "minecraft:sand",
+            "minecraft:gravel",
+            "minecraft:suspicious_gravel",
+            "minecraft:dirt",
+            "minecraft:coarse_dirt",
+            "minecraft:rooted_dirt",
+            "minecraft:grass_block",
+            "minecraft:moss_block"
+          ]
+        }
+      }
+    ]
+  }
+  

@@ -1,0 +1,24 @@
+{
+  "config": {
+    "features": [
+      {
+        "feature": "hydrol:oak_bush",
+        "chance": 0.54
+      },
+      {
+        "feature": "hydrol:spruce_bush",
+        "chance": 0.16
+      },
+      {
+        "feature": "hydrol:thin_bush",
+        "chance": 0.27
+      },
+      {
+        "feature": "hydrol:thick_bush",
+        "chance": 0.03
+      }
+    ],
+    "default": "hydrol:oak_bush"
+  },
+  "type": "minecraft:random_selector"
+}

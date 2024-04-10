@@ -1,7 +1,7 @@
 {
   "values": [
-    "eco:mesa",
-    "eco:wooded_mesa",
-    "eco:eroded_mesa"
+    "hydrol:mesa",
+    "hydrol:wooded_mesa",
+    "hydrol:eroded_mesa"
   ]
 }

@@ -174,15 +174,15 @@
     ],
     [
       "minecraft:glow_lichen",
-      "eco:white_stones",
-      "eco:calcite_pond",
-      "eco:ice_patch",
+      "hydrol:white_stones",
+      "hydrol:calcite_pond",
+      "hydrol:ice_patch",
       "biox:trees_noise_thin_spruce",
       "biox:trees_noise_tall_spruce",
       "biox:trees_dense_giant_spruce",
-      "eco:fallen_trees_spruce",
-      "eco:basic_grass",
-      "eco:fern_grass",
+      "hydrol:fallen_trees_spruce",
+      "hydrol:basic_grass",
+      "hydrol:fern_grass",
       "biox:trees_pine_taiga"
     ],
     [

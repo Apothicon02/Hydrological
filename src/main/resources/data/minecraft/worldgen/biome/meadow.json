@@ -153,27 +153,27 @@
     ],
     [
       "minecraft:ore_infested",
-      "eco:sculk_vein",
-      "eco:sculk_patch_deep_dark"
+      "hydrol:sculk_vein",
+      "hydrol:sculk_patch_deep_dark"
     ],
     [
       "minecraft:spring_water",
       "minecraft:spring_lava",
       "minecraft:glow_lichen",
-      "eco:grass_rocks",
-      "eco:tall_mushrooms",
-      "eco:wild_flower_patch",
-      "eco:azalea_bushes",
-      "eco:mangrove_bushes_dense"
+      "hydrol:grass_rocks",
+      "hydrol:tall_mushrooms",
+      "hydrol:wild_flower_patch",
+      "hydrol:azalea_bushes",
+      "hydrol:mangrove_bushes_dense"
     ],
     [
-      "eco:dense_flower_meadow",
+      "hydrol:dense_flower_meadow",
       "minecraft:trees_meadow",
-      "eco:basic_grass",
-      "eco:tall_grass",
+      "hydrol:basic_grass",
+      "hydrol:tall_grass",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "eco:large_pumpkin",
+      "hydrol:large_pumpkin",
       "minecraft:patch_berry_rare"
     ],
     [

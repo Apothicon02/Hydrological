@@ -1,5 +1,5 @@
 {
-  "feature": "eco:trees_giant_cherry",
+  "feature": "hydrol:trees_giant_cherry",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

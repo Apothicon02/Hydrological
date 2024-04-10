@@ -1,10 +1,10 @@
 {
   "values": [
-    "eco:himalayan_shore",
-    "eco:molten_caves",
-    "eco:tropical_plains",
-    "eco:cherry_swamp",
-    "eco:tropical_hills",
-    "eco:fungal_hills"
+    "hydrol:himalayan_shore",
+    "hydrol:molten_caves",
+    "hydrol:tropical_plains",
+    "hydrol:cherry_swamp",
+    "hydrol:tropical_hills",
+    "hydrol:fungal_hills"
   ]
 }

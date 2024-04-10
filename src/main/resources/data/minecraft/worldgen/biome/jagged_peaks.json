@@ -137,8 +137,8 @@
       "minecraft:ore_copper",
       "minecraft:underwater_magma",
       "minecraft:ore_emerald",
-      "eco:white_mountainous_rocks",
-      "eco:mountainous_snow"
+      "hydrol:white_mountainous_rocks",
+      "hydrol:mountainous_snow"
     ],
     [
       "minecraft:ore_infested"

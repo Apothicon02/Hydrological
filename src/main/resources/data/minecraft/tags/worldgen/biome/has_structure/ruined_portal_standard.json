@@ -1,16 +1,16 @@
 {
   "values": [
-    "eco:autumnal_dark_plains",
-    "eco:birch_plains",
-    "eco:dark_plains",
-    "eco:eroded_mesa",
-    "eco:flower_plains",
-    "eco:popping_plains",
-    "eco:lowlands",
-    "eco:sedimentary_plains",
-    "eco:tropical_plains",
-    "eco:mesa",
-    "eco:orchard",
-    "eco:wooded_mesa"
+    "hydrol:autumnal_dark_plains",
+    "hydrol:birch_plains",
+    "hydrol:dark_plains",
+    "hydrol:eroded_mesa",
+    "hydrol:flower_plains",
+    "hydrol:popping_plains",
+    "hydrol:lowlands",
+    "hydrol:sedimentary_plains",
+    "hydrol:tropical_plains",
+    "hydrol:mesa",
+    "hydrol:orchard",
+    "hydrol:wooded_mesa"
   ]
 }

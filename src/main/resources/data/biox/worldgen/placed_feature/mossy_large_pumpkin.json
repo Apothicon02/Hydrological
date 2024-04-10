@@ -1,5 +1,5 @@
 {
-  "feature": "eco:large_pumpkin",
+  "feature": "hydrol:large_pumpkin",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

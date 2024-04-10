@@ -1,0 +1,20 @@
+{
+  "config": {
+    "features": [
+      {
+        "feature": "hydrol:acacia_bush",
+        "chance": 0.57
+      },
+      {
+        "feature": "hydrol:rooted_bush",
+        "chance": 0.23
+      },
+      {
+        "feature": "hydrol:thin_bush",
+        "chance": 0.1
+      }
+    ],
+    "default": "hydrol:acacia_bush"
+  },
+  "type": "minecraft:random_selector"
+}

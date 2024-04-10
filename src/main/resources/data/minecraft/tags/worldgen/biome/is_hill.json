@@ -1,14 +1,14 @@
 {
   "values": [
-    "eco:caldera_hills",
-    "eco:autumnal_dark_plains",
-    "eco:dark_plains",
-    "eco:birch_hills",
-    "eco:highlands",
-    "eco:windswept_highlands",
-    "eco:sunflower_hills",
-    "eco:clover_hills",
-    "eco:tropical_hills",
-    "eco:fungal_hills"
+    "hydrol:caldera_hills",
+    "hydrol:autumnal_dark_plains",
+    "hydrol:dark_plains",
+    "hydrol:birch_hills",
+    "hydrol:highlands",
+    "hydrol:windswept_highlands",
+    "hydrol:sunflower_hills",
+    "hydrol:clover_hills",
+    "hydrol:tropical_hills",
+    "hydrol:fungal_hills"
   ]
 }

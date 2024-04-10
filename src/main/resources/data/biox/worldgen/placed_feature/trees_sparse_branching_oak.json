@@ -1,5 +1,5 @@
 {
-  "feature": "eco:trees_branching_oak",
+  "feature": "hydrol:trees_branching_oak",
   "placement": [
     {
       "type": "minecraft:count",

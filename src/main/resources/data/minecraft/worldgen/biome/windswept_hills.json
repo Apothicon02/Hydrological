@@ -159,7 +159,7 @@
     ],
     [
       "minecraft:ore_infested",
-      "eco:emerald_rocks"
+      "hydrol:emerald_rocks"
     ],
     [
       "minecraft:spring_water",
@@ -168,16 +168,16 @@
     [
       "minecraft:glow_lichen",
       "biox:dense_mushroom_giant_red",
-      "eco:gray_stones",
-      "eco:wild_flower_patch",
-      "eco:sparse_trees_cherry",
+      "hydrol:gray_stones",
+      "hydrol:wild_flower_patch",
+      "hydrol:sparse_trees_cherry",
       "minecraft:trees_windswept_hills",
-      "eco:dense_noise_tall_red_mushrooms",
-      "eco:sparse_tall_brown_mushrooms",
-      "eco:dense_bushes_clustered",
+      "hydrol:dense_noise_tall_red_mushrooms",
+      "hydrol:sparse_tall_brown_mushrooms",
+      "hydrol:dense_bushes_clustered",
       "minecraft:flower_default",
-      "eco:clustered_overworld_mushrooms",
-      "eco:dense_grass",
+      "hydrol:clustered_overworld_mushrooms",
+      "hydrol:dense_grass",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin"
     ],

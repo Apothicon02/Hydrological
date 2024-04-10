@@ -1,19 +1,19 @@
 {
   "values": [
-    "eco:brown_mushroom_block_slab",
-    "eco:brown_mushroom_block_stairs",
-    "eco:brown_mushroom_block_wall",
-    "eco:red_mushroom_block_slab",
-    "eco:red_mushroom_block_stairs",
-    "eco:red_mushroom_block_wall",
-    "eco:mushroom_stem_wall",
-    "eco:acacia_wood_wall",
-    "eco:birch_wood_wall",
-    "eco:cherry_wood_wall",
-    "eco:dark_oak_wood_wall",
-    "eco:jungle_wood_wall",
-    "eco:mangrove_wood_wall",
-    "eco:oak_wood_wall",
-    "eco:spruce_wood_wall"
+    "hydrol:brown_mushroom_block_slab",
+    "hydrol:brown_mushroom_block_stairs",
+    "hydrol:brown_mushroom_block_wall",
+    "hydrol:red_mushroom_block_slab",
+    "hydrol:red_mushroom_block_stairs",
+    "hydrol:red_mushroom_block_wall",
+    "hydrol:mushroom_stem_wall",
+    "hydrol:acacia_wood_wall",
+    "hydrol:birch_wood_wall",
+    "hydrol:cherry_wood_wall",
+    "hydrol:dark_oak_wood_wall",
+    "hydrol:jungle_wood_wall",
+    "hydrol:mangrove_wood_wall",
+    "hydrol:oak_wood_wall",
+    "hydrol:spruce_wood_wall"
   ]
 }

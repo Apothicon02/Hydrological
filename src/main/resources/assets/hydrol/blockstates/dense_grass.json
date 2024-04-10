@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "hydrol:block/dense_grass_middle"
+    },
+    "half=top": {
+      "model": "hydrol:block/dense_grass"
+    }
+  }
+}

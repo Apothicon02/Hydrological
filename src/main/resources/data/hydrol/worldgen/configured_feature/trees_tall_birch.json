@@ -1,0 +1,20 @@
+{
+    "config": {
+      "features": [
+        {
+          "feature": "hydrol:tilted_tall_birch",
+          "chance": 0.28
+        },
+        {
+          "feature": "hydrol:big_tall_birch",
+          "chance": 0.47
+        },
+        {
+          "feature": "hydrol:normal_tall_birch",
+          "chance": 0.2
+        }
+      ],
+      "default": "hydrol:normal_tall_birch"
+    },
+    "type": "minecraft:random_selector"
+  }

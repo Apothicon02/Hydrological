@@ -89,21 +89,21 @@
       "minecraft:spring_water",
       "minecraft:spring_lava",
       "minecraft:glow_lichen",
-      "eco:blackstone_anvil_rocks",
-      "eco:mud",
-      "eco:mud_pond",
-      "eco:mud_pool",
-      "eco:wild_flower_patch",
-      "eco:dense_tall_mushrooms",
+      "hydrol:blackstone_anvil_rocks",
+      "hydrol:mud",
+      "hydrol:mud_pond",
+      "hydrol:mud_pool",
+      "hydrol:wild_flower_patch",
+      "hydrol:dense_tall_mushrooms",
       "biox:dense_mushrooms_giant",
-      "eco:mangrove_bushes_noise_dense"
+      "hydrol:mangrove_bushes_noise_dense"
     ],
     [
-      "eco:dense_overworld_mushrooms",
-      "eco:nether_mushrooms",
+      "hydrol:dense_overworld_mushrooms",
+      "hydrol:nether_mushrooms",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "eco:large_pumpkin"
+      "hydrol:large_pumpkin"
     ],
     [
       "minecraft:freeze_top_layer"

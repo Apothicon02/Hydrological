@@ -1,0 +1,16 @@
+{
+  "config": {
+    "features": [
+      {
+        "feature": "hydrol:giant_spruce",
+        "chance": 0.57
+      },
+      {
+        "feature": "hydrol:secondary_giant_spruce",
+        "chance": 0.43
+      }
+    ],
+    "default": "hydrol:giant_spruce"
+  },
+  "type": "minecraft:random_selector"
+}

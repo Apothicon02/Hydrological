@@ -1,0 +1,20 @@
+{
+  "config": {
+    "features": [
+      {
+        "feature": "hydrol:twisted_oak",
+        "chance": 0.004
+      },
+      {
+        "feature": "hydrol:multi_acacia",
+        "chance": 0.256
+      },
+      {
+        "feature": "hydrol:mega_acacia",
+        "chance": 0.7
+      }
+    ],
+    "default": "hydrol:azalea_bush"
+  },
+  "type": "minecraft:random_selector"
+}

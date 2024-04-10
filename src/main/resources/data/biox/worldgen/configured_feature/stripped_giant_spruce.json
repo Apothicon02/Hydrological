@@ -36,14 +36,14 @@
       }
     },
     "trunk_placer": {
-      "type": "eco:giant_straight_branching_trunk_placer",
+      "type": "hydrol:giant_straight_branching_trunk_placer",
       "base_height": 20,
       "height_rand_a": 4,
       "height_rand_b": 21,
       "max_branch_height": 13
     },
     "foliage_placer": {
-      "type": "eco:giant_pine_foliage_placer",
+      "type": "hydrol:giant_pine_foliage_placer",
       "radius": 0,
       "offset": 0,
       "crown_height": {
@@ -56,7 +56,7 @@
     },
     "decorators": [
       {
-        "type": "eco:mushrooms",
+        "type": "hydrol:mushrooms",
         "probability": 0.75
       },
       {

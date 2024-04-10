@@ -1,5 +1,5 @@
 {
-  "parent": "eco:block/tinted_crop",
+  "parent": "hydrol:block/tinted_crop",
   "textures": {
     "cross": "minecraft:block/tall_grass_top"
   }

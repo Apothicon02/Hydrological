@@ -1,5 +1,5 @@
 {
-  "type": "eco:crystal",
+  "type": "hydrol:crystal",
   "config": {
     "to_place": {
       "type": "minecraft:simple_state_provider",

@@ -1,0 +1,16 @@
+{
+    "config": {
+      "features": [
+        {
+          "feature": "hydrol:twisted_oak",
+          "chance": 0.03
+        },
+        {
+          "feature": "hydrol:branching_oak",
+          "chance": 0.97
+        }
+      ],
+      "default": "hydrol:twisted_oak"
+    },
+    "type": "minecraft:random_selector"
+  }
