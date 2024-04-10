@@ -1,0 +1,4 @@
+{
+  "parent": "hydrol:block/brown_mushroom_block_slab",
+  "render_type": "minecraft:solid"
+}

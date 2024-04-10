@@ -1,0 +1,4 @@
+{
+  "parent": "hydrol:block/red_mushroom_block_stairs",
+  "render_type": "minecraft:solid"
+}
