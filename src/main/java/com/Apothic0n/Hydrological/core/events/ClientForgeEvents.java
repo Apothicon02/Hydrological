@@ -39,7 +39,10 @@ public class ClientForgeEvents {
         ClientLevel level = instance.level;
         if (level != null && level.dimension().location().toString().contains("overworld") && event.getCamera().getFluidInCamera() == FogType.NONE) {
             float y = (float) event.getCamera().getPosition().y();
-            float temp = (float) HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext((int) event.getCamera().getPosition().x(), (int) y, (int) event.getCamera().getPosition().z()));
+            float temp = level.getBiome(event.getCamera().getBlockPosition()).get().getBaseTemperature()*3;
+            if (HydrolDensityFunctions.temperature != null) { //smoother transitions if this is here
+                temp = (float) HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext((int) event.getCamera().getPosition().x(), (int) y, (int) event.getCamera().getPosition().z()))*3;
+            }
             event.setRed(event.getRed() + (((temp - 0.8F) / 25)));
             event.setGreen(event.getGreen() - (((temp - 0.8F) / 20)));
             event.setBlue(event.getBlue() - (((temp - 0.8F) / 15)));

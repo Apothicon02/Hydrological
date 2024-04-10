@@ -26,7 +26,7 @@ public class ArchFeature extends Feature<SimpleBlockConfiguration> {
         super(pContext);
     }
 
-    private static final PerlinSimplexNoise ARCH_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(-8, -1, -1, 1));
+    private static final PerlinSimplexNoise ARCH_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(-10, -1, -1, 1));
     private static final PerlinSimplexNoise ARCH_AREA_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(-9, 1, 1, -1));
 
     @Override
@@ -72,7 +72,9 @@ public class ArchFeature extends Feature<SimpleBlockConfiguration> {
                         Holder<Biome> biome = worldGenLevel.getBiome(blockPos);
                         String biomeName = biome.toString();
                         boolean addCaveVine = false;
-                        if (worldGenLevel.getBlockState(blockPos).is(Blocks.LAVA)) {
+                        if (worldGenLevel.getBlockState(blockPos.atY(worldGenLevel.getMinBuildHeight())).isAir()) {
+                            placeState = Blocks.WATER.defaultBlockState();
+                        } else if (worldGenLevel.getBlockState(blockPos).is(Blocks.LAVA)) {
                             placeState = Blocks.DEEPSLATE_COAL_ORE.defaultBlockState();
                         } else {
                             if (y <= ogY) {

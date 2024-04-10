@@ -30,11 +30,13 @@ public class CaveRiverFeature  extends Feature<NoneFeatureConfiguration> {
         BlockPos origin = new BlockPos(chunkOrigin.getMiddleBlockX(), -56, chunkOrigin.getMiddleBlockZ());
         RandomSource random = pContext.random();
 
-        for (int x = origin.getX(); x < origin.getX() + 16; ++x) {
-            for (int z = origin.getZ() - 16; z < origin.getZ() + 16; ++z) {
-                double noise = NOODLE_NOISE.getValue(x, z, true);
-                if (noise > 0 && noise < 0.01) {
-                    replaceFromPos(worldgenlevel, new BlockPos((int) (x + ((Math.random() * 5) - 2)), worldgenlevel.getMinBuildHeight()+9, (int) (z + ((Math.random() * 5) - 2))), 5, 10, 5, Blocks.WATER.defaultBlockState(), Blocks.DRIPSTONE_BLOCK.defaultBlockState());
+        if (worldgenlevel.getBlockState(new BlockPos(origin.getX(), worldgenlevel.getMinBuildHeight(), origin.getZ())).isSolid()) {
+            for (int x = origin.getX(); x < origin.getX() + 16; ++x) {
+                for (int z = origin.getZ() - 16; z < origin.getZ() + 16; ++z) {
+                    double noise = NOODLE_NOISE.getValue(x, z, true);
+                    if (noise > 0 && noise < 0.01) {
+                        replaceFromPos(worldgenlevel, new BlockPos((int) (x + ((Math.random() * 5) - 2)), worldgenlevel.getMinBuildHeight() + 9, (int) (z + ((Math.random() * 5) - 2))), 5, 10, 5, Blocks.WATER.defaultBlockState(), Blocks.DRIPSTONE_BLOCK.defaultBlockState());
+                    }
                 }
             }
         }

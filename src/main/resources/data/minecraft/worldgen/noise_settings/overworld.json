@@ -14,7 +14,7 @@
     "min_y": -64,
     "height": 384,
     "size_horizontal": 1,
-    "size_vertical": 2
+    "size_vertical": 1
   },
   "noise_router": {
     "barrier": -1,
@@ -745,7 +745,7 @@
           "invert": {
             "type": "minecraft:y_above",
             "anchor": {
-              "absolute": 140
+              "absolute": 200
             },
             "surface_depth_multiplier": 0,
             "add_stone_depth": false
@@ -1289,7 +1289,7 @@
                           "then_run": {
                             "type": "minecraft:block",
                             "result_state": {
-                              "Name": "minecraft:magma_block"
+                              "Name": "minecraft:water"
                             }
                           }
                         },
@@ -1304,7 +1304,7 @@
                           "then_run": {
                             "type": "minecraft:block",
                             "result_state": {
-                              "Name": "minecraft:magma_block"
+                              "Name": "minecraft:water"
                             }
                           }
                         },
@@ -1319,7 +1319,7 @@
                           "then_run": {
                             "type": "minecraft:block",
                             "result_state": {
-                              "Name": "minecraft:magma_block"
+                              "Name": "minecraft:water"
                             }
                           }
                         },
@@ -1334,7 +1334,7 @@
                           "then_run": {
                             "type": "minecraft:block",
                             "result_state": {
-                              "Name": "minecraft:magma_block"
+                              "Name": "minecraft:water"
                             }
                           }
                         },
@@ -1349,7 +1349,7 @@
                           "then_run": {
                             "type": "minecraft:block",
                             "result_state": {
-                              "Name": "minecraft:magma_block"
+                              "Name": "minecraft:water"
                             }
                           }
                         },
@@ -1364,7 +1364,7 @@
                           "then_run": {
                             "type": "minecraft:block",
                             "result_state": {
-                              "Name": "minecraft:magma_block"
+                              "Name": "minecraft:water"
                             }
                           }
                         },
@@ -7741,7 +7741,7 @@
                               "if_true": {
                                 "type": "minecraft:y_above",
                                 "anchor": {
-                                  "absolute": 140
+                                  "absolute": 200
                                 },
                                 "surface_depth_multiplier": 0,
                                 "add_stone_depth": false

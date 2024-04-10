@@ -1,15 +1,6 @@
 {
-  "generator.hydrol.exospherical": "Exospherical",
-  "generator.hydrol.thermospherical": "Thermospherical",
-  "generator.hydrol.mesospherical": "Mesospherical",
-  "generator.hydrol.stratospherical": "Stratospherical",
-  "generator.hydrol.ogstratospherical": "OG Stratospherical",
-  "generator.hydrol.tropospherical": "Tropospherical",
-  "generator.hydrol.lithospherical": "Lithospherical",
-  "generator.hydrol.asthenospherical": "Asthenospherical",
-
-  "generator.hydrol.biocubical": "Biocubical",
-  "generator.hydrol.biocubical_large_biomes": "Biocubical Large Biomes",
+  "generator.hydrol.floating_islands": "Floating Islands",
+  "generator.hydrol.caves": "Caves",
 
   "biome.hydrol.autumnal_dark_forest": "Autumnal Dark Forest",
   "biome.hydrol.autumnal_dark_plains": "Autumnal Dark Plains",

@@ -160,6 +160,8 @@
       "minecraft:spring_lava"
     ],
     [
+      "hydrol:cave_seagrass_warm",
+      "hydrol:cave_pickle"
     ],
     [
       "minecraft:freeze_top_layer"

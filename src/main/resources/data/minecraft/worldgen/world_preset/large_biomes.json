@@ -19,7 +19,10 @@
                   0.6,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.391,
                   1
@@ -40,7 +43,10 @@
                   0.2,
                   0.6
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.391,
                   1
@@ -61,7 +67,10 @@
                   0,
                   0.2
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.391,
                   1
@@ -82,7 +91,10 @@
                   -0.4,
                   0
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.391,
                   1
@@ -103,7 +115,10 @@
                   -0.8,
                   -0.4
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.391,
                   1
@@ -124,7 +139,10 @@
                   -1,
                   -0.8
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.391,
                   1
@@ -146,9 +164,12 @@
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
-                  0.545,
+                  0.781,
                   1
                 ],
                 "weirdness": 0,
@@ -160,16 +181,43 @@
               "biome": "minecraft:jagged_peaks",
               "parameters": {
                 "temperature": [
-                  -0.25,
+                  -0.8,
                   0.25
                 ],
                 "humidity": [
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
-                  0.545,
+                  0.781,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": 0,
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:jagged_peaks",
+              "parameters": {
+                "temperature": [
+                  -0.8,
+                  -0.25
+                ],
+                "humidity": [
+                  -0.5,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  1
+                ],
+                "continentalness": [
+                  0.781,
                   1
                 ],
                 "weirdness": 0,
@@ -182,15 +230,18 @@
               "parameters": {
                 "temperature": [
                   -1,
-                  -0.25
+                  -0.8
                 ],
                 "humidity": [
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
-                  0.545,
+                  0.781,
                   1
                 ],
                 "weirdness": 0,
@@ -209,9 +260,12 @@
                   -1,
                   -0.5
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
-                  0.545,
+                  0.781,
                   1
                 ],
                 "weirdness": 0,
@@ -231,10 +285,13 @@
                   0.33,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -252,10 +309,13 @@
                   0.1,
                   0.33
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -273,10 +333,13 @@
                   0,
                   0.1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -294,10 +357,13 @@
                   -0.33,
                   0
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -315,10 +381,13 @@
                   -1,
                   -0.33
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -336,10 +405,13 @@
                   0,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -357,10 +429,13 @@
                   -1,
                   0
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -378,10 +453,13 @@
                   -1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -399,10 +477,13 @@
                   -1,
                   0
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -420,10 +501,13 @@
                   0,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -441,10 +525,13 @@
                   -1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -462,10 +549,13 @@
                   -1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -483,10 +573,13 @@
                   0,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -504,10 +597,13 @@
                   -1,
                   0
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -525,10 +621,13 @@
                   0,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -546,10 +645,13 @@
                   -0.5,
                   0
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -567,10 +669,13 @@
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -588,10 +693,13 @@
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -609,10 +717,13 @@
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -630,10 +741,13 @@
                   -1,
                   -0.5
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.392,
-                  0.544
+                  0.78
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -652,7 +766,10 @@
                   0.1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -673,7 +790,10 @@
                   -0.1,
                   0.1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -694,7 +814,10 @@
                   -1,
                   -0.1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -715,7 +838,10 @@
                   -1,
                   -0.33
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -736,7 +862,10 @@
                   0,
                   0.1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -757,7 +886,10 @@
                   -0.33,
                   0
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -778,7 +910,10 @@
                   0.1,
                   0.33
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -799,7 +934,10 @@
                   0.33,
                   0.5
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -820,7 +958,10 @@
                   0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -841,7 +982,10 @@
                   0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -852,7 +996,7 @@
               }
             },
             {
-              "biome": "hydrol:orchard",
+              "biome": "minecraft:flower_forest",
               "parameters": {
                 "temperature": [
                   0.33,
@@ -862,7 +1006,10 @@
                   0,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -883,7 +1030,10 @@
                   -1,
                   0
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -902,9 +1052,12 @@
                 ],
                 "humidity": [
                   -1,
+                  0
+                ],
+                "erosion": [
+                  -1,
                   1
                 ],
-                "erosion": 0,
                 "continentalness": [
                   0.251,
                   0.391
@@ -923,9 +1076,36 @@
                 ],
                 "humidity": [
                   -1,
+                  0
+                ],
+                "erosion": [
+                  -1,
                   1
                 ],
-                "erosion": 0,
+                "continentalness": [
+                  0.251,
+                  0.391
+                ],
+                "weirdness": 0,
+                "depth": 0,
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:forest",
+              "parameters": {
+                "temperature": [
+                  0.18,
+                  0.33
+                ],
+                "humidity": [
+                  0,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -946,7 +1126,10 @@
                   0,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -967,7 +1150,10 @@
                   -1,
                   0
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -988,7 +1174,10 @@
                   -1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1009,7 +1198,10 @@
                   -1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1020,7 +1212,7 @@
               }
             },
             {
-              "biome": "minecraft:flower_forest",
+              "biome": "hydrol:orchard",
               "parameters": {
                 "temperature": [
                   -0.33,
@@ -1030,7 +1222,10 @@
                   0.25,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1051,7 +1246,10 @@
                   -0.5,
                   0.25
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1072,7 +1270,10 @@
                   0.25,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1093,7 +1294,10 @@
                   0.25,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1114,7 +1318,10 @@
                   -0.5,
                   0.25
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1135,7 +1342,10 @@
                   0.25,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1156,7 +1366,10 @@
                   0.25,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1177,7 +1390,10 @@
                   -0.5,
                   0.25
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1198,7 +1414,10 @@
                   0.66,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1219,7 +1438,10 @@
                   0.25,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1240,7 +1462,10 @@
                   -0.5,
                   0.25
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1261,7 +1486,10 @@
                   -0.5,
                   0.25
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1282,7 +1510,10 @@
                   -1,
                   -0.5
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.251,
                   0.391
@@ -1304,7 +1535,10 @@
                   0.8,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.235,
                   0.25
@@ -1325,7 +1559,10 @@
                   0.8,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.235,
                   0.25
@@ -1346,7 +1583,10 @@
                   0.8,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.235,
                   0.25
@@ -1367,7 +1607,10 @@
                   0.8,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.235,
                   0.25
@@ -1388,7 +1631,10 @@
                   -0.5,
                   0.8
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.235,
                   0.25
@@ -1406,31 +1652,13 @@
                   0.5
                 ],
                 "humidity": [
-                  -0.2,
+                  -1,
                   0.8
                 ],
-                "erosion": 0,
-                "continentalness": [
-                  0.235,
-                  0.25
-                ],
-                "weirdness": 0,
-                "depth": 0,
-                "offset": 0
-              }
-            },
-            {
-              "biome": "minecraft:stony_shore",
-              "parameters": {
-                "temperature": [
-                  -0.25,
-                  0.5
-                ],
-                "humidity": [
+                "erosion": [
                   -1,
-                  -0.2
+                  1
                 ],
-                "erosion": 0,
                 "continentalness": [
                   0.235,
                   0.25
@@ -1451,7 +1679,10 @@
                   -0.5,
                   -0.2
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.235,
                   0.25
@@ -1472,7 +1703,10 @@
                   -0.2,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.235,
                   0.25
@@ -1493,7 +1727,10 @@
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.235,
                   0.25
@@ -1514,7 +1751,10 @@
                   -1,
                   -0.5
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -1,
+                  1
+                ],
                 "continentalness": [
                   0.235,
                   0.25
@@ -1536,7 +1776,10 @@
                   -1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": [
                   0.149,
                   0.234
@@ -1557,7 +1800,10 @@
                   -1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": [
                   0.149,
                   0.234
@@ -1578,7 +1824,10 @@
                   -1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": [
                   0.149,
                   0.234
@@ -1599,7 +1848,10 @@
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": [
                   0.149,
                   0.234
@@ -1620,7 +1872,10 @@
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": [
                   0.149,
                   0.234
@@ -1641,7 +1896,10 @@
                   -1,
                   -0.5
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": [
                   0.149,
                   0.234
@@ -1663,10 +1921,10 @@
                   -1,
                   -0.33
                 ],
-                "erosion": 0,
+                "erosion": -1,
                 "continentalness": [
-                  1.149,
-                  1.234
+                  0.149,
+                  0.234
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -1684,10 +1942,10 @@
                   -0.33,
                   1
                 ],
-                "erosion": 0,
+                "erosion": -1,
                 "continentalness": [
-                  1.149,
-                  1.234
+                  0.149,
+                  0.234
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -1705,10 +1963,10 @@
                   -0.2,
                   1
                 ],
-                "erosion": 0,
+                "erosion": -1,
                 "continentalness": [
-                  1.149,
-                  1.234
+                  0.149,
+                  0.234
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -1726,10 +1984,10 @@
                   -1,
                   -0.2
                 ],
-                "erosion": 0,
+                "erosion": -1,
                 "continentalness": [
-                  1.149,
-                  1.234
+                  0.149,
+                  0.234
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -1747,10 +2005,10 @@
                   -0.5,
                   -0.2
                 ],
-                "erosion": 0,
+                "erosion": -1,
                 "continentalness": [
-                  1.149,
-                  1.234
+                  0.149,
+                  0.234
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -1768,10 +2026,10 @@
                   -0.2,
                   1
                 ],
-                "erosion": 0,
+                "erosion": -1,
                 "continentalness": [
-                  1.149,
-                  1.234
+                  0.149,
+                  0.234
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -1789,10 +2047,10 @@
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": -1,
                 "continentalness": [
-                  1.149,
-                  1.234
+                  0.149,
+                  0.234
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -1810,10 +2068,10 @@
                   -1,
                   -0.5
                 ],
-                "erosion": 0,
+                "erosion": -1,
                 "continentalness": [
-                  1.149,
-                  1.234
+                  0.149,
+                  0.234
                 ],
                 "weirdness": 0,
                 "depth": 0,
@@ -1832,7 +2090,10 @@
                   -1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": [
                   0,
                   0.148
@@ -1853,7 +2114,10 @@
                   -1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": [
                   0,
                   0.148
@@ -1874,7 +2138,10 @@
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": [
                   0,
                   0.148
@@ -1895,7 +2162,10 @@
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": [
                   0,
                   0.148
@@ -1916,7 +2186,10 @@
                   -1,
                   -0.5
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": [
                   0,
                   0.148
@@ -1938,7 +2211,10 @@
                   0,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": -1,
                 "weirdness": 0,
                 "depth": 0,
@@ -1956,7 +2232,10 @@
                   -1,
                   0
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": -1,
                 "weirdness": 0,
                 "depth": 0,
@@ -1974,7 +2253,10 @@
                   0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": -1,
                 "weirdness": 0,
                 "depth": 0,
@@ -1992,7 +2274,10 @@
                   0,
                   0.5
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": -1,
                 "weirdness": 0,
                 "depth": 0,
@@ -2010,7 +2295,10 @@
                   -1,
                   0
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": -1,
                 "weirdness": 0,
                 "depth": 0,
@@ -2028,7 +2316,10 @@
                   -1,
                   0
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": -1,
                 "weirdness": 0,
                 "depth": 0,
@@ -2046,7 +2337,10 @@
                   -1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": -1,
                 "weirdness": 0,
                 "depth": 0,
@@ -2064,7 +2358,10 @@
                   -1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": -1,
                 "weirdness": 0,
                 "depth": 0,
@@ -2082,7 +2379,10 @@
                   -1,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": -1,
                 "weirdness": 0,
                 "depth": 0,
@@ -2093,14 +2393,17 @@
               "biome": "minecraft:deep_dark",
               "parameters": {
                 "temperature": [
-                  -0.6,
+                  -0.8,
                   -0.25
                 ],
                 "humidity": [
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": -1,
                 "weirdness": 0,
                 "depth": 0,
@@ -2112,13 +2415,16 @@
               "parameters": {
                 "temperature": [
                   -1,
-                  -0.6
+                  -0.8
                 ],
                 "humidity": [
                   -0.5,
                   1
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": -1,
                 "weirdness": 0,
                 "depth": 0,
@@ -2136,7 +2442,10 @@
                   -1,
                   -0.5
                 ],
-                "erosion": 0,
+                "erosion": [
+                  -0.99,
+                  1
+                ],
                 "continentalness": -1,
                 "weirdness": 0,
                 "depth": 0,

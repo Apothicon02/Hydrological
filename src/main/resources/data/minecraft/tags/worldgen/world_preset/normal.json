@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "hydrol:biocubical",
-    "hydrol:biocubical_large_biomes"
+    "hydrol:floating_islands",
+    "hydrol:caves"
   ]
 }

@@ -170,7 +170,14 @@
     ],
     [
       "minecraft:seagrass_warm",
-      "minecraft:kelp_warm"
+      "minecraft:kelp_warm",
+      "hydrol:cave_brain_coral",
+      "hydrol:cave_bubble_coral",
+      "hydrol:cave_tube_coral",
+      "hydrol:cave_fire_coral",
+      "hydrol:cave_seagrass_warm",
+      "hydrol:cave_kelp_warm",
+      "hydrol:cave_pickle"
     ],
     [
       "minecraft:freeze_top_layer"

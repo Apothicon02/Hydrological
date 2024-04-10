@@ -159,7 +159,10 @@
     [
       "minecraft:seagrass_deep_cold",
       "minecraft:seagrass_simple",
-      "minecraft:kelp_cold"
+      "minecraft:kelp_cold",
+      "hydrol:cave_seagrass_warm",
+      "hydrol:cave_kelp_warm",
+      "hydrol:cave_pickle"
     ],
     [
       "minecraft:freeze_top_layer"

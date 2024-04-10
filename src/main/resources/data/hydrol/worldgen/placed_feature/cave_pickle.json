@@ -2,8 +2,10 @@
   "feature": "hydrol:cave_pickle",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 69
+      "type": "minecraft:noise_based_count",
+      "noise_to_count_ratio": 20,
+      "noise_factor": 80,
+      "noise_offset": 0.5
     },
     {
       "type": "minecraft:in_square"
@@ -11,13 +13,7 @@
     {
       "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:uniform",
-        "min_inclusive": {
-          "absolute": -48
-        },
-        "max_inclusive": {
-          "absolute": 60
-        }
+        "above_bottom": 32
       }
     },
     {
@@ -26,15 +22,6 @@
       "max_steps": 32,
       "target_condition": {
         "type": "minecraft:solid"
-      },
-      "allowed_search_condition": {
-        "type": "minecraft:matching_fluids",
-        "offset": [
-          0,
-          1,
-          0
-        ],
-        "fluids": "#minecraft:water"
       }
     },
     {
