@@ -5,10 +5,12 @@ import com.Apothic0n.Hydrological.core.objects.HydrolBlocks;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -47,7 +49,8 @@ public class DryGrassFeature extends Feature<NoneFeatureConfiguration> {
             for (int z = origin.getZ(); z <= origin.getZ()+16; z++) {
                 BlockPos blockPos = new BlockPos(x, worldgenlevel.getHeight(Heightmap.Types.WORLD_SURFACE_WG, x, z), z);
                 BlockState belowState = worldgenlevel.getBlockState(blockPos.below());
-                if (worldgenlevel.getBiome(blockPos).is(BiomeTags.IS_SAVANNA) && worldgenlevel.getBlockState(blockPos).is(Blocks.AIR) && belowState.is(BlockTags.DIRT)) {
+                Holder<Biome> biome = worldgenlevel.getBiome(blockPos);
+                if ((biome.is(BiomeTags.IS_SAVANNA) || biome.toString().contains("orchard")) && worldgenlevel.getBlockState(blockPos).is(Blocks.AIR) && belowState.is(BlockTags.DIRT)) {
                     if (belowState.is(Blocks.GRASS_BLOCK)) {
                         double height = HEIGHT_NOISE.getValue(x, z, false);
                         if (height > 0.33) {

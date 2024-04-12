@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:flat_cache",
+  "type": "minecraft:cache_once",
   "argument": {
     "type": "minecraft:noise",
     "noise": "minecraft:ridge",

@@ -7,34 +7,34 @@
     "max_exclusive": -0.01,
     "when_in_range": -1,
     "when_out_of_range": {
-      "type": "minecraft:interpolated",
-      "argument": {
-        "type": "minecraft:add",
-        "argument1": "hydrol:base_terrain_with_oceans",
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:max",
+        "argument1": -0.2,
         "argument2": {
-          "type": "minecraft:range_choice",
-          "input": {
-            "type": "hydrol:flatten",
-            "input": "hydrol:oceans",
-            "at_y": 63
+          "type": "minecraft:add",
+          "argument1": {
+            "type": "minecraft:interpolated",
+            "argument": "hydrol:base_terrain"
           },
-          "min_inclusive": -100,
-          "max_exclusive": -0.01,
-          "when_in_range": 0,
-          "when_out_of_range": {
+          "argument2": "hydrol:oceans"
+        }
+      },
+      "argument2": {
+        "type": "minecraft:interpolated",
+        "argument": {
+          "type": "minecraft:add",
+          "argument1": "hydrol:swamps",
+          "argument2": {
             "type": "minecraft:add",
-            "argument1": "hydrol:swamps",
+            "argument1": "hydrol:volcanoes",
             "argument2": {
-              "type": "minecraft:max",
-              "argument1": "hydrol:volcanoes",
+              "type": "minecraft:add",
+              "argument1": "hydrol:caldera_cliffs",
               "argument2": {
-                "type": "minecraft:max",
-                "argument1": "hydrol:caldera_cliffs",
-                "argument2": {
-                  "type": "minecraft:max",
-                  "argument1": "hydrol:badlands",
-                  "argument2": "hydrol:cliffs"
-                }
+                "type": "minecraft:add",
+                "argument1": "hydrol:badlands",
+                "argument2": "hydrol:cliffs"
               }
             }
           }

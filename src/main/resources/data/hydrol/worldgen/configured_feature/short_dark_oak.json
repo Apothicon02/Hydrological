@@ -48,6 +48,33 @@
       "radius": 0,
       "offset": 0
     },
-    "decorators": []
+    "decorators": [
+      {
+        "type": "hydrol:trunk_wooden_roots",
+        "probability": 0.44,
+        "wall_state": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "hydrol:dark_oak_wood_wall",
+            "Properties": {
+              "east": "tall",
+              "north": "tall",
+              "south": "tall",
+              "up": "true",
+              "waterlogged": "false",
+              "west": "tall"
+            }
+          }
+        }
+      },
+      {
+        "type": "hydrol:trunk_mushrooms",
+        "probability": 0.44
+      },
+      {
+        "type": "hydrol:hanging_leaves",
+        "probability": 0.8
+      }
+    ]
   }
 }

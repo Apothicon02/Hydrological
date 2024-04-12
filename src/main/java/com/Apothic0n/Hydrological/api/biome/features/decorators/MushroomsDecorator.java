@@ -32,7 +32,7 @@ public class MushroomsDecorator extends TreeDecorator {
         if (randomSource.nextFloat() >= this.probability) {
             return;
         }
-        if (list.isEmpty()) {
+        if (list.isEmpty() && context.logs().size() > 4) {
             list = ObjectArrayList.of(context.logs().get(0), context.logs().get(1), context.logs().get(2), context.logs().get(3));
         }
         list.forEach(blockPos -> {

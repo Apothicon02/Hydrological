@@ -20,7 +20,8 @@
     "DimensionTypeMixin",
     "BiomeColorsMixin",
     "BiomeSpecialEffectsGrassMixin",
-    "BiomeClientMixin"
+    "BiomeClientMixin",
+    "FoliageColorMixin"
   ],
   "server": [
   ]
