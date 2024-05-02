@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "values": [
     "hydrol:caldera_ocean",
     "hydrol:fungal_caves",
@@ -6,6 +7,9 @@
     "hydrol:glacial_caves",
     "hydrol:honeyed_caves",
     "hydrol:molten_caves",
-    "hydrol:wooded_caves"
+    "hydrol:wooded_caves",
+    "minecraft:lush_caves",
+    "minecraft:dripstone_caves",
+    "minecraft:deep_dark"
   ]
 }

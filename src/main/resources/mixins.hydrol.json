@@ -13,14 +13,15 @@
     "GrowingPlantBlockMixin",
     "LevelChunkMixin",
     "NoiseChunkGeneratorMixin",
+    "ServerLevelEntityCallbacksMixin",
     "TallGrassBlockMixin",
     "UtilMixin"
   ],
   "client": [
-    "DimensionTypeMixin",
+    "BiomeClientMixin",
     "BiomeColorsMixin",
     "BiomeSpecialEffectsGrassMixin",
-    "BiomeClientMixin",
+    "DimensionTypeMixin",
     "FoliageColorMixin"
   ],
   "server": [

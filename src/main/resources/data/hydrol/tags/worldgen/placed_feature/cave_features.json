@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "hydrol:ore_coal_deep",
+    "hydrol:ore_copper_deep",
+    "hydrol:ore_diamond_deep",
+    "hydrol:ore_emerald_deep",
+    "hydrol:ore_gold_deep",
+    "hydrol:ore_iron_deep",
+    "hydrol:ore_lapis_deep",
+    "hydrol:ore_redstone_deep"
+  ]
+}

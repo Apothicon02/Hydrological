@@ -14,11 +14,11 @@ public class NoiseChunkGeneratorMixin {
 
     /**
      * @author Apothic0n
-     * @reason Shifts lava aquifers down to Y-116.
+     * @reason Removes lava aquifers.
      */
     @Inject(method = "createFluidPicker", at = @At("HEAD"), cancellable = true)
     private static void createFluidPicker(NoiseGeneratorSettings noiseGeneratorSettings, CallbackInfoReturnable<Aquifer.FluidPicker> ci) {
-        int y = -116;
+        int y = -128;
         Aquifer.FluidStatus aquifer$fluidstatus = new Aquifer.FluidStatus(y, Blocks.LAVA.defaultBlockState());
         int sea = noiseGeneratorSettings.seaLevel();
         Aquifer.FluidStatus aquifer$fluidstatus1 = new Aquifer.FluidStatus(sea, noiseGeneratorSettings.defaultFluid());
