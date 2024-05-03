@@ -4,7 +4,7 @@
       "type": "hydrol:the_open_overworld",
       "generator": {
         "type": "minecraft:noise",
-        "settings": "hydrol:exospherical",
+        "settings": "hydrol:floating_islands",
         "biome_source": {
           "type": "minecraft:multi_noise",
           "biomes": [

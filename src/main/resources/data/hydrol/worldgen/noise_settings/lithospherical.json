@@ -209,483 +209,6 @@
       {
         "type": "minecraft:condition",
         "if_true": {
-          "type": "minecraft:noise_threshold",
-          "noise": "hydrol:volcanoes",
-          "min_threshold": 0.8,
-          "max_threshold": 100
-        },
-        "then_run": {
-          "type": "minecraft:sequence",
-          "sequence": [
-            {
-              "type": "minecraft:condition",
-              "if_true": {
-                "type": "minecraft:stone_depth",
-                "offset": 0,
-                "surface_type": "floor",
-                "add_surface_depth": false,
-                "secondary_depth_range": 0
-              },
-              "then_run": {
-                "type": "minecraft:sequence",
-                "sequence": [
-                  {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:cracks",
-                      "min_threshold": -0.07,
-                      "max_threshold": -0.06
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:air"
-                      }
-                    }
-                  },
-                  {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:cracks",
-                      "min_threshold": -0.06,
-                      "max_threshold": -0.05
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:coal_block"
-                      }
-                    }
-                  },
-                  {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:cracks_2",
-                      "min_threshold": -0.03,
-                      "max_threshold": -0.02
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:air"
-                      }
-                    }
-                  },
-                  {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:cracks",
-                      "min_threshold": 0,
-                      "max_threshold": 0.01
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:coal_block"
-                      }
-                    }
-                  },
-                  {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:cracks_3",
-                      "min_threshold": 0.01,
-                      "max_threshold": 0.03
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:air"
-                      }
-                    }
-                  },
-                  {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:cracks_4",
-                      "min_threshold": 0.06,
-                      "max_threshold": 0.07
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:air"
-                      }
-                    }
-                  },
-                  {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:cracks",
-                      "min_threshold": 0.07,
-                      "max_threshold": 0.08
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:coal_block"
-                      }
-                    }
-                  },
-                  {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
-                      "min_threshold": -0.6,
-                      "max_threshold": -0.4
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:smooth_basalt"
-                      }
-                    }
-                  },
-                  {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
-                      "min_threshold": -0.2,
-                      "max_threshold": 0
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:smooth_basalt"
-                      }
-                    }
-                  },
-                  {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
-                      "min_threshold": 0.2,
-                      "max_threshold": 0.4
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:smooth_basalt"
-                      }
-                    }
-                  },
-                  {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
-                      "min_threshold": 0.7,
-                      "max_threshold": 0.8
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:smooth_basalt"
-                      }
-                    }
-                  }
-                ]
-              }
-            },
-            {
-              "type": "minecraft:condition",
-              "if_true": {
-                "type": "minecraft:stone_depth",
-                "offset": 3,
-                "surface_type": "floor",
-                "add_surface_depth": false,
-                "secondary_depth_range": 0
-              },
-              "then_run": {
-                "type": "minecraft:condition",
-                "if_true": {
-                  "type": "minecraft:y_above",
-                  "anchor": {
-                    "absolute": 65
-                  },
-                  "surface_depth_multiplier": 0,
-                  "add_stone_depth": false
-                },
-                "then_run": {
-                  "type": "minecraft:sequence",
-                  "sequence": [
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:cracks",
-                        "min_threshold": -0.07,
-                        "max_threshold": -0.06
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:air"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:cracks",
-                        "min_threshold": -0.06,
-                        "max_threshold": -0.05
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:coal_block"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:cracks_2",
-                        "min_threshold": -0.03,
-                        "max_threshold": -0.02
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:air"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:cracks",
-                        "min_threshold": 0,
-                        "max_threshold": 0.01
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:coal_block"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:cracks_3",
-                        "min_threshold": 0.01,
-                        "max_threshold": 0.03
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:air"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:cracks_4",
-                        "min_threshold": 0.06,
-                        "max_threshold": 0.07
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:air"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:cracks",
-                        "min_threshold": 0.07,
-                        "max_threshold": 0.08
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:coal_block"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:surface_variation",
-                        "min_threshold": -0.6,
-                        "max_threshold": -0.4
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:smooth_basalt"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:surface_variation",
-                        "min_threshold": -0.2,
-                        "max_threshold": 0
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:smooth_basalt"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:surface_variation",
-                        "min_threshold": 0.2,
-                        "max_threshold": 0.4
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:smooth_basalt"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:surface_variation",
-                        "min_threshold": 0.7,
-                        "max_threshold": 0.8
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:smooth_basalt"
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "type": "minecraft:condition",
-              "if_true": {
-                "type": "minecraft:stone_depth",
-                "offset": 4,
-                "surface_type": "floor",
-                "add_surface_depth": false,
-                "secondary_depth_range": 0
-              },
-              "then_run": {
-                "type": "minecraft:condition",
-                "if_true": {
-                  "type": "minecraft:y_above",
-                  "anchor": {
-                    "absolute": 63
-                  },
-                  "surface_depth_multiplier": 0,
-                  "add_stone_depth": false
-                },
-                "then_run": {
-                  "type": "minecraft:sequence",
-                  "sequence": [
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:cracks",
-                        "min_threshold": -0.07,
-                        "max_threshold": -0.06
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:lava"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:cracks_2",
-                        "min_threshold": -0.03,
-                        "max_threshold": -0.02
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:lava"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:cracks_3",
-                        "min_threshold": 0.01,
-                        "max_threshold": 0.03
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:lava"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:condition",
-                      "if_true": {
-                        "type": "minecraft:noise_threshold",
-                        "noise": "hydrol:cracks_4",
-                        "min_threshold": 0.06,
-                        "max_threshold": 0.07
-                      },
-                      "then_run": {
-                        "type": "minecraft:block",
-                        "result_state": {
-                          "Name": "minecraft:lava"
-                        }
-                      }
-                    },
-                    {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:smooth_basalt"
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "type": "minecraft:condition",
-        "if_true": {
           "type": "minecraft:not",
           "invert": {
             "type": "minecraft:y_above",
@@ -822,21 +345,6 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:gravel"
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
                             "noise": "hydrol:surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
@@ -868,65 +376,6 @@
                     "then_run": {
                       "type": "minecraft:sequence",
                       "sequence": [
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:sequence",
-                            "sequence": [
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
-                                  "min_threshold": -0.3,
-                                  "max_threshold": -0.1
-                                },
-                                "then_run": {
-                                  "type": "minecraft:block",
-                                  "result_state": {
-                                    "Name": "minecraft:stone"
-                                  }
-                                }
-                              },
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
-                                  "min_threshold": 0.3,
-                                  "max_threshold": 0.6
-                                },
-                                "then_run": {
-                                  "type": "minecraft:block",
-                                  "result_state": {
-                                    "Name": "minecraft:stone"
-                                  }
-                                }
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:cobblestone"
-                            }
-                          }
-                        },
                         {
                           "type": "minecraft:condition",
                           "if_true": {
@@ -981,45 +430,6 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:condition",
-                            "if_true": {
-                              "type": "minecraft:noise_threshold",
-                              "noise": "hydrol:surface_variation",
-                              "min_threshold": -0.069,
-                              "max_threshold": 0.042
-                            },
-                            "then_run": {
-                              "type": "minecraft:block",
-                              "result_state": {
-                                "Name": "minecraft:stone"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:cobblestone"
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
                             "noise": "hydrol:surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
@@ -1057,45 +467,6 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:condition",
-                            "if_true": {
-                              "type": "minecraft:noise_threshold",
-                              "noise": "hydrol:surface_variation",
-                              "min_threshold": -0.069,
-                              "max_threshold": 0.042
-                            },
-                            "then_run": {
-                              "type": "minecraft:block",
-                              "result_state": {
-                                "Name": "minecraft:stone"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:cobblestone"
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
                             "noise": "hydrol:surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
@@ -1125,54 +496,10 @@
                       ]
                     },
                     "then_run": {
-                      "type": "minecraft:sequence",
-                      "sequence": [
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:condition",
-                            "if_true": {
-                              "type": "minecraft:noise_threshold",
-                              "noise": "hydrol:surface_variation",
-                              "min_threshold": -0.069,
-                              "max_threshold": 0.042
-                            },
-                            "then_run": {
-                              "type": "minecraft:block",
-                              "result_state": {
-                                "Name": "minecraft:stone"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:cobblestone"
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:block",
-                          "result_state": {
-                            "Name": "minecraft:sand"
-                          }
-                        }
-                      ]
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:sand"
+                      }
                     }
                   },
 
@@ -1585,45 +912,6 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:condition",
-                            "if_true": {
-                              "type": "minecraft:noise_threshold",
-                              "noise": "hydrol:surface_variation",
-                              "min_threshold": -0.069,
-                              "max_threshold": 0.042
-                            },
-                            "then_run": {
-                              "type": "minecraft:block",
-                              "result_state": {
-                                "Name": "minecraft:cobblestone"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:gravel"
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
                             "noise": "hydrol:surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
@@ -1655,45 +943,6 @@
                     "then_run": {
                       "type": "minecraft:sequence",
                       "sequence": [
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:condition",
-                            "if_true": {
-                              "type": "minecraft:noise_threshold",
-                              "noise": "hydrol:surface_variation",
-                              "min_threshold": -0.069,
-                              "max_threshold": 0.042
-                            },
-                            "then_run": {
-                              "type": "minecraft:block",
-                              "result_state": {
-                                "Name": "minecraft:cobblestone"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:gravel"
-                            }
-                          }
-                        },
                         {
                           "type": "minecraft:block",
                           "result_state": {
@@ -2661,45 +1910,6 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:volcanoes",
-                                  "min_threshold": 0.8,
-                                  "max_threshold": 100
-                                },
-                                "then_run": {
-                                  "type": "minecraft:condition",
-                                  "if_true": {
-                                    "type": "minecraft:noise_threshold",
-                                    "noise": "hydrol:surface_variation",
-                                    "min_threshold": -0.069,
-                                    "max_threshold": 0.042
-                                  },
-                                  "then_run": {
-                                    "type": "minecraft:block",
-                                    "result_state": {
-                                      "Name": "minecraft:cobblestone"
-                                    }
-                                  }
-                                }
-                              },
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:volcanoes",
-                                  "min_threshold": 0.8,
-                                  "max_threshold": 100
-                                },
-                                "then_run": {
-                                  "type": "minecraft:block",
-                                  "result_state": {
-                                    "Name": "minecraft:gravel"
-                                  }
-                                }
-                              },
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
                                   "noise": "hydrol:surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
@@ -2731,65 +1941,6 @@
                           "then_run": {
                             "type": "minecraft:sequence",
                             "sequence": [
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:volcanoes",
-                                  "min_threshold": 0.8,
-                                  "max_threshold": 100
-                                },
-                                "then_run": {
-                                  "type": "minecraft:sequence",
-                                  "sequence": [
-                                    {
-                                      "type": "minecraft:condition",
-                                      "if_true": {
-                                        "type": "minecraft:noise_threshold",
-                                        "noise": "hydrol:surface_variation",
-                                        "min_threshold": -0.3,
-                                        "max_threshold": -0.1
-                                      },
-                                      "then_run": {
-                                        "type": "minecraft:block",
-                                        "result_state": {
-                                          "Name": "minecraft:cobblestone"
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "type": "minecraft:condition",
-                                      "if_true": {
-                                        "type": "minecraft:noise_threshold",
-                                        "noise": "hydrol:surface_variation",
-                                        "min_threshold": 0.3,
-                                        "max_threshold": 0.6
-                                      },
-                                      "then_run": {
-                                        "type": "minecraft:block",
-                                        "result_state": {
-                                          "Name": "minecraft:cobblestone"
-                                        }
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:volcanoes",
-                                  "min_threshold": 0.8,
-                                  "max_threshold": 100
-                                },
-                                "then_run": {
-                                  "type": "minecraft:block",
-                                  "result_state": {
-                                    "Name": "minecraft:gravel"
-                                  }
-                                }
-                              },
                               {
                                 "type": "minecraft:condition",
                                 "if_true": {
@@ -2840,45 +1991,6 @@
                           "then_run": {
                             "type": "minecraft:sequence",
                             "sequence": [
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:volcanoes",
-                                  "min_threshold": 0.8,
-                                  "max_threshold": 100
-                                },
-                                "then_run": {
-                                  "type": "minecraft:condition",
-                                  "if_true": {
-                                    "type": "minecraft:noise_threshold",
-                                    "noise": "hydrol:surface_variation",
-                                    "min_threshold": -0.069,
-                                    "max_threshold": 0.042
-                                  },
-                                  "then_run": {
-                                    "type": "minecraft:block",
-                                    "result_state": {
-                                      "Name": "minecraft:cobblestone"
-                                    }
-                                  }
-                                }
-                              },
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:volcanoes",
-                                  "min_threshold": 0.8,
-                                  "max_threshold": 100
-                                },
-                                "then_run": {
-                                  "type": "minecraft:block",
-                                  "result_state": {
-                                    "Name": "minecraft:gravel"
-                                  }
-                                }
-                              },
                               {
                                 "type": "minecraft:condition",
                                 "if_true": {
@@ -3762,45 +2874,6 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:condition",
-                            "if_true": {
-                              "type": "minecraft:noise_threshold",
-                              "noise": "hydrol:surface_variation",
-                              "min_threshold": -0.069,
-                              "max_threshold": 0.042
-                            },
-                            "then_run": {
-                              "type": "minecraft:block",
-                              "result_state": {
-                                "Name": "minecraft:stone"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:cobblestone"
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
                             "noise": "hydrol:surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
@@ -3832,65 +2905,6 @@
                     "then_run": {
                       "type": "minecraft:sequence",
                       "sequence": [
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:sequence",
-                            "sequence": [
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
-                                  "min_threshold": -0.3,
-                                  "max_threshold": -0.1
-                                },
-                                "then_run": {
-                                  "type": "minecraft:block",
-                                  "result_state": {
-                                    "Name": "minecraft:stone"
-                                  }
-                                }
-                              },
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
-                                  "min_threshold": 0.3,
-                                  "max_threshold": 0.6
-                                },
-                                "then_run": {
-                                  "type": "minecraft:block",
-                                  "result_state": {
-                                    "Name": "minecraft:stone"
-                                  }
-                                }
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:cobblestone"
-                            }
-                          }
-                        },
                         {
                           "type": "minecraft:condition",
                           "if_true": {
@@ -3945,45 +2959,6 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:condition",
-                            "if_true": {
-                              "type": "minecraft:noise_threshold",
-                              "noise": "hydrol:surface_variation",
-                              "min_threshold": -0.069,
-                              "max_threshold": 0.042
-                            },
-                            "then_run": {
-                              "type": "minecraft:block",
-                              "result_state": {
-                                "Name": "minecraft:stone"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:cobblestone"
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
                             "noise": "hydrol:surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
@@ -4016,54 +2991,10 @@
                       ]
                     },
                     "then_run": {
-                      "type": "minecraft:sequence",
-                      "sequence": [
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:condition",
-                            "if_true": {
-                              "type": "minecraft:noise_threshold",
-                              "noise": "hydrol:surface_variation",
-                              "min_threshold": -0.069,
-                              "max_threshold": 0.042
-                            },
-                            "then_run": {
-                              "type": "minecraft:block",
-                              "result_state": {
-                                "Name": "minecraft:stone"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:cobblestone"
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:block",
-                          "result_state": {
-                            "Name": "minecraft:sandstone"
-                          }
-                        }
-                      ]
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:sandstone"
+                      }
                     }
                   },
 
@@ -4598,45 +3529,6 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:condition",
-                            "if_true": {
-                              "type": "minecraft:noise_threshold",
-                              "noise": "hydrol:surface_variation",
-                              "min_threshold": -0.069,
-                              "max_threshold": 0.042
-                            },
-                            "then_run": {
-                              "type": "minecraft:block",
-                              "result_state": {
-                                "Name": "minecraft:cobblestone"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:gravel"
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
                             "noise": "hydrol:surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
@@ -4666,54 +3558,10 @@
                       ]
                     },
                     "then_run": {
-                      "type": "minecraft:sequence",
-                      "sequence": [
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:condition",
-                            "if_true": {
-                              "type": "minecraft:noise_threshold",
-                              "noise": "hydrol:surface_variation",
-                              "min_threshold": -0.069,
-                              "max_threshold": 0.042
-                            },
-                            "then_run": {
-                              "type": "minecraft:block",
-                              "result_state": {
-                                "Name": "minecraft:cobblestone"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:volcanoes",
-                            "min_threshold": 0.8,
-                            "max_threshold": 100
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "minecraft:gravel"
-                            }
-                          }
-                        },
-                        {
-                          "type": "minecraft:block",
-                          "result_state": {
-                            "Name": "minecraft:sand"
-                          }
-                        }
-                      ]
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:sand"
+                      }
                     }
                   },
                   {
@@ -5174,45 +4022,6 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:volcanoes",
-                                  "min_threshold": 0.8,
-                                  "max_threshold": 100
-                                },
-                                "then_run": {
-                                  "type": "minecraft:condition",
-                                  "if_true": {
-                                    "type": "minecraft:noise_threshold",
-                                    "noise": "hydrol:surface_variation",
-                                    "min_threshold": -0.069,
-                                    "max_threshold": 0.042
-                                  },
-                                  "then_run": {
-                                    "type": "minecraft:block",
-                                    "result_state": {
-                                      "Name": "minecraft:cobblestone"
-                                    }
-                                  }
-                                }
-                              },
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:volcanoes",
-                                  "min_threshold": 0.8,
-                                  "max_threshold": 100
-                                },
-                                "then_run": {
-                                  "type": "minecraft:block",
-                                  "result_state": {
-                                    "Name": "minecraft:gravel"
-                                  }
-                                }
-                              },
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
                                   "noise": "hydrol:surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
@@ -5244,65 +4053,6 @@
                           "then_run": {
                             "type": "minecraft:sequence",
                             "sequence": [
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:volcanoes",
-                                  "min_threshold": 0.8,
-                                  "max_threshold": 100
-                                },
-                                "then_run": {
-                                  "type": "minecraft:sequence",
-                                  "sequence": [
-                                    {
-                                      "type": "minecraft:condition",
-                                      "if_true": {
-                                        "type": "minecraft:noise_threshold",
-                                        "noise": "hydrol:surface_variation",
-                                        "min_threshold": -0.3,
-                                        "max_threshold": -0.1
-                                      },
-                                      "then_run": {
-                                        "type": "minecraft:block",
-                                        "result_state": {
-                                          "Name": "minecraft:cobblestone"
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "type": "minecraft:condition",
-                                      "if_true": {
-                                        "type": "minecraft:noise_threshold",
-                                        "noise": "hydrol:surface_variation",
-                                        "min_threshold": 0.3,
-                                        "max_threshold": 0.6
-                                      },
-                                      "then_run": {
-                                        "type": "minecraft:block",
-                                        "result_state": {
-                                          "Name": "minecraft:cobblestone"
-                                        }
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:volcanoes",
-                                  "min_threshold": 0.8,
-                                  "max_threshold": 100
-                                },
-                                "then_run": {
-                                  "type": "minecraft:block",
-                                  "result_state": {
-                                    "Name": "minecraft:gravel"
-                                  }
-                                }
-                              },
                               {
                                 "type": "minecraft:condition",
                                 "if_true": {
@@ -5353,45 +4103,6 @@
                           "then_run": {
                             "type": "minecraft:sequence",
                             "sequence": [
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:volcanoes",
-                                  "min_threshold": 0.8,
-                                  "max_threshold": 100
-                                },
-                                "then_run": {
-                                  "type": "minecraft:condition",
-                                  "if_true": {
-                                    "type": "minecraft:noise_threshold",
-                                    "noise": "hydrol:surface_variation",
-                                    "min_threshold": -0.069,
-                                    "max_threshold": 0.042
-                                  },
-                                  "then_run": {
-                                    "type": "minecraft:block",
-                                    "result_state": {
-                                      "Name": "minecraft:cobblestone"
-                                    }
-                                  }
-                                }
-                              },
-                              {
-                                "type": "minecraft:condition",
-                                "if_true": {
-                                  "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:volcanoes",
-                                  "min_threshold": 0.8,
-                                  "max_threshold": 100
-                                },
-                                "then_run": {
-                                  "type": "minecraft:block",
-                                  "result_state": {
-                                    "Name": "minecraft:gravel"
-                                  }
-                                }
-                              },
                               {
                                 "type": "minecraft:condition",
                                 "if_true": {
@@ -6870,21 +5581,6 @@
         }
       },
 
-      {
-        "type": "minecraft:condition",
-        "if_true": {
-          "type": "minecraft:noise_threshold",
-          "noise": "hydrol:volcanoes",
-          "min_threshold": 0.8,
-          "max_threshold": 100
-        },
-        "then_run": {
-          "type": "minecraft:block",
-          "result_state": {
-            "Name": "minecraft:smooth_basalt"
-          }
-        }
-      },
       {
         "type": "minecraft:condition",
         "if_true": {

@@ -13,7 +13,6 @@
     "GrowingPlantBlockMixin",
     "LevelChunkMixin",
     "NoiseChunkGeneratorMixin",
-    "ServerLevelEntityCallbacksMixin",
     "TallGrassBlockMixin",
     "UtilMixin"
   ],
@@ -25,5 +24,6 @@
     "FoliageColorMixin"
   ],
   "server": [
+    "ServerLevelEntityCallbacksMixin"
   ]
 }

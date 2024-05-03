@@ -27,15 +27,11 @@
           "argument1": "hydrol:swamps",
           "argument2": {
             "type": "minecraft:add",
-            "argument1": "hydrol:volcanoes",
+            "argument1": "hydrol:caldera_cliffs",
             "argument2": {
               "type": "minecraft:add",
-              "argument1": "hydrol:caldera_cliffs",
-              "argument2": {
-                "type": "minecraft:add",
-                "argument1": "hydrol:badlands",
-                "argument2": "hydrol:cliffs"
-              }
+              "argument1": "hydrol:badlands",
+              "argument2": "hydrol:cliffs"
             }
           }
         }

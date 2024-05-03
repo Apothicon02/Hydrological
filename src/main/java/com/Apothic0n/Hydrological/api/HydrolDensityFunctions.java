@@ -11,6 +11,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
+import org.joml.SimplexNoise;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -19,6 +20,7 @@ import static com.Apothic0n.Hydrological.api.HydrolMath.progressBetweenInts;
 public final class HydrolDensityFunctions {
     public static final DeferredRegister<Codec<? extends DensityFunction>> DENSITY_FUNCTION_TYPES = DeferredRegister.create(Registries.DENSITY_FUNCTION_TYPE, Hydrological.MODID);
 
+    public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_islands", FloatingIslands.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> TO_HEIGHTMAP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("to_heightmap", ToHeightmap.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> SHIFT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("shift", Shift.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLATTEN_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("flatten", Flatten.CODEC::codec);
@@ -33,6 +35,51 @@ public final class HydrolDensityFunctions {
     public static DensityFunction temperature;
     public static DensityFunction humidity;
 
+    protected record FloatingIslands(DensityFunction input) implements DensityFunction {
+        private static final MapCodec<FloatingIslands> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(FloatingIslands::input)).apply(data, FloatingIslands::new);
+        });
+        public static final KeyDispatchDataCodec<FloatingIslands> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
+
+        @Override
+        public double compute(@NotNull FunctionContext context) {
+            double floatingIsland;
+            if (context.blockY() > 162) {
+                floatingIsland = Math.min(0.5 - (SimplexNoise.noise(context.blockX() * 0.02F, context.blockY() * 0.005F, context.blockZ() * 0.02F)*-1 + HydrolMath.gradient(context.blockY(), 164, 292, -1, 1.5F)),
+                        SimplexNoise.noise(context.blockX() * 0.0024F, context.blockY() * 0.0016F, context.blockZ() * 0.0024F)*-1 + (HydrolMath.gradient(context.blockY(), 228, 356, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(context.blockY(), 169, 259, 0.76F, 0F)))));
+            } else {
+                floatingIsland = Math.min(0.5 - (SimplexNoise.noise(context.blockX() * 0.02F, context.blockY() * 0.005F, context.blockZ() * 0.02F) + HydrolMath.gradient(context.blockY(), 64, 192, -1, 1.5F)),
+                        SimplexNoise.noise(context.blockX() * 0.0024F, context.blockY() * 0.0016F, context.blockZ() * 0.0024F) + (HydrolMath.gradient(context.blockY(), 128, 256, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(context.blockY(), 69, 159, 0.76F, 0F)))));
+            }
+            return floatingIsland + input().compute(context);
+        }
+
+        @Override
+        public void fillArray(double @NotNull [] densities, ContextProvider context) {
+            context.fillAllDirectly(densities, this);
+        }
+
+        @Override
+        public @NotNull DensityFunction mapAll(Visitor visitor) {
+            return visitor.apply(new FloatingIslands(this.input().mapAll(visitor)));
+        }
+
+        @Override
+        public double minValue() {
+            return -1875000d;
+        }
+
+        @Override
+        public double maxValue() {
+            return 1875000d;
+        }
+
+        @Override
+        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
+            return CODEC;
+        }
+
+    }
     protected record Shift(DensityFunction input, int shiftX, int shiftY, int shiftZ) implements DensityFunction {
         private static final MapCodec<Shift> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
             return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(Shift::input), Codec.INT.fieldOf("shift_x").forGetter(Shift::shiftX), Codec.INT.fieldOf("shift_y").forGetter(Shift::shiftY), Codec.INT.fieldOf("shift_z").forGetter(Shift::shiftZ)).apply(data, Shift::new);
@@ -51,7 +98,7 @@ public final class HydrolDensityFunctions {
 
         @Override
         public @NotNull DensityFunction mapAll(Visitor visitor) {
-            return visitor.apply(new StoreTemperature(this.input().mapAll(visitor)));
+            return visitor.apply(new Shift(this.input().mapAll(visitor), shiftX(), shiftY(), shiftZ()));
         }
 
         @Override
@@ -89,7 +136,7 @@ public final class HydrolDensityFunctions {
 
         @Override
         public @NotNull DensityFunction mapAll(Visitor visitor) {
-            return visitor.apply(new StoreTemperature(this.input().mapAll(visitor)));
+            return visitor.apply(new Flatten(this.input().mapAll(visitor), atY()));
         }
 
         @Override
