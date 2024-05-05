@@ -1,5 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.types;
 
+import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
@@ -38,22 +39,31 @@ public class ArchFeature extends Feature<SimpleBlockConfiguration> {
         boolean placedAnything = false;
         for (int x = origin.getX(); x < origin.getX() + 16; ++x) {
             for (int z = origin.getZ(); z < origin.getZ() + 16; ++z) {
-                double areaNoise = ARCH_AREA_NOISE.getValue(x, z, true);
-                if (areaNoise > -0.005 && areaNoise < 0.005) {
-                    double noise = Math.abs(ARCH_NOISE.getValue(x, z, true));
-                    //caves
-                    if (worldGenLevel.getBlockState(new BlockPos(x, worldGenLevel.getMinBuildHeight(), z)).isSolid()) {
-                        int y = (int) (32 - (noise * 320));
-                        if (y > worldGenLevel.getMinBuildHeight() + 6) {
+                double noise = Math.abs(ARCH_NOISE.getValue(x, z, true));
+                int y = (int) (32 - (noise * 320));
+                if (HydrolDensityFunctions.isFloatingIslands) {
+                    for (int newY = y; newY >= worldGenLevel.getMinBuildHeight(); newY--) {
+                        BlockPos blockPos = new BlockPos(x, newY, z);
+                        if (worldGenLevel.getBlockState(blockPos).isAir()) {
+                            worldGenLevel.setBlock(blockPos, Blocks.WATER.defaultBlockState(), UPDATE_ALL);
+                        }
+                    }
+                } else {
+                    double areaNoise = ARCH_AREA_NOISE.getValue(x, z, true);
+                    if (areaNoise > -0.005 && areaNoise < 0.005) {
+                        //caves
+                        if (worldGenLevel.getBlockState(new BlockPos(x, worldGenLevel.getMinBuildHeight(), z)).isSolid()) {
+                            if (y > worldGenLevel.getMinBuildHeight() + 6) {
+                                placeCube(worldGenLevel, x, y, z, blockState, random);
+                                placedAnything = true;
+                            }
+                        }
+                        //surface
+                        y = (int) (100 - (noise * 256));
+                        if (y > -64) {
                             placeCube(worldGenLevel, x, y, z, blockState, random);
                             placedAnything = true;
                         }
-                    }
-                    //surface
-                    int y = (int) (100 - (noise * 256));
-                    if (y > -64) {
-                        placeCube(worldGenLevel, x, y, z, blockState, random);
-                        placedAnything = true;
                     }
                 }
             }
@@ -72,7 +82,7 @@ public class ArchFeature extends Feature<SimpleBlockConfiguration> {
                         Holder<Biome> biome = worldGenLevel.getBiome(blockPos);
                         String biomeName = biome.toString();
                         boolean addCaveVine = false;
-                        if (worldGenLevel.getBlockState(blockPos.atY(worldGenLevel.getMinBuildHeight())).isAir()) {
+                        if (HydrolDensityFunctions.isFloatingIslands) {
                             placeState = Blocks.WATER.defaultBlockState();
                         } else if (worldGenLevel.getBlockState(blockPos).is(Blocks.LAVA)) {
                             placeState = Blocks.DEEPSLATE_COAL_ORE.defaultBlockState();

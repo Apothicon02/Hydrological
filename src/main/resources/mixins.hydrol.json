@@ -14,7 +14,8 @@
     "LevelChunkMixin",
     "NoiseChunkGeneratorMixin",
     "TallGrassBlockMixin",
-    "UtilMixin"
+    "UtilMixin",
+    "WaterFluidMixin"
   ],
   "client": [
     "BiomeClientMixin",

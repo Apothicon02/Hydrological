@@ -34,24 +34,32 @@ public final class HydrolDensityFunctions {
     public static ConcurrentHashMap<String, Double> heightmap = new ConcurrentHashMap<>();
     public static DensityFunction temperature;
     public static DensityFunction humidity;
+    public static boolean isFloatingIslands = false;
 
-    protected record FloatingIslands(DensityFunction input) implements DensityFunction {
+    protected record FloatingIslands(DensityFunction input, boolean hollow) implements DensityFunction {
         private static final MapCodec<FloatingIslands> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
-            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(FloatingIslands::input)).apply(data, FloatingIslands::new);
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(FloatingIslands::input), Codec.BOOL.fieldOf("hollow").forGetter(FloatingIslands::hollow)).apply(data, FloatingIslands::new);
         });
         public static final KeyDispatchDataCodec<FloatingIslands> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
 
         @Override
         public double compute(@NotNull FunctionContext context) {
+            isFloatingIslands = true;
             double floatingIsland;
+            double airPart = SimplexNoise.noise(context.blockX() * 0.02F, context.blockY() * 0.005F, context.blockZ() * 0.02F);
+            double solidPart = SimplexNoise.noise(context.blockX() * 0.0024F, context.blockY() * 0.0016F, context.blockZ() * 0.0024F);
             if (context.blockY() > 162) {
-                floatingIsland = Math.min(0.5 - (SimplexNoise.noise(context.blockX() * 0.02F, context.blockY() * 0.005F, context.blockZ() * 0.02F)*-1 + HydrolMath.gradient(context.blockY(), 164, 292, -1, 1.5F)),
-                        SimplexNoise.noise(context.blockX() * 0.0024F, context.blockY() * 0.0016F, context.blockZ() * 0.0024F)*-1 + (HydrolMath.gradient(context.blockY(), 228, 356, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(context.blockY(), 169, 259, 0.76F, 0F)))));
+                floatingIsland = Math.min(0.5 - (airPart*-1 + HydrolMath.gradient(context.blockY(), 164, 292, -1, 1.5F)),
+                        solidPart*-1 + (HydrolMath.gradient(context.blockY(), 228, 356, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(context.blockY(), 169, 259, 0.76F, 0F)))));
             } else {
-                floatingIsland = Math.min(0.5 - (SimplexNoise.noise(context.blockX() * 0.02F, context.blockY() * 0.005F, context.blockZ() * 0.02F) + HydrolMath.gradient(context.blockY(), 64, 192, -1, 1.5F)),
-                        SimplexNoise.noise(context.blockX() * 0.0024F, context.blockY() * 0.0016F, context.blockZ() * 0.0024F) + (HydrolMath.gradient(context.blockY(), 128, 256, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(context.blockY(), 69, 159, 0.76F, 0F)))));
+                floatingIsland = Math.min(0.5 - (airPart + HydrolMath.gradient(context.blockY(), 64, 192, -1, 1.5F)),
+                        solidPart + (HydrolMath.gradient(context.blockY(), 128, 256, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(context.blockY(), 69, 159, 0.76F, 0F)))));
             }
-            return floatingIsland + input().compute(context);
+            double caves = 0;
+            if (hollow()) {
+                caves = Math.min(0, ((floatingIsland-0.2) * -5));
+            }
+            return caves + floatingIsland + input().compute(context);
         }
 
         @Override
@@ -61,7 +69,7 @@ public final class HydrolDensityFunctions {
 
         @Override
         public @NotNull DensityFunction mapAll(Visitor visitor) {
-            return visitor.apply(new FloatingIslands(this.input().mapAll(visitor)));
+            return visitor.apply(new FloatingIslands(this.input().mapAll(visitor), hollow()));
         }
 
         @Override
@@ -78,7 +86,6 @@ public final class HydrolDensityFunctions {
         public KeyDispatchDataCodec<? extends DensityFunction> codec() {
             return CODEC;
         }
-
     }
     protected record Shift(DensityFunction input, int shiftX, int shiftY, int shiftZ) implements DensityFunction {
         private static final MapCodec<Shift> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {

@@ -1,6 +1,7 @@
 package com.Apothic0n.Hydrological.core.events;
 
 import com.Apothic0n.Hydrological.Hydrological;
+import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
 import com.Apothic0n.Hydrological.core.objects.HydrolBlocks;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -99,7 +100,7 @@ public class CommonForgeEvents {
         Level level = event.level;
         Entity entity = event.entity;
         BlockPos pos = entity.blockPosition();
-        if (entity instanceof Player && level.dimension().equals(Level.OVERWORLD)) {
+        if (entity instanceof Player && level.dimension().equals(Level.OVERWORLD) && (level.dimensionType().hasCeiling() || HydrolDensityFunctions.isFloatingIslands)) {
             boolean hasSpawnPlatformGeneratedBefore = true;
             final Path hasSpawnPlatformGenerated = Path.of(level.getServer().getWorldPath(LevelResource.LEVEL_DATA_FILE).getParent().toString() + "/hasSpawnPlatformGenerated");
             Gson gson = new Gson();
