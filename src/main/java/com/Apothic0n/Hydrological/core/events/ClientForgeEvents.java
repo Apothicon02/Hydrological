@@ -46,7 +46,7 @@ public class ClientForgeEvents {
             event.setRed(event.getRed() + (((temp - 0.8F) / 25)));
             event.setGreen(event.getGreen() - (((temp - 0.8F) / 20)));
             event.setBlue(event.getBlue() - (((temp - 0.8F) / 15)));
-            if (y < 48) {
+            if (y < 48 && !HydrolDensityFunctions.isFloatingIslands) {
                 float yScale = HydrolMath.invLerp(Math.min(Math.max(y, 16), 48), 1, 48, 16);
                 float invYScale = HydrolMath.invLerp(Math.min(Math.max(y, 16), 48), 0.8F, 16, 48);
                 event.setRed((Math.max(yScale, event.getRed()) - (Math.min(yScale, event.getRed()) * yScale) + Math.min(yScale, event.getRed())) * (invYScale + 0.2F));

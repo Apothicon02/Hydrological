@@ -20,6 +20,8 @@ import static com.Apothic0n.Hydrological.api.HydrolMath.progressBetweenInts;
 public final class HydrolDensityFunctions {
     public static final DeferredRegister<Codec<? extends DensityFunction>> DENSITY_FUNCTION_TYPES = DeferredRegister.create(Registries.DENSITY_FUNCTION_TYPE, Hydrological.MODID);
 
+    public static final RegistryObject<Codec<? extends DensityFunction>> NORMAL_TERRAIN_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("normal_terrain", NormalTerrain.CODEC::codec);
+    public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_BEACHES_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_beaches", FloatingBeaches.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_islands", FloatingIslands.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> TO_HEIGHTMAP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("to_heightmap", ToHeightmap.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> SHIFT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("shift", Shift.CODEC::codec);
@@ -35,7 +37,90 @@ public final class HydrolDensityFunctions {
     public static DensityFunction temperature;
     public static DensityFunction humidity;
     public static boolean isFloatingIslands = false;
+    protected record NormalTerrain(DensityFunction input) implements DensityFunction {
+        private static final MapCodec<NormalTerrain> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(NormalTerrain::input)).apply(data, NormalTerrain::new);
+        });
+        public static final KeyDispatchDataCodec<NormalTerrain> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
 
+        @Override
+        public double compute(@NotNull FunctionContext context) {
+            int x = context.blockX();
+            int y = context.blockY();
+            int z = context.blockZ();
+            double floor = Math.abs(SimplexNoise.noise(x*0.002F, z*0.002F)) + (HydrolMath.gradient(y, -64, -32, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 42, 98, 0.76F, 0F))));
+            return floor + input().compute(context);
+        }
+
+        @Override
+        public void fillArray(double @NotNull [] densities, ContextProvider context) {
+            context.fillAllDirectly(densities, this);
+        }
+
+        @Override
+        public @NotNull DensityFunction mapAll(Visitor visitor) {
+            return visitor.apply(new NormalTerrain(this.input().mapAll(visitor)));
+        }
+
+        @Override
+        public double minValue() {
+            return -1875000d;
+        }
+
+        @Override
+        public double maxValue() {
+            return 1875000d;
+        }
+
+        @Override
+        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
+            return CODEC;
+        }
+    }
+    protected record FloatingBeaches(DensityFunction input) implements DensityFunction {
+        private static final MapCodec<FloatingBeaches> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(FloatingBeaches::input)).apply(data, FloatingBeaches::new);
+        });
+        public static final KeyDispatchDataCodec<FloatingBeaches> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
+
+        @Override
+        public double compute(@NotNull FunctionContext context) {
+            int x = context.blockX();
+            int y = context.blockY();
+            int z = context.blockZ();
+            double floor = 36 - (Math.abs(SimplexNoise.noise(x*0.0007F, z*0.0007F)) * 128);
+            if (floor < y) {
+                return 0.24D;
+            } else {
+                return 0.2D;
+            }
+        }
+
+        @Override
+        public void fillArray(double @NotNull [] densities, ContextProvider context) {
+            context.fillAllDirectly(densities, this);
+        }
+
+        @Override
+        public @NotNull DensityFunction mapAll(Visitor visitor) {
+            return visitor.apply(new FloatingBeaches(this.input().mapAll(visitor)));
+        }
+
+        @Override
+        public double minValue() {
+            return -1875000d;
+        }
+
+        @Override
+        public double maxValue() {
+            return 1875000d;
+        }
+
+        @Override
+        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
+            return CODEC;
+        }
+    }
     protected record FloatingIslands(DensityFunction input, boolean hollow) implements DensityFunction {
         private static final MapCodec<FloatingIslands> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
             return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(FloatingIslands::input), Codec.BOOL.fieldOf("hollow").forGetter(FloatingIslands::hollow)).apply(data, FloatingIslands::new);
@@ -46,20 +131,28 @@ public final class HydrolDensityFunctions {
         public double compute(@NotNull FunctionContext context) {
             isFloatingIslands = true;
             double floatingIsland;
-            double airPart = SimplexNoise.noise(context.blockX() * 0.02F, context.blockY() * 0.005F, context.blockZ() * 0.02F);
-            double solidPart = SimplexNoise.noise(context.blockX() * 0.0024F, context.blockY() * 0.0016F, context.blockZ() * 0.0024F);
-            if (context.blockY() > 162) {
-                floatingIsland = Math.min(0.5 - (airPart*-1 + HydrolMath.gradient(context.blockY(), 164, 292, -1, 1.5F)),
-                        solidPart*-1 + (HydrolMath.gradient(context.blockY(), 228, 356, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(context.blockY(), 169, 259, 0.76F, 0F)))));
+            int x = context.blockX();
+            int y = context.blockY();
+            int z = context.blockZ();
+            if (y > -32) {
+                double airPart = SimplexNoise.noise(x * 0.02F, y * 0.005F, z * 0.02F);
+                double solidPart = SimplexNoise.noise(x * 0.0024F, y * 0.0016F, z * 0.0024F);
+                if (context.blockY() > 162) {
+                    floatingIsland = Math.min(0.5 - (airPart * -1 + HydrolMath.gradient(y, 164, 292, -1, 1.5F)),
+                            solidPart * -1 + (HydrolMath.gradient(y, 228, 356, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 169, 259, 0.76F, 0F)))));
+                } else {
+                    floatingIsland = Math.min(0.5 - (airPart + HydrolMath.gradient(y, 64, 192, -1, 1.5F)),
+                            solidPart + (HydrolMath.gradient(y, 128, 256, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 69, 159, 0.76F, 0F)))));
+                }
+                double caves = 0;
+                if (hollow()) {
+                    caves = Math.min(0, ((floatingIsland - 0.2) * -5));
+                }
+                return caves + floatingIsland + input().compute(context);
             } else {
-                floatingIsland = Math.min(0.5 - (airPart + HydrolMath.gradient(context.blockY(), 64, 192, -1, 1.5F)),
-                        solidPart + (HydrolMath.gradient(context.blockY(), 128, 256, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(context.blockY(), 69, 159, 0.76F, 0F)))));
+                double floor = (Math.abs(SimplexNoise.noise(x*0.007F, z*0.007F)) + (HydrolMath.gradient(y, -64, -50, 0.35F, 0.25F) - (2 * (0.1 + HydrolMath.gradient(y, -52, -36, 0.76F, 0F))))) * HydrolMath.gradient(y, -64, -36, 1F, 0F);
+                return floor + input().compute(context);
             }
-            double caves = 0;
-            if (hollow()) {
-                caves = Math.min(0, ((floatingIsland-0.2) * -5));
-            }
-            return caves + floatingIsland + input().compute(context);
         }
 
         @Override

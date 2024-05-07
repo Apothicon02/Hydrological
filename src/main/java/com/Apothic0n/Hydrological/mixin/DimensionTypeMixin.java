@@ -1,5 +1,6 @@
 package com.Apothic0n.Hydrological.mixin;
 
+import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
 import com.Apothic0n.Hydrological.api.HydrolMath;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
@@ -36,7 +37,7 @@ public abstract class DimensionTypeMixin {
             ambient = (float) Math.min(eco$closenessToNight - 0.33, ambient);
         }
         float skyMultiplier = 1;
-        if (minecraft.level != null && minecraft.player != null && minecraft.player.blockPosition().getY() < 10) {
+        if (minecraft.level != null && minecraft.player != null && (minecraft.player.blockPosition().getY() < 10 && !HydrolDensityFunctions.isFloatingIslands)) {
             skyMultiplier = minecraft.level.getBrightness(LightLayer.SKY, minecraft.player.blockPosition()) / 15F;
         }
         if (minecraft.player != null && minecraft.player.hasEffect(MobEffects.NIGHT_VISION)) {
