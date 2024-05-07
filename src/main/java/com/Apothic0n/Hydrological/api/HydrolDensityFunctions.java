@@ -134,24 +134,28 @@ public final class HydrolDensityFunctions {
             int x = context.blockX();
             int y = context.blockY();
             int z = context.blockZ();
-            if (y > -32) {
-                double airPart = SimplexNoise.noise(x * 0.02F, y * 0.005F, z * 0.02F);
-                double solidPart = SimplexNoise.noise(x * 0.0024F, y * 0.0016F, z * 0.0024F);
-                if (context.blockY() > 162) {
-                    floatingIsland = Math.min(0.5 - (airPart * -1 + HydrolMath.gradient(y, 164, 292, -1, 1.5F)),
-                            solidPart * -1 + (HydrolMath.gradient(y, 228, 356, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 169, 259, 0.76F, 0F)))));
+            if (y < 256) {
+                if (y > -32) {
+                    double airPart = SimplexNoise.noise(x * 0.02F, y * 0.005F, z * 0.02F);
+                    double solidPart = SimplexNoise.noise(x * 0.0024F, y * 0.0016F, z * 0.0024F);
+                    if (context.blockY() > 162) {
+                        floatingIsland = Math.min(0.5 - (airPart * -1 + HydrolMath.gradient(y, 164, 292, -1, 1.5F)),
+                                solidPart * -1 + (HydrolMath.gradient(y, 228, 356, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 169, 259, 0.76F, 0F)))));
+                    } else {
+                        floatingIsland = Math.min(0.5 - (airPart + HydrolMath.gradient(y, 64, 192, -1, 1.5F)),
+                                solidPart + (HydrolMath.gradient(y, 128, 256, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 69, 159, 0.76F, 0F)))));
+                    }
+                    double caves = 0;
+                    if (hollow()) {
+                        caves = Math.min(0, ((floatingIsland - 0.2) * -5));
+                    }
+                    return caves + floatingIsland + input().compute(context);
                 } else {
-                    floatingIsland = Math.min(0.5 - (airPart + HydrolMath.gradient(y, 64, 192, -1, 1.5F)),
-                            solidPart + (HydrolMath.gradient(y, 128, 256, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 69, 159, 0.76F, 0F)))));
+                    double floor = (Math.abs(SimplexNoise.noise(x * 0.007F, z * 0.007F)) + (HydrolMath.gradient(y, -64, -50, 0.35F, 0.25F) - (2 * (0.1 + HydrolMath.gradient(y, -52, -36, 0.76F, 0F))))) * HydrolMath.gradient(y, -64, -36, 1F, 0F);
+                    return floor + input().compute(context);
                 }
-                double caves = 0;
-                if (hollow()) {
-                    caves = Math.min(0, ((floatingIsland - 0.2) * -5));
-                }
-                return caves + floatingIsland + input().compute(context);
             } else {
-                double floor = (Math.abs(SimplexNoise.noise(x*0.007F, z*0.007F)) + (HydrolMath.gradient(y, -64, -50, 0.35F, 0.25F) - (2 * (0.1 + HydrolMath.gradient(y, -52, -36, 0.76F, 0F))))) * HydrolMath.gradient(y, -64, -36, 1F, 0F);
-                return floor + input().compute(context);
+                return input().compute(context);
             }
         }
 
