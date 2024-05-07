@@ -1,5 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.types;
 
+import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.core.objects.HydrolBlocks;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
@@ -86,7 +87,7 @@ public class CaveRiverFeature  extends Feature<NoneFeatureConfiguration> {
                     }
                 }
             }
-            if (liquid.is(Blocks.WATER) && blockpos1.getY() == blockpos.getY() && worldgenlevel.getBlockState(blockpos1).isAir()) {
+            if (!HydrolJsonReader.serverSidedOnlyMode && liquid.is(Blocks.WATER) && blockpos1.getY() == blockpos.getY() && worldgenlevel.getBlockState(blockpos1).isAir()) {
                 worldgenlevel.setBlock(blockpos1, HydrolBlocks.AQUATIC_LICHEN.get().defaultBlockState(), 2);
             }
         }

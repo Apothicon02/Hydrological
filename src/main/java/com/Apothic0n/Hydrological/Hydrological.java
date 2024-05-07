@@ -62,5 +62,8 @@ public class Hydrological {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        HydrolBlocks.fixBlockRenderLayers();}
+        if (!HydrolJsonReader.serverSidedOnlyMode) {
+            HydrolBlocks.fixBlockRenderLayers();
+        }
+    }
 }

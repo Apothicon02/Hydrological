@@ -1,6 +1,9 @@
 package com.Apothic0n.Hydrological.core.events;
 
 import com.Apothic0n.Hydrological.Hydrological;
+import com.Apothic0n.Hydrological.api.HydrolColorHelper;
+import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
+import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.core.objects.*;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.Minecraft;
@@ -15,6 +18,7 @@ import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.synth.PerlinSimplexNoise;
@@ -37,7 +41,7 @@ public class ClientModEvents {
 
     @SubscribeEvent
     public static void addItemsToTabs(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
+        if (!HydrolJsonReader.serverSidedOnlyMode && event.getTabKey().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
             event.accept(HydrolItems.GLOWING_AMETHYST.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(HydrolItems.AQUATIC_LICHEN.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(HydrolItems.DRY_GRASS.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -53,56 +57,58 @@ public class ClientModEvents {
 
     @SubscribeEvent
     public static void registerSpriteSet(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(EcoParticleTypes.OAK_LEAVES.get(), (spriteSet) -> {
-            return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
-                return new LeavesParticle(level, x, y, z, spriteSet);
-            };
-        });
-        event.registerSpriteSet(EcoParticleTypes.DARK_OAK_LEAVES.get(), (spriteSet) -> {
-            return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
-                return new LeavesParticle(level, x, y, z, spriteSet);
-            };
-        });
-        event.registerSpriteSet(EcoParticleTypes.BIRCH_LEAVES.get(), (spriteSet) -> {
-            return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
-                return new BirchLeavesParticle(level, x, y, z, spriteSet);
-            };
-        });
-        event.registerSpriteSet(EcoParticleTypes.SPRUCE_LEAVES.get(), (spriteSet) -> {
-            return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
-                return new SpruceLeavesParticle(level, x, y, z, spriteSet);
-            };
-        });
-        event.registerSpriteSet(EcoParticleTypes.JUNGLE_LEAVES.get(), (spriteSet) -> {
-            return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
-                return new LeavesParticle(level, x, y, z, spriteSet);
-            };
-        });
-        event.registerSpriteSet(EcoParticleTypes.ACACIA_LEAVES.get(), (spriteSet) -> {
-            return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
-                return new LeavesParticle(level, x, y, z, spriteSet);
-            };
-        });
-        event.registerSpriteSet(EcoParticleTypes.MANGROVE_LEAVES.get(), (spriteSet) -> {
-            return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
-                return new LeavesParticle(level, x, y, z, spriteSet);
-            };
-        });
-        event.registerSpriteSet(EcoParticleTypes.AZALEA_LEAVES.get(), (spriteSet) -> {
-            return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
-                return new AzaleaLeavesParticle(level, x, y, z, spriteSet);
-            };
-        });
-        event.registerSpriteSet(EcoParticleTypes.FLOWERING_AZALEA_LEAVES.get(), (spriteSet) -> {
-            return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
-                return new AzaleaLeavesParticle(level, x, y, z, spriteSet);
-            };
-        });
-        event.registerSpriteSet(EcoParticleTypes.FIRE_FLIES.get(), (spriteSet) -> {
-            return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
-                return new FireFliesParticle(level, x, y, z, spriteSet);
-            };
-        });
+        if (!HydrolJsonReader.serverSidedOnlyMode) {
+            event.registerSpriteSet(EcoParticleTypes.OAK_LEAVES.get(), (spriteSet) -> {
+                return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
+                    return new LeavesParticle(level, x, y, z, spriteSet);
+                };
+            });
+            event.registerSpriteSet(EcoParticleTypes.DARK_OAK_LEAVES.get(), (spriteSet) -> {
+                return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
+                    return new LeavesParticle(level, x, y, z, spriteSet);
+                };
+            });
+            event.registerSpriteSet(EcoParticleTypes.BIRCH_LEAVES.get(), (spriteSet) -> {
+                return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
+                    return new BirchLeavesParticle(level, x, y, z, spriteSet);
+                };
+            });
+            event.registerSpriteSet(EcoParticleTypes.SPRUCE_LEAVES.get(), (spriteSet) -> {
+                return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
+                    return new SpruceLeavesParticle(level, x, y, z, spriteSet);
+                };
+            });
+            event.registerSpriteSet(EcoParticleTypes.JUNGLE_LEAVES.get(), (spriteSet) -> {
+                return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
+                    return new LeavesParticle(level, x, y, z, spriteSet);
+                };
+            });
+            event.registerSpriteSet(EcoParticleTypes.ACACIA_LEAVES.get(), (spriteSet) -> {
+                return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
+                    return new LeavesParticle(level, x, y, z, spriteSet);
+                };
+            });
+            event.registerSpriteSet(EcoParticleTypes.MANGROVE_LEAVES.get(), (spriteSet) -> {
+                return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
+                    return new LeavesParticle(level, x, y, z, spriteSet);
+                };
+            });
+            event.registerSpriteSet(EcoParticleTypes.AZALEA_LEAVES.get(), (spriteSet) -> {
+                return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
+                    return new AzaleaLeavesParticle(level, x, y, z, spriteSet);
+                };
+            });
+            event.registerSpriteSet(EcoParticleTypes.FLOWERING_AZALEA_LEAVES.get(), (spriteSet) -> {
+                return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
+                    return new AzaleaLeavesParticle(level, x, y, z, spriteSet);
+                };
+            });
+            event.registerSpriteSet(EcoParticleTypes.FIRE_FLIES.get(), (spriteSet) -> {
+                return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
+                    return new FireFliesParticle(level, x, y, z, spriteSet);
+                };
+            });
+        }
     }
 
     private static final PerlinSimplexNoise SATURATION_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(2345L)), ImmutableList.of(0));
@@ -125,40 +131,42 @@ public class ClientModEvents {
         Block darkOakPile = Blocks.DARK_OAK_LEAVES;
         Block mangrovePile = Blocks.MANGROVE_LEAVES;
 
-        for (int i = 0; i < wallBlocks.size(); i++) {
-            Map<Block, RegistryObject<Block>> map = wallBlocks.get(i);
-            if (map.containsKey(Blocks.SPRUCE_LEAVES)) {
-                spruceLeaves = map.get(Blocks.SPRUCE_LEAVES).get();
-            } else if (map.containsKey(Blocks.BIRCH_LEAVES)) {
-                birchLeaves = map.get(Blocks.BIRCH_LEAVES).get();
-            } else if (map.containsKey(Blocks.OAK_LEAVES)) {
-                oakLeaves = map.get(Blocks.OAK_LEAVES).get();
-            } else if (map.containsKey(Blocks.JUNGLE_LEAVES)) {
-                jungleLeaves = map.get(Blocks.JUNGLE_LEAVES).get();
-            } else if (map.containsKey(Blocks.ACACIA_LEAVES)) {
-                acaciaLeaves = map.get(Blocks.ACACIA_LEAVES).get();
-            } else if (map.containsKey(Blocks.DARK_OAK_LEAVES)) {
-                darkOakLeaves = map.get(Blocks.DARK_OAK_LEAVES).get();
-            } else if (map.containsKey(Blocks.MANGROVE_LEAVES)) {
-                mangroveLeaves = map.get(Blocks.MANGROVE_LEAVES).get();
+        if (!HydrolJsonReader.serverSidedOnlyMode) {
+            for (int i = 0; i < wallBlocks.size(); i++) {
+                Map<Block, RegistryObject<Block>> map = wallBlocks.get(i);
+                if (map.containsKey(Blocks.SPRUCE_LEAVES)) {
+                    spruceLeaves = map.get(Blocks.SPRUCE_LEAVES).get();
+                } else if (map.containsKey(Blocks.BIRCH_LEAVES)) {
+                    birchLeaves = map.get(Blocks.BIRCH_LEAVES).get();
+                } else if (map.containsKey(Blocks.OAK_LEAVES)) {
+                    oakLeaves = map.get(Blocks.OAK_LEAVES).get();
+                } else if (map.containsKey(Blocks.JUNGLE_LEAVES)) {
+                    jungleLeaves = map.get(Blocks.JUNGLE_LEAVES).get();
+                } else if (map.containsKey(Blocks.ACACIA_LEAVES)) {
+                    acaciaLeaves = map.get(Blocks.ACACIA_LEAVES).get();
+                } else if (map.containsKey(Blocks.DARK_OAK_LEAVES)) {
+                    darkOakLeaves = map.get(Blocks.DARK_OAK_LEAVES).get();
+                } else if (map.containsKey(Blocks.MANGROVE_LEAVES)) {
+                    mangroveLeaves = map.get(Blocks.MANGROVE_LEAVES).get();
+                }
             }
-        }
-        for (int i = 0; i < pileBlocks.size(); i++) {
-            Map<Block, RegistryObject<Block>> map = pileBlocks.get(i);
-            if (map.containsKey(Blocks.SPRUCE_LEAVES)) {
-                sprucePile = map.get(Blocks.SPRUCE_LEAVES).get();
-            } else if (map.containsKey(Blocks.BIRCH_LEAVES)) {
-                birchPile = map.get(Blocks.BIRCH_LEAVES).get();
-            } else if (map.containsKey(Blocks.OAK_LEAVES)) {
-                oakPile = map.get(Blocks.OAK_LEAVES).get();
-            } else if (map.containsKey(Blocks.JUNGLE_LEAVES)) {
-                junglePile = map.get(Blocks.JUNGLE_LEAVES).get();
-            } else if (map.containsKey(Blocks.ACACIA_LEAVES)) {
-                acaciaPile = map.get(Blocks.ACACIA_LEAVES).get();
-            } else if (map.containsKey(Blocks.DARK_OAK_LEAVES)) {
-                darkOakPile = map.get(Blocks.DARK_OAK_LEAVES).get();
-            } else if (map.containsKey(Blocks.MANGROVE_LEAVES)) {
-                mangrovePile = map.get(Blocks.MANGROVE_LEAVES).get();
+            for (int i = 0; i < pileBlocks.size(); i++) {
+                Map<Block, RegistryObject<Block>> map = pileBlocks.get(i);
+                if (map.containsKey(Blocks.SPRUCE_LEAVES)) {
+                    sprucePile = map.get(Blocks.SPRUCE_LEAVES).get();
+                } else if (map.containsKey(Blocks.BIRCH_LEAVES)) {
+                    birchPile = map.get(Blocks.BIRCH_LEAVES).get();
+                } else if (map.containsKey(Blocks.OAK_LEAVES)) {
+                    oakPile = map.get(Blocks.OAK_LEAVES).get();
+                } else if (map.containsKey(Blocks.JUNGLE_LEAVES)) {
+                    junglePile = map.get(Blocks.JUNGLE_LEAVES).get();
+                } else if (map.containsKey(Blocks.ACACIA_LEAVES)) {
+                    acaciaPile = map.get(Blocks.ACACIA_LEAVES).get();
+                } else if (map.containsKey(Blocks.DARK_OAK_LEAVES)) {
+                    darkOakPile = map.get(Blocks.DARK_OAK_LEAVES).get();
+                } else if (map.containsKey(Blocks.MANGROVE_LEAVES)) {
+                    mangrovePile = map.get(Blocks.MANGROVE_LEAVES).get();
+                }
             }
         }
 
@@ -196,23 +204,25 @@ public class ClientModEvents {
                 },
                 Blocks.SAND);
 
-        event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
-                    int color = blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageGrassColor(blockAndTintGetter, blockPos) : GrassColor.getDefaultColor();
-                    if (blockPos != null) {
-                        int x = blockPos.getX();
-                        int z = blockPos.getZ();
-                        double saturate = Mth.clamp(SATURATION_NOISE.getValue(x * 0.66, z * 0.6, false) * 0.1, -0.2, 0.22) + 0.9;
-                        float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255) / 255;
-                        float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255) / 255;
-                        float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255) / 255;
-                        return FastColor.ABGR32.color(FastColor.ABGR32.alpha(color),
-                                (int) (Mth.clamp(blue * saturate, 0, 1) * 255),
-                                (int) (Mth.clamp(green * saturate, 0, 1) * 255),
-                                (int) (Mth.clamp(red * saturate, 0, 1) * 255));
-                    }
-                    return color;
-                },
-                HydrolBlocks.AQUATIC_LICHEN.get());
+        if (!HydrolJsonReader.serverSidedOnlyMode) {
+            event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
+                        int color = blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageGrassColor(blockAndTintGetter, blockPos) : GrassColor.getDefaultColor();
+                        if (blockPos != null) {
+                            int x = blockPos.getX();
+                            int z = blockPos.getZ();
+                            double saturate = Mth.clamp(SATURATION_NOISE.getValue(x * 0.66, z * 0.6, false) * 0.1, -0.2, 0.22) + 0.9;
+                            float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255) / 255;
+                            float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255) / 255;
+                            float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255) / 255;
+                            return FastColor.ABGR32.color(FastColor.ABGR32.alpha(color),
+                                    (int) (Mth.clamp(blue * saturate, 0, 1) * 255),
+                                    (int) (Mth.clamp(green * saturate, 0, 1) * 255),
+                                    (int) (Mth.clamp(red * saturate, 0, 1) * 255));
+                        }
+                        return color;
+                    },
+                    HydrolBlocks.AQUATIC_LICHEN.get());
+        }
         
         event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
             if (blockPos != null) {
@@ -314,40 +324,42 @@ public class ClientModEvents {
         Block acaciaPile = Blocks.ACACIA_LEAVES;
         Block darkOakPile = Blocks.DARK_OAK_LEAVES;
         Block mangrovePile = Blocks.MANGROVE_LEAVES;
-        for (int i = 0; i < wallBlocks.size(); i++) {
-            Map<Block, RegistryObject<Block>> map = wallBlocks.get(i);
-            if (map.containsKey(Blocks.SPRUCE_LEAVES)) {
-                spruceLeaves = map.get(Blocks.SPRUCE_LEAVES).get();
-            } else if (map.containsKey(Blocks.BIRCH_LEAVES)) {
-                birchLeaves = map.get(Blocks.BIRCH_LEAVES).get();
-            } else if (map.containsKey(Blocks.OAK_LEAVES)) {
-                oakLeaves = map.get(Blocks.OAK_LEAVES).get();
-            } else if (map.containsKey(Blocks.JUNGLE_LEAVES)) {
-                jungleLeaves = map.get(Blocks.JUNGLE_LEAVES).get();
-            } else if (map.containsKey(Blocks.ACACIA_LEAVES)) {
-                acaciaLeaves = map.get(Blocks.ACACIA_LEAVES).get();
-            } else if (map.containsKey(Blocks.DARK_OAK_LEAVES)) {
-                darkOakLeaves = map.get(Blocks.DARK_OAK_LEAVES).get();
-            } else if (map.containsKey(Blocks.MANGROVE_LEAVES)) {
-                mangroveLeaves = map.get(Blocks.MANGROVE_LEAVES).get();
+        if (!HydrolJsonReader.serverSidedOnlyMode) {
+            for (int i = 0; i < wallBlocks.size(); i++) {
+                Map<Block, RegistryObject<Block>> map = wallBlocks.get(i);
+                if (map.containsKey(Blocks.SPRUCE_LEAVES)) {
+                    spruceLeaves = map.get(Blocks.SPRUCE_LEAVES).get();
+                } else if (map.containsKey(Blocks.BIRCH_LEAVES)) {
+                    birchLeaves = map.get(Blocks.BIRCH_LEAVES).get();
+                } else if (map.containsKey(Blocks.OAK_LEAVES)) {
+                    oakLeaves = map.get(Blocks.OAK_LEAVES).get();
+                } else if (map.containsKey(Blocks.JUNGLE_LEAVES)) {
+                    jungleLeaves = map.get(Blocks.JUNGLE_LEAVES).get();
+                } else if (map.containsKey(Blocks.ACACIA_LEAVES)) {
+                    acaciaLeaves = map.get(Blocks.ACACIA_LEAVES).get();
+                } else if (map.containsKey(Blocks.DARK_OAK_LEAVES)) {
+                    darkOakLeaves = map.get(Blocks.DARK_OAK_LEAVES).get();
+                } else if (map.containsKey(Blocks.MANGROVE_LEAVES)) {
+                    mangroveLeaves = map.get(Blocks.MANGROVE_LEAVES).get();
+                }
             }
-        }
-        for (int i = 0; i < pileBlocks.size(); i++) {
-            Map<Block, RegistryObject<Block>> map = pileBlocks.get(i);
-            if (map.containsKey(Blocks.SPRUCE_LEAVES)) {
-                sprucePile = map.get(Blocks.SPRUCE_LEAVES).get();
-            } else if (map.containsKey(Blocks.BIRCH_LEAVES)) {
-                birchPile = map.get(Blocks.BIRCH_LEAVES).get();
-            } else if (map.containsKey(Blocks.OAK_LEAVES)) {
-                oakPile = map.get(Blocks.OAK_LEAVES).get();
-            } else if (map.containsKey(Blocks.JUNGLE_LEAVES)) {
-                junglePile = map.get(Blocks.JUNGLE_LEAVES).get();
-            } else if (map.containsKey(Blocks.ACACIA_LEAVES)) {
-                acaciaPile = map.get(Blocks.ACACIA_LEAVES).get();
-            } else if (map.containsKey(Blocks.DARK_OAK_LEAVES)) {
-                darkOakPile = map.get(Blocks.DARK_OAK_LEAVES).get();
-            } else if (map.containsKey(Blocks.MANGROVE_LEAVES)) {
-                mangrovePile = map.get(Blocks.MANGROVE_LEAVES).get();
+            for (int i = 0; i < pileBlocks.size(); i++) {
+                Map<Block, RegistryObject<Block>> map = pileBlocks.get(i);
+                if (map.containsKey(Blocks.SPRUCE_LEAVES)) {
+                    sprucePile = map.get(Blocks.SPRUCE_LEAVES).get();
+                } else if (map.containsKey(Blocks.BIRCH_LEAVES)) {
+                    birchPile = map.get(Blocks.BIRCH_LEAVES).get();
+                } else if (map.containsKey(Blocks.OAK_LEAVES)) {
+                    oakPile = map.get(Blocks.OAK_LEAVES).get();
+                } else if (map.containsKey(Blocks.JUNGLE_LEAVES)) {
+                    junglePile = map.get(Blocks.JUNGLE_LEAVES).get();
+                } else if (map.containsKey(Blocks.ACACIA_LEAVES)) {
+                    acaciaPile = map.get(Blocks.ACACIA_LEAVES).get();
+                } else if (map.containsKey(Blocks.DARK_OAK_LEAVES)) {
+                    darkOakPile = map.get(Blocks.DARK_OAK_LEAVES).get();
+                } else if (map.containsKey(Blocks.MANGROVE_LEAVES)) {
+                    mangrovePile = map.get(Blocks.MANGROVE_LEAVES).get();
+                }
             }
         }
         event.register((p_92636_, p_92637_) -> {
@@ -360,24 +372,26 @@ public class ClientModEvents {
             return Minecraft.getInstance().level != null && Minecraft.getInstance().player != null ? BiomeColors.getAverageFoliageColor(Minecraft.getInstance().level, Minecraft.getInstance().player.blockPosition()) : FoliageColor.getDefaultColor();
         }, oakLeaves, oakPile, jungleLeaves, junglePile, acaciaLeaves, acaciaPile, darkOakLeaves, darkOakPile, mangroveLeaves, mangrovePile);
 
-        event.register((itemStack, tint) -> {
-                    if (Minecraft.getInstance().level != null) {
-                        BlockPos blockPos = Minecraft.getInstance().player.blockPosition();
-                        int color = Minecraft.getInstance().level != null && Minecraft.getInstance().player != null ? BiomeColors.getAverageFoliageColor(Minecraft.getInstance().level, Minecraft.getInstance().player.blockPosition()) : FoliageColor.getDefaultColor();
-                        int x = blockPos.getX();
-                        int z = blockPos.getZ();
-                        double saturate = Mth.clamp(SATURATION_NOISE.getValue(x * 0.66, z * 0.6, false) * 0.1, -0.2, 0.22) + 0.9;
-                        float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255) / 255;
-                        float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255) / 255;
-                        float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255) / 255;
-                        return FastColor.ABGR32.color(FastColor.ABGR32.alpha(color),
-                                (int) (Mth.clamp(blue * saturate, 0, 1) * 255),
-                                (int) (Mth.clamp(green * saturate, 0, 1) * 255),
-                                (int) (Mth.clamp(red * saturate, 0, 1) * 255));
-                    } else {
-                        return FastColor.ABGR32.color(1, 0, 179, 89);
-                    }
-                },
-                HydrolBlocks.AQUATIC_LICHEN.get());
+        if (!HydrolJsonReader.serverSidedOnlyMode) {
+            event.register((itemStack, tint) -> {
+                        if (Minecraft.getInstance().level != null) {
+                            BlockPos blockPos = Minecraft.getInstance().player.blockPosition();
+                            int color = Minecraft.getInstance().level != null && Minecraft.getInstance().player != null ? BiomeColors.getAverageFoliageColor(Minecraft.getInstance().level, Minecraft.getInstance().player.blockPosition()) : FoliageColor.getDefaultColor();
+                            int x = blockPos.getX();
+                            int z = blockPos.getZ();
+                            double saturate = Mth.clamp(SATURATION_NOISE.getValue(x * 0.66, z * 0.6, false) * 0.1, -0.2, 0.22) + 0.9;
+                            float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255) / 255;
+                            float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255) / 255;
+                            float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255) / 255;
+                            return FastColor.ABGR32.color(FastColor.ABGR32.alpha(color),
+                                    (int) (Mth.clamp(blue * saturate, 0, 1) * 255),
+                                    (int) (Mth.clamp(green * saturate, 0, 1) * 255),
+                                    (int) (Mth.clamp(red * saturate, 0, 1) * 255));
+                        } else {
+                            return FastColor.ABGR32.color(1, 0, 179, 89);
+                        }
+                    },
+                    HydrolBlocks.AQUATIC_LICHEN.get());
+        }
     }
 }

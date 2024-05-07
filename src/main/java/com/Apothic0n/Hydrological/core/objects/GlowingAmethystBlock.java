@@ -1,5 +1,6 @@
 package com.Apothic0n.Hydrological.core.objects;
 
+import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -47,7 +48,7 @@ public class GlowingAmethystBlock extends AmethystBlock implements SimpleWaterlo
 
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom) {
         float f = 25; //growthSpeed
-        if (pLevel.getBlockState(pPos.above()) == Blocks.BUDDING_AMETHYST.defaultBlockState() && pRandom.nextInt((int)(25.0F / f) + 1) == 0) {
+        if (!HydrolJsonReader.serverSidedOnlyMode && pLevel.getBlockState(pPos.above()) == Blocks.BUDDING_AMETHYST.defaultBlockState() && pRandom.nextInt((int)(25.0F / f) + 1) == 0) {
             pLevel.setBlock(pPos, HydrolBlocks.AMETHYST_VINES.get().defaultBlockState(), 2);
         }
     }
