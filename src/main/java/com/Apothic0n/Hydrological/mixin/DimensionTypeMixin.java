@@ -5,6 +5,7 @@ import com.Apothic0n.Hydrological.api.HydrolMath;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.dimension.DimensionType;
 import org.spongepowered.asm.mixin.*;
@@ -23,7 +24,7 @@ public abstract class DimensionTypeMixin {
 
     @Shadow @Final private OptionalLong fixedTime;
     @Unique
-    public float eco$closenessToNight = 1.0F;
+    public float hydrol$closenessToNight = 1.0F;
 
     /**
      * @author Apothicon
@@ -32,18 +33,20 @@ public abstract class DimensionTypeMixin {
     @Inject(method = "ambientLight", at = @At("HEAD"), cancellable = true)
     public void ambientLight(CallbackInfoReturnable<Float> ci) {
         Minecraft minecraft = Minecraft.getInstance();
-        float ambient = this.ambientLight;
-        if (this.hasSkyLight) {
-            ambient = (float) Math.min(eco$closenessToNight - 0.33, ambient);
-        }
-        float skyMultiplier = 1;
-        if (minecraft.level != null && minecraft.player != null && (minecraft.player.blockPosition().getY() < 10 && !HydrolDensityFunctions.isFloatingIslands)) {
-            skyMultiplier = minecraft.level.getBrightness(LightLayer.SKY, minecraft.player.blockPosition()) / 15F;
-        }
-        if (minecraft.player != null && minecraft.player.hasEffect(MobEffects.NIGHT_VISION)) {
-            ci.setReturnValue(0F);
-        } else {
-            ci.setReturnValue(ambient * skyMultiplier);
+        if (minecraft.level != null && minecraft.level.dimension() == Level.OVERWORLD) {
+            float ambient = this.ambientLight;
+            if (this.hasSkyLight) {
+                ambient = (float) Math.min(hydrol$closenessToNight - 0.33, ambient);
+            }
+            float skyMultiplier = 1;
+            if (minecraft.player != null && (minecraft.player.blockPosition().getY() < 10 && !HydrolDensityFunctions.isFloatingIslands)) {
+                skyMultiplier = minecraft.level.getBrightness(LightLayer.SKY, minecraft.player.blockPosition()) / 15F;
+            }
+            if (minecraft.player != null && minecraft.player.hasEffect(MobEffects.NIGHT_VISION)) {
+                ci.setReturnValue(0F);
+            } else {
+                ci.setReturnValue(ambient * skyMultiplier);
+            }
         }
     }
 
@@ -52,6 +55,6 @@ public abstract class DimensionTypeMixin {
         double d0 = Mth.frac((double)this.fixedTime.orElse(time) / 24000.0 - 0.25);
         double d1 = 0.5 - Math.cos(d0 * Math.PI) / 2.0;
         double newTime = (float)(d0 * 2.0 + d1) / 3.0F;
-        eco$closenessToNight = HydrolMath.getClosenessToNight(newTime);
+        hydrol$closenessToNight = HydrolMath.getClosenessToNight(newTime);
     }
 }

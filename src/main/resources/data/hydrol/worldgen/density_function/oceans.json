@@ -62,6 +62,6 @@
       "from_value": 0.03,
       "to_value": 0
     },
-    "argument2": "hydrol:base_terrain"
+    "argument2": "hydrol:ocean_floor"
   }
 }
