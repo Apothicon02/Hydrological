@@ -49,7 +49,7 @@
       "input": {
         "type": "hydrol:flatten",
         "input": "hydrol:normal",
-        "at_y": 100
+        "at_y": 88
       },
       "min_inclusive": 0.1,
       "max_exclusive": 100,

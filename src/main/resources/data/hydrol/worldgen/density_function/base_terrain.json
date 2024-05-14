@@ -1,8 +1,25 @@
 {
   "type": "minecraft:add",
   "argument1": {
-    "type": "hydrol:base_terrain",
-    "input": 0
+    "type": "minecraft:interpolated",
+    "argument": {
+      "type": "minecraft:mul",
+      "argument1": 0.4,
+      "argument2": {
+        "type": "minecraft:add",
+        "argument1": {
+          "type": "minecraft:y_clamped_gradient",
+          "from_y": 56,
+          "to_y": 100,
+          "from_value": 2.22,
+          "to_value": -2.22
+        },
+        "argument2": {
+          "type": "minecraft:abs",
+          "argument": "minecraft:overworld/ridges"
+        }
+      }
+    }
   },
   "argument2": "hydrol:oceans"
 }

@@ -24,7 +24,6 @@ public final class HydrolDensityFunctions {
     public static final DeferredRegister<Codec<? extends DensityFunction>> DENSITY_FUNCTION_TYPES = DeferredRegister.create(Registries.DENSITY_FUNCTION_TYPE, Hydrological.MODID);
 
     public static final RegistryObject<Codec<? extends DensityFunction>> NORMAL_TERRAIN_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("normal_terrain", NormalTerrain.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> BASE_TERRAIN_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("base_terrain", BaseTerrain.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_BEACHES_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_beaches", FloatingBeaches.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_islands", FloatingIslands.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> TO_HEIGHTMAP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("to_heightmap", ToHeightmap.CODEC::codec);
@@ -53,12 +52,18 @@ public final class HydrolDensityFunctions {
             int x = context.blockX();
             int y = context.blockY();
             int z = context.blockZ();
+            SinglePointContext blockPos = new DensityFunction.SinglePointContext(x, y, z);
+            double temp = temperature.compute(blockPos);
+            double humi = humidity.compute(blockPos);
             double computedInput = input.compute(context);
-            double height = (Math.max(0, computedInput-0.25)*(Math.min(0.25, Math.max(0, computedInput))*10))*(computedInput*(computedInput*HydrolMath.gradient(y, 64, 86, 3F, 1F))); // change the 1F to be based on some other noise to make mountain ranges.
-            float scale = (float) (0.01F-Math.max(0, (height*0.07)-0.01F));
+            double mountainous = Math.abs(humi);
+            mountainous = mountainous * mountainous;
+            mountainous *= 3;
+            double height = (Math.max(0, computedInput-0.25)*(Math.min(0.25, Math.max(0, computedInput))*10))*(computedInput*(computedInput*HydrolMath.gradient(y, 64, 86, 3F, 1F)));
+            float scale = (float) ((0.01F-Math.max(0, (height*0.07)-0.01F))*(0.2F+Math.abs(temp-0.2)));
             double baseNoise = SimplexNoise.noise(x*scale, z*scale);
-            double floor = ((Math.abs(baseNoise) + (Math.max(0, height-0.03)*5)) + (HydrolMath.gradient(y, -64, (int) (32+(height*128)), 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 56, 320, 0.76F, 0F))))) +
-                    (((1 + (Math.max(0, height-0.04)*5)) + (HydrolMath.gradient(y, -64, (int) (32+(height*112)), 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 56, 244, 0.76F, 0F))))) * HydrolMath.gradient(y, 64, 100, 1.5F, 0.5F));
+            double floor = ((baseNoise + (Math.max(0, height-0.03)*5)) + (HydrolMath.gradient(y, -64, (int) (32+(height*128)), 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 56, 320, (float) (0.76F-mountainous), 0F))))) +
+                    (((1 + (Math.max(0, height-0.04)*5)) + (HydrolMath.gradient(y, -64, (int) (32+(height*112)), 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 56, 244, (float) (0.76F-mountainous), 0F))))) * HydrolMath.gradient(y, 64, 100, 1.5F, 0.5F));
             return floor*(height*5);
         }
 
@@ -70,51 +75,6 @@ public final class HydrolDensityFunctions {
         @Override
         public @NotNull DensityFunction mapAll(Visitor visitor) {
             return visitor.apply(new NormalTerrain(this.input().mapAll(visitor)));
-        }
-
-        @Override
-        public double minValue() {
-            return -1875000d;
-        }
-
-        @Override
-        public double maxValue() {
-            return 1875000d;
-        }
-
-        @Override
-        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
-            return CODEC;
-        }
-    }
-    protected record BaseTerrain(DensityFunction input) implements DensityFunction {
-        private static final MapCodec<BaseTerrain> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
-            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(BaseTerrain::input)).apply(data, BaseTerrain::new);
-        });
-        public static final KeyDispatchDataCodec<BaseTerrain> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
-
-        @Override
-        public double compute(@NotNull FunctionContext context) {
-            int x = context.blockX();
-            int y = context.blockY();
-            int z = context.blockZ();
-            double baseNoise = SimplexNoise.noise(x*0.001F, z*0.001F);
-            double floor = Math.abs(baseNoise) + (HydrolMath.gradient(y, -64, -32, 0.78F, 0.53F) - (2 * (0.1 + HydrolMath.gradient(y, 38, 98, 0.76F, 0F))));
-            if (y < 63) {
-                float riverRoughness = (float) (0.1F+(baseNoise*0.1F));
-                floor -= HydrolMath.gradient(y, 56, 63, 0F, riverRoughness);
-            }
-            return floor + input().compute(context);
-        }
-
-        @Override
-        public void fillArray(double @NotNull [] densities, ContextProvider context) {
-            context.fillAllDirectly(densities, this);
-        }
-
-        @Override
-        public @NotNull DensityFunction mapAll(Visitor visitor) {
-            return visitor.apply(new BaseTerrain(this.input().mapAll(visitor)));
         }
 
         @Override
