@@ -6,7 +6,10 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.util.KeyDispatchDataCodec;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.DensityFunction;
+import net.minecraft.world.level.levelgen.DensityFunctions;
+import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -50,11 +53,12 @@ public final class HydrolDensityFunctions {
             int x = context.blockX();
             int y = context.blockY();
             int z = context.blockZ();
-            double height = Math.max(0, input.compute(context)-0.25);
+            double computedInput = input.compute(context);
+            double height = (Math.max(0, computedInput-0.25)*(Math.min(0.25, Math.max(0, computedInput))*10))*(computedInput*(computedInput*HydrolMath.gradient(y, 64, 86, 3F, 1F))); // change the 1F to be based on some other noise to make mountain ranges.
             float scale = (float) (0.01F-Math.max(0, (height*0.07)-0.01F));
             double baseNoise = SimplexNoise.noise(x*scale, z*scale);
-            double floor = ((Math.abs(baseNoise) + (Math.max(0, height-0.03)*5)) + (HydrolMath.gradient(y, -64, (int) (32+(height*128)), 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 56, 256, 0.76F, 0F))))) +
-                    (1 + (Math.max(0, height-0.04)*5)) + (HydrolMath.gradient(y, -64, (int) (32+(height*112)), 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 56, 244, 0.76F, 0F))));
+            double floor = ((Math.abs(baseNoise) + (Math.max(0, height-0.03)*5)) + (HydrolMath.gradient(y, -64, (int) (32+(height*128)), 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 56, 320, 0.76F, 0F))))) +
+                    (((1 + (Math.max(0, height-0.04)*5)) + (HydrolMath.gradient(y, -64, (int) (32+(height*112)), 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 56, 244, 0.76F, 0F))))) * HydrolMath.gradient(y, 64, 100, 1.5F, 0.5F));
             return floor*(height*5);
         }
 

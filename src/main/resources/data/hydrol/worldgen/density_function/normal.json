@@ -1,8 +1,63 @@
 {
   "type": "minecraft:add",
   "argument1": {
-    "type": "hydrol:normal_terrain",
-    "input": "hydrol:base_heightmap"
+    "type": "minecraft:interpolated",
+    "argument": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "hydrol:normal_terrain",
+        "input": "hydrol:base_heightmap"
+      },
+      "argument2": {
+        "type": "minecraft:range_choice",
+        "input": {
+          "type": "minecraft:y_clamped_gradient",
+          "from_y": 195,
+          "to_y": 196,
+          "from_value": -1,
+          "to_value": 1
+        },
+        "min_inclusive": 0,
+        "max_exclusive": 10,
+        "when_in_range": {
+          "type": "minecraft:min",
+          "argument1": 0,
+          "argument2": {
+            "type": "minecraft:mul",
+            "argument1": {
+              "type": "minecraft:y_clamped_gradient",
+              "from_y": 196,
+              "to_y": 300,
+              "from_value": 0,
+              "to_value": 1
+            },
+            "argument2": {
+              "type": "minecraft:add",
+              "argument1": {
+                "type": "minecraft:y_clamped_gradient",
+                "from_y": 196,
+                "to_y": 320,
+                "from_value": 0,
+                "to_value": -2.5
+              },
+              "argument2": {
+                "type": "minecraft:cache_2d",
+                "argument": {
+                  "type": "minecraft:abs",
+                  "argument": {
+                    "type": "minecraft:noise",
+                    "noise": "minecraft:gravel",
+                    "xz_scale": 3,
+                    "y_scale": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "when_out_of_range": 0
+      }
+    }
   },
   "argument2": "hydrol:base_terrain"
 }
