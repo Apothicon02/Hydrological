@@ -37,8 +37,8 @@ public class ArchFeature extends Feature<SimpleBlockConfiguration> {
         boolean placedAnything = false;
         for (int x = origin.getX(); x < origin.getX() + 16; ++x) {
             for (int z = origin.getZ(); z < origin.getZ() + 16; ++z) {
-                double noise = Math.abs(SimplexNoise.noise(x*0.0007F, z*0.0007F));
                 if (HydrolDensityFunctions.isFloatingIslands) {
+                    double noise = Math.abs(SimplexNoise.noise(x*0.0007F, z*0.0007F));
                     int y = (int) (42 - (noise * 128));
                     for (int newY = y; newY >= worldGenLevel.getMinBuildHeight(); newY--) {
                         BlockPos blockPos = new BlockPos(x, newY, z);
@@ -62,6 +62,7 @@ public class ArchFeature extends Feature<SimpleBlockConfiguration> {
                         placedAnything = true;
                     }
                 } else {
+                    double noise = Math.abs(SimplexNoise.noise(x*0.002F, z*0.002F));
                     int y = (int) (32 - (noise * 320));
                     double areaNoise = SimplexNoise.noise(x*0.005F, z*0.005F);
                     if (areaNoise > -0.01 && areaNoise < 0.01) {
@@ -70,8 +71,8 @@ public class ArchFeature extends Feature<SimpleBlockConfiguration> {
                             placeCube(worldGenLevel, x, y, z, blockState, random);
                             placedAnything = true;
                         }
-                        //surface
-                        y = (int) (100 - (noise * 256));
+                        //underwater
+                        y = (int) (54 - (noise * 196));
                         if (y > -64) {
                             placeCube(worldGenLevel, x, y, z, blockState, random);
                             placedAnything = true;
@@ -93,7 +94,6 @@ public class ArchFeature extends Feature<SimpleBlockConfiguration> {
                         BlockState placeState = blockState;
                         Holder<Biome> biome = worldGenLevel.getBiome(blockPos);
                         String biomeName = biome.toString();
-                        boolean addCaveVine = false;
                         if (!HydrolDensityFunctions.isFloatingIslands) {
                             if (worldGenLevel.getBlockState(blockPos).is(Blocks.LAVA)) {
                                 placeState = Blocks.DEEPSLATE_COAL_ORE.defaultBlockState();
@@ -120,9 +120,6 @@ public class ArchFeature extends Feature<SimpleBlockConfiguration> {
                                         }
                                     } else if (y >= 62) {
                                         placeState = Blocks.CALCITE.defaultBlockState();
-                                        if (random.nextInt(1, 10) == 1) {
-                                            addCaveVine = true;
-                                        }
                                     } else {
                                         BlockState maybeNewState = getOceanBlock(biome, biomeName);
                                         if (!maybeNewState.isAir()) {
@@ -133,28 +130,6 @@ public class ArchFeature extends Feature<SimpleBlockConfiguration> {
                             }
                         }
                         worldGenLevel.setBlock(blockPos, placeState, UPDATE_ALL);
-                        if (addCaveVine) {
-                            boolean placedVine = false;
-                            for (int i = y-1; i > worldGenLevel.getSeaLevel()-2; i--) {
-                                BlockPos newBlockPos = new BlockPos(x, i, z);
-                                if (worldGenLevel.getBlockState(newBlockPos).isAir() && Blocks.CAVE_VINES.defaultBlockState().canSurvive(worldGenLevel, newBlockPos)) {
-                                    placedVine = true;
-                                    BlockState vine = Blocks.CAVE_VINES_PLANT.defaultBlockState();
-                                    if (!worldGenLevel.getBlockState(newBlockPos.below()).isAir() || random.nextInt(1, 10) == 1) {
-                                        vine = Blocks.CAVE_VINES.defaultBlockState();
-                                    }
-                                    if (random.nextInt(1, 3) == 1) {
-                                        vine = vine.setValue(BlockStateProperties.BERRIES, true);
-                                    }
-                                    worldGenLevel.setBlock(newBlockPos, vine, UPDATE_ALL);
-                                    if (vine.is(Blocks.CAVE_VINES)) {
-                                        i = 0;
-                                    }
-                                } else if (placedVine) {
-                                    i = 0;
-                                }
-                            }
-                        }
                     }
                 }
             }

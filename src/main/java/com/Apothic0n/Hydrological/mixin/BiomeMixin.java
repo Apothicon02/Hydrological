@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class BiomeMixin {
     @Shadow @Deprecated protected abstract float getTemperature(BlockPos p_47506_);
     @Unique
-    public boolean eco$warmEnoughToRain(BlockPos p_198907_) {
+    public boolean hydrol$warmEnoughToRain(BlockPos p_198907_) {
         return this.getTemperature(p_198907_) >= -0.8F;
     }
 
@@ -25,7 +25,7 @@ public abstract class BiomeMixin {
      */
     @Inject(method = "warmEnoughToRain", at = @At("HEAD"), cancellable = true)
     public void warmEnoughToRain(BlockPos blockPos, CallbackInfoReturnable<Boolean> ci) {
-        ci.setReturnValue(eco$warmEnoughToRain(blockPos));
+        ci.setReturnValue(hydrol$warmEnoughToRain(blockPos));
     }
 
     /**
@@ -34,7 +34,7 @@ public abstract class BiomeMixin {
      */
     @Inject(method = "shouldSnow", at = @At("HEAD"), cancellable = true)
     public void shouldSnow(LevelReader levelReader, BlockPos blockPos, CallbackInfoReturnable<Boolean> ci) {
-        if (this.eco$warmEnoughToRain(blockPos)) {
+        if (this.hydrol$warmEnoughToRain(blockPos)) {
             ci.setReturnValue(false);
         } else if (blockPos.getY() >= levelReader.getMinBuildHeight() && blockPos.getY() < levelReader.getMaxBuildHeight() && levelReader.getBrightness(LightLayer.BLOCK, blockPos) < 10) {
             BlockState blockstate = levelReader.getBlockState(blockPos);
