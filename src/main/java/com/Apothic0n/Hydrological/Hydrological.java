@@ -2,6 +2,7 @@ package com.Apothic0n.Hydrological;
 
 import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
 import com.Apothic0n.Hydrological.api.HydrolJsonReader;
+import com.Apothic0n.Hydrological.api.biome.HydrolSurfaceRules;
 import com.Apothic0n.Hydrological.api.biome.features.HydrolFeatureRegistry;
 import com.Apothic0n.Hydrological.api.biome.features.decorators.HydrolTreeDecoratorType;
 import com.Apothic0n.Hydrological.api.biome.features.foliage_placers.HydrolFoliagePlacerType;
@@ -28,6 +29,7 @@ public class Hydrological {
 
         HydrolJsonReader.main();
         HydrolDensityFunctions.register(eventBus);
+        HydrolSurfaceRules.register(eventBus);
         if (!HydrolJsonReader.serverSidedOnlyMode) {
             EcoParticleTypes.PARTICLE_TYPES.register(eventBus);
             HydrolBlocks.BLOCKS.register(eventBus);

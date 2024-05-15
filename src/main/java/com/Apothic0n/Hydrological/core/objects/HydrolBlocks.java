@@ -29,9 +29,6 @@ public final class HydrolBlocks {
     public static final RegistryObject<Block> AMETHYST_VINES_PLANT = BLOCKS.register("amethyst_vines_plant", () ->
             new AmethystVinesBlock(BlockBehaviour.Properties.copy(AMETHYST_CLUSTER)
                     .noCollission().strength(0.2F).sound(SoundType.LARGE_AMETHYST_BUD)));
-    public static final RegistryObject<Block> GLOWING_AMETHYST = BLOCKS.register("glowing_amethyst", () ->
-            new GlowingAmethystBlock(3, 4, BlockBehaviour.Properties.copy(AMETHYST_CLUSTER)
-                    .lightLevel(brightness -> {return 11;})));
     public static final RegistryObject<Block> AQUATIC_LICHEN = BLOCKS.register("aquatic_lichen", () ->
             new WaterlilyBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GLOW_LICHEN)
                     .replaceable().noCollission().strength(0.2F).sound(SoundType.GLOW_LICHEN).lightLevel(brightness -> {return 7;}).ignitedByLava().pushReaction(PushReaction.DESTROY)));
@@ -42,7 +39,6 @@ public final class HydrolBlocks {
     public static void fixBlockRenderLayers() {
         ItemBlockRenderTypes.setRenderLayer(AMETHYST_VINES.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(AMETHYST_VINES_PLANT.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(GLOWING_AMETHYST.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(AQUATIC_LICHEN.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(DRY_GRASS.get(), RenderType.cutout());
     }

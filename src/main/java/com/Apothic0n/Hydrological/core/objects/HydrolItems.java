@@ -21,8 +21,6 @@ public final class HydrolItems extends Items {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Hydrological.MODID);
 
-    public static final RegistryObject<Item> GLOWING_AMETHYST = ITEMS.register("glowing_amethyst", () ->
-            new BlockItem(HydrolBlocks.GLOWING_AMETHYST.get(), new Item.Properties()));
     public static final RegistryObject<Item> AQUATIC_LICHEN = ITEMS.register("aquatic_lichen", () ->
             new PlaceOnWaterBlockItem(HydrolBlocks.AQUATIC_LICHEN.get(), new Item.Properties()));
     public static final RegistryObject<Item> DRY_GRASS = ITEMS.register("dry_grass", () ->
