@@ -1,6 +1,0 @@
-{
-  "type": "hydrol:to_heightmap",
-  "input": "hydrol:base_terrain",
-  "min_y": 16,
-  "max_y": 239
-}

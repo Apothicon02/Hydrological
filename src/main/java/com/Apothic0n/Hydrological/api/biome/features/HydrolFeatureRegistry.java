@@ -91,8 +91,8 @@ public abstract class HydrolFeatureRegistry {
             new UnlimitedOreSpikeFeature(OreSpikeConfiguration.CODEC));
     public static final RegistryObject<Feature<SimpleBlockConfiguration>> CRYSTAL_FEATURE = FEATURES.register("crystal", () ->
             new CrystalFeature(SimpleBlockConfiguration.CODEC));
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> DRY_GRASS_FEATURE = FEATURES.register("dry_grass", () ->
-            new DryGrassFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature<TripleBlockConfiguration>> COVER_FEATURE = FEATURES.register("cover", () ->
+            new CoverFeature(TripleBlockConfiguration.CODEC));
     public static final RegistryObject<Feature<SimpleBlockConfiguration>> ARCH_FEATURE = FEATURES.register("arch", () ->
             new ArchFeature(SimpleBlockConfiguration.CODEC));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> CAVE_RIVER_FEATURE = FEATURES.register("cave_river", () ->

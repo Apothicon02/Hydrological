@@ -1,0 +1,64 @@
+{
+  "type": "minecraft:range_choice",
+  "input": {
+    "type": "minecraft:y_clamped_gradient",
+    "from_y": 55,
+    "to_y": 56,
+    "from_value": -1,
+    "to_value": 1
+  },
+  "min_inclusive": 0,
+  "max_exclusive": 10,
+  "when_in_range": {
+    "type": "minecraft:range_choice",
+    "input": {
+      "type": "minecraft:y_clamped_gradient",
+      "from_y": 196,
+      "to_y": 197,
+      "from_value": -1,
+      "to_value": 1
+    },
+    "min_inclusive": -10,
+    "max_exclusive": 0,
+    "when_in_range": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:y_clamped_gradient",
+        "from_y": 62,
+        "to_y": 196,
+        "from_value": 0,
+        "to_value": -1
+      },
+      "argument2": {
+        "type": "minecraft:add",
+        "argument1": {
+          "type": "minecraft:y_clamped_gradient",
+          "from_y": 56,
+          "to_y": 64,
+          "from_value": 0,
+          "to_value": -0.0025
+        },
+        "argument2": {
+          "type": "minecraft:abs",
+          "argument": {
+            "type": "minecraft:mul",
+            "argument1": "hydrol:normal/base_noise",
+            "argument2": {
+              "type": "minecraft:mul",
+              "argument1": {
+                "type": "minecraft:y_clamped_gradient",
+                "from_y": 56,
+                "to_y": 96,
+                "from_value": 1,
+                "to_value": 2
+              },
+              "argument2": "hydrol:normal/base_noise"
+            }
+          }
+        }
+      }
+    },
+    "when_out_of_range": -1
+  },
+  "when_out_of_range": 1
+}

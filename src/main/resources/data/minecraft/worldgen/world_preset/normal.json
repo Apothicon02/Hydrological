@@ -9,7 +9,7 @@
           "type": "minecraft:multi_noise",
           "biomes": [
             {
-              "biome": "minecraft:plains",
+              "biome": "minecraft:river",
               "parameters": {
                 "temperature": [
                   -1,
@@ -21,6 +21,31 @@
                 ],
                 "erosion": [
                   -1,
+                  0
+                ],
+                "continentalness": [
+                  -1,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": 0,
+                "offset": 0
+              }
+            },
+
+            {
+              "biome": "minecraft:plains",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  0,
                   1
                 ],
                 "continentalness": [

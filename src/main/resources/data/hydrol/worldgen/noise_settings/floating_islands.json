@@ -26,11 +26,11 @@
     "lava": 0,
     "temperature": {
       "type": "hydrol:store_temperature",
-      "input": "hydrol:temperature"
+      "input": "hydrol:normal/temperature"
     },
     "vegetation": {
       "type": "hydrol:store_humidity",
-      "input": "hydrol:vegetation"
+      "input": "hydrol:normal/vegetation"
     },
     "erosion": {
       "type": "minecraft:y_clamped_gradient",
@@ -260,7 +260,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -295,7 +295,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.3,
                             "max_threshold": -0.1
                           },
@@ -310,7 +310,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": 0.3,
                             "max_threshold": 0.6
                           },
@@ -345,7 +345,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -382,7 +382,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -434,7 +434,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.15,
                             "max_threshold": 0.15
                           },
@@ -469,7 +469,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.8,
                             "max_threshold": -0.7
                           },
@@ -484,7 +484,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.5,
                             "max_threshold": -0.4
                           },
@@ -499,7 +499,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.2,
                             "max_threshold": -0.1
                           },
@@ -514,7 +514,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": 0.1,
                             "max_threshold": 0.2
                           },
@@ -529,7 +529,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": 0.4,
                             "max_threshold": 0.5
                           },
@@ -544,7 +544,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": 0.7,
                             "max_threshold": 0.8
                           },
@@ -579,7 +579,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -614,7 +614,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.15,
                             "max_threshold": 0.15
                           },
@@ -649,7 +649,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.15,
                             "max_threshold": 0.15
                           },
@@ -684,7 +684,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.15,
                             "max_threshold": 0.15
                           },
@@ -719,7 +719,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -755,7 +755,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -790,7 +790,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.15,
                             "max_threshold": 0.15
                           },
@@ -827,7 +827,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -913,7 +913,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.8,
                                   "max_threshold": -0.7
                                 },
@@ -928,7 +928,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.5,
                                   "max_threshold": -0.4
                                 },
@@ -943,7 +943,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.2,
                                   "max_threshold": -0.1
                                 },
@@ -958,7 +958,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.1,
                                   "max_threshold": 0.2
                                 },
@@ -973,7 +973,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.4,
                                   "max_threshold": 0.5
                                 },
@@ -988,7 +988,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.7,
                                   "max_threshold": 0.8
                                 },
@@ -1146,7 +1146,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -1178,7 +1178,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -1228,7 +1228,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0,
                                   "max_threshold": 0.231
                                 },
@@ -1243,7 +1243,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.069,
                                   "max_threshold": 0.3
                                 },
@@ -1295,7 +1295,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -1339,7 +1339,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -1409,7 +1409,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -1482,7 +1482,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -1520,7 +1520,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.78,
                                   "max_threshold": -0.569
                                 },
@@ -1535,7 +1535,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.142
                                 },
@@ -1550,7 +1550,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.669,
                                   "max_threshold": 0.88
                                 },
@@ -1588,7 +1588,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -1796,7 +1796,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -1825,7 +1825,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -1860,7 +1860,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.3,
                                   "max_threshold": -0.1
                                 },
@@ -1875,7 +1875,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.3,
                                   "max_threshold": 0.6
                                 },
@@ -1910,7 +1910,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -1946,7 +1946,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -1985,7 +1985,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -2022,7 +2022,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -2061,7 +2061,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -2076,7 +2076,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -2091,7 +2091,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.037,
                                   "max_threshold": 0.23
                                 },
@@ -2145,7 +2145,7 @@
                                       "type": "minecraft:condition",
                                       "if_true": {
                                         "type": "minecraft:noise_threshold",
-                                        "noise": "hydrol:surface_variation",
+                                        "noise": "hydrol:global/surface_variation",
                                         "min_threshold": -0.069,
                                         "max_threshold": 0.042
                                       },
@@ -2189,7 +2189,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -2239,7 +2239,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -2292,7 +2292,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.66,
                                   "max_threshold": -0.5
                                 },
@@ -2307,7 +2307,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -2322,7 +2322,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.109,
                                   "max_threshold": 0.082
                                 },
@@ -2411,7 +2411,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -2426,7 +2426,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.6,
                                   "max_threshold": -0.444
                                 },
@@ -2441,7 +2441,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.333,
                                   "max_threshold": 0.5
                                 },
@@ -2537,7 +2537,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -2555,7 +2555,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.042,
                                   "max_threshold": 0.18
                                 },
@@ -2594,7 +2594,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -2635,7 +2635,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -2688,7 +2688,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -2703,7 +2703,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.169,
                                   "max_threshold": 0.142
                                 },
@@ -2789,7 +2789,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -2824,7 +2824,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.3,
                             "max_threshold": -0.1
                           },
@@ -2839,7 +2839,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": 0.3,
                             "max_threshold": 0.6
                           },
@@ -2874,7 +2874,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -2944,7 +2944,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.8,
                                   "max_threshold": -0.7
                                 },
@@ -2959,7 +2959,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.5,
                                   "max_threshold": -0.4
                                 },
@@ -2974,7 +2974,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.2,
                                   "max_threshold": -0.1
                                 },
@@ -2989,7 +2989,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.1,
                                   "max_threshold": 0.2
                                 },
@@ -3004,7 +3004,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.4,
                                   "max_threshold": 0.5
                                 },
@@ -3019,7 +3019,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.7,
                                   "max_threshold": 0.8
                                 },
@@ -3176,7 +3176,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.8,
                             "max_threshold": -0.7
                           },
@@ -3191,7 +3191,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.5,
                             "max_threshold": -0.4
                           },
@@ -3206,7 +3206,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.2,
                             "max_threshold": -0.1
                           },
@@ -3221,7 +3221,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": 0.1,
                             "max_threshold": 0.2
                           },
@@ -3236,7 +3236,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": 0.4,
                             "max_threshold": 0.5
                           },
@@ -3251,7 +3251,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": 0.7,
                             "max_threshold": 0.8
                           },
@@ -3286,7 +3286,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -3322,7 +3322,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.15,
                             "max_threshold": 0.15
                           },
@@ -3357,7 +3357,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.15,
                             "max_threshold": 0.15
                           },
@@ -3392,7 +3392,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -3444,7 +3444,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -3495,7 +3495,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -3527,7 +3527,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.15,
                             "max_threshold": 0.15
                           },
@@ -3563,7 +3563,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -3602,7 +3602,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.069,
                             "max_threshold": 0.042
                           },
@@ -3638,7 +3638,7 @@
                           "type": "minecraft:condition",
                           "if_true": {
                             "type": "minecraft:noise_threshold",
-                            "noise": "hydrol:surface_variation",
+                            "noise": "hydrol:global/surface_variation",
                             "min_threshold": -0.15,
                             "max_threshold": 0.15
                           },
@@ -3688,7 +3688,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0,
                                   "max_threshold": 0.231
                                 },
@@ -3703,7 +3703,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.069,
                                   "max_threshold": 0.3
                                 },
@@ -3755,7 +3755,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -3828,7 +3828,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -3843,7 +3843,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.05,
                                   "max_threshold": 0.161
                                 },
@@ -3899,7 +3899,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -3937,7 +3937,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -3972,7 +3972,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.3,
                                   "max_threshold": -0.1
                                 },
@@ -3987,7 +3987,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.3,
                                   "max_threshold": 0.6
                                 },
@@ -4022,7 +4022,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4073,7 +4073,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4112,7 +4112,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4149,7 +4149,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4188,7 +4188,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4203,7 +4203,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4218,7 +4218,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.037,
                                   "max_threshold": 0.23
                                 },
@@ -4272,7 +4272,7 @@
                                       "type": "minecraft:condition",
                                       "if_true": {
                                         "type": "minecraft:noise_threshold",
-                                        "noise": "hydrol:surface_variation",
+                                        "noise": "hydrol:global/surface_variation",
                                         "min_threshold": -0.069,
                                         "max_threshold": 0.042
                                       },
@@ -4296,7 +4296,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4335,7 +4335,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4350,7 +4350,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.169,
                                   "max_threshold": 0.142
                                 },
@@ -4403,7 +4403,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.66,
                                   "max_threshold": -0.5
                                 },
@@ -4418,7 +4418,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4433,7 +4433,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.109,
                                   "max_threshold": 0.082
                                 },
@@ -4508,7 +4508,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4546,7 +4546,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4561,7 +4561,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.6,
                                   "max_threshold": -0.444
                                 },
@@ -4576,7 +4576,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.333,
                                   "max_threshold": 0.5
                                 },
@@ -4611,7 +4611,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4666,7 +4666,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4722,7 +4722,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -4740,7 +4740,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": 0.042,
                                   "max_threshold": 0.18
                                 },
@@ -4795,7 +4795,7 @@
                                 "type": "minecraft:condition",
                                 "if_true": {
                                   "type": "minecraft:noise_threshold",
-                                  "noise": "hydrol:surface_variation",
+                                  "noise": "hydrol:global/surface_variation",
                                   "min_threshold": -0.069,
                                   "max_threshold": 0.042
                                 },
@@ -5002,7 +5002,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": -0.7,
                           "max_threshold": -0.5
                         },
@@ -5017,7 +5017,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0,
                           "max_threshold": 0.2
                         },
@@ -5032,7 +5032,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0.3,
                           "max_threshold": 0.4
                         },
@@ -5047,7 +5047,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0.8,
                           "max_threshold": 1
                         },
@@ -5062,7 +5062,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0.8,
                           "max_threshold": 1
                         },
@@ -5097,7 +5097,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": -0.7,
                           "max_threshold": -0.5
                         },
@@ -5112,7 +5112,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": -0.2,
                           "max_threshold": 0
                         },
@@ -5127,7 +5127,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0.3,
                           "max_threshold": 0.5
                         },
@@ -5142,7 +5142,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0.8,
                           "max_threshold": 1
                         },
@@ -5171,7 +5171,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": -0.7,
                           "max_threshold": -0.5
                         },
@@ -5186,7 +5186,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": -0.2,
                           "max_threshold": 0
                         },
@@ -5201,7 +5201,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0.3,
                           "max_threshold": 0.5
                         },
@@ -5216,7 +5216,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0.8,
                           "max_threshold": 1
                         },
@@ -5281,7 +5281,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0.8,
                           "max_threshold": 1
                         },
@@ -5316,7 +5316,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": -0.7,
                           "max_threshold": -0.5
                         },
@@ -5331,7 +5331,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0,
                           "max_threshold": 0.2
                         },
@@ -5346,7 +5346,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0.3,
                           "max_threshold": 0.4
                         },
@@ -5361,7 +5361,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0.8,
                           "max_threshold": 1
                         },
@@ -5376,7 +5376,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0.8,
                           "max_threshold": 1
                         },
@@ -5412,7 +5412,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": -0.7,
                           "max_threshold": -0.5
                         },
@@ -5427,7 +5427,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": -0.2,
                           "max_threshold": 0
                         },
@@ -5442,7 +5442,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0.3,
                           "max_threshold": 0.5
                         },
@@ -5457,7 +5457,7 @@
                         "type": "minecraft:condition",
                         "if_true": {
                           "type": "minecraft:noise_threshold",
-                          "noise": "hydrol:surface_variation",
+                          "noise": "hydrol:global/surface_variation",
                           "min_threshold": 0.8,
                           "max_threshold": 1
                         },
@@ -5513,7 +5513,7 @@
                   "type": "minecraft:condition",
                   "if_true": {
                     "type": "minecraft:noise_threshold",
-                    "noise": "hydrol:surface_variation",
+                    "noise": "hydrol:global/surface_variation",
                     "min_threshold": -0.069,
                     "max_threshold": 0.042
                   },
@@ -5537,7 +5537,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:temperature",
+              "noise": "hydrol:normal/temperature",
               "min_threshold": -10,
               "max_threshold": -0.25
             },
@@ -5556,7 +5556,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": 0.8,
                       "max_threshold": 1
                     },
@@ -5571,7 +5571,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": 0.75,
                       "max_threshold": 0.8
                     },
@@ -5589,7 +5589,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": 0.69,
                       "max_threshold": 0.75
                     },
@@ -5604,7 +5604,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": 0.5,
                       "max_threshold": 0.69
                     },
@@ -5619,7 +5619,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": 0.3,
                       "max_threshold": 0.5
                     },
@@ -5634,7 +5634,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": 0.14,
                       "max_threshold": 0.3
                     },
@@ -5649,7 +5649,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": 0,
                       "max_threshold": 0.14
                     },
@@ -5664,7 +5664,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": -0.069,
                       "max_threshold": 0
                     },
@@ -5682,7 +5682,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": -0.1,
                       "max_threshold": -0.069
                     },
@@ -5697,7 +5697,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": -0.2,
                       "max_threshold": -0.1
                     },
@@ -5712,7 +5712,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": -0.4,
                       "max_threshold": -0.1
                     },
@@ -5727,7 +5727,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": -0.46,
                       "max_threshold": -0.4
                     },
@@ -5745,7 +5745,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": -0.6,
                       "max_threshold": -0.46
                     },
@@ -5760,7 +5760,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": -0.8,
                       "max_threshold": -0.6
                     },
@@ -5775,7 +5775,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": -0.84,
                       "max_threshold": -0.8
                     },
@@ -5793,7 +5793,7 @@
                     "type": "minecraft:condition",
                     "if_true": {
                       "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:surface_variation",
+                      "noise": "hydrol:global/surface_variation",
                       "min_threshold": -1,
                       "max_threshold": -0.84
                     },
@@ -5818,7 +5818,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:temperature",
+              "noise": "hydrol:normal/temperature",
               "min_threshold": 0.8,
               "max_threshold": 10
             },
@@ -5829,7 +5829,7 @@
                   "type": "minecraft:condition",
                   "if_true": {
                     "type": "minecraft:noise_threshold",
-                    "noise": "hydrol:vegetation",
+                    "noise": "hydrol:normal/vegetation",
                     "min_threshold": 0,
                     "max_threshold": 10
                   },
@@ -6977,7 +6977,7 @@
                   "type": "minecraft:condition",
                   "if_true": {
                     "type": "minecraft:noise_threshold",
-                    "noise": "hydrol:vegetation",
+                    "noise": "hydrol:normal/vegetation",
                     "min_threshold": -10,
                     "max_threshold": 0
                   },
@@ -7259,7 +7259,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": 0.8,
               "max_threshold": 1
             },
@@ -7274,7 +7274,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": 0.75,
               "max_threshold": 0.8
             },
@@ -7289,7 +7289,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": 0.69,
               "max_threshold": 0.75
             },
@@ -7304,7 +7304,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": 0.5,
               "max_threshold": 0.69
             },
@@ -7319,7 +7319,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": 0.3,
               "max_threshold": 0.5
             },
@@ -7334,7 +7334,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": 0.14,
               "max_threshold": 0.3
             },
@@ -7349,7 +7349,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": 0,
               "max_threshold": 0.14
             },
@@ -7364,7 +7364,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": -0.069,
               "max_threshold": 0
             },
@@ -7379,7 +7379,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": -0.1,
               "max_threshold": -0.069
             },
@@ -7394,7 +7394,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": -0.2,
               "max_threshold": -0.1
             },
@@ -7409,7 +7409,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": -0.4,
               "max_threshold": -0.1
             },
@@ -7424,7 +7424,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": -0.46,
               "max_threshold": -0.4
             },
@@ -7439,7 +7439,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": -0.6,
               "max_threshold": -0.46
             },
@@ -7454,7 +7454,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": -0.8,
               "max_threshold": -0.6
             },
@@ -7469,7 +7469,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": -0.84,
               "max_threshold": -0.8
             },
@@ -7484,7 +7484,7 @@
             "type": "minecraft:condition",
             "if_true": {
               "type": "minecraft:noise_threshold",
-              "noise": "hydrol:surface_variation",
+              "noise": "hydrol:global/surface_variation",
               "min_threshold": -1,
               "max_threshold": -0.84
             },

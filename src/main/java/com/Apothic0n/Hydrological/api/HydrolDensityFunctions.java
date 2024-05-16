@@ -23,6 +23,7 @@ public final class HydrolDensityFunctions {
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_BEACHES_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_beaches", FloatingBeaches.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_islands", FloatingIslands.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> TO_HEIGHTMAP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("to_heightmap", ToHeightmap.CODEC::codec);
+    public static final RegistryObject<Codec<? extends DensityFunction>> GRADIENT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("gradient", Gradient.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> SHIFT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("shift", Shift.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLATTEN_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("flatten", Flatten.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> STORE_TEMPERATURE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("store_temperature", StoreTemperature.CODEC::codec);
@@ -144,15 +145,15 @@ public final class HydrolDensityFunctions {
             return CODEC;
         }
     }
-    protected record Shift(DensityFunction input, int shiftX, int shiftY, int shiftZ) implements DensityFunction {
+    protected record Gradient(DensityFunction from_y, DensityFunction to_y, DensityFunction from_value, DensityFunction to_value) implements DensityFunction {
         private static final MapCodec<Shift> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
-            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(Shift::input), Codec.INT.fieldOf("shift_x").forGetter(Shift::shiftX), Codec.INT.fieldOf("shift_y").forGetter(Shift::shiftY), Codec.INT.fieldOf("shift_z").forGetter(Shift::shiftZ)).apply(data, Shift::new);
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("from_y").forGetter(Shift::input), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("to_y").forGetter(Shift::shiftX), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("from_value").forGetter(Shift::shiftY), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("to_value").forGetter(Shift::shiftZ)).apply(data, Shift::new);
         });
         public static final KeyDispatchDataCodec<Shift> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
 
         @Override
         public double compute(@NotNull FunctionContext context) {
-            return input.compute(new DensityFunction.SinglePointContext(context.blockX()+shiftX(), context.blockY()+shiftY(), context.blockZ()+shiftZ()));
+            return HydrolMath.gradient(context.blockY(), (int) from_y().compute(context), (int) to_y().compute(context), (float) from_value().compute(context), (float) to_value().compute(context));
         }
 
         @Override
@@ -162,7 +163,44 @@ public final class HydrolDensityFunctions {
 
         @Override
         public @NotNull DensityFunction mapAll(Visitor visitor) {
-            return visitor.apply(new Shift(this.input().mapAll(visitor), shiftX(), shiftY(), shiftZ()));
+            return visitor.apply(new Shift(from_y().mapAll(visitor), to_y().mapAll(visitor), from_value().mapAll(visitor), to_value().mapAll(visitor)));
+        }
+
+        @Override
+        public double minValue() {
+            return -1875000d;
+        }
+
+        @Override
+        public double maxValue() {
+            return 1875000d;
+        }
+
+        @Override
+        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
+            return CODEC;
+        }
+
+    }
+    protected record Shift(DensityFunction input, DensityFunction shiftX, DensityFunction shiftY, DensityFunction shiftZ) implements DensityFunction {
+        private static final MapCodec<Shift> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(Shift::input), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("shift_x").forGetter(Shift::shiftX), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("shift_y").forGetter(Shift::shiftY), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("shift_z").forGetter(Shift::shiftZ)).apply(data, Shift::new);
+        });
+        public static final KeyDispatchDataCodec<Shift> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
+
+        @Override
+        public double compute(@NotNull FunctionContext context) {
+            return input.compute(new DensityFunction.SinglePointContext((int) (context.blockX()+shiftX().compute(context)), (int) (context.blockY()+shiftY().compute(context)), (int) (context.blockZ()+shiftZ().compute(context))));
+        }
+
+        @Override
+        public void fillArray(double @NotNull [] densities, ContextProvider context) {
+            context.fillAllDirectly(densities, this);
+        }
+
+        @Override
+        public @NotNull DensityFunction mapAll(Visitor visitor) {
+            return visitor.apply(new Shift(input().mapAll(visitor), shiftX().mapAll(visitor), shiftY().mapAll(visitor), shiftZ().mapAll(visitor)));
         }
 
         @Override

@@ -1,0 +1,30 @@
+{
+  "type": "hydrol:cover",
+  "config": {
+    "primary": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:grass"
+      }
+    },
+    "secondary": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:tall_grass",
+        "Properties": {
+          "half": "lower"
+        }
+      }
+    },
+    "tertiary": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:tall_grass",
+        "Properties": {
+          "half": "upper"
+        }
+      }
+    },
+    "covering": "#minecraft:dirt"
+  }
+}

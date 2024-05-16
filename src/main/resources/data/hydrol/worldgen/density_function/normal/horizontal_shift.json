@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:y_clamped_gradient",
+    "from_y": 69,
+    "to_y": 290,
+    "from_value": 0,
+    "to_value": 172
+  },
+  "argument2": {
+    "type": "minecraft:mul",
+    "argument1": {
+      "type": "minecraft:y_clamped_gradient",
+      "from_y": 65,
+      "to_y": 68,
+      "from_value": 0,
+      "to_value": 3
+    },
+    "argument2": {
+      "type": "minecraft:interpolated",
+      "argument": "hydrol:global/surface_variation"
+    }
+  }
+}
