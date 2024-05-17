@@ -27,15 +27,15 @@ public class LargeBlackstonePillarFeature extends Feature<LargeDripstoneConfigur
     }
 
     public boolean place(FeaturePlaceContext<LargeDripstoneConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = new BlockPos((int) pContext.origin().getCenter().x(), pContext.origin().getY(), (int) pContext.origin().getCenter().z());
         RandomSource random = pContext.random();
         LargeDripstoneConfiguration config = pContext.config();
 
-        if (!DripstoneUtils.isEmptyOrWaterOrLava(worldgenlevel, blockpos)) {
+        if (!DripstoneUtils.isEmptyOrWaterOrLava(worldGenLevel, blockpos)) {
             return false;
         } else {
-            Optional<Column> optional = Column.scan(worldgenlevel, blockpos, config.floorToCeilingSearchRange, DripstoneUtils::isEmptyOrWater, DripstoneUtils::isDripstoneBaseOrLava);
+            Optional<Column> optional = Column.scan(worldGenLevel, blockpos, config.floorToCeilingSearchRange, DripstoneUtils::isEmptyOrWater, DripstoneUtils::isDripstoneBaseOrLava);
             if (optional.isPresent() && optional.get() instanceof Column.Range) {
                 Column.Range column$range = (Column.Range) optional.get();
                 if (column$range.height() < 4) {
@@ -53,14 +53,14 @@ public class LargeBlackstonePillarFeature extends Feature<LargeDripstoneConfigur
                         largepillarfeature$windoffsetter = WindOffsetter.noWind();
                     }
 
-                    boolean flag = largepillarfeature$largepillar.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(worldgenlevel, largepillarfeature$windoffsetter);
-                    boolean flag1 = largepillarfeature$largepillar1.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(worldgenlevel, largepillarfeature$windoffsetter);
+                    boolean flag = largepillarfeature$largepillar.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(worldGenLevel, largepillarfeature$windoffsetter);
+                    boolean flag1 = largepillarfeature$largepillar1.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(worldGenLevel, largepillarfeature$windoffsetter);
                     if (flag) {
-                        largepillarfeature$largepillar.placeBlocks(worldgenlevel, random, largepillarfeature$windoffsetter);
+                        largepillarfeature$largepillar.placeBlocks(worldGenLevel, random, largepillarfeature$windoffsetter);
                     }
 
                     if (flag1) {
-                        largepillarfeature$largepillar1.placeBlocks(worldgenlevel, random, largepillarfeature$windoffsetter);
+                        largepillarfeature$largepillar1.placeBlocks(worldGenLevel, random, largepillarfeature$windoffsetter);
                     }
 
                     return true;

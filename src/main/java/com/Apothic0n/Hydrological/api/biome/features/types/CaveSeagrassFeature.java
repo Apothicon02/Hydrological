@@ -20,23 +20,23 @@ public class CaveSeagrassFeature extends Feature<ProbabilityFeatureConfiguration
     public boolean place(FeaturePlaceContext<ProbabilityFeatureConfiguration> pContext) {
         boolean flag = false;
         RandomSource random = pContext.random();
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = pContext.origin();
         ProbabilityFeatureConfiguration probabilityfeatureconfiguration = pContext.config();
         BlockPos blockpos1 = new BlockPos(blockpos.getX(), blockpos.above().getY(), blockpos.getZ());
-        if (worldgenlevel.getBlockState(blockpos1).is(Blocks.WATER)) {
+        if (worldGenLevel.getBlockState(blockpos1).is(Blocks.WATER)) {
             boolean flag1 = random.nextDouble() < (double)probabilityfeatureconfiguration.probability;
             BlockState blockstate = flag1 ? Blocks.TALL_SEAGRASS.defaultBlockState() : Blocks.SEAGRASS.defaultBlockState();
-            if (blockstate.canSurvive(worldgenlevel, blockpos1)) {
+            if (blockstate.canSurvive(worldGenLevel, blockpos1)) {
                 if (flag1) {
                     BlockState blockstate1 = blockstate.setValue(TallSeagrassBlock.HALF, DoubleBlockHalf.UPPER);
                     BlockPos blockpos2 = blockpos1.above();
-                    if (worldgenlevel.getBlockState(blockpos2).is(Blocks.WATER)) {
-                        worldgenlevel.setBlock(blockpos1, blockstate, 2);
-                        worldgenlevel.setBlock(blockpos2, blockstate1, 2);
+                    if (worldGenLevel.getBlockState(blockpos2).is(Blocks.WATER)) {
+                        worldGenLevel.setBlock(blockpos1, blockstate, 2);
+                        worldGenLevel.setBlock(blockpos2, blockstate1, 2);
                     }
                 } else {
-                    worldgenlevel.setBlock(blockpos1, blockstate, 2);
+                    worldGenLevel.setBlock(blockpos1, blockstate, 2);
                 }
 
                 flag = true;

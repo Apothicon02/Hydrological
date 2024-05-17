@@ -19,7 +19,7 @@ public class SpiralFeature extends Feature<SpiralConfiguration> {
     }
 
     public boolean place(FeaturePlaceContext<SpiralConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = pContext.origin();
         RandomSource random = pContext.random();
         SpiralConfiguration config = pContext.config();
@@ -29,8 +29,8 @@ public class SpiralFeature extends Feature<SpiralConfiguration> {
         Integer blobMass = config.getBlobMass().sample(random);
         Integer blobWidth = config.getBlobWidth().sample(random);
         Integer blobHeight = config.getBlobHeight().sample(random);
-        if (!worldgenlevel.isEmptyBlock(blockpos) && validBlocks.contains(worldgenlevel.getBlockState(blockpos.above()).getBlock().defaultBlockState())) {
-            worldgenlevel.setBlock(blockpos, stemMaterial.defaultBlockState(), 2);
+        if (!worldGenLevel.isEmptyBlock(blockpos) && validBlocks.contains(worldGenLevel.getBlockState(blockpos.above()).getBlock().defaultBlockState())) {
+            worldGenLevel.setBlock(blockpos, stemMaterial.defaultBlockState(), 2);
             BlockPos blockpos1 = blockpos;
             boolean northNegative = false;//x
             boolean eastNegative = false;//z
@@ -56,21 +56,21 @@ public class SpiralFeature extends Feature<SpiralConfiguration> {
                 } else {
                     blockpos1 = new BlockPos(blockpos1.getX(), blockpos1.getY() - 1, blockpos1.getZ());
                 }
-                worldgenlevel.setBlock(blockpos1, stemMaterial.defaultBlockState(), 2);
-                worldgenlevel.setBlock(blockpos1.below(), stemMaterial.defaultBlockState(), 2);
-                worldgenlevel.setBlock(blockpos1.above(), stemMaterial.defaultBlockState(), 2);
+                worldGenLevel.setBlock(blockpos1, stemMaterial.defaultBlockState(), 2);
+                worldGenLevel.setBlock(blockpos1.below(), stemMaterial.defaultBlockState(), 2);
+                worldGenLevel.setBlock(blockpos1.above(), stemMaterial.defaultBlockState(), 2);
                 if (spiralStep == 1) {
-                    worldgenlevel.setBlock(blockpos1.north(), stemMaterial.defaultBlockState(), 2);
-                    worldgenlevel.setBlock(blockpos1.east(), stemMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.north(), stemMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.east(), stemMaterial.defaultBlockState(), 2);
                 } else if (spiralStep == 2) {
-                    worldgenlevel.setBlock(blockpos1.east(), stemMaterial.defaultBlockState(), 2);
-                    worldgenlevel.setBlock(blockpos1.south(), stemMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.east(), stemMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.south(), stemMaterial.defaultBlockState(), 2);
                 } else if (spiralStep == 3) {
-                    worldgenlevel.setBlock(blockpos1.south(), stemMaterial.defaultBlockState(), 2);
-                    worldgenlevel.setBlock(blockpos1.west(), stemMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.south(), stemMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.west(), stemMaterial.defaultBlockState(), 2);
                 } else if (spiralStep == 4) {
-                    worldgenlevel.setBlock(blockpos1.west(), stemMaterial.defaultBlockState(), 2);
-                    worldgenlevel.setBlock(blockpos1.north(), stemMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.west(), stemMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.north(), stemMaterial.defaultBlockState(), 2);
                     spiralStep = 0;
                 }
                 int xDistance = blockpos1.getX() - blockpos.getX();
@@ -81,13 +81,13 @@ public class SpiralFeature extends Feature<SpiralConfiguration> {
                     for (int b = 1; b <= 4;) {
                         int randomNumber3 = (int)(Math.random()*(2));
                         if (randomNumber3 >= 1) {
-                            placeBranch(worldgenlevel, blockpos1.below(b).north(randomNumber3).east(randomNumber3 - 1), leafMaterial.defaultBlockState());
+                            placeBranch(worldGenLevel, blockpos1.below(b).north(randomNumber3).east(randomNumber3 - 1), leafMaterial.defaultBlockState());
                             b++;
                         } else {
                             b = 5;
                             int randomNumber4 = (int)(Math.random()*(8));
                             if (randomNumber4 >= 7 && Blocks.WARPED_WART_BLOCK.equals(leafMaterial)) {
-                                worldgenlevel.setBlock(blockpos1.below(b), Blocks.SHROOMLIGHT.defaultBlockState(), 2);
+                                worldGenLevel.setBlock(blockpos1.below(b), Blocks.SHROOMLIGHT.defaultBlockState(), 2);
                             }
                         }
                     }

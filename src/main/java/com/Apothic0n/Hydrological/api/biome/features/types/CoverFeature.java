@@ -40,7 +40,7 @@ public class CoverFeature extends Feature<TripleBlockConfiguration> {
 
     @Override
     public boolean place(FeaturePlaceContext<TripleBlockConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         RandomSource random = pContext.random();
         BlockPos origin = pContext.origin();
         BlockState primary = pContext.config().primary().getState(random, origin);
@@ -59,35 +59,39 @@ public class CoverFeature extends Feature<TripleBlockConfiguration> {
         boolean placedAnything = false;
         for (int x = origin.getX(); x <= origin.getX()+16; x++) {
             for (int z = origin.getZ(); z <= origin.getZ()+16; z++) {
-                BlockPos blockPos = new BlockPos(x, worldgenlevel.getHeight(Heightmap.Types.WORLD_SURFACE_WG, x, z), z);
-                BlockState belowState = worldgenlevel.getBlockState(blockPos.below());
-                if (worldgenlevel.getBlockState(blockPos).is(Blocks.AIR) && belowState.is(covering)) {
+                BlockPos blockPos = new BlockPos(x, worldGenLevel.getHeight(Heightmap.Types.WORLD_SURFACE_WG, x, z), z);
+                BlockPos belowPos = blockPos.below();
+                BlockState belowState = worldGenLevel.getBlockState(belowPos);
+                if (worldGenLevel.getBlockState(blockPos).is(Blocks.AIR) && belowState.is(covering)) {
+                    if (belowState.is(Blocks.COARSE_DIRT) || belowState.is(Blocks.ROOTED_DIRT)) {
+                        belowState = Blocks.GRASS_BLOCK.defaultBlockState();
+                        worldGenLevel.setBlock(belowPos, belowState, UPDATE_ALL);
+                    }
                     if (belowState.is(Blocks.GRASS_BLOCK) || covering != BlockTags.DIRT) {
-                        double height = HEIGHT_NOISE.getValue(x, z, false);
                         int chance = random.nextInt(0, 100);
-                        if ((height > 0.33 && chance > Math.min(88, (blockPos.getY()*2)-63)) || (blockPos.getY() == 63 && chance >= 75) || chance >= 99) {
+                        if ((HEIGHT_NOISE.getValue(x, z, false) > 0.33 && chance > Math.min(88, (blockPos.getY()*2)-63)) || (blockPos.getY() == 63 && chance >= 75) || chance >= 99) {
                             if (!HydrolJsonReader.serverSidedOnlyMode && tertiary.is(HydrolBlocks.DRY_GRASS.get())) {
-                                worldgenlevel.setBlock(blockPos, primary, UPDATE_ALL);
-                                worldgenlevel.setBlock(blockPos.above(), secondary, UPDATE_ALL);
-                                worldgenlevel.setBlock(blockPos.above(2), tertiary, UPDATE_ALL);
+                                worldGenLevel.setBlock(blockPos, primary, UPDATE_ALL);
+                                worldGenLevel.setBlock(blockPos.above(), secondary, UPDATE_ALL);
+                                worldGenLevel.setBlock(blockPos.above(2), tertiary, UPDATE_ALL);
                             } else {
-                                worldgenlevel.setBlock(blockPos, secondary, UPDATE_ALL);
-                                worldgenlevel.setBlock(blockPos.above(), tertiary, UPDATE_ALL);
+                                worldGenLevel.setBlock(blockPos, secondary, UPDATE_ALL);
+                                worldGenLevel.setBlock(blockPos.above(), tertiary, UPDATE_ALL);
                             }
                         } else {
                             if (!HydrolJsonReader.serverSidedOnlyMode && tertiary.is(HydrolBlocks.DRY_GRASS.get())) {
-                                worldgenlevel.setBlock(blockPos, secondary, UPDATE_ALL);
-                                worldgenlevel.setBlock(blockPos.above(), tertiary, UPDATE_ALL);
+                                worldGenLevel.setBlock(blockPos, secondary, UPDATE_ALL);
+                                worldGenLevel.setBlock(blockPos.above(), tertiary, UPDATE_ALL);
                             } else {
-                                worldgenlevel.setBlock(blockPos, primary, UPDATE_ALL);
+                                worldGenLevel.setBlock(blockPos, primary, UPDATE_ALL);
                             }
                         }
                         placedAnything = true;
                     } else if ((random.nextFloat()*4)+1 >= 4) {
                         if (!HydrolJsonReader.serverSidedOnlyMode && tertiary.is(HydrolBlocks.DRY_GRASS.get())) {
-                            worldgenlevel.setBlock(blockPos, tertiary, UPDATE_ALL);
+                            worldGenLevel.setBlock(blockPos, tertiary, UPDATE_ALL);
                         } else {
-                            worldgenlevel.setBlock(blockPos, primary, UPDATE_ALL);
+                            worldGenLevel.setBlock(blockPos, primary, UPDATE_ALL);
                         }
                         placedAnything = true;
                     }

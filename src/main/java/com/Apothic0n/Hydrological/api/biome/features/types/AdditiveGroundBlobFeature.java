@@ -14,7 +14,7 @@ public class AdditiveGroundBlobFeature extends Feature<VerticalBlobConfiguration
     public AdditiveGroundBlobFeature(Codec<VerticalBlobConfiguration> pContext) {super(pContext);}
 
     public boolean place(FeaturePlaceContext<VerticalBlobConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = pContext.origin();
         RandomSource random = pContext.random();
         VerticalBlobConfiguration config = pContext.config();
@@ -24,19 +24,19 @@ public class AdditiveGroundBlobFeature extends Feature<VerticalBlobConfiguration
         Integer blobMass = config.getBlobMass().sample(random);
         Integer blobWidth = config.getBlobWidth().sample(random);
         Integer blobHeight = config.getBlobHeight().sample(random);
-        if (worldgenlevel.isEmptyBlock(blockpos)) {
+        if (worldGenLevel.isEmptyBlock(blockpos)) {
             return false;
         } else {
-            BlockState blockstate = worldgenlevel.getBlockState(blockpos.below());
+            BlockState blockstate = worldGenLevel.getBlockState(blockpos.below());
             if (!blockstate.is(standOn) && !blockstate.is(standOn2) && !blockstate.is(blobMaterial)) {
                 return false;
             } else {
-                worldgenlevel.setBlock(blockpos, blobMaterial.defaultBlockState(), 2);
+                worldGenLevel.setBlock(blockpos, blobMaterial.defaultBlockState(), 2);
                 for(int i = 0; i < blobMass; ++i) {
                     BlockPos blockpos1 = blockpos.offset(random.nextInt(blobWidth) - random.nextInt(blobWidth), random.nextInt(blobHeight), random.nextInt(blobWidth) - random.nextInt(blobWidth));
-                    BlockState blockBelow = worldgenlevel.getBlockState(blockpos1.below());
+                    BlockState blockBelow = worldGenLevel.getBlockState(blockpos1.below());
                     if (blockBelow.is(standOn) || blockBelow.is(standOn2) || blockBelow.is(blobMaterial)) {
-                        worldgenlevel.setBlock(blockpos1, blobMaterial.defaultBlockState(), 2);
+                        worldGenLevel.setBlock(blockpos1, blobMaterial.defaultBlockState(), 2);
                     }
                 }
                 return true;

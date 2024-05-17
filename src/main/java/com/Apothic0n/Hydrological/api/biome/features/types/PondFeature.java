@@ -18,124 +18,124 @@ public class PondFeature extends Feature<DoubleBlockConfiguration> {
     }
 
     public boolean place(FeaturePlaceContext<DoubleBlockConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = pContext.origin();
         RandomSource random = pContext.random();
         BlockState material = pContext.config().toPlace().getState(random, blockpos);
         BlockState slab = pContext.config().slabToPlace().getState(random, blockpos);
         BlockState water = Blocks.WATER.defaultBlockState();
         BlockState mud = Blocks.MUD.defaultBlockState();
-        if (!worldgenlevel.getBlockState(blockpos.offset(3, 0, 0)).canBeReplaced() && !worldgenlevel.getBlockState(blockpos.offset(0, 0, 3)).canBeReplaced() ||
-                !worldgenlevel.getBlockState(blockpos.offset(-3, 0, 0)).canBeReplaced() && !worldgenlevel.getBlockState(blockpos.offset(0, 0, -3)).canBeReplaced() ||
-                !worldgenlevel.getBlockState(blockpos.offset(2, -1, 2)).canBeReplaced() && !worldgenlevel.getBlockState(blockpos.offset(-2, -1, 2)).canBeReplaced() ||
-                !worldgenlevel.getBlockState(blockpos.offset(-2, -1, -2)).canBeReplaced() && !worldgenlevel.getBlockState(blockpos.offset(2, -1, -2)).canBeReplaced()) {
+        if (!worldGenLevel.getBlockState(blockpos.offset(3, 0, 0)).canBeReplaced() && !worldGenLevel.getBlockState(blockpos.offset(0, 0, 3)).canBeReplaced() ||
+                !worldGenLevel.getBlockState(blockpos.offset(-3, 0, 0)).canBeReplaced() && !worldGenLevel.getBlockState(blockpos.offset(0, 0, -3)).canBeReplaced() ||
+                !worldGenLevel.getBlockState(blockpos.offset(2, -1, 2)).canBeReplaced() && !worldGenLevel.getBlockState(blockpos.offset(-2, -1, 2)).canBeReplaced() ||
+                !worldGenLevel.getBlockState(blockpos.offset(-2, -1, -2)).canBeReplaced() && !worldGenLevel.getBlockState(blockpos.offset(2, -1, -2)).canBeReplaced()) {
             return false;
         }
-        worldgenlevel.setBlock(blockpos.offset(0, -1, 0), water, 2);
-        worldgenlevel.setBlock(blockpos.offset(0, 0, 0), Blocks.LILY_PAD.defaultBlockState(), 2);
-        worldgenlevel.setBlock(blockpos.offset(1, -1, 0), water, 2);
-        worldgenlevel.setBlock(blockpos.offset(0, -1, 1), water, 2);
-        worldgenlevel.setBlock(blockpos.offset(-1, -1, 0), water, 2);
-        worldgenlevel.setBlock(blockpos.offset(0, -1, -1), water, 2);
-        worldgenlevel.setBlock(blockpos.offset(1, -1, 1), water, 2);
-        worldgenlevel.setBlock(blockpos.offset(-1, -1, -1), water, 2);
-        worldgenlevel.setBlock(blockpos.offset(-1, -1, 1), water, 2);
-        worldgenlevel.setBlock(blockpos.offset(-1, -1, 1), Blocks.SEAGRASS.defaultBlockState(), 2);
-        worldgenlevel.setBlock(blockpos.offset(1, -1, -1), water, 2);
+        worldGenLevel.setBlock(blockpos.offset(0, -1, 0), water, 2);
+        worldGenLevel.setBlock(blockpos.offset(0, 0, 0), Blocks.LILY_PAD.defaultBlockState(), 2);
+        worldGenLevel.setBlock(blockpos.offset(1, -1, 0), water, 2);
+        worldGenLevel.setBlock(blockpos.offset(0, -1, 1), water, 2);
+        worldGenLevel.setBlock(blockpos.offset(-1, -1, 0), water, 2);
+        worldGenLevel.setBlock(blockpos.offset(0, -1, -1), water, 2);
+        worldGenLevel.setBlock(blockpos.offset(1, -1, 1), water, 2);
+        worldGenLevel.setBlock(blockpos.offset(-1, -1, -1), water, 2);
+        worldGenLevel.setBlock(blockpos.offset(-1, -1, 1), water, 2);
+        worldGenLevel.setBlock(blockpos.offset(-1, -1, 1), Blocks.SEAGRASS.defaultBlockState(), 2);
+        worldGenLevel.setBlock(blockpos.offset(1, -1, -1), water, 2);
 
-        worldgenlevel.setBlock(blockpos.offset(0, -2, 0), mud, 2);
-        worldgenlevel.setBlock(blockpos.offset(1, -2, 0), mud, 2);
-        worldgenlevel.setBlock(blockpos.offset(0, -2, 1), mud, 2);
-        worldgenlevel.setBlock(blockpos.offset(-1, -2, 0), mud, 2);
-        worldgenlevel.setBlock(blockpos.offset(0, -2, -1), mud, 2);
-        worldgenlevel.setBlock(blockpos.offset(1, -2, 1), mud, 2);
-        worldgenlevel.setBlock(blockpos.offset(-1, -2, -1), mud, 2);
-        worldgenlevel.setBlock(blockpos.offset(-1, -2, 1), mud, 2);
-        worldgenlevel.setBlock(blockpos.offset(1, -2, -1), mud, 2);
+        worldGenLevel.setBlock(blockpos.offset(0, -2, 0), mud, 2);
+        worldGenLevel.setBlock(blockpos.offset(1, -2, 0), mud, 2);
+        worldGenLevel.setBlock(blockpos.offset(0, -2, 1), mud, 2);
+        worldGenLevel.setBlock(blockpos.offset(-1, -2, 0), mud, 2);
+        worldGenLevel.setBlock(blockpos.offset(0, -2, -1), mud, 2);
+        worldGenLevel.setBlock(blockpos.offset(1, -2, 1), mud, 2);
+        worldGenLevel.setBlock(blockpos.offset(-1, -2, -1), mud, 2);
+        worldGenLevel.setBlock(blockpos.offset(-1, -2, 1), mud, 2);
+        worldGenLevel.setBlock(blockpos.offset(1, -2, -1), mud, 2);
 
-        replaceAir(worldgenlevel, blockpos.offset(-2, -1, -1), material);
-        replaceAir(worldgenlevel, blockpos.offset(-2, -1, 0), material);
-        replaceAir(worldgenlevel, blockpos.offset(-2, -1, 1), material);
-        replaceAir(worldgenlevel, blockpos.offset(2, -1, -1), material);
-        replaceAir(worldgenlevel, blockpos.offset(2, -1, 0), material);
-        replaceAir(worldgenlevel, blockpos.offset(2, -1, 1), material);
-        replaceAir(worldgenlevel, blockpos.offset(-1, -1, -2), material);
-        replaceAir(worldgenlevel, blockpos.offset(0, -1, -2), material);
-        replaceAir(worldgenlevel, blockpos.offset(1, -1, -2), material);
-        replaceAir(worldgenlevel, blockpos.offset(-1, -1, 2), material);
-        replaceAir(worldgenlevel, blockpos.offset(0, -1, 2), material);
-        replaceAir(worldgenlevel, blockpos.offset(1, -1, 2), material);
+        replaceAir(worldGenLevel, blockpos.offset(-2, -1, -1), material);
+        replaceAir(worldGenLevel, blockpos.offset(-2, -1, 0), material);
+        replaceAir(worldGenLevel, blockpos.offset(-2, -1, 1), material);
+        replaceAir(worldGenLevel, blockpos.offset(2, -1, -1), material);
+        replaceAir(worldGenLevel, blockpos.offset(2, -1, 0), material);
+        replaceAir(worldGenLevel, blockpos.offset(2, -1, 1), material);
+        replaceAir(worldGenLevel, blockpos.offset(-1, -1, -2), material);
+        replaceAir(worldGenLevel, blockpos.offset(0, -1, -2), material);
+        replaceAir(worldGenLevel, blockpos.offset(1, -1, -2), material);
+        replaceAir(worldGenLevel, blockpos.offset(-1, -1, 2), material);
+        replaceAir(worldGenLevel, blockpos.offset(0, -1, 2), material);
+        replaceAir(worldGenLevel, blockpos.offset(1, -1, 2), material);
 
         int randomNumber = (int)(Math.random()*(6)+1);
         if (randomNumber < 2) {
-            worldgenlevel.setBlock(blockpos.offset(-3, -1, -1), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(-3, -1, 0), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(-3, -1, 1), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(-2, -1, 0), water, 2);
-            worldgenlevel.setBlock(blockpos.offset(2, 0, 0), randomSapling(), 2);
-            worldgenlevel.setBlock(blockpos.offset(0, 0, 2), randomSapling(), 2);
-            worldgenlevel.setBlock(blockpos.offset(0, 0, -2), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(-3, -1, -1), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(-3, -1, 0), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(-3, -1, 1), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(-2, -1, 0), water, 2);
+            worldGenLevel.setBlock(blockpos.offset(2, 0, 0), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(0, 0, 2), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(0, 0, -2), randomSapling(), 2);
         } else if (randomNumber < 3) {
-            worldgenlevel.setBlock(blockpos.offset(3, -1, -1), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(3, -1, 0), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(3, -1, 1), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(2, -1, 0), water, 2);
-            worldgenlevel.setBlock(blockpos.offset(-2, 0, 0), randomSapling(), 2);
-            worldgenlevel.setBlock(blockpos.offset(0, 0, 2), randomSapling(), 2);
-            worldgenlevel.setBlock(blockpos.offset(0, 0, -2), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(3, -1, -1), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(3, -1, 0), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(3, -1, 1), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(2, -1, 0), water, 2);
+            worldGenLevel.setBlock(blockpos.offset(-2, 0, 0), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(0, 0, 2), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(0, 0, -2), randomSapling(), 2);
         } else if (randomNumber < 4) {
-            worldgenlevel.setBlock(blockpos.offset(-1, -1, -3), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(0, -1, -3), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(1, -1, -3), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(0, -1, -2), water, 2);
-            worldgenlevel.setBlock(blockpos.offset(2, 0, 0), randomSapling(), 2);
-            worldgenlevel.setBlock(blockpos.offset(0, 0, 2), randomSapling(), 2);
-            worldgenlevel.setBlock(blockpos.offset(-2, 0, 0), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(-1, -1, -3), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(0, -1, -3), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(1, -1, -3), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(0, -1, -2), water, 2);
+            worldGenLevel.setBlock(blockpos.offset(2, 0, 0), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(0, 0, 2), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(-2, 0, 0), randomSapling(), 2);
         } else if (randomNumber < 5) {
-            worldgenlevel.setBlock(blockpos.offset(-1, -1, 3), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(0, -1, 3), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(1, -1, 3), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(0, -1, 2), water, 2);
-            worldgenlevel.setBlock(blockpos.offset(2, 0, 0), randomSapling(), 2);
-            worldgenlevel.setBlock(blockpos.offset(-2, 0, 0), randomSapling(), 2);
-            worldgenlevel.setBlock(blockpos.offset(0, 0, -2), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(-1, -1, 3), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(0, -1, 3), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(1, -1, 3), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(0, -1, 2), water, 2);
+            worldGenLevel.setBlock(blockpos.offset(2, 0, 0), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(-2, 0, 0), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(0, 0, -2), randomSapling(), 2);
         } else if (randomNumber < 6) {
-            worldgenlevel.setBlock(blockpos.offset(-1, -1, -3), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(0, -1, -3), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(1, -1, -3), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(0, -1, -2), water, 2);
-            worldgenlevel.setBlock(blockpos.offset(3, -1, -1), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(3, -1, 0), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(3, -1, 1), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(2, -1, 0), water, 2);
-            worldgenlevel.setBlock(blockpos.offset(-2, 0, 0), randomSapling(), 2);
-            worldgenlevel.setBlock(blockpos.offset(0, 0, 2), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(-1, -1, -3), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(0, -1, -3), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(1, -1, -3), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(0, -1, -2), water, 2);
+            worldGenLevel.setBlock(blockpos.offset(3, -1, -1), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(3, -1, 0), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(3, -1, 1), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(2, -1, 0), water, 2);
+            worldGenLevel.setBlock(blockpos.offset(-2, 0, 0), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(0, 0, 2), randomSapling(), 2);
         } else if (randomNumber < 7) {
-            worldgenlevel.setBlock(blockpos.offset(-1, -1, 3), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(0, -1, 3), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(1, -1, 3), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(0, -1, 2), water, 2);
-            worldgenlevel.setBlock(blockpos.offset(-3, -1, -1), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(-3, -1, 0), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(-3, -1, 1), material, 2);
-            worldgenlevel.setBlock(blockpos.offset(-2, -1, 0), water, 2);
-            worldgenlevel.setBlock(blockpos.offset(2, 0, 0), randomSapling(), 2);
-            worldgenlevel.setBlock(blockpos.offset(0, 0, -2), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(-1, -1, 3), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(0, -1, 3), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(1, -1, 3), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(0, -1, 2), water, 2);
+            worldGenLevel.setBlock(blockpos.offset(-3, -1, -1), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(-3, -1, 0), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(-3, -1, 1), material, 2);
+            worldGenLevel.setBlock(blockpos.offset(-2, -1, 0), water, 2);
+            worldGenLevel.setBlock(blockpos.offset(2, 0, 0), randomSapling(), 2);
+            worldGenLevel.setBlock(blockpos.offset(0, 0, -2), randomSapling(), 2);
         }
         int randomNumber2 = (int)(Math.random()*(6)+1);
         if (randomNumber2 < 3) {
-            generateCorner(worldgenlevel, blockpos.offset(-1, -1, -1), material, slab);
+            generateCorner(worldGenLevel, blockpos.offset(-1, -1, -1), material, slab);
         } else if (randomNumber2 < 4) {
-            generateCorner(worldgenlevel, blockpos.offset(1, -1, -1), material, slab);
-            generateCorner(worldgenlevel, blockpos.offset(-1, -1, 1), material, slab);
+            generateCorner(worldGenLevel, blockpos.offset(1, -1, -1), material, slab);
+            generateCorner(worldGenLevel, blockpos.offset(-1, -1, 1), material, slab);
         } else if (randomNumber2 < 5) {
-            generateCorner(worldgenlevel, blockpos.offset(1, -1, 1), material, slab);
+            generateCorner(worldGenLevel, blockpos.offset(1, -1, 1), material, slab);
         } else if (randomNumber2 < 6) {
-            generateCorner(worldgenlevel, blockpos.offset(-1, -1, -1), material, slab);
-            generateCorner(worldgenlevel, blockpos.offset(1, -1, 1), material, slab);
+            generateCorner(worldGenLevel, blockpos.offset(-1, -1, -1), material, slab);
+            generateCorner(worldGenLevel, blockpos.offset(1, -1, 1), material, slab);
         } else if (randomNumber2 < 7) {
-            generateCorner(worldgenlevel, blockpos.offset(1, -1, -1), material, slab);
-            generateCorner(worldgenlevel, blockpos.offset(1, -1, 1), material, slab);
+            generateCorner(worldGenLevel, blockpos.offset(1, -1, -1), material, slab);
+            generateCorner(worldGenLevel, blockpos.offset(1, -1, 1), material, slab);
         }
         return true;
     }

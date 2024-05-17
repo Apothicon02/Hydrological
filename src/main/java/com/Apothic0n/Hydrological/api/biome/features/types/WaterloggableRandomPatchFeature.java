@@ -18,7 +18,7 @@ public class WaterloggableRandomPatchFeature extends Feature<WaterloggableRandom
     }
 
     public boolean place(FeaturePlaceContext<WaterloggableRandomPatchConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = pContext.origin();
         RandomSource random = pContext.random();
         WaterloggableRandomPatchConfiguration randomPatchConfiguration = pContext.config();
@@ -28,8 +28,8 @@ public class WaterloggableRandomPatchFeature extends Feature<WaterloggableRandom
         int k = randomPatchConfiguration.y_spread + 1;
         for (int l = 0; l < randomPatchConfiguration.tries; ++l) {
             mutableBlockPos.setWithOffset(blockpos, random.nextInt(j) - random.nextInt(j), random.nextInt(k) - random.nextInt(k), random.nextInt(j) - random.nextInt(j));
-            if (worldgenlevel.getBlockState(mutableBlockPos).equals(Blocks.WATER)) {
-                placeBlock(worldgenlevel, mutableBlockPos, randomPatchConfiguration.to_place.getState(random, mutableBlockPos));
+            if (worldGenLevel.getBlockState(mutableBlockPos).equals(Blocks.WATER)) {
+                placeBlock(worldGenLevel, mutableBlockPos, randomPatchConfiguration.to_place.getState(random, mutableBlockPos));
             } else {
 
             }

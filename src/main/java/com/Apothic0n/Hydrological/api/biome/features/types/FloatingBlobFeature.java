@@ -15,7 +15,7 @@ public class FloatingBlobFeature extends Feature<FloatingBlobConfiguration> {
     }
 
     public boolean place(FeaturePlaceContext<FloatingBlobConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = pContext.origin();
         RandomSource random = pContext.random();
         FloatingBlobConfiguration config = pContext.config();
@@ -29,10 +29,10 @@ public class FloatingBlobFeature extends Feature<FloatingBlobConfiguration> {
             for(int j = Mth.floor(-f); j <= Mth.ceil(f); ++j) {
                 for(int k = Mth.floor(-f); k <= Mth.ceil(f); ++k) {
                     if ((float)(j * j + k * k) <= (f + 1.0F) * (f + 1.0F)) {
-                        if (worldgenlevel.getBlockState(blockpos.offset(j, i+1, k)).isAir()) {
-                            this.setBlock(worldgenlevel, blockpos.offset(j, i, k), blobSurfaceMaterial.defaultBlockState());
+                        if (worldGenLevel.getBlockState(blockpos.offset(j, i+1, k)).isAir()) {
+                            this.setBlock(worldGenLevel, blockpos.offset(j, i, k), blobSurfaceMaterial.defaultBlockState());
                         } else {
-                            this.setBlock(worldgenlevel, blockpos.offset(j, i, k), blobMaterial.defaultBlockState());
+                            this.setBlock(worldGenLevel, blockpos.offset(j, i, k), blobMaterial.defaultBlockState());
                         }
                     }
                 }

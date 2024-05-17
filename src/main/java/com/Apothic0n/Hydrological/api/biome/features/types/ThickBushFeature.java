@@ -21,55 +21,55 @@ public class ThickBushFeature extends Feature<SimpleIntConfiguration> {
     }
 
     public boolean place(FeaturePlaceContext<SimpleIntConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = pContext.origin();
         RandomSource random = pContext.random();
         int height = pContext.config().getIntValue().sample(random)+1;
-        if (worldgenlevel.isEmptyBlock(blockpos.below()) || worldgenlevel.getBlockState(blockpos.below()).is(BlockTags.SNOW)) {
+        if (worldGenLevel.isEmptyBlock(blockpos.below()) || worldGenLevel.getBlockState(blockpos.below()).is(BlockTags.SNOW)) {
             return false;
         } else {
-            worldgenlevel.setBlock(blockpos.offset(0, 0, 0), Blocks.MANGROVE_ROOTS.defaultBlockState(), 2);
-            worldgenlevel.setBlock(blockpos.offset(0, 1, 0), Blocks.MANGROVE_ROOTS.defaultBlockState(), 2);
+            worldGenLevel.setBlock(blockpos.offset(0, 0, 0), Blocks.MANGROVE_ROOTS.defaultBlockState(), 2);
+            worldGenLevel.setBlock(blockpos.offset(0, 1, 0), Blocks.MANGROVE_ROOTS.defaultBlockState(), 2);
             int randomNumber = (int)(Math.random()*(10)+1);
             boolean useBiome = false;
             if (randomNumber <= 6) {
                 useBiome = true;
             }
             for (int y = 2; y < height; y++) {
-                setLeaves(worldgenlevel, blockpos.offset(0, y, 0), useBiome);
+                setLeaves(worldGenLevel, blockpos.offset(0, y, 0), useBiome);
                 int randomNumber2 = (int)(Math.random()*(2-1+1)+1);
                 if (randomNumber2 < 2) {
-                    setLeaves(worldgenlevel, blockpos.offset(1, y, 0), useBiome);
-                    setLeaves(worldgenlevel, blockpos.offset(0, y, 1), useBiome);
-                    setLeaves(worldgenlevel, blockpos.offset(1, y, 1), useBiome);
+                    setLeaves(worldGenLevel, blockpos.offset(1, y, 0), useBiome);
+                    setLeaves(worldGenLevel, blockpos.offset(0, y, 1), useBiome);
+                    setLeaves(worldGenLevel, blockpos.offset(1, y, 1), useBiome);
                     if (y == 1) {
-                        setLeaves(worldgenlevel, blockpos.offset(1, 0, 1), useBiome);
+                        setLeaves(worldGenLevel, blockpos.offset(1, 0, 1), useBiome);
                     }
                 } else {
-                    setLeaves(worldgenlevel, blockpos.offset(-1, y, 0), useBiome);
-                    setLeaves(worldgenlevel, blockpos.offset(0, y, -1), useBiome);
-                    setLeaves(worldgenlevel, blockpos.offset(-1, y, -1), useBiome);
+                    setLeaves(worldGenLevel, blockpos.offset(-1, y, 0), useBiome);
+                    setLeaves(worldGenLevel, blockpos.offset(0, y, -1), useBiome);
+                    setLeaves(worldGenLevel, blockpos.offset(-1, y, -1), useBiome);
                     if (y == 1) {
-                        setLeaves(worldgenlevel, blockpos.offset(-1, y, -1), useBiome);
+                        setLeaves(worldGenLevel, blockpos.offset(-1, y, -1), useBiome);
                     }
                 }
                 if (y == height-1) {
                     if (randomNumber2 < 2) {
-                        placeVines(worldgenlevel, blockpos, 0, y, 2, VineBlock.NORTH);
-                        placeVines(worldgenlevel, blockpos, 1, y, 2, VineBlock.NORTH);
-                        placeVines(worldgenlevel, blockpos, 2, y, 0, VineBlock.WEST);
-                        placeVines(worldgenlevel, blockpos, 2, y, 1, VineBlock.WEST);
+                        placeVines(worldGenLevel, blockpos, 0, y, 2, VineBlock.NORTH);
+                        placeVines(worldGenLevel, blockpos, 1, y, 2, VineBlock.NORTH);
+                        placeVines(worldGenLevel, blockpos, 2, y, 0, VineBlock.WEST);
+                        placeVines(worldGenLevel, blockpos, 2, y, 1, VineBlock.WEST);
                     } else {
-                        placeVines(worldgenlevel, blockpos, 0, y, -2, VineBlock.SOUTH);
-                        placeVines(worldgenlevel, blockpos, -1, y, -2, VineBlock.SOUTH);
-                        placeVines(worldgenlevel, blockpos, -2, y, 0, VineBlock.EAST);
-                        placeVines(worldgenlevel, blockpos, -2, y, -1, VineBlock.EAST);
+                        placeVines(worldGenLevel, blockpos, 0, y, -2, VineBlock.SOUTH);
+                        placeVines(worldGenLevel, blockpos, -1, y, -2, VineBlock.SOUTH);
+                        placeVines(worldGenLevel, blockpos, -2, y, 0, VineBlock.EAST);
+                        placeVines(worldGenLevel, blockpos, -2, y, -1, VineBlock.EAST);
                     }
                     y++;
                     int randomNumber3 = (int) (Math.random() * (2 - 1 + 1) + 1);
                     if (randomNumber3 < 2) {
-                        if (worldgenlevel.getBlockState(blockpos.offset(0, y, 0)).canBeReplaced()) {
-                            worldgenlevel.setBlock(blockpos.offset(0, y, 0), Blocks.MOSS_CARPET.defaultBlockState(), 2);
+                        if (worldGenLevel.getBlockState(blockpos.offset(0, y, 0)).canBeReplaced()) {
+                            worldGenLevel.setBlock(blockpos.offset(0, y, 0), Blocks.MOSS_CARPET.defaultBlockState(), 2);
                         }
                     }
                 }

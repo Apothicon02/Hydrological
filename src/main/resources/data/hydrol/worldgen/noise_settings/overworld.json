@@ -170,27 +170,66 @@
             {
               "type": "minecraft:condition",
               "if_true": {
-                "type": "minecraft:biome",
-                "biome_is": [
-                  "minecraft:plains"
-                ]
+                "type": "minecraft:not",
+                "invert": {
+                  "type": "minecraft:y_above",
+                  "anchor": {
+                    "absolute": 64
+                  },
+                  "surface_depth_multiplier": 0,
+                  "add_stone_depth": false
+                }
               },
               "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "minecraft:grass_block",
-                  "Properties": {
-                    "snowy": "false"
+                "type": "minecraft:sequence",
+                "sequence": [
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:biome",
+                      "biome_is": [
+                        "minecraft:river"
+                      ]
+                    },
+                    "then_run": {
+                      "type": "minecraft:sequence",
+                      "sequence": [
+                        {
+                          "type": "minecraft:condition",
+                          "if_true": {
+                            "type": "minecraft:y_above",
+                            "anchor": {
+                              "absolute": 62
+                            },
+                            "surface_depth_multiplier": 0,
+                            "add_stone_depth": false
+                          },
+                          "then_run": {
+                            "type": "minecraft:block",
+                            "result_state": {
+                              "Name": "minecraft:gravel"
+                            }
+                          }
+                        },
+                        {
+                          "type": "minecraft:block",
+                          "result_state": {
+                            "Name": "minecraft:clay"
+                          }
+                        }
+                      ]
+                    }
                   }
-                }
+                ]
               }
             },
+
             {
               "type": "minecraft:condition",
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
-                  "minecraft:river"
+                  "minecraft:plains"
                 ]
               },
               "then_run": {
@@ -199,24 +238,52 @@
                   {
                     "type": "minecraft:condition",
                     "if_true": {
-                      "type": "minecraft:y_above",
-                      "anchor": {
-                        "absolute": 62
-                      },
-                      "surface_depth_multiplier": 0,
-                      "add_stone_depth": false
+                      "type": "minecraft:noise_threshold",
+                      "noise": "hydrol:global/surface_variation",
+                      "min_threshold": 0.65,
+                      "max_threshold": 0.75
                     },
                     "then_run": {
                       "type": "minecraft:block",
                       "result_state": {
-                        "Name": "minecraft:gravel"
+                        "Name": "minecraft:rooted_dirt"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "noise": "hydrol:global/surface_variation",
+                      "min_threshold": -0.08,
+                      "max_threshold": 0.08
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:rooted_dirt"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "noise": "hydrol:global/surface_variation",
+                      "min_threshold": -0.55,
+                      "max_threshold": -0.4
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:rooted_dirt"
                       }
                     }
                   },
                   {
                     "type": "minecraft:block",
                     "result_state": {
-                      "Name": "minecraft:clay"
+                      "Name": "minecraft:coarse_dirt"
                     }
                   }
                 ]

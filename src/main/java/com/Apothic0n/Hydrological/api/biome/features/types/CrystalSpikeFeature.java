@@ -16,7 +16,7 @@ public class CrystalSpikeFeature extends Feature<VerticalBlobConfiguration> {
     }
 
     public boolean place(FeaturePlaceContext<VerticalBlobConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = pContext.origin();
         RandomSource random = pContext.random();
         VerticalBlobConfiguration config = pContext.config();
@@ -26,14 +26,14 @@ public class CrystalSpikeFeature extends Feature<VerticalBlobConfiguration> {
         Integer blobMass = config.getBlobMass().sample(random);
         Integer blobWidth = config.getBlobWidth().sample(random);
         Integer blobHeight = config.getBlobHeight().sample(random);
-        if (worldgenlevel.isEmptyBlock(blockpos)) {
+        if (worldGenLevel.isEmptyBlock(blockpos)) {
             return false;
         } else {
-            BlockState blockstate = worldgenlevel.getBlockState(blockpos.above());
+            BlockState blockstate = worldGenLevel.getBlockState(blockpos.above());
             if (!blockstate.is(hangFrom) && !blockstate.is(hangFrom2) && !blockstate.is(blobMaterial)) {
                 return false;
             } else {
-                worldgenlevel.setBlock(blockpos, blobMaterial.defaultBlockState(), 2);
+                worldGenLevel.setBlock(blockpos, blobMaterial.defaultBlockState(), 2);
                 BlockPos blockpos1 = blockpos;
                 boolean northNegative = false;//x
                 boolean eastNegative = false;//z
@@ -63,13 +63,13 @@ public class CrystalSpikeFeature extends Feature<VerticalBlobConfiguration> {
                     if (xDistance >= blobWidth || zDistance >= blobWidth) {
                         i = blobMass*5;
                     }
-                    worldgenlevel.setBlock(blockpos1, blobMaterial.defaultBlockState(), 2);
-                    worldgenlevel.setBlock(blockpos1.below(), blobMaterial.defaultBlockState(), 2);
-                    worldgenlevel.setBlock(blockpos1.above(), blobMaterial.defaultBlockState(), 2);
-                    worldgenlevel.setBlock(blockpos1.east(), blobMaterial.defaultBlockState(), 2);
-                    worldgenlevel.setBlock(blockpos1.south(), blobMaterial.defaultBlockState(), 2);
-                    worldgenlevel.setBlock(blockpos1.west(), blobMaterial.defaultBlockState(), 2);
-                    worldgenlevel.setBlock(blockpos1.north(), blobMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1, blobMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.below(), blobMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.above(), blobMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.east(), blobMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.south(), blobMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.west(), blobMaterial.defaultBlockState(), 2);
+                    worldGenLevel.setBlock(blockpos1.north(), blobMaterial.defaultBlockState(), 2);
                     i += 3;
                 }
                 return true;

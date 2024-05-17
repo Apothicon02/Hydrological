@@ -21,21 +21,21 @@ public class ThinBushFeature extends Feature<SimpleIntConfiguration> {
     }
 
     public boolean place(FeaturePlaceContext<SimpleIntConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = pContext.origin();
         RandomSource random = pContext.random();
         int height = pContext.config().getIntValue().sample(random);
-        if (worldgenlevel.isEmptyBlock(blockpos.below()) || worldgenlevel.getBlockState(blockpos.below()).is(BlockTags.SNOW)) {
+        if (worldGenLevel.isEmptyBlock(blockpos.below()) || worldGenLevel.getBlockState(blockpos.below()).is(BlockTags.SNOW)) {
             return false;
         } else {
             int randomNumber = (int)(Math.random()*(2)+1);
-            if (worldgenlevel.getBiome(blockpos).is(BiomeTags.IS_TAIGA) || worldgenlevel.getBiome(blockpos).is(BiomeTags.HAS_IGLOO) || worldgenlevel.getBiome(blockpos).is(Biomes.FROZEN_RIVER) ||
-                    worldgenlevel.getBiome(blockpos).is(Biomes.SNOWY_BEACH) || worldgenlevel.getBiome(blockpos).is(Biomes.ICE_SPIKES) || worldgenlevel.getBiome(blockpos).is(Biomes.SNOWY_SLOPES)) {
-                worldgenlevel.setBlock(blockpos, Blocks.BIG_DRIPLEAF.defaultBlockState(), 2);
+            if (worldGenLevel.getBiome(blockpos).is(BiomeTags.IS_TAIGA) || worldGenLevel.getBiome(blockpos).is(BiomeTags.HAS_IGLOO) || worldGenLevel.getBiome(blockpos).is(Biomes.FROZEN_RIVER) ||
+                    worldGenLevel.getBiome(blockpos).is(Biomes.SNOWY_BEACH) || worldGenLevel.getBiome(blockpos).is(Biomes.ICE_SPIKES) || worldGenLevel.getBiome(blockpos).is(Biomes.SNOWY_SLOPES)) {
+                worldGenLevel.setBlock(blockpos, Blocks.BIG_DRIPLEAF.defaultBlockState(), 2);
             } else if (randomNumber < 2) {
-                worldgenlevel.setBlock(blockpos.offset(0, 0, 0), Blocks.AZALEA.defaultBlockState(), 2);
+                worldGenLevel.setBlock(blockpos.offset(0, 0, 0), Blocks.AZALEA.defaultBlockState(), 2);
             } else {
-                worldgenlevel.setBlock(blockpos.offset(0, 0, 0), Blocks.FLOWERING_AZALEA.defaultBlockState(), 2);
+                worldGenLevel.setBlock(blockpos.offset(0, 0, 0), Blocks.FLOWERING_AZALEA.defaultBlockState(), 2);
             }
             int randomNumber2 = (int)(Math.random()*(10)+1);
             boolean useBiome = false;
@@ -43,23 +43,23 @@ public class ThinBushFeature extends Feature<SimpleIntConfiguration> {
                 useBiome = true;
             }
             for (int y = 1; y < height; y++) {
-                setLeaves(worldgenlevel, blockpos.offset(0, y, 0), useBiome);
+                setLeaves(worldGenLevel, blockpos.offset(0, y, 0), useBiome);
                 if (y == height-1) {
                     int randomNumber3 = (int) (Math.random() * (8 - 1 + 1) + 1);
                     if (randomNumber3 < 2) {
-                        placeVines(worldgenlevel, blockpos, 1, y, 0, VineBlock.WEST);
+                        placeVines(worldGenLevel, blockpos, 1, y, 0, VineBlock.WEST);
                     } else if (randomNumber3 == 2) {
-                        placeVines(worldgenlevel, blockpos, 0, y, 1, VineBlock.NORTH);
+                        placeVines(worldGenLevel, blockpos, 0, y, 1, VineBlock.NORTH);
                     } else if (randomNumber3 == 3) {
-                        placeVines(worldgenlevel, blockpos, -1, y, 0, VineBlock.EAST);
+                        placeVines(worldGenLevel, blockpos, -1, y, 0, VineBlock.EAST);
                     } else if (randomNumber3 == 4) {
-                        placeVines(worldgenlevel, blockpos, 0, y, -1, VineBlock.SOUTH);
+                        placeVines(worldGenLevel, blockpos, 0, y, -1, VineBlock.SOUTH);
                     }
                     y++;
                     int randomNumber4 = (int) (Math.random() * (2 - 1 + 1) + 1);
                     if (randomNumber4 < 2) {
-                        if (worldgenlevel.getBlockState(blockpos.offset(0, y, 0)).canBeReplaced()) {
-                            worldgenlevel.setBlock(blockpos.offset(0, y, 0), Blocks.MOSS_CARPET.defaultBlockState(), 2);
+                        if (worldGenLevel.getBlockState(blockpos.offset(0, y, 0)).canBeReplaced()) {
+                            worldGenLevel.setBlock(blockpos.offset(0, y, 0), Blocks.MOSS_CARPET.defaultBlockState(), 2);
                         }
                     }
                 }

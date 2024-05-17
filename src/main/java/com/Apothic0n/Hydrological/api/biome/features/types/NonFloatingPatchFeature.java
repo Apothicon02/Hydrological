@@ -22,7 +22,7 @@ public class NonFloatingPatchFeature extends Feature<VegetationPatchConfiguratio
     }
 
     public boolean place(FeaturePlaceContext<VegetationPatchConfiguration> p_160612_) {
-        WorldGenLevel worldgenlevel = p_160612_.level();
+        WorldGenLevel worldGenLevel = p_160612_.level();
         VegetationPatchConfiguration vegetationpatchconfiguration = p_160612_.config();
         RandomSource random = p_160612_.random();
         BlockPos blockpos = p_160612_.origin();
@@ -31,8 +31,8 @@ public class NonFloatingPatchFeature extends Feature<VegetationPatchConfiguratio
         };
         int i = vegetationpatchconfiguration.xzRadius.sample(random) + 1;
         int j = vegetationpatchconfiguration.xzRadius.sample(random) + 1;
-        Set<BlockPos> set = this.placeGroundPatch(worldgenlevel, vegetationpatchconfiguration,random, blockpos, predicate, i, j);
-        this.distributeVegetation(p_160612_, worldgenlevel, vegetationpatchconfiguration,random, set, i, j);
+        Set<BlockPos> set = this.placeGroundPatch(worldGenLevel, vegetationpatchconfiguration,random, blockpos, predicate, i, j);
+        this.distributeVegetation(p_160612_, worldGenLevel, vegetationpatchconfiguration,random, set, i, j);
         return !set.isEmpty();
     }
 

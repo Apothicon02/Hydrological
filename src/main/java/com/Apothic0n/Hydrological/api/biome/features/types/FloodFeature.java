@@ -18,7 +18,7 @@ public class FloodFeature extends Feature<FloodConfiguration> {
     }
 
     public boolean place(FeaturePlaceContext<FloodConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         ChunkPos chunkOrigin = new ChunkPos(pContext.origin());
         BlockPos origin = new BlockPos(chunkOrigin.getMiddleBlockX(), pContext.origin().getY(), chunkOrigin.getMiddleBlockZ());
         RandomSource random = pContext.random();
@@ -33,10 +33,10 @@ public class FloodFeature extends Feature<FloodConfiguration> {
         }
         for (int x = origin.getX(); x < origin.getX()+16; ++x) {
             for (int z = origin.getZ(); z < origin.getZ()+16; ++z) {
-                for (int y = elevation; y > worldgenlevel.getMinBuildHeight() + 1; --y) {
+                for (int y = elevation; y > worldGenLevel.getMinBuildHeight() + 1; --y) {
                     BlockPos pos = new BlockPos(x, y, z);
-                    if (!worldgenlevel.getBlockState(pos).isSolid()) {
-                        worldgenlevel.setBlock(pos, state, UPDATE_NONE);
+                    if (!worldGenLevel.getBlockState(pos).isSolid()) {
+                        worldGenLevel.setBlock(pos, state, UPDATE_NONE);
                     }
                 }
             }

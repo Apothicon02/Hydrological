@@ -15,7 +15,7 @@ public class SpheroidRockFeature extends Feature<RockConfiguration> {
     }
 
     public boolean place(FeaturePlaceContext<RockConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = pContext.origin();
         RandomSource random = pContext.random();
         RockConfiguration config = pContext.config();
@@ -23,7 +23,7 @@ public class SpheroidRockFeature extends Feature<RockConfiguration> {
         Integer blobWidth = config.getBlobWidth().sample(random);
         Integer blobHeight = config.getBlobHeight().sample(random);
         blobHeight++;
-        if (worldgenlevel.isEmptyBlock(blockpos.below())) {
+        if (worldGenLevel.isEmptyBlock(blockpos.below())) {
             return false;
         } else {
             Integer blobWidth1 = blobWidth;
@@ -33,20 +33,20 @@ public class SpheroidRockFeature extends Feature<RockConfiguration> {
                         for (int l = 0; l < blobWidth1; ++l) {
                             int randomNumber = (int)(Math.random()*(42-1+1)+1);
                             if (randomNumber < 42) {
-                                worldgenlevel.setBlock(blockpos.offset(-w, h, l), blobMaterial.defaultBlockState(), 2);
-                                worldgenlevel.setBlock(blockpos.offset(-w, -h, -l), blobMaterial.defaultBlockState(), 2);
+                                worldGenLevel.setBlock(blockpos.offset(-w, h, l), blobMaterial.defaultBlockState(), 2);
+                                worldGenLevel.setBlock(blockpos.offset(-w, -h, -l), blobMaterial.defaultBlockState(), 2);
                                 int randomNumber2 = (int)(Math.random()*(33-1+1)+1);
                                 if (randomNumber2 < 33) {
-                                    worldgenlevel.setBlock(blockpos.offset(-w, h, -l), blobMaterial.defaultBlockState(), 2);
-                                    worldgenlevel.setBlock(blockpos.offset(-w, -h, l), blobMaterial.defaultBlockState(), 2);
+                                    worldGenLevel.setBlock(blockpos.offset(-w, h, -l), blobMaterial.defaultBlockState(), 2);
+                                    worldGenLevel.setBlock(blockpos.offset(-w, -h, l), blobMaterial.defaultBlockState(), 2);
                                     int randomNumber3 = (int)(Math.random()*(27-1+1)+1);
                                     if (randomNumber3 < 27) {
-                                        worldgenlevel.setBlock(blockpos.offset(w, h, l), blobMaterial.defaultBlockState(), 2);
-                                        worldgenlevel.setBlock(blockpos.offset(w, -h, -l), blobMaterial.defaultBlockState(), 2);
+                                        worldGenLevel.setBlock(blockpos.offset(w, h, l), blobMaterial.defaultBlockState(), 2);
+                                        worldGenLevel.setBlock(blockpos.offset(w, -h, -l), blobMaterial.defaultBlockState(), 2);
                                         int randomNumber4 = (int)(Math.random()*(20-1+1)+1);
                                         if (randomNumber4 < 20) {
-                                            worldgenlevel.setBlock(blockpos.offset(w, h, -l), blobMaterial.defaultBlockState(), 2);
-                                            worldgenlevel.setBlock(blockpos.offset(w, -h, l), blobMaterial.defaultBlockState(), 2);
+                                            worldGenLevel.setBlock(blockpos.offset(w, h, -l), blobMaterial.defaultBlockState(), 2);
+                                            worldGenLevel.setBlock(blockpos.offset(w, -h, l), blobMaterial.defaultBlockState(), 2);
                                         }
                                     }
                                 }

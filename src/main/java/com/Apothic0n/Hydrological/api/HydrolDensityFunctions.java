@@ -146,10 +146,10 @@ public final class HydrolDensityFunctions {
         }
     }
     protected record Gradient(DensityFunction from_y, DensityFunction to_y, DensityFunction from_value, DensityFunction to_value) implements DensityFunction {
-        private static final MapCodec<Shift> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
-            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("from_y").forGetter(Shift::input), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("to_y").forGetter(Shift::shiftX), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("from_value").forGetter(Shift::shiftY), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("to_value").forGetter(Shift::shiftZ)).apply(data, Shift::new);
+        private static final MapCodec<Gradient> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("from_y").forGetter(Gradient::from_y), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("to_y").forGetter(Gradient::to_y), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("from_value").forGetter(Gradient::from_value), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("to_value").forGetter(Gradient::to_value)).apply(data, Gradient::new);
         });
-        public static final KeyDispatchDataCodec<Shift> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
+        public static final KeyDispatchDataCodec<Gradient> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
 
         @Override
         public double compute(@NotNull FunctionContext context) {
@@ -163,7 +163,7 @@ public final class HydrolDensityFunctions {
 
         @Override
         public @NotNull DensityFunction mapAll(Visitor visitor) {
-            return visitor.apply(new Shift(from_y().mapAll(visitor), to_y().mapAll(visitor), from_value().mapAll(visitor), to_value().mapAll(visitor)));
+            return visitor.apply(new Gradient(from_y().mapAll(visitor), to_y().mapAll(visitor), from_value().mapAll(visitor), to_value().mapAll(visitor)));
         }
 
         @Override

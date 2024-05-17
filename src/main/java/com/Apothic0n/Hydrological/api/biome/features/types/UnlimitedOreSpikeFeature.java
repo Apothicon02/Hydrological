@@ -14,16 +14,16 @@ public class UnlimitedOreSpikeFeature extends Feature<OreSpikeConfiguration> {
     }
 
     public boolean place(FeaturePlaceContext<OreSpikeConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = pContext.origin();
         RandomSource random = pContext.random();
         OreSpikeConfiguration config = pContext.config();
         int blobMass = config.getBlobMass().sample(random);
         int blobWidth = config.getBlobWidth().sample(random);
         int blobHeight = config.getBlobHeight().sample(random);
-        if (worldgenlevel.getBlockState(blockpos.above()).isSolid() && worldgenlevel.getBlockState(blockpos.above().north()).isSolid() && worldgenlevel.getBlockState(blockpos.above().east()).isSolid() &&
-                worldgenlevel.getBlockState(blockpos.above().south()).isSolid() && worldgenlevel.getBlockState(blockpos.above().west()).isSolid()) {
-            placeOre(config, random, worldgenlevel, blockpos);
+        if (worldGenLevel.getBlockState(blockpos.above()).isSolid() && worldGenLevel.getBlockState(blockpos.above().north()).isSolid() && worldGenLevel.getBlockState(blockpos.above().east()).isSolid() &&
+                worldGenLevel.getBlockState(blockpos.above().south()).isSolid() && worldGenLevel.getBlockState(blockpos.above().west()).isSolid()) {
+            placeOre(config, random, worldGenLevel, blockpos);
             BlockPos blockpos1 = blockpos.below(blobHeight/4);
             BlockPos blockpos2 = blockpos.below(blobHeight/4);
             boolean northNegative = false;
@@ -63,7 +63,7 @@ public class UnlimitedOreSpikeFeature extends Feature<OreSpikeConfiguration> {
                     i = blobMass * 5;
                 }
 
-                placeOre(config, random, worldgenlevel, blockpos1);
+                placeOre(config, random, worldGenLevel, blockpos1);
 
                 thickness += 1;
                 i += 3;
@@ -88,14 +88,14 @@ public class UnlimitedOreSpikeFeature extends Feature<OreSpikeConfiguration> {
                 for (int w = 0; w < thickness; w++) {
                     for (int l = 0; l < thickness; l++) {
                         if (!(w == l && l == thickness-1)) {
-                            placeOre(config, random, worldgenlevel, blockpos2.north(w).east(l));
-                            placeOre(config, random, worldgenlevel, blockpos2.north(w).west(l));
-                            placeOre(config, random, worldgenlevel, blockpos2.south(w).east(l));
-                            placeOre(config, random, worldgenlevel, blockpos2.south(w).west(l));
-                            placeOre(config, random, worldgenlevel, blockpos2.north(l).east(w));
-                            placeOre(config, random, worldgenlevel, blockpos2.north(l).west(w));
-                            placeOre(config, random, worldgenlevel, blockpos2.south(l).east(w));
-                            placeOre(config, random, worldgenlevel, blockpos2.south(l).west(w));
+                            placeOre(config, random, worldGenLevel, blockpos2.north(w).east(l));
+                            placeOre(config, random, worldGenLevel, blockpos2.north(w).west(l));
+                            placeOre(config, random, worldGenLevel, blockpos2.south(w).east(l));
+                            placeOre(config, random, worldGenLevel, blockpos2.south(w).west(l));
+                            placeOre(config, random, worldGenLevel, blockpos2.north(l).east(w));
+                            placeOre(config, random, worldGenLevel, blockpos2.north(l).west(w));
+                            placeOre(config, random, worldGenLevel, blockpos2.south(l).east(w));
+                            placeOre(config, random, worldGenLevel, blockpos2.south(l).west(w));
                         }
                     }
                 }
@@ -113,11 +113,11 @@ public class UnlimitedOreSpikeFeature extends Feature<OreSpikeConfiguration> {
         }
         return false;
     }
-    private void placeOre(OreSpikeConfiguration config, RandomSource random, WorldGenLevel worldgenlevel, BlockPos blockPos) {
+    private void placeOre(OreSpikeConfiguration config, RandomSource random, WorldGenLevel worldGenLevel, BlockPos blockPos) {
         if (blockPos.getY() > 0) {
-            worldgenlevel.setBlock(blockPos, config.upperState.getState(random, blockPos), 2);
+            worldGenLevel.setBlock(blockPos, config.upperState.getState(random, blockPos), 2);
         } else {
-            worldgenlevel.setBlock(blockPos, config.lowerState.getState(random, blockPos), 2);
+            worldGenLevel.setBlock(blockPos, config.lowerState.getState(random, blockPos), 2);
         }
     }
 }

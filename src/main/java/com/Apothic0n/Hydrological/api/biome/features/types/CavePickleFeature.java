@@ -18,12 +18,12 @@ public class CavePickleFeature extends Feature<NoneFeatureConfiguration> {
 
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
         RandomSource random = pContext.random();
-        WorldGenLevel worldgenlevel = pContext.level();
+        WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = pContext.origin();
         BlockPos blockpos1 = new BlockPos(blockpos.getX(), blockpos.above().getY(), blockpos.getZ());
         BlockState blockstate = Blocks.SEA_PICKLE.defaultBlockState().setValue(SeaPickleBlock.PICKLES, Integer.valueOf(random.nextInt(4) + 1));
-        if (worldgenlevel.getBlockState(blockpos1).is(Blocks.WATER) && blockstate.canSurvive(worldgenlevel, blockpos1)) {
-            worldgenlevel.setBlock(blockpos1, blockstate, 2);
+        if (worldGenLevel.getBlockState(blockpos1).is(Blocks.WATER) && blockstate.canSurvive(worldGenLevel, blockpos1)) {
+            worldGenLevel.setBlock(blockpos1, blockstate, 2);
             return true;
         } else {
             return false;
