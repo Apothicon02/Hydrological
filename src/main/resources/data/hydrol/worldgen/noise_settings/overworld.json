@@ -30,7 +30,7 @@
       "input": "hydrol:normal/vegetation"
     },
     "erosion": "hydrol:normal/erosion",
-    "continents": 0,
+    "continents": "hydrol:normal/continentalness",
     "depth": 0,
     "ridges": 0,
     "initial_density_without_jaggedness": {
