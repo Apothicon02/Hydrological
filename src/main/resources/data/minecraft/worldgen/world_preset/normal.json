@@ -9,6 +9,89 @@
           "type": "minecraft:multi_noise",
           "biomes": [
             {
+              "biome": "minecraft:ocean",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  1
+                ],
+                "continentalness": [
+                  -1,
+                  -0
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0,
+                  0.216
+                ],
+                "offset": 0
+              }
+            },
+
+            {
+              "biome": "minecraft:beach",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  1
+                ],
+                "continentalness": [
+                  -1,
+                  0
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.216,
+                  0.275
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:stony_shore",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  1
+                ],
+                "continentalness": [
+                  -1,
+                  0
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.275,
+                  1
+                ],
+                "offset": 0
+              }
+            },
+
+            {
               "biome": "minecraft:river",
               "parameters": {
                 "temperature": [
@@ -24,11 +107,14 @@
                   0
                 ],
                 "continentalness": [
-                  -1,
+                  0,
                   1
                 ],
                 "weirdness": 0,
-                "depth": 0,
+                "depth": [
+                  0,
+                  0.243
+                ],
                 "offset": 0
               }
             },
@@ -49,11 +135,42 @@
                   1
                 ],
                 "continentalness": [
-                  -1,
+                  0,
                   1
                 ],
                 "weirdness": 0,
-                "depth": 0,
+                "depth": [
+                  0.243,
+                  0.7
+                ],
+                "offset": 0
+              }
+            },
+
+            {
+              "biome": "minecraft:stony_peaks",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  0,
+                  1
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.7,
+                  1
+                ],
                 "offset": 0
               }
             }
