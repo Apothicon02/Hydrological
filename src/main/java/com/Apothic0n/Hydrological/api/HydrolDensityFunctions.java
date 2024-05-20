@@ -4,8 +4,10 @@ import com.Apothic0n.Hydrological.Hydrological;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.Long2DoubleOpenHashMap;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.util.KeyDispatchDataCodec;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -33,7 +35,7 @@ public final class HydrolDensityFunctions {
         DENSITY_FUNCTION_TYPES.register(eventBus);
     }
 
-    public static ConcurrentHashMap<String, Double> heightmap = new ConcurrentHashMap<>();
+    public static final Long2DoubleOpenHashMap heightmap = new Long2DoubleOpenHashMap();
     public static DensityFunction temperature;
     public static DensityFunction humidity;
     public static boolean isFloatingIslands = false;
@@ -219,7 +221,6 @@ public final class HydrolDensityFunctions {
         }
 
     }
-
     protected record Flatten(DensityFunction input, int atY) implements DensityFunction {
         private static final MapCodec<Flatten> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
             return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(Flatten::input), Codec.INT.fieldOf("at_y").forGetter(Flatten::atY)).apply(data, Flatten::new);
@@ -257,7 +258,6 @@ public final class HydrolDensityFunctions {
         }
 
     }
-
     protected record StoreTemperature(DensityFunction input) implements DensityFunction {
         private static final MapCodec<StoreTemperature> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
             return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(StoreTemperature::input)).apply(data, StoreTemperature::new);
@@ -348,21 +348,29 @@ public final class HydrolDensityFunctions {
         public double compute(@NotNull FunctionContext context) {
             int x = context.blockX();
             int z = context.blockZ();
-            String id = x+"/"+z;
-            Double storedValue = heightmap.get(id);
-            if (storedValue != null) {
+            long key = ChunkPos.asLong(x/3, z/3);
+            double storedValue;
+            synchronized (heightmap) {
+                heightmap.defaultReturnValue(Double.NaN);
+                storedValue = heightmap.get(key);
+            }
+            if (!Double.isNaN(storedValue)) {
                 return storedValue;
             } else {
-                for (int newY = maxY(); newY > minY(); newY--) {
+                for (int newY = maxY(); newY > minY(); newY -= 3) {
                     double value = input().compute(new SinglePointContext(x, newY, z));
-                    if (value > 0) {
+                    if (value > 0.0D) {
                         double returnValue = progressBetweenInts(minY(), maxY(), newY);
-                        heightmap.put(id, returnValue);
+                        synchronized (heightmap) {
+                            heightmap.put(key, returnValue);
+                        }
                         return returnValue;
                     }
                 }
             }
-            heightmap.put(id, 0D);
+            synchronized (heightmap) {
+                heightmap.put(key, 0D);
+            }
             return 0;
         }
 

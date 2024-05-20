@@ -109,13 +109,13 @@ public class CoverFeature extends Feature<TripleBlockConfiguration> {
                                     belowBlock = Blocks.ICE.defaultBlockState();
                                 } else if (random.nextInt(0, 10) >= 7) {
                                     if (y < length/4 && length > 2) {
-                                        belowBlock = Blocks.FLOWERING_AZALEA_LEAVES.defaultBlockState();
+                                        belowBlock = Blocks.FLOWERING_AZALEA_LEAVES.defaultBlockState().setValue(BlockStateProperties.PERSISTENT, true);
                                     } else {
                                         belowBlock = floweringAzaleaLeaves.defaultBlockState();
                                     }
                                 } else {
                                     if (y < length/4 && length > 2) {
-                                        belowBlock = Blocks.AZALEA_LEAVES.defaultBlockState();
+                                        belowBlock = Blocks.AZALEA_LEAVES.defaultBlockState().setValue(BlockStateProperties.PERSISTENT, true);
                                     } else {
                                         belowBlock = azaleaLeaves.defaultBlockState();
                                     }
