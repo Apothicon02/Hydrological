@@ -37,7 +37,8 @@
       "minecraft:spring_lava"
     ],
     [
-      "minecraft:glow_lichen"
+      "minecraft:glow_lichen",
+      "hydrol:cover/dense_grass"
     ],
     [
       "minecraft:freeze_top_layer"

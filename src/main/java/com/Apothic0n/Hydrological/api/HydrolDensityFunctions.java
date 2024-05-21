@@ -25,6 +25,7 @@ public final class HydrolDensityFunctions {
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_BEACHES_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_beaches", FloatingBeaches.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_islands", FloatingIslands.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> TO_HEIGHTMAP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("to_heightmap", ToHeightmap.CODEC::codec);
+    public static final RegistryObject<Codec<? extends DensityFunction>> RANGE_CHOICE_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("range_choice", RangeChoice.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> GRADIENT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("gradient", Gradient.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> SHIFT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("shift", Shift.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLATTEN_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("flatten", Flatten.CODEC::codec);
@@ -146,6 +147,46 @@ public final class HydrolDensityFunctions {
         public KeyDispatchDataCodec<? extends DensityFunction> codec() {
             return CODEC;
         }
+    }
+    protected record RangeChoice(DensityFunction input, DensityFunction minInclusive, DensityFunction maxExclusive, DensityFunction whenInRange, DensityFunction whenOutOfRange) implements DensityFunction {
+        private static final MapCodec<RangeChoice> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(RangeChoice::input), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("min_inclusive").forGetter(RangeChoice::minInclusive),
+                    DensityFunction.HOLDER_HELPER_CODEC.fieldOf("max_exclusive").forGetter(RangeChoice::maxExclusive), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("when_in_range").forGetter(RangeChoice::whenInRange),
+                    DensityFunction.HOLDER_HELPER_CODEC.fieldOf("when_out_of_range").forGetter(RangeChoice::whenOutOfRange)).apply(data, RangeChoice::new);
+        });
+        public static final KeyDispatchDataCodec<RangeChoice> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
+
+        @Override
+        public double compute(@NotNull FunctionContext context) {
+            double d0 = this.input.compute(context);
+            return d0 >= this.minInclusive.compute(context) && d0 < this.maxExclusive.compute(context) ? this.whenInRange.compute(context) : this.whenOutOfRange.compute(context);
+        }
+
+        @Override
+        public void fillArray(double @NotNull [] densities, ContextProvider context) {
+            context.fillAllDirectly(densities, this);
+        }
+
+        @Override
+        public @NotNull DensityFunction mapAll(Visitor visitor) {
+            return visitor.apply(new RangeChoice(input().mapAll(visitor), minInclusive().mapAll(visitor), maxExclusive().mapAll(visitor), whenInRange().mapAll(visitor), whenOutOfRange().mapAll(visitor)));
+        }
+
+        @Override
+        public double minValue() {
+            return -1875000d;
+        }
+
+        @Override
+        public double maxValue() {
+            return 1875000d;
+        }
+
+        @Override
+        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
+            return CODEC;
+        }
+
     }
     protected record Gradient(DensityFunction from_y, DensityFunction to_y, DensityFunction from_value, DensityFunction to_value) implements DensityFunction {
         private static final MapCodec<Gradient> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
@@ -348,7 +389,7 @@ public final class HydrolDensityFunctions {
         public double compute(@NotNull FunctionContext context) {
             int x = context.blockX();
             int z = context.blockZ();
-            long key = ChunkPos.asLong(x/3, z/3);
+            long key = ChunkPos.asLong(x/4, z/4);
             double storedValue;
             synchronized (heightmap) {
                 heightmap.defaultReturnValue(Double.NaN);
@@ -357,7 +398,7 @@ public final class HydrolDensityFunctions {
             if (!Double.isNaN(storedValue)) {
                 return storedValue;
             } else {
-                for (int newY = maxY(); newY > minY(); newY -= 3) {
+                for (int newY = maxY(); newY > minY(); newY -= 4) {
                     double value = input().compute(new SinglePointContext(x, newY, z));
                     if (value > 0.0D) {
                         double returnValue = progressBetweenInts(minY(), maxY(), newY);
