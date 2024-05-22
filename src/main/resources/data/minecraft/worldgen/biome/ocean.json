@@ -35,7 +35,9 @@
     [
     ],
     [
-      "minecraft:glow_lichen"
+      "minecraft:glow_lichen",
+      "hydrol:cover/sea_grass",
+      "hydrol:cover/kelp"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -13,6 +13,9 @@ import net.minecraftforge.registries.RegistryObject;
 public abstract class HydrolFeatureRegistry {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Hydrological.MODID);
 
+    public static final RegistryObject<Feature<VentConfiguration>> VENT = FEATURES.register("vent", () ->
+            new VentFeature(VentConfiguration.CODEC));
+
     public static final RegistryObject<Feature<RockConfiguration>> SPHEROID_ROCK = FEATURES.register("spheroid_rock", () ->
             new SpheroidRockFeature(RockConfiguration.CODEC));
     public static final RegistryObject<Feature<VerticalBlobConfiguration>> ADDITIVE_BLOB = FEATURES.register("additive_blob", () ->

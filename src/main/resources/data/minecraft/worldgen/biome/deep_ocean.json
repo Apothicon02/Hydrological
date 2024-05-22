@@ -1,6 +1,9 @@
 {
   "carvers": {
     "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground",
+      "minecraft:canyon"
     ]
   },
   "downfall": 0.5,
@@ -33,11 +36,13 @@
     ],
     [],
     [
+      "hydrol:geological/magma_vent"
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/dense_grass",
-      "hydrol:cover/sea_grass"
+      "hydrol:cover/sea_grass",
+      "hydrol:cover/kelp",
+      "hydrol:cover/sea_pickle"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -110,7 +115,7 @@
         "type": "minecraft:drowned",
         "maxCount": 1,
         "minCount": 1,
-        "weight": 100
+        "weight": 5
       }
     ],
     "underground_water_creature": [
@@ -123,10 +128,10 @@
     ],
     "water_ambient": [
       {
-        "type": "minecraft:salmon",
-        "maxCount": 5,
-        "minCount": 1,
-        "weight": 5
+        "type": "minecraft:cod",
+        "maxCount": 6,
+        "minCount": 3,
+        "weight": 10
       }
     ],
     "water_creature": [
@@ -134,7 +139,13 @@
         "type": "minecraft:squid",
         "maxCount": 4,
         "minCount": 1,
-        "weight": 2
+        "weight": 1
+      },
+      {
+        "type": "minecraft:dolphin",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
       }
     ]
   },

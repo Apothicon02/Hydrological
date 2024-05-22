@@ -9,7 +9,7 @@
           "type": "minecraft:multi_noise",
           "biomes": [
             {
-              "biome": "minecraft:ocean",
+              "biome": "minecraft:deep_ocean",
               "parameters": {
                 "temperature": [
                   -1,
@@ -30,6 +30,33 @@
                 "weirdness": 0,
                 "depth": [
                   0,
+                  0.03
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:ocean",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  1
+                ],
+                "continentalness": [
+                  -1,
+                  -0
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.03,
                   0.216
                 ],
                 "offset": 0

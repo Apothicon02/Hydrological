@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 6,
+    "xz_spread": 2,
+    "y_spread": 0,
+    "feature": {
+      "feature": {
+        "type": "minecraft:kelp",
+        "config": {}
+      },
+      "placement": []
+    }
+  }
+}
