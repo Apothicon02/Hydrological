@@ -1,17 +1,30 @@
 {
-  "type": "minecraft:random_patch",
+  "type": "hydrol:cover",
   "config": {
-    "tries": 48,
-    "xz_spread": 2,
-    "y_spread": 0,
-    "feature": {
-      "feature": {
-        "type": "minecraft:seagrass",
-        "config": {
-          "probability": 0.35
+    "primary": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:seagrass"
+      }
+    },
+    "secondary": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:tall_seagrass",
+        "Properties": {
+          "half": "lower"
         }
-      },
-      "placement": []
-    }
+      }
+    },
+    "tertiary": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:tall_seagrass",
+        "Properties": {
+          "half": "upper"
+        }
+      }
+    },
+    "covering": "#hydrol:mossy"
   }
 }
