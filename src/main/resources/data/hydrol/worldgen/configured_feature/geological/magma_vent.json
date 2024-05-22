@@ -7,6 +7,12 @@
         "Name": "minecraft:smooth_basalt"
       }
     },
+    "rim": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:tuff"
+      }
+    },
     "inner": {
       "type": "minecraft:simple_state_provider",
       "state": {
