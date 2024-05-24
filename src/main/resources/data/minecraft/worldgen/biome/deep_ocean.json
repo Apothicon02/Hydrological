@@ -1,9 +1,6 @@
 {
   "carvers": {
     "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
     ]
   },
   "downfall": 0.5,
@@ -36,7 +33,8 @@
     ],
     [],
     [
-      "hydrol:geological/magma_vent"
+      "hydrol:geological/magma_vent",
+      "hydrol:geological/mossy_disks"
     ],
     [
       "minecraft:glow_lichen",

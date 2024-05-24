@@ -86,83 +86,85 @@ public class CoverFeature extends Feature<TripleBlockConfiguration> {
         for (int x = origin.getX(); x <= origin.getX()+16; x++) {
             for (int z = origin.getZ(); z <= origin.getZ()+16; z++) {
                 BlockPos blockPos = new BlockPos(x, worldGenLevel.getHeight(heightmap, x, z), z);
-                BlockPos belowPos = blockPos.below();
-                BlockState belowState = worldGenLevel.getBlockState(belowPos);
-                if (worldGenLevel.getBlockState(blockPos).is(emptyBlock) && belowState.is(covering)) {
-                    if (worldGenLevel.getBlockState(blockPos).isAir()) {
-                        double temperature = -1;
-                        if (HydrolDensityFunctions.temperature != null) {
-                            temperature = HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext(x, 63, z));
-                        }
-                        if (primary.is(Blocks.GRASS)) {
-                            belowState = Blocks.GRASS_BLOCK.defaultBlockState();
-                            worldGenLevel.setBlock(belowPos, belowState, UPDATE_ALL);
-                        }
-                        int length = (int) ((random.nextGaussian() * 16) + Mth.clamp(belowPos.getY() - 80, -12, 12));
-                        for (int y = 1; y <= length; y++) {
-                            BlockPos pos = belowPos.below(y);
-                            if (worldGenLevel.getBlockState(pos).isAir() && worldGenLevel.getBlockState(pos.below()).isAir() && worldGenLevel.getBlockState(pos.below(2)).isAir()) {
-                                BlockState belowBlock = Blocks.AIR.defaultBlockState();
-                                if (y == length) {
-                                    if (temperature > 0.6) {
-                                        belowBlock = Blocks.CAVE_VINES.defaultBlockState().setValue(BlockStateProperties.BERRIES, random.nextBoolean());
-                                    } else if (temperature < -0.8) {
-                                        belowBlock = Blocks.ICE.defaultBlockState();
-                                    } else if (random.nextInt(0, 100) >= 98) {
-                                        belowBlock = Blocks.SPORE_BLOSSOM.defaultBlockState();
-                                    }
-                                } else {
-                                    if (temperature > 0.6) {
-                                        belowBlock = Blocks.CAVE_VINES_PLANT.defaultBlockState().setValue(BlockStateProperties.BERRIES, random.nextBoolean());
-                                    } else if (temperature < -0.8) {
-                                        belowBlock = Blocks.ICE.defaultBlockState();
-                                    } else if (random.nextInt(0, 10) >= 7) {
-                                        if (y < length / 4 && length > 2) {
-                                            belowBlock = Blocks.FLOWERING_AZALEA_LEAVES.defaultBlockState().setValue(BlockStateProperties.PERSISTENT, true);
-                                        } else {
-                                            belowBlock = floweringAzaleaLeaves.defaultBlockState();
+                if (!(heightmap == Heightmap.Types.OCEAN_FLOOR_WG && blockPos.getY() < 61)) {
+                    BlockPos belowPos = blockPos.below();
+                    BlockState belowState = worldGenLevel.getBlockState(belowPos);
+                    if (worldGenLevel.getBlockState(blockPos).is(emptyBlock) && belowState.is(covering)) {
+                        if (worldGenLevel.getBlockState(blockPos).isAir()) {
+                            double temperature = -1;
+                            if (HydrolDensityFunctions.temperature != null) {
+                                temperature = HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext(x, 63, z));
+                            }
+                            if (primary.is(Blocks.GRASS)) {
+                                belowState = Blocks.GRASS_BLOCK.defaultBlockState();
+                                worldGenLevel.setBlock(belowPos, belowState, UPDATE_ALL);
+                            }
+                            int length = (int) ((random.nextGaussian() * 16) + Mth.clamp(belowPos.getY() - 80, -12, 12));
+                            for (int y = 1; y <= length; y++) {
+                                BlockPos pos = belowPos.below(y);
+                                if (worldGenLevel.getBlockState(pos).isAir() && worldGenLevel.getBlockState(pos.below()).isAir() && worldGenLevel.getBlockState(pos.below(2)).isAir()) {
+                                    BlockState belowBlock = Blocks.AIR.defaultBlockState();
+                                    if (y == length) {
+                                        if (temperature > 0.6) {
+                                            belowBlock = Blocks.CAVE_VINES.defaultBlockState().setValue(BlockStateProperties.BERRIES, random.nextBoolean());
+                                        } else if (temperature < -0.8) {
+                                            belowBlock = Blocks.ICE.defaultBlockState();
+                                        } else if (random.nextInt(0, 100) >= 98) {
+                                            belowBlock = Blocks.SPORE_BLOSSOM.defaultBlockState();
                                         }
                                     } else {
-                                        if (y < length / 4 && length > 2) {
-                                            belowBlock = Blocks.AZALEA_LEAVES.defaultBlockState().setValue(BlockStateProperties.PERSISTENT, true);
+                                        if (temperature > 0.6) {
+                                            belowBlock = Blocks.CAVE_VINES_PLANT.defaultBlockState().setValue(BlockStateProperties.BERRIES, random.nextBoolean());
+                                        } else if (temperature < -0.8) {
+                                            belowBlock = Blocks.ICE.defaultBlockState();
+                                        } else if (random.nextInt(0, 10) >= 7) {
+                                            if (y < length / 4 && length > 2) {
+                                                belowBlock = Blocks.FLOWERING_AZALEA_LEAVES.defaultBlockState().setValue(BlockStateProperties.PERSISTENT, true);
+                                            } else {
+                                                belowBlock = floweringAzaleaLeaves.defaultBlockState();
+                                            }
                                         } else {
-                                            belowBlock = azaleaLeaves.defaultBlockState();
+                                            if (y < length / 4 && length > 2) {
+                                                belowBlock = Blocks.AZALEA_LEAVES.defaultBlockState().setValue(BlockStateProperties.PERSISTENT, true);
+                                            } else {
+                                                belowBlock = azaleaLeaves.defaultBlockState();
+                                            }
                                         }
                                     }
+                                    if (!belowBlock.is(Blocks.AIR)) {
+                                        worldGenLevel.setBlock(pos, belowBlock, UPDATE_ALL);
+                                    }
                                 }
-                                if (!belowBlock.is(Blocks.AIR)) {
-                                    worldGenLevel.setBlock(pos, belowBlock, UPDATE_ALL);
+                            }
+                        }
+                        if (belowState.is(covering)) {
+                            int chance = random.nextInt(0, 100);
+                            if ((HEIGHT_NOISE.getValue(x, z, false) > (0.33 - underwaterFactor) && chance > Math.min(88, (blockPos.getY()*2)-63)) || (blockPos.getY() == 63 && chance >= 75) || chance >= 99) {
+                                if (!HydrolJsonReader.serverSidedOnlyMode && tertiary.is(HydrolBlocks.DRY_GRASS.get())) {
+                                    worldGenLevel.setBlock(blockPos, primary, UPDATE_ALL);
+                                    worldGenLevel.setBlock(blockPos.above(), secondary, UPDATE_ALL);
+                                    worldGenLevel.setBlock(blockPos.above(2), tertiary, UPDATE_ALL);
+                                } else {
+                                    worldGenLevel.setBlock(blockPos, secondary, UPDATE_ALL);
+                                    worldGenLevel.setBlock(blockPos.above(), tertiary, UPDATE_ALL);
+                                }
+                            } else {
+                                if (!HydrolJsonReader.serverSidedOnlyMode && tertiary.is(HydrolBlocks.DRY_GRASS.get())) {
+                                    worldGenLevel.setBlock(blockPos, secondary, UPDATE_ALL);
+                                    worldGenLevel.setBlock(blockPos.above(), tertiary, UPDATE_ALL);
+                                } else {
+                                    worldGenLevel.setBlock(blockPos, primary, UPDATE_ALL);
                                 }
                             }
-                        }
-                    }
-                    if (belowState.is(covering)) {
-                        int chance = random.nextInt(0, 100);
-                        if ((HEIGHT_NOISE.getValue(x, z, false) > (0.33 - underwaterFactor) && chance > Math.min(88, (blockPos.getY()*2)-63)) || (blockPos.getY() == 63 && chance >= 75) || chance >= 99) {
+                            placedAnything = true;
+                        } else if ((random.nextFloat()*4)+1 >= 4) {
                             if (!HydrolJsonReader.serverSidedOnlyMode && tertiary.is(HydrolBlocks.DRY_GRASS.get())) {
-                                worldGenLevel.setBlock(blockPos, primary, UPDATE_ALL);
-                                worldGenLevel.setBlock(blockPos.above(), secondary, UPDATE_ALL);
-                                worldGenLevel.setBlock(blockPos.above(2), tertiary, UPDATE_ALL);
-                            } else {
-                                worldGenLevel.setBlock(blockPos, secondary, UPDATE_ALL);
-                                worldGenLevel.setBlock(blockPos.above(), tertiary, UPDATE_ALL);
-                            }
-                        } else {
-                            if (!HydrolJsonReader.serverSidedOnlyMode && tertiary.is(HydrolBlocks.DRY_GRASS.get())) {
-                                worldGenLevel.setBlock(blockPos, secondary, UPDATE_ALL);
-                                worldGenLevel.setBlock(blockPos.above(), tertiary, UPDATE_ALL);
+                                worldGenLevel.setBlock(blockPos, tertiary, UPDATE_ALL);
                             } else {
                                 worldGenLevel.setBlock(blockPos, primary, UPDATE_ALL);
                             }
+                            placedAnything = true;
                         }
-                        placedAnything = true;
-                    } else if ((random.nextFloat()*4)+1 >= 4) {
-                        if (!HydrolJsonReader.serverSidedOnlyMode && tertiary.is(HydrolBlocks.DRY_GRASS.get())) {
-                            worldGenLevel.setBlock(blockPos, tertiary, UPDATE_ALL);
-                        } else {
-                            worldGenLevel.setBlock(blockPos, primary, UPDATE_ALL);
-                        }
-                        placedAnything = true;
                     }
                 }
             }
