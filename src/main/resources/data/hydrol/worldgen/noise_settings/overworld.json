@@ -31,12 +31,7 @@
     },
     "erosion": "hydrol:normal/erosion",
     "continents": "hydrol:normal/continentalness",
-    "depth": {
-      "type": "hydrol:to_heightmap",
-      "input": "hydrol:normal/final_density",
-      "min_y": 16,
-      "max_y": 239
-    },
+    "depth": "hydrol:normal/heightmap",
     "ridges": 0,
     "initial_density_without_jaggedness": {
       "type": "minecraft:range_choice",
@@ -377,7 +372,7 @@
                       "invert": {
                         "type": "minecraft:y_above",
                         "anchor": {
-                          "absolute": 65
+                          "absolute": 70
                         },
                         "surface_depth_multiplier": 0,
                         "add_stone_depth": false
@@ -554,7 +549,7 @@
                       "invert": {
                         "type": "minecraft:y_above",
                         "anchor": {
-                          "absolute": 64
+                          "absolute": 69
                         },
                         "surface_depth_multiplier": 0,
                         "add_stone_depth": false

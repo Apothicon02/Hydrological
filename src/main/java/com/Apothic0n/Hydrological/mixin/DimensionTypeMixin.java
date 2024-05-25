@@ -36,7 +36,7 @@ public abstract class DimensionTypeMixin {
         if (minecraft.level != null && minecraft.level.dimension() == Level.OVERWORLD) {
             float ambient = this.ambientLight;
             if (this.hasSkyLight) {
-                ambient = (float) Math.min(hydrol$closenessToNight - 0.33, ambient);
+                ambient = (float) Math.min(hydrol$closenessToNight - 0.1, ambient);
             }
             float skyMultiplier = 1;
             if (minecraft.player != null && (minecraft.player.blockPosition().getY() < 10 && !HydrolDensityFunctions.isFloatingIslands)) {

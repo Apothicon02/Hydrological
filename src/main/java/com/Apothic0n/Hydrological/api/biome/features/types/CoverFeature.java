@@ -86,7 +86,7 @@ public class CoverFeature extends Feature<TripleBlockConfiguration> {
         for (int x = origin.getX(); x <= origin.getX()+16; x++) {
             for (int z = origin.getZ(); z <= origin.getZ()+16; z++) {
                 BlockPos blockPos = new BlockPos(x, worldGenLevel.getHeight(heightmap, x, z), z);
-                if (!(heightmap == Heightmap.Types.OCEAN_FLOOR_WG && blockPos.getY() < 61)) {
+                if (!(heightmap == Heightmap.Types.OCEAN_FLOOR_WG && blockPos.getY() > 61)) {
                     BlockPos belowPos = blockPos.below();
                     BlockState belowState = worldGenLevel.getBlockState(belowPos);
                     if (worldGenLevel.getBlockState(blockPos).is(emptyBlock) && belowState.is(covering)) {

@@ -1,0 +1,6 @@
+{
+  "type": "hydrol:to_heightmap",
+  "input": "hydrol:normal/final_density",
+  "min_y": 16,
+  "max_y": 239
+}
