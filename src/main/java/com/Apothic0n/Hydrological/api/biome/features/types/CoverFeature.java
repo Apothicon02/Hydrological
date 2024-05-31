@@ -1,34 +1,27 @@
 package com.Apothic0n.Hydrological.api.biome.features.types;
 
-import com.Apothic0n.Hydrological.Hydrological;
 import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
 import com.Apothic0n.Hydrological.api.HydrolJsonReader;
-import com.Apothic0n.Hydrological.api.biome.features.configurations.TripleBlockConfiguration;
+import com.Apothic0n.Hydrological.api.biome.features.configurations.QuintupleBlockConfiguration;
 import com.Apothic0n.Hydrological.core.objects.HydrolBlocks;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.synth.PerlinSimplexNoise;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -37,21 +30,23 @@ import java.util.Map;
 import static com.Apothic0n.Hydrological.core.objects.HydrolBlocks.wallBlocks;
 import static net.minecraft.world.level.block.Block.UPDATE_ALL;
 
-public class CoverFeature extends Feature<TripleBlockConfiguration> {
-    public CoverFeature(Codec<TripleBlockConfiguration> config) {
+public class CoverFeature extends Feature<QuintupleBlockConfiguration> {
+    public CoverFeature(Codec<QuintupleBlockConfiguration> config) {
         super(config);
     }
 
     private static final PerlinSimplexNoise HEIGHT_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(-6, 1));
 
     @Override
-    public boolean place(FeaturePlaceContext<TripleBlockConfiguration> pContext) {
+    public boolean place(FeaturePlaceContext<QuintupleBlockConfiguration> pContext) {
         WorldGenLevel worldGenLevel = pContext.level();
         RandomSource random = pContext.random();
         BlockPos origin = pContext.origin();
         BlockState primary = pContext.config().primary().getState(random, origin);
         BlockState secondary = pContext.config().secondary().getState(random, origin);
         BlockState tertiary = pContext.config().tertiary().getState(random, origin);
+        BlockState quartary = pContext.config().quartary().getState(random, origin);
+        BlockState quinary = pContext.config().quinary().getState(random, origin);
         TagKey<Block> covering = pContext.config().covering();
         if (primary.isAir()) {
             primary = Blocks.GRASS.defaultBlockState();
@@ -137,9 +132,14 @@ public class CoverFeature extends Feature<TripleBlockConfiguration> {
                                 }
                             }
                         }
+                        int chance = random.nextInt(0, 100);
+                        double height = HEIGHT_NOISE.getValue(x, z, false);
                         if (belowState.is(covering)) {
-                            int chance = random.nextInt(0, 100);
-                            if ((HEIGHT_NOISE.getValue(x, z, false) > (0.33 - underwaterFactor) && chance > Math.min(88, (blockPos.getY()*2)-63)) || (blockPos.getY() == 63 && chance >= 75) || chance >= 99) {
+                            if (!quartary.isAir() && height > 0 && height < 0.15 && chance > 66) {
+                                placeDouble(worldGenLevel, blockPos, quartary);
+                            } else if (!quinary.isAir() && height > 0.33 && height < 0.5 && chance > 66) {
+                                placeDouble(worldGenLevel, blockPos, quinary);
+                            } else if ((height > (0.33 - underwaterFactor) && chance > Math.min(88, (blockPos.getY()*2)-63)) || (blockPos.getY() == 63 && chance >= 75) || chance >= 99) {
                                 if (!HydrolJsonReader.serverSidedOnlyMode && tertiary.is(HydrolBlocks.DRY_GRASS.get())) {
                                     worldGenLevel.setBlock(blockPos, primary, UPDATE_ALL);
                                     worldGenLevel.setBlock(blockPos.above(), secondary, UPDATE_ALL);
@@ -158,7 +158,11 @@ public class CoverFeature extends Feature<TripleBlockConfiguration> {
                             }
                             placedAnything = true;
                         } else if ((random.nextFloat()*4)+1 >= 4) {
-                            if (!HydrolJsonReader.serverSidedOnlyMode && tertiary.is(HydrolBlocks.DRY_GRASS.get())) {
+                            if (!quartary.isAir() && height > 0 && height < 0.15 && chance > 66) {
+                                placeDouble(worldGenLevel, blockPos, quartary);
+                            } else if (!quinary.isAir() && height > 0.33 && height < 0.5 && chance > 66) {
+                                placeDouble(worldGenLevel, blockPos, quinary);
+                            } else if (!HydrolJsonReader.serverSidedOnlyMode && tertiary.is(HydrolBlocks.DRY_GRASS.get())) {
                                 worldGenLevel.setBlock(blockPos, tertiary, UPDATE_ALL);
                             } else {
                                 worldGenLevel.setBlock(blockPos, primary, UPDATE_ALL);
@@ -170,5 +174,12 @@ public class CoverFeature extends Feature<TripleBlockConfiguration> {
             }
         }
         return placedAnything;
+    }
+
+    public void placeDouble(WorldGenLevel level, BlockPos blockPos, BlockState blockState) {
+        level.setBlock(blockPos, blockState, UPDATE_ALL);
+        if (blockState.hasProperty(BlockStateProperties.DOUBLE_BLOCK_HALF)) {
+            level.setBlock(blockPos.above(), blockState.setValue(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), UPDATE_ALL);
+        }
     }
 }

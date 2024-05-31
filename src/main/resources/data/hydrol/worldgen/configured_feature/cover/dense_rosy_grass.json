@@ -1,0 +1,76 @@
+{
+  "type": "hydrol:cover",
+  "config": {
+    "primary": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:grass"
+      }
+    },
+    "secondary": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:tall_grass",
+        "Properties": {
+          "half": "lower"
+        }
+      }
+    },
+    "tertiary": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:tall_grass",
+        "Properties": {
+          "half": "upper"
+        }
+      }
+    },
+    "covering": "#hydrol:grassy",
+    "quaternary": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:rose_bush"
+          }
+        },
+        {
+          "weight": 7,
+          "data": {
+            "Name": "minecraft:poppy"
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "minecraft:red_tulip"
+          }
+        }
+      ]
+    },
+    "quinary": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 2,
+          "data": {
+            "Name": "minecraft:pink_tulip"
+          }
+        },
+        {
+          "weight": 3,
+          "data": {
+            "Name": "minecraft:orange_tulip"
+          }
+        },
+        {
+          "weight": 5,
+          "data": {
+            "Name": "minecraft:red_tulip"
+          }
+        }
+      ]
+    }
+  }
+}

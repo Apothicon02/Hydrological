@@ -25,6 +25,18 @@
         }
       }
     },
-    "covering": "#hydrol:mossy"
+    "covering": "#hydrol:mossy",
+    "quaternary": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:air"
+      }
+    },
+    "quinary": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:air"
+      }
+    }
   }
 }
