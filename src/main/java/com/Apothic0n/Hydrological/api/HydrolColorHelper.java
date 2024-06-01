@@ -17,11 +17,12 @@ public class HydrolColorHelper {
 
     public static int tintFoliageOrGrass(BlockState blockState, int x, int y, int z, double temperature, double humidity, boolean isFoliage) {
         double brighten = Mth.clamp(BRIGHTNESS_NOISE.getValue(x * 0.05, z * 0.01, false), -0.25, 0.25)+0.5;
-        float red = (float) (0.6);
-        float green = (float) (1.5);
-        float blue = (float) (0.66);
+        float red = (float) (0.2);
+        float green = (float) (0.6);
+        float blue = (float) (0.33);
         float gray = (float) ((red+green+blue)/(3+brighten));
-        double saturate = -(Mth.clamp(SATURATION_NOISE.getValue(x * 0.05, z * 0.01, false) * 0.33, -0.33, 0.33)+0.5);
+        float height = (384f/(y+64))*10;
+        double saturate = -(Mth.clamp(SATURATION_NOISE.getValue((x+height) * 0.05, (z+height) * 0.01, false) * 0.4, -0.4, 0.4)+0.5);
         red = (float) Mth.clamp(red + (gray - red) * saturate, 0.1, 1);
         green = (float) Mth.clamp(green + (gray - green) * saturate, 0.1, 1);
         blue = (float) Mth.clamp(blue + (gray - blue) * saturate, 0.1, 1);

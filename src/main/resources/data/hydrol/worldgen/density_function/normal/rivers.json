@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:range_choice",
+  "input": {
+    "type": "minecraft:y_clamped_gradient",
+    "from_y": 65,
+    "to_y": 66,
+    "from_value": -1,
+    "to_value": 1
+  },
+  "min_inclusive": 0,
+  "max_exclusive": 10,
+  "when_in_range": {
+    "type": "hydrol:shift",
+    "input": {
+      "type": "minecraft:mul",
+      "argument1": 10,
+      "argument2": {
+        "type": "minecraft:add",
+        "argument1": {
+          "type": "minecraft:mul",
+          "argument1": 100,
+          "argument2": "hydrol:normal/erosion"
+        },
+        "argument2": {
+          "type": "minecraft:add",
+          "argument1": {
+            "type": "minecraft:y_clamped_gradient",
+            "from_y": 66,
+            "to_y": 72,
+            "from_value": 0,
+            "to_value": -5
+          },
+          "argument2": {
+            "type": "minecraft:add",
+            "argument1": {
+              "type": "minecraft:y_clamped_gradient",
+              "from_y": 72,
+              "to_y": 164,
+              "from_value": 0,
+              "to_value": -20
+            },
+            "argument2": {
+              "type": "minecraft:y_clamped_gradient",
+              "from_y": 164,
+              "to_y": 256,
+              "from_value": 0,
+              "to_value": 20
+            }
+          }
+        }
+      }
+    },
+    "shift_x": "hydrol:normal/cliff_shift",
+    "shift_y": 0,
+    "shift_z": "hydrol:normal/cliff_shift"
+  },
+  "when_out_of_range": 0
+}

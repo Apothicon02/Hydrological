@@ -3,7 +3,7 @@
   "argument": {
     "type": "minecraft:noise",
     "noise": "hydrol:normal/base_noise",
-    "xz_scale": 1,
+    "xz_scale": 0.66,
     "y_scale": 0
   }
 }

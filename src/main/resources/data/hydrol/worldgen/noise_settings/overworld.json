@@ -29,7 +29,11 @@
       "type": "hydrol:store_humidity",
       "input": "hydrol:normal/vegetation"
     },
-    "erosion": "hydrol:normal/erosion",
+    "erosion": {
+      "type": "minecraft:mul",
+      "argument1": 0.01,
+      "argument2": "hydrol:normal/rivers"
+    },
     "continents": "hydrol:normal/continentalness",
     "depth": "hydrol:normal/heightmap",
     "ridges": 0,

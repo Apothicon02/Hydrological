@@ -45,8 +45,6 @@ public class CoverFeature extends Feature<QuintupleBlockConfiguration> {
         BlockState primary = pContext.config().primary().getState(random, origin);
         BlockState secondary = pContext.config().secondary().getState(random, origin);
         BlockState tertiary = pContext.config().tertiary().getState(random, origin);
-        BlockState quartary = pContext.config().quartary().getState(random, origin);
-        BlockState quinary = pContext.config().quinary().getState(random, origin);
         TagKey<Block> covering = pContext.config().covering();
         if (primary.isAir()) {
             primary = Blocks.GRASS.defaultBlockState();
@@ -132,12 +130,14 @@ public class CoverFeature extends Feature<QuintupleBlockConfiguration> {
                                 }
                             }
                         }
-                        int chance = random.nextInt(0, 100);
                         double height = HEIGHT_NOISE.getValue(x, z, false);
+                        BlockState quartary = pContext.config().quartary().getState(random, blockPos);
+                        BlockState quinary = pContext.config().quinary().getState(random, blockPos);
                         if (belowState.is(covering)) {
-                            if (!quartary.isAir() && height > 0 && height < 0.15 && chance > 66) {
+                            int chance = random.nextInt(0, 100);
+                            if (!quartary.isAir() && height > 0 && height < 0.15) {
                                 placeDouble(worldGenLevel, blockPos, quartary);
-                            } else if (!quinary.isAir() && height > 0.33 && height < 0.5 && chance > 66) {
+                            } else if (!quinary.isAir() && height > 0.33 && height < 0.5) {
                                 placeDouble(worldGenLevel, blockPos, quinary);
                             } else if ((height > (0.33 - underwaterFactor) && chance > Math.min(88, (blockPos.getY()*2)-63)) || (blockPos.getY() == 63 && chance >= 75) || chance >= 99) {
                                 if (!HydrolJsonReader.serverSidedOnlyMode && tertiary.is(HydrolBlocks.DRY_GRASS.get())) {
@@ -158,9 +158,9 @@ public class CoverFeature extends Feature<QuintupleBlockConfiguration> {
                             }
                             placedAnything = true;
                         } else if ((random.nextFloat()*4)+1 >= 4) {
-                            if (!quartary.isAir() && height > 0 && height < 0.15 && chance > 66) {
+                            if (!quartary.isAir() && height > 0 && height < 0.15) {
                                 placeDouble(worldGenLevel, blockPos, quartary);
-                            } else if (!quinary.isAir() && height > 0.33 && height < 0.5 && chance > 66) {
+                            } else if (!quinary.isAir() && height > 0.33 && height < 0.5) {
                                 placeDouble(worldGenLevel, blockPos, quinary);
                             } else if (!HydrolJsonReader.serverSidedOnlyMode && tertiary.is(HydrolBlocks.DRY_GRASS.get())) {
                                 worldGenLevel.setBlock(blockPos, tertiary, UPDATE_ALL);

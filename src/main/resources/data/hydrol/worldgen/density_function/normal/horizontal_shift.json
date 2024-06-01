@@ -9,7 +9,7 @@
       "argument2": {
         "type": "minecraft:mul",
         "argument1": "hydrol:normal/continentalness",
-        "argument2": 6
+        "argument2": 4
       }
     }
   },
