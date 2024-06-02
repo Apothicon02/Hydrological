@@ -27,6 +27,7 @@ public final class HydrolDensityFunctions {
     public static final RegistryObject<Codec<? extends DensityFunction>> TO_HEIGHTMAP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("to_heightmap", ToHeightmap.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> RANGE_CHOICE_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("range_choice", RangeChoice.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> GRADIENT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("gradient", Gradient.CODEC::codec);
+    public static final RegistryObject<Codec<? extends DensityFunction>> STRETCH_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("stretch", Stretch.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> SHIFT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("shift", Shift.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLATTEN_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("flatten", Flatten.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> STORE_TEMPERATURE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("store_temperature", StoreTemperature.CODEC::codec);
@@ -207,6 +208,48 @@ public final class HydrolDensityFunctions {
         @Override
         public @NotNull DensityFunction mapAll(Visitor visitor) {
             return visitor.apply(new Gradient(from_y().mapAll(visitor), to_y().mapAll(visitor), from_value().mapAll(visitor), to_value().mapAll(visitor)));
+        }
+
+        @Override
+        public double minValue() {
+            return -1875000d;
+        }
+
+        @Override
+        public double maxValue() {
+            return 1875000d;
+        }
+
+        @Override
+        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
+            return CODEC;
+        }
+
+    }
+    protected record Stretch(DensityFunction input, DensityFunction fromY, boolean up) implements DensityFunction {
+        private static final MapCodec<Stretch> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(Stretch::input), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("from_y").forGetter(Stretch::fromY), Codec.BOOL.fieldOf("up").forGetter(Stretch::up)).apply(data, Stretch::new);
+        });
+        public static final KeyDispatchDataCodec<Stretch> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
+
+        @Override
+        public double compute(@NotNull FunctionContext context) {
+            int y = context.blockY();
+            int from = (int) fromY().compute(context);
+            if ((y > from && up()) || (y < from && !up())) {
+                y = from;
+            }
+            return input.compute(new DensityFunction.SinglePointContext(context.blockX(), y, context.blockZ()));
+        }
+
+        @Override
+        public void fillArray(double @NotNull [] densities, ContextProvider context) {
+            context.fillAllDirectly(densities, this);
+        }
+
+        @Override
+        public @NotNull DensityFunction mapAll(Visitor visitor) {
+            return visitor.apply(new Stretch(input().mapAll(visitor), fromY().mapAll(visitor), up()));
         }
 
         @Override

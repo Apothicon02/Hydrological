@@ -38,7 +38,8 @@
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/dense_grass"
+      "hydrol:cover/dense_grass",
+      "hydrol:trees/palms"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -4,9 +4,11 @@ import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
 import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.api.biome.HydrolSurfaceRules;
 import com.Apothic0n.Hydrological.api.biome.features.HydrolFeatureRegistry;
+import com.Apothic0n.Hydrological.api.biome.features.canopies.CanopyType;
 import com.Apothic0n.Hydrological.api.biome.features.decorators.HydrolTreeDecoratorType;
 import com.Apothic0n.Hydrological.api.biome.features.foliage_placers.HydrolFoliagePlacerType;
 import com.Apothic0n.Hydrological.api.biome.features.trunk_placers.HydrolTrunkPlacerType;
+import com.Apothic0n.Hydrological.api.biome.features.trunks.TrunkType;
 import com.Apothic0n.Hydrological.core.objects.HydrolBlocks;
 import com.Apothic0n.Hydrological.core.objects.HydrolItems;
 import com.Apothic0n.Hydrological.core.objects.EcoParticleTypes;
@@ -28,6 +30,8 @@ public class Hydrological {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 
         HydrolJsonReader.main();
+        TrunkType.register(eventBus);
+        CanopyType.register(eventBus);
         HydrolDensityFunctions.register(eventBus);
         HydrolSurfaceRules.register(eventBus);
         if (!HydrolJsonReader.serverSidedOnlyMode) {
