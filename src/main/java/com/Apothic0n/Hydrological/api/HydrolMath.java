@@ -1,6 +1,11 @@
 package com.Apothic0n.Hydrological.api;
 
+import net.minecraft.core.BlockPos;
+
 public class HydrolMath {
+    public static long longToBlockPos(BlockPos pos) {
+        return BlockPos.asLong(pos.getX(), pos.getY(), pos.getZ());
+    }
 
     public static float invLerp(float value, float scale, float min, float max) {
         return (value - min) / (max - min)*scale;

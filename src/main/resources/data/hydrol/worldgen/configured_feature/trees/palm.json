@@ -14,7 +14,7 @@
       "wood": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:stripped_jungle_wood"
+          "Name": "minecraft:mangrove_wood"
         }
       }
     },
@@ -23,7 +23,10 @@
       "leaves": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:mangrove_leaves"
+          "Name": "minecraft:mangrove_leaves",
+          "Properties": {
+            "persistent": "true"
+          }
         }
       }
     }

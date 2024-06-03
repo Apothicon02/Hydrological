@@ -63,7 +63,7 @@ public class DryGrassBlock extends GrowingPlantHeadBlock {
 
     private BlockState makeShape(LevelAccessor levelAccessor, BlockPos blockPos) {
         BlockState belowState = levelAccessor.getBlockState(blockPos.below());
-        if (!belowState.is(BlockTags.DIRT) && !belowState.is(HydrolBlocks.DRY_GRASS.get())) {
+        if (!belowState.is(BlockTags.DIRT) && !belowState.is(BlockTags.SAND) && !belowState.is(HydrolBlocks.DRY_GRASS.get())) {
             return Blocks.AIR.defaultBlockState();
         } else if (levelAccessor.getBlockState(blockPos.above()).is(HydrolBlocks.DRY_GRASS.get())) {
             return this.defaultBlockState().setValue(HALF, Half.BOTTOM);

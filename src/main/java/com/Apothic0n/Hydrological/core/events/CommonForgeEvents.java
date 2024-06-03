@@ -49,18 +49,19 @@ public class CommonForgeEvents {
                 for (int z = 0; z < 128000; z = z+128) {
                     BlockPos spawnPos = new BlockPos(x, 63, z);
                     Holder<Biome> center = level.getBiome(spawnPos);
-                    if (!center.is(BiomeTags.IS_OCEAN) && !center.toString().contains("caldera") && !center.toString().contains("swamp")) {
+                    if (!center.is(BiomeTags.IS_OCEAN)) {
                         Holder<Biome> northEast = level.getBiome(spawnPos.north(24).east(24));
-                        if (!northEast.is(BiomeTags.IS_OCEAN) && !northEast.toString().contains("caldera") && !northEast.toString().contains("swamp")) {
+                        if (!northEast.is(BiomeTags.IS_OCEAN)) {
                             Holder<Biome> northWest = level.getBiome(spawnPos.north(24).west(24));
-                            if (!northWest.is(BiomeTags.IS_OCEAN) && !northWest.toString().contains("caldera") && !northWest.toString().contains("swamp")) {
+                            if (!northWest.is(BiomeTags.IS_OCEAN)) {
                                 Holder<Biome> southEast = level.getBiome(spawnPos.south(24).east(24));
-                                if (!southEast.is(BiomeTags.IS_OCEAN) && !southEast.toString().contains("caldera") && !southEast.toString().contains("swamp")) {
+                                if (!southEast.is(BiomeTags.IS_OCEAN)) {
                                     Holder<Biome> southWest = level.getBiome(spawnPos.south(24).west(24));
-                                    if (!southWest.is(BiomeTags.IS_OCEAN) && !southWest.toString().contains("caldera") && !southWest.toString().contains("swamp")) {
+                                    if (!southWest.is(BiomeTags.IS_OCEAN)) {
                                         ChunkPos chunkPos = level.getChunkAt(spawnPos).getPos();
                                         level.setChunkForced(chunkPos.x, chunkPos.z, true);
                                         event.getSettings().setSpawn(spawnPos.atY(level.getHeight(Heightmap.Types.WORLD_SURFACE, x, z)), 0.0F);
+                                        level.setChunkForced(chunkPos.x, chunkPos.z, true);
                                         cancel = true;
                                         x = 128000;
                                         z = 128000;

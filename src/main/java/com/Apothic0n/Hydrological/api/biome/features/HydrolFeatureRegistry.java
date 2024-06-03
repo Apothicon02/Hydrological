@@ -17,8 +17,8 @@ public abstract class HydrolFeatureRegistry {
             new VentFeature(VentConfiguration.CODEC));
     public static final RegistryObject<Feature<AnvilRockConfiguration>> FLOATING_ROCK_FEATURE = FEATURES.register("floating_rock", () ->
             new FloatingRockFeature(AnvilRockConfiguration.CODEC));
-    public static final RegistryObject<Feature<NewTreeConfiguration>> TREE_FEATURE = FEATURES.register("tree", () ->
-            new TreeFeature(NewTreeConfiguration.CODEC));
+    public static final RegistryObject<Feature<NewTreeConfiguration>> NEW_TREE_FEATURE = FEATURES.register("tree", () ->
+            new NewTreeFeature(NewTreeConfiguration.CODEC));
     public static final RegistryObject<Feature<RockConfiguration>> SPHEROID_ROCK = FEATURES.register("spheroid_rock", () ->
             new SpheroidRockFeature(RockConfiguration.CODEC));
     public static final RegistryObject<Feature<VerticalBlobConfiguration>> ADDITIVE_BLOB = FEATURES.register("additive_blob", () ->
