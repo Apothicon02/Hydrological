@@ -35,7 +35,7 @@ public class CoverFeature extends Feature<QuintupleBlockConfiguration> {
         super(config);
     }
 
-    private static final PerlinSimplexNoise HEIGHT_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(-6, 1));
+    public static final PerlinSimplexNoise HEIGHT_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(-6, 1));
 
     @Override
     public boolean place(FeaturePlaceContext<QuintupleBlockConfiguration> pContext) {

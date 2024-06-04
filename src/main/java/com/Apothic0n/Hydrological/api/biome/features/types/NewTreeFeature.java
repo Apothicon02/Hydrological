@@ -2,6 +2,7 @@ package com.Apothic0n.Hydrological.api.biome.features.types;
 
 import com.Apothic0n.Hydrological.api.biome.features.canopies.Canopy;
 import com.Apothic0n.Hydrological.api.biome.features.configurations.NewTreeConfiguration;
+import com.Apothic0n.Hydrological.api.biome.features.decorations.Decoration;
 import com.Apothic0n.Hydrological.api.biome.features.trunks.GeneratedTrunk;
 import com.Apothic0n.Hydrological.api.biome.features.trunks.Trunk;
 import com.mojang.serialization.Codec;
@@ -60,6 +61,7 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
     public static Map<BlockPos, BlockState> construct(RandomSource random, BlockPos origin, NewTreeConfiguration config) {
         Trunk trunk = config.getTrunk();
         Canopy canopy = config.getCanopy();
+        List<Decoration> decorations = config.getDecorations();
         GeneratedTrunk generatedTrunk = trunk.generateTrunk(random, origin);
         Map<BlockPos, BlockState> map = new HashMap<>(generatedTrunk.getMap());
         for (BlockPos branch:generatedTrunk.getCanopies()) {
@@ -70,6 +72,15 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
                 }
             }
         }
-        return map;
+        Map<BlockPos, BlockState> decoratedMap = map;
+        for (Decoration decoration : decorations) {
+            Map<BlockPos, BlockState> blocks = decoration.generateDecoration(random, map);
+            for (BlockPos block : blocks.keySet()) {
+                if (!decoratedMap.containsKey(block)) {
+                    decoratedMap.put(block, blocks.get(block));
+                }
+            }
+        }
+        return decoratedMap;
     }
 }

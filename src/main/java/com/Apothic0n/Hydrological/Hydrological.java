@@ -5,8 +5,10 @@ import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.api.biome.HydrolSurfaceRules;
 import com.Apothic0n.Hydrological.api.biome.features.HydrolFeatureRegistry;
 import com.Apothic0n.Hydrological.api.biome.features.canopies.CanopyType;
+import com.Apothic0n.Hydrological.api.biome.features.decorations.DecorationType;
 import com.Apothic0n.Hydrological.api.biome.features.decorators.HydrolTreeDecoratorType;
 import com.Apothic0n.Hydrological.api.biome.features.foliage_placers.HydrolFoliagePlacerType;
+import com.Apothic0n.Hydrological.api.biome.features.placement_modifiers.HydrolPlacementModifierTypes;
 import com.Apothic0n.Hydrological.api.biome.features.trunk_placers.HydrolTrunkPlacerType;
 import com.Apothic0n.Hydrological.api.biome.features.trunks.TrunkType;
 import com.Apothic0n.Hydrological.core.objects.HydrolBlocks;
@@ -32,6 +34,7 @@ public class Hydrological {
         HydrolJsonReader.main();
         TrunkType.register(eventBus);
         CanopyType.register(eventBus);
+        DecorationType.register(eventBus);
         HydrolDensityFunctions.register(eventBus);
         HydrolSurfaceRules.register(eventBus);
         if (!HydrolJsonReader.serverSidedOnlyMode) {
@@ -41,6 +44,7 @@ public class Hydrological {
             HydrolItems.ITEMS.register(eventBus);
             HydrolItems.generateStairsSlabsWalls();
         }
+        HydrolPlacementModifierTypes.register(eventBus);
         HydrolFeatureRegistry.register(eventBus);
         HydrolTrunkPlacerType.register(eventBus);
         HydrolFoliagePlacerType.register(eventBus);
@@ -52,6 +56,7 @@ public class Hydrological {
             addLight(Blocks.SUNFLOWER.getStateDefinition().getPossibleStates(), 2);
             addLight(Blocks.SPORE_BLOSSOM.getStateDefinition().getPossibleStates(), 4);
             addLight(Blocks.BLUE_ICE.getStateDefinition().getPossibleStates(), 7);
+            addLight(Blocks.COCOA.getStateDefinition().getPossibleStates(), 7);
             addLight(Blocks.TALL_GRASS.getStateDefinition().getPossibleStates(), 8);
             addLight(Blocks.TORCHFLOWER.getStateDefinition().getPossibleStates(), 9);
             addLight(Blocks.TORCHFLOWER_CROP.getStateDefinition().getPossibleStates(), 9);

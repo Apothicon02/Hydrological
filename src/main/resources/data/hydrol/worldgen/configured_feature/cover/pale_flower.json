@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 10,
+          "data": {
+            "Name": "minecraft:oxeye_daisy"
+          }
+        },
+        {
+          "weight": 30,
+          "data": {
+            "Name": "minecraft:white_tulip"
+          }
+        },
+        {
+          "weight": 20,
+          "data": {
+            "Name": "minecraft:pink_tulip"
+          }
+        },
+        {
+          "weight": 30,
+          "data": {
+            "Name": "minecraft:azure_bluet"
+          }
+        },
+        {
+          "weight": 10,
+          "data": {
+            "Name": "minecraft:lily_of_the_valley"
+          }
+        }
+      ]
+    }
+  }
+}

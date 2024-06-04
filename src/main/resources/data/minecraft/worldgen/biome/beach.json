@@ -38,6 +38,12 @@
     ],
     [
       "minecraft:glow_lichen",
+      "hydrol:cover/dry_grass_patches",
+      "hydrol:cover/tube_coral",
+      "hydrol:cover/brain_coral",
+      "hydrol:cover/fire_coral",
+      "hydrol:cover/horn_coral",
+      "hydrol:cover/bubble_coral",
       "hydrol:cover/dense_grass",
       "hydrol:trees/palms"
     ],

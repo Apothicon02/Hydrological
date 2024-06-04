@@ -1,9 +1,0 @@
-{
-  "feature": "hydrol:cover/dense_pale_grass",
-  "placement": [
-    {
-      "type": "minecraft:count",
-      "count": 1
-    }
-  ]
-}
