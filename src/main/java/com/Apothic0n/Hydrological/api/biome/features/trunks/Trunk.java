@@ -14,6 +14,6 @@ public abstract class Trunk {
     protected abstract TrunkType<?> type();
 
     public GeneratedTrunk generateTrunk(RandomSource random, BlockPos origin) {
-        return new GeneratedTrunk(new java.util.HashMap<>(Map.of()), new HashSet<>());
+        return new GeneratedTrunk(new java.util.HashMap<>(Map.of()), new HashSet<>(), 0);
     }
 }

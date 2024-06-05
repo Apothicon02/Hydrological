@@ -48,12 +48,16 @@ public class BendingTrunkType extends Trunk {
         } else {
             extra = -1;
         }
+        int highestHeight = 0;
 
         for (int trunks = 0; trunks <= extra+1; trunks++) {
             int offsetX = origin.getX();
             int offsetZ = origin.getZ();
-            int maxHeight = origin.getY()+random.nextInt(8, 22);
-            for (int height = origin.getY(); height <= maxHeight; height++) {
+            int maxHeight = origin.getY()+this.height.sample(random);
+            if (maxHeight > highestHeight) {
+                highestHeight = maxHeight;
+            }
+            for (int height = origin.getY()-1; height <= maxHeight; height++) {
                 float bendFactor = ((float) maxHeight /height)*2F;
                 BlockPos pos = new BlockPos(offsetX, height, offsetZ);
                 map.put(pos, getWood(random, pos));
@@ -81,6 +85,6 @@ public class BendingTrunkType extends Trunk {
             }
         }
 
-        return new GeneratedTrunk(map, canopies);
+        return new GeneratedTrunk(map, canopies, highestHeight);
     }
 }

@@ -17,6 +17,10 @@ public class CanopyType<P extends Canopy> {
     public static final Supplier<IForgeRegistry<CanopyType<?>>> CANOPY_TYPE_REGISTRY = CANOPY_TYPES.makeRegistry(RegistryBuilder::new);
 
     public static final RegistryObject<CanopyType<PalmCanopyType>> PALM_CANOPY_TYPE = CANOPY_TYPES.register("palm_canopy", () -> new CanopyType<>(PalmCanopyType.CODEC));
+    public static final RegistryObject<CanopyType<PointedCanopyType>> POINTED_CANOPY_TYPE = CANOPY_TYPES.register("pointed_canopy", () -> new CanopyType<>(PointedCanopyType.CODEC));
+    public static final RegistryObject<CanopyType<SquareCanopyType>> SQUARE_CANOPY_TYPE = CANOPY_TYPES.register("square_canopy", () -> new CanopyType<>(SquareCanopyType.CODEC));
+    public static final RegistryObject<CanopyType<FirCanopyType>> FIR_CANOPY_TYPE = CANOPY_TYPES.register("fir_canopy", () -> new CanopyType<>(FirCanopyType.CODEC));
+    public static final RegistryObject<CanopyType<SpruceCanopyType>> SPRUCE_CANOPY_TYPE = CANOPY_TYPES.register("spruce_canopy", () -> new CanopyType<>(SpruceCanopyType.CODEC));
 
     private final Codec<P> codec;
 

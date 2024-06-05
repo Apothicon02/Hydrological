@@ -12,7 +12,7 @@ public abstract class Canopy {
 
     protected abstract CanopyType<?> type();
 
-    public Map<BlockPos, BlockState> generateCanopy(RandomSource random, BlockPos origin) {
+    public Map<BlockPos, BlockState> generateCanopy(RandomSource random, BlockPos origin, int trunkHeight) {
         return new java.util.HashMap<>(Map.of());
     }
 }

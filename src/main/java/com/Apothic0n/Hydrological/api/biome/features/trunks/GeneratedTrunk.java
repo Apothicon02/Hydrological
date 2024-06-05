@@ -9,9 +9,11 @@ import java.util.Set;
 public class GeneratedTrunk {
     public final Map<BlockPos, BlockState> map;
     public final Set<BlockPos> canopies;
-    public GeneratedTrunk(Map<BlockPos, BlockState> map, Set<BlockPos> canopies) {
+    public final int height;
+    public GeneratedTrunk(Map<BlockPos, BlockState> map, Set<BlockPos> canopies, int height) {
         this.map = map;
         this.canopies = canopies;
+        this.height = height;
     }
 
     public Map<BlockPos, BlockState> getMap() {
@@ -20,5 +22,8 @@ public class GeneratedTrunk {
 
     public Set<BlockPos> getCanopies() {
         return this.canopies;
+    }
+    public int getHeight() {
+        return this.height;
     }
 }

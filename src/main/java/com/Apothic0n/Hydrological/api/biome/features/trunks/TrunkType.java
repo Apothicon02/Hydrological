@@ -17,6 +17,8 @@ public class TrunkType<P extends Trunk> {
     public static final Supplier<IForgeRegistry<TrunkType<?>>> TRUNK_TYPE_REGISTRY = TRUNK_TYPES.makeRegistry(RegistryBuilder::new);
 
     public static final RegistryObject<TrunkType<BendingTrunkType>> BENDING_TRNUK_TYPE = TRUNK_TYPES.register("bending_trunk", () -> new TrunkType<>(BendingTrunkType.CODEC));
+    public static final RegistryObject<TrunkType<StraightTrunkType>> STRAIGHT_TRNUK_TYPE = TRUNK_TYPES.register("straight_trunk", () -> new TrunkType<>(StraightTrunkType.CODEC));
+    public static final RegistryObject<TrunkType<TiltedTrunkType>> TILTED_TRNUK_TYPE = TRUNK_TYPES.register("tilted_trunk", () -> new TrunkType<>(TiltedTrunkType.CODEC));
 
     private final Codec<P> codec;
 

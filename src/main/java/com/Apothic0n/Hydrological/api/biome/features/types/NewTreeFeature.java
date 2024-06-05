@@ -39,7 +39,7 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
         for (BlockPos pos : map.keySet()) {
             int x = pos.getX();
             int z = pos.getZ();
-            if (!config.getIntersect()) {
+            if (!config.getIntersect() && pos.getY() > origin.getY()) {
                 if (x >= minX && x <= maxX && z >= minZ && z <= maxZ && !level.getBlockState(pos).canBeReplaced()) {
                     enoughSpace = false;
                     break;
@@ -50,7 +50,7 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
             for (BlockPos pos : map.keySet()) {
                 int x = pos.getX();
                 int z = pos.getZ();
-                if (x >= minX && x <= maxX && z >= minZ && z <= maxZ && level.getBlockState(pos).canBeReplaced()) {
+                if (x >= minX && x <= maxX && z >= minZ && z <= maxZ && (level.getBlockState(pos).canBeReplaced() || pos.getY() <= origin.getY())) {
                     level.setBlock(pos, map.get(pos), UPDATE_ALL);
                 }
             }
@@ -65,7 +65,7 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
         GeneratedTrunk generatedTrunk = trunk.generateTrunk(random, origin);
         Map<BlockPos, BlockState> map = new HashMap<>(generatedTrunk.getMap());
         for (BlockPos branch:generatedTrunk.getCanopies()) {
-            Map<BlockPos, BlockState> leaves = canopy.generateCanopy(random, branch);
+            Map<BlockPos, BlockState> leaves = canopy.generateCanopy(random, branch, generatedTrunk.getHeight());
             for (BlockPos leaf:leaves.keySet()) {
                 if (!map.containsKey(leaf)) {
                     map.put(leaf, leaves.get(leaf));
