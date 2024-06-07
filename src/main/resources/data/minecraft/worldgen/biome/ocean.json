@@ -37,7 +37,9 @@
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/dense_sea_grass",
+      "hydrol:cover/seagrass_negative",
+      "hydrol:cover/seagrass_positive",
+      "hydrol:cover/tall_seagrass_middle",
       "hydrol:cover/sparse_kelp"
     ],
     [

@@ -14,7 +14,7 @@
       "wood": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:spruce_log"
+          "Name": "hydrol:spruce_wood_wall"
         }
       }
     },

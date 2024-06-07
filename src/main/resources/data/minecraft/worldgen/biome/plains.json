@@ -40,8 +40,11 @@
       "minecraft:glow_lichen",
       "hydrol:cover/pale_flowers",
       "hydrol:cover/red_flowers",
-      "hydrol:cover/dense_grass",
+      "hydrol:cover/grass_negative",
+      "hydrol:cover/grass_positive",
+      "hydrol:cover/tall_grass_middle",
       "hydrol:shrubs/oak_bushes",
+      "hydrol:trees/willow",
       "hydrol:trees/birch"
     ],
     [

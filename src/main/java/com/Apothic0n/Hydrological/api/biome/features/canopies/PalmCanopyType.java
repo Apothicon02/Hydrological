@@ -34,7 +34,7 @@ public class PalmCanopyType extends Canopy {
     }
 
     @Override
-    public Map<BlockPos, BlockState> generateCanopy(RandomSource random, BlockPos origin, int trunkHeight) {
+    public Map<BlockPos, BlockState> generateCanopy(RandomSource random, BlockPos origin, int trunkHeight, BlockPos treeOrigin) {
         Map<BlockPos, BlockState> map = new java.util.HashMap<>(Map.of());
 
         int x = origin.getX();

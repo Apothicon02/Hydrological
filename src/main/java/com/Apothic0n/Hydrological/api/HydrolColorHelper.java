@@ -17,8 +17,8 @@ public class HydrolColorHelper {
 
     public static int tintFoliageOrGrass(BlockState blockState, int x, int y, int z, double temperature, double humidity, boolean isFoliage) {
         double brighten = Mth.clamp(BRIGHTNESS_NOISE.getValue(x * 0.05, z * 0.01, false), -0.25, 0.25)+0.5;
-        float red = (float) (0.2);
-        float green = (float) (0.6);
+        float red = (float) (0.0);
+        float green = (float) (0.55);
         float blue = (float) (0.33);
         float gray = (float) ((red+green+blue)/(3+brighten));
         float height = (384f/(y+64))*10;

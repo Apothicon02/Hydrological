@@ -1,13 +1,17 @@
 package com.Apothic0n.Hydrological.api.biome.features.placement_modifiers;
 
-import com.Apothic0n.Hydrological.api.biome.features.types.CoverFeature;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.levelgen.LegacyRandomSource;
+import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.placement.PlacementContext;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
+import net.minecraft.world.level.levelgen.synth.PerlinSimplexNoise;
+
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -31,6 +35,8 @@ public class NoiseCoverPlacement extends PlacementModifier {
         this.chance = chance;
     }
 
+    public static final PerlinSimplexNoise HEIGHT_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(-6, 1));
+
     public static NoiseCoverPlacement of(double min, double max, double chance) {
         return new NoiseCoverPlacement(min, max, chance);
     }
@@ -40,7 +46,7 @@ public class NoiseCoverPlacement extends PlacementModifier {
         for (int x = pos.getX(); x <= pos.getX() + 16; x++) {
             for (int z = pos.getZ(); z <= pos.getZ() + 16; z++) {
                 if (chance > random.nextInt(0, 100)/100D) {
-                    double noise = CoverFeature.HEIGHT_NOISE.getValue(x, z, false);
+                    double noise = HEIGHT_NOISE.getValue(x, z, false);
                     if (noise < max && noise > min) {
                         list.add(list.size(), new BlockPos(x, pos.getY(), z));
                     }

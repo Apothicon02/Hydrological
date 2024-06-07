@@ -21,6 +21,7 @@ public class CanopyType<P extends Canopy> {
     public static final RegistryObject<CanopyType<SquareCanopyType>> SQUARE_CANOPY_TYPE = CANOPY_TYPES.register("square_canopy", () -> new CanopyType<>(SquareCanopyType.CODEC));
     public static final RegistryObject<CanopyType<FirCanopyType>> FIR_CANOPY_TYPE = CANOPY_TYPES.register("fir_canopy", () -> new CanopyType<>(FirCanopyType.CODEC));
     public static final RegistryObject<CanopyType<SpruceCanopyType>> SPRUCE_CANOPY_TYPE = CANOPY_TYPES.register("spruce_canopy", () -> new CanopyType<>(SpruceCanopyType.CODEC));
+    public static final RegistryObject<CanopyType<DroopingCanopyType>> DROOPING_CANOPY_TYPE = CANOPY_TYPES.register("drooping_canopy", () -> new CanopyType<>(DroopingCanopyType.CODEC));
 
     private final Codec<P> codec;
 

@@ -55,7 +55,7 @@ public class CocoaDecorationType extends Decoration {
     }
 
     @Override
-    public Map<BlockPos, BlockState> generateDecoration(RandomSource random, Map<BlockPos, BlockState> existing) {
+    public Map<BlockPos, BlockState> generateDecoration(RandomSource random, Map<BlockPos, BlockState> existing, BlockPos origin) {
         Map<BlockPos, BlockState> map = new java.util.HashMap<>(Map.of());
         int max = this.count.sample(random);
         if (max > 0 && existing.size() > 2) {

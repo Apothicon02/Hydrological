@@ -12,7 +12,7 @@ public abstract class Decoration {
 
     protected abstract DecorationType<?> type();
 
-    public Map<BlockPos, BlockState> generateDecoration(RandomSource random, Map<BlockPos, BlockState> existing) {
+    public Map<BlockPos, BlockState> generateDecoration(RandomSource random, Map<BlockPos, BlockState> existing, BlockPos origin) {
         return new java.util.HashMap<>(Map.of());
     }
 }

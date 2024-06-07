@@ -19,6 +19,8 @@ public abstract class HydrolFeatureRegistry {
             new FloatingRockFeature(AnvilRockConfiguration.CODEC));
     public static final RegistryObject<Feature<NewTreeConfiguration>> NEW_TREE_FEATURE = FEATURES.register("tree", () ->
             new NewTreeFeature(NewTreeConfiguration.CODEC));
+    public static final RegistryObject<Feature<SimpleBlockConfiguration>> SIMPLE_BLOCK_FEATURE = FEATURES.register("simple_block", () ->
+            new SimpleBlockFeature(SimpleBlockConfiguration.CODEC));
     public static final RegistryObject<Feature<RockConfiguration>> SPHEROID_ROCK = FEATURES.register("spheroid_rock", () ->
             new SpheroidRockFeature(RockConfiguration.CODEC));
     public static final RegistryObject<Feature<VerticalBlobConfiguration>> ADDITIVE_BLOB = FEATURES.register("additive_blob", () ->
@@ -97,8 +99,6 @@ public abstract class HydrolFeatureRegistry {
             new UnlimitedOreSpikeFeature(OreSpikeConfiguration.CODEC));
     public static final RegistryObject<Feature<SimpleBlockConfiguration>> CRYSTAL_FEATURE = FEATURES.register("crystal", () ->
             new CrystalFeature(SimpleBlockConfiguration.CODEC));
-    public static final RegistryObject<Feature<QuintupleBlockConfiguration>> COVER_FEATURE = FEATURES.register("cover", () ->
-            new CoverFeature(QuintupleBlockConfiguration.CODEC));
     public static final RegistryObject<Feature<SimpleBlockConfiguration>> ARCH_FEATURE = FEATURES.register("arch", () ->
             new ArchFeature(SimpleBlockConfiguration.CODEC));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> CAVE_RIVER_FEATURE = FEATURES.register("cave_river", () ->
