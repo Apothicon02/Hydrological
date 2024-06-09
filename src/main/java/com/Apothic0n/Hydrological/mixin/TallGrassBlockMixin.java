@@ -1,6 +1,6 @@
 package com.Apothic0n.Hydrological.mixin;
 
-import com.Apothic0n.Hydrological.core.objects.EcoParticleTypes;
+import com.Apothic0n.Hydrological.core.objects.HydrolParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
@@ -20,7 +20,7 @@ public abstract class TallGrassBlockMixin extends BushBlock {
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
         super.animateTick(blockState, level, blockPos, randomSource);
         if (randomSource.nextInt(33) == 0 && level.getDayTime() > 12750 && level.getDayTime() < 23500) {
-            level.addAlwaysVisibleParticle(EcoParticleTypes.FIRE_FLIES.get(), true, blockPos.getX(),  blockPos.getY() + randomSource.nextDouble()*4, blockPos.getZ(), 0, 0, 0);
+            level.addAlwaysVisibleParticle(HydrolParticleTypes.FIRE_FLIES.get(), true, blockPos.getX(),  blockPos.getY() + randomSource.nextDouble()*4, blockPos.getZ(), 0, 0, 0);
         }
     }
 }

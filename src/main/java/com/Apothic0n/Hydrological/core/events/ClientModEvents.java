@@ -1,8 +1,6 @@
 package com.Apothic0n.Hydrological.core.events;
 
 import com.Apothic0n.Hydrological.Hydrological;
-import com.Apothic0n.Hydrological.api.HydrolColorHelper;
-import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
 import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.core.objects.*;
 import com.google.common.collect.ImmutableList;
@@ -18,7 +16,6 @@ import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.synth.PerlinSimplexNoise;
@@ -57,52 +54,52 @@ public class ClientModEvents {
     @SubscribeEvent
     public static void registerSpriteSet(RegisterParticleProvidersEvent event) {
         if (!HydrolJsonReader.serverSidedOnlyMode) {
-            event.registerSpriteSet(EcoParticleTypes.OAK_LEAVES.get(), (spriteSet) -> {
+            event.registerSpriteSet(HydrolParticleTypes.OAK_LEAVES.get(), (spriteSet) -> {
                 return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
                     return new LeavesParticle(level, x, y, z, spriteSet);
                 };
             });
-            event.registerSpriteSet(EcoParticleTypes.DARK_OAK_LEAVES.get(), (spriteSet) -> {
+            event.registerSpriteSet(HydrolParticleTypes.DARK_OAK_LEAVES.get(), (spriteSet) -> {
                 return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
                     return new LeavesParticle(level, x, y, z, spriteSet);
                 };
             });
-            event.registerSpriteSet(EcoParticleTypes.BIRCH_LEAVES.get(), (spriteSet) -> {
+            event.registerSpriteSet(HydrolParticleTypes.BIRCH_LEAVES.get(), (spriteSet) -> {
                 return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
                     return new BirchLeavesParticle(level, x, y, z, spriteSet);
                 };
             });
-            event.registerSpriteSet(EcoParticleTypes.SPRUCE_LEAVES.get(), (spriteSet) -> {
+            event.registerSpriteSet(HydrolParticleTypes.SPRUCE_LEAVES.get(), (spriteSet) -> {
                 return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
                     return new SpruceLeavesParticle(level, x, y, z, spriteSet);
                 };
             });
-            event.registerSpriteSet(EcoParticleTypes.JUNGLE_LEAVES.get(), (spriteSet) -> {
+            event.registerSpriteSet(HydrolParticleTypes.JUNGLE_LEAVES.get(), (spriteSet) -> {
                 return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
                     return new LeavesParticle(level, x, y, z, spriteSet);
                 };
             });
-            event.registerSpriteSet(EcoParticleTypes.ACACIA_LEAVES.get(), (spriteSet) -> {
+            event.registerSpriteSet(HydrolParticleTypes.ACACIA_LEAVES.get(), (spriteSet) -> {
                 return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
                     return new LeavesParticle(level, x, y, z, spriteSet);
                 };
             });
-            event.registerSpriteSet(EcoParticleTypes.MANGROVE_LEAVES.get(), (spriteSet) -> {
+            event.registerSpriteSet(HydrolParticleTypes.MANGROVE_LEAVES.get(), (spriteSet) -> {
                 return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
                     return new LeavesParticle(level, x, y, z, spriteSet);
                 };
             });
-            event.registerSpriteSet(EcoParticleTypes.AZALEA_LEAVES.get(), (spriteSet) -> {
+            event.registerSpriteSet(HydrolParticleTypes.AZALEA_LEAVES.get(), (spriteSet) -> {
                 return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
                     return new AzaleaLeavesParticle(level, x, y, z, spriteSet);
                 };
             });
-            event.registerSpriteSet(EcoParticleTypes.FLOWERING_AZALEA_LEAVES.get(), (spriteSet) -> {
+            event.registerSpriteSet(HydrolParticleTypes.FLOWERING_AZALEA_LEAVES.get(), (spriteSet) -> {
                 return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
                     return new AzaleaLeavesParticle(level, x, y, z, spriteSet);
                 };
             });
-            event.registerSpriteSet(EcoParticleTypes.FIRE_FLIES.get(), (spriteSet) -> {
+            event.registerSpriteSet(HydrolParticleTypes.FIRE_FLIES.get(), (spriteSet) -> {
                 return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
                     return new FireFliesParticle(level, x, y, z, spriteSet);
                 };

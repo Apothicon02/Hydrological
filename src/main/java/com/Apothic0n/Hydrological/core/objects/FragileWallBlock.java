@@ -209,23 +209,23 @@ public class FragileWallBlock extends Block implements SimpleWaterloggedBlock {
             if (!isFaceFull(blockstate.getCollisionShape(level, blockpos), Direction.UP)) {
                 String name = level.getBlockState(blockPos).getBlock().getName().getContents().toString();
                 if (name.contains("dark_oak")) {
-                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, EcoParticleTypes.DARK_OAK_LEAVES.get());
+                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, HydrolParticleTypes.DARK_OAK_LEAVES.get());
                 } else if (name.contains("oak")) {
-                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, EcoParticleTypes.OAK_LEAVES.get());
+                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, HydrolParticleTypes.OAK_LEAVES.get());
                 } else if (name.contains("birch")) {
-                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, EcoParticleTypes.BIRCH_LEAVES.get());
+                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, HydrolParticleTypes.BIRCH_LEAVES.get());
                 } else if (name.contains("spruce")) {
-                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, EcoParticleTypes.SPRUCE_LEAVES.get());
+                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, HydrolParticleTypes.SPRUCE_LEAVES.get());
                 } else if (name.contains("jungle")) {
-                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, EcoParticleTypes.JUNGLE_LEAVES.get());
+                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, HydrolParticleTypes.JUNGLE_LEAVES.get());
                 } else if (name.contains("acacia")) {
-                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, EcoParticleTypes.ACACIA_LEAVES.get());
+                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, HydrolParticleTypes.ACACIA_LEAVES.get());
                 } else if (name.contains("mangrove")) {
-                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, EcoParticleTypes.MANGROVE_LEAVES.get());
+                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, HydrolParticleTypes.MANGROVE_LEAVES.get());
                 } else if (name.contains("flowering_azalea")) {
-                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, EcoParticleTypes.FLOWERING_AZALEA_LEAVES.get());
+                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, HydrolParticleTypes.FLOWERING_AZALEA_LEAVES.get());
                 } else if (name.contains("azalea")) {
-                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, EcoParticleTypes.AZALEA_LEAVES.get());
+                    ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, HydrolParticleTypes.AZALEA_LEAVES.get());
                 } else if (name.contains("cherry")) {
                     ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, ParticleTypes.CHERRY_LEAVES);
                 }

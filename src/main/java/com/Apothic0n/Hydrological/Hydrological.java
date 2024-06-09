@@ -13,7 +13,7 @@ import com.Apothic0n.Hydrological.api.biome.features.trunk_placers.HydrolTrunkPl
 import com.Apothic0n.Hydrological.api.biome.features.trunks.TrunkType;
 import com.Apothic0n.Hydrological.core.objects.HydrolBlocks;
 import com.Apothic0n.Hydrological.core.objects.HydrolItems;
-import com.Apothic0n.Hydrological.core.objects.EcoParticleTypes;
+import com.Apothic0n.Hydrological.core.objects.HydrolParticleTypes;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -38,7 +38,7 @@ public class Hydrological {
         HydrolDensityFunctions.register(eventBus);
         HydrolSurfaceRules.register(eventBus);
         if (!HydrolJsonReader.serverSidedOnlyMode) {
-            EcoParticleTypes.PARTICLE_TYPES.register(eventBus);
+            HydrolParticleTypes.PARTICLE_TYPES.register(eventBus);
             HydrolBlocks.BLOCKS.register(eventBus);
             HydrolBlocks.generateStairsSlabsWalls();
             HydrolItems.ITEMS.register(eventBus);
