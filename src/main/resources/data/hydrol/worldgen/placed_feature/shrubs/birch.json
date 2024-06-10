@@ -1,5 +1,5 @@
 {
-  "feature": "hydrol:trees/birch",
+  "feature": "hydrol:shrubs/birch",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

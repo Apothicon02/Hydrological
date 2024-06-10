@@ -119,11 +119,38 @@
             },
 
             {
+              "biome": "minecraft:beach",
+              "parameters": {
+                "temperature": [
+                  0,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0,
+                  0.243
+                ],
+                "offset": 0
+              }
+            },
+            {
               "biome": "minecraft:river",
               "parameters": {
                 "temperature": [
                   -1,
-                  1
+                  0
                 ],
                 "humidity": [
                   -1,
@@ -147,11 +174,65 @@
             },
 
             {
+              "biome": "minecraft:sparse_jungle",
+              "parameters": {
+                "temperature": [
+                  0,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  0.3
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:sparse_jungle",
+              "parameters": {
+                "temperature": [
+                  0,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  0.4,
+                  1
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  1
+                ],
+                "offset": 0
+              }
+            },
+            {
               "biome": "minecraft:plains",
               "parameters": {
                 "temperature": [
                   -1,
-                  1
+                  0
                 ],
                 "humidity": [
                   -1,
@@ -178,7 +259,7 @@
               "parameters": {
                 "temperature": [
                   -1,
-                  1
+                  0
                 ],
                 "humidity": [
                   -1,

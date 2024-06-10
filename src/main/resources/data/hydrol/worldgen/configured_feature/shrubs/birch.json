@@ -14,7 +14,7 @@
       "wood": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:birch_log"
+          "Name": "hydrol:birch_wood_wall"
         }
       }
     },
@@ -25,7 +25,7 @@
         "state": {
           "Name": "minecraft:birch_leaves",
           "Properties": {
-            "persistent": "false"
+            "persistent": "true"
           }
         }
       }

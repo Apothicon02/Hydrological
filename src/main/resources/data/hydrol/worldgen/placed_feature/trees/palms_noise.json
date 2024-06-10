@@ -1,26 +1,28 @@
 {
-  "feature": "hydrol:cover/tall_grass",
+  "feature": "hydrol:trees/palm",
   "placement": [
     {
       "type": "hydrol:noise_cover",
-      "min": -10,
-      "max": 10,
-      "chance": 1
+      "min": -0.1,
+      "max": 0.1,
+      "chance": 0.002
     },
     {
       "type": "minecraft:heightmap",
-      "heightmap": "WORLD_SURFACE"
+      "heightmap": "WORLD_SURFACE_WG"
     },
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:matching_blocks",
+        "type": "minecraft:would_survive",
         "offset": [
           0,
-          -1,
+          0,
           0
         ],
-        "blocks": "minecraft:grass_block"
+        "state": {
+          "Name": "minecraft:dead_bush"
+        }
       }
     },
     {

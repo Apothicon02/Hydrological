@@ -20,6 +20,11 @@ public class HydrolColorHelper {
         float red = (float) (0.0);
         float green = (float) (0.55);
         float blue = (float) (0.33);
+        String blockName = blockState.getBlock().getDescriptionId();
+        if (blockName.contains("dark")) {
+            green -= 0.15F;
+            blue += 0.07F;
+        }
         float gray = (float) ((red+green+blue)/(3+brighten));
         float height = (384f/(y+64))*10;
         double saturate = -(Mth.clamp(SATURATION_NOISE.getValue((x+height) * 0.05, (z+height) * 0.01, false) * 0.4, -0.4, 0.4)+0.5);

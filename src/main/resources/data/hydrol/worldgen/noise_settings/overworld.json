@@ -279,6 +279,41 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
+                  "minecraft:sparse_jungle"
+                ]
+              },
+              "then_run": {
+                "type": "minecraft:sequence",
+                "sequence": [
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "noise": "hydrol:global/surface_variation",
+                      "min_threshold": -0.15,
+                      "max_threshold": 0.15
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:air"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "minecraft:grass_block"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:biome",
+                "biome_is": [
                   "minecraft:beach"
                 ]
               },
@@ -449,6 +484,55 @@
                 "result_state": {
                   "Name": "minecraft:dirt"
                 }
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:biome",
+                "biome_is": [
+                  "minecraft:sparse_jungle"
+                ]
+              },
+              "then_run": {
+                "type": "minecraft:sequence",
+                "sequence": [
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:not",
+                      "invert": {
+                        "type": "minecraft:y_above",
+                        "anchor": {
+                          "absolute": 86
+                        },
+                        "surface_depth_multiplier": 0,
+                        "add_stone_depth": false
+                      }
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "hydrol:global/surface_variation",
+                        "min_threshold": -0.15,
+                        "max_threshold": 0.15
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "minecraft:mud"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "minecraft:dirt"
+                    }
+                  }
+                ]
               }
             },
             {

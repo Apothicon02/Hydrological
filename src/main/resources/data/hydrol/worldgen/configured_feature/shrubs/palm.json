@@ -8,15 +8,15 @@
         "type": "minecraft:weighted_list",
         "distribution": [
           {
-            "weight": 6,
+            "weight": 4,
             "data": 1
           },
           {
-            "weight": 3,
+            "weight": 4,
             "data": 2
           },
           {
-            "weight": 1,
+            "weight": 2,
             "data": 3
           }
         ]
@@ -24,8 +24,8 @@
       "height": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 8,
-          "max_inclusive": 22
+          "min_inclusive": 1,
+          "max_inclusive": 5
         }
       },
       "wood": {
@@ -48,16 +48,7 @@
       }
     },
     "decorations": [
-      {
-        "type": "hydrol:cocoa",
-        "count": {
-          "type": "minecraft:uniform",
-          "value": {
-            "min_inclusive": 1,
-            "max_inclusive": 4
-          }
-        }
-      }
+
     ]
   }
 }

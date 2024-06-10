@@ -1,5 +1,5 @@
 {
-  "feature": "hydrol:shrubs/oak_bush",
+  "feature": "hydrol:shrubs/oak",
   "placement": [
     {
       "type": "minecraft:noise_based_count",
