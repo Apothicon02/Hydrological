@@ -527,6 +527,36 @@
                     }
                   },
                   {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "noise": "hydrol:global/surface_variation",
+                      "min_threshold": -0.14,
+                      "max_threshold": 0.14
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:coarse_dirt"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "noise": "hydrol:global/surface_variation",
+                      "min_threshold": -0.15,
+                      "max_threshold": 0.15
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:rooted_dirt"
+                      }
+                    }
+                  },
+                  {
                     "type": "minecraft:block",
                     "result_state": {
                       "Name": "minecraft:dirt"

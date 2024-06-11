@@ -24,6 +24,13 @@ public class HydrolColorHelper {
         if (blockName.contains("dark")) {
             green -= 0.15F;
             blue += 0.07F;
+        } else if (blockName.contains("mangrove")) {
+            green -= 0.08F;
+            blue -= 0.07F;
+        } else if (blockName.contains("jungle")) {
+            red += 0.3F;
+            green += 0.125F;
+            blue -= 0.035F;
         }
         float gray = (float) ((red+green+blue)/(3+brighten));
         float height = (384f/(y+64))*10;

@@ -8,6 +8,7 @@ import com.Apothic0n.Hydrological.api.biome.features.trunks.Trunk;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
@@ -69,8 +70,8 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
             for (BlockPos pos : map.keySet()) {
                 int x = pos.getX();
                 int z = pos.getZ();
-                if (x >= minX && x <= maxX && z >= minZ && z <= maxZ && (level.getBlockState(pos).canBeReplaced() || pos.getY() <= origin.getY())) {
-                    BlockState state = map.get(pos);
+                BlockState state = map.get(pos);
+                if (x >= minX && x <= maxX && z >= minZ && z <= maxZ && (level.getBlockState(pos).canBeReplaced() || (pos.getY() <= origin.getY() && state.isSolid() && !state.is(BlockTags.LEAVES)))) {
                     if (state.getBlock() instanceof WallBlock) {
                         state = state.updateShape(Direction.UP, state, level, pos, pos);
                     }

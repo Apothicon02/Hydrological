@@ -1,5 +1,5 @@
 {
-  "feature": "hydrol:shrubs/palm",
+  "feature": "hydrol:shrubs/jungle",
   "placement": [
     {
       "type": "minecraft:noise_based_count",
