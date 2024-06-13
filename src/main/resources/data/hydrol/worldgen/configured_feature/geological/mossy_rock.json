@@ -1,0 +1,28 @@
+{
+  "type": "hydrol:rock",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 163,
+          "data": {
+            "Name": "minecraft:mossy_cobblestone"
+          }
+        },
+        {
+          "weight": 33,
+          "data": {
+            "Name": "minecraft:cobblestone"
+          }
+        },
+        {
+          "weight": 3,
+          "data": {
+            "Name": "minecraft:moss_block"
+          }
+        }
+      ]
+    }
+  }
+}

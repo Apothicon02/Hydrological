@@ -32,6 +32,11 @@ public class HydrolColorHelper {
             green += 0.125F;
             blue -= 0.035F;
         }
+
+        double darken = Math.max(-0.5, Math.min(-0.4, temperature)+0.4)/3;
+        green += darken;
+        blue += darken;
+
         float gray = (float) ((red+green+blue)/(3+brighten));
         float height = (384f/(y+64))*10;
         double saturate = -(Mth.clamp(SATURATION_NOISE.getValue((x+height) * 0.05, (z+height) * 0.01, false) * 0.4, -0.4, 0.4)+0.5);

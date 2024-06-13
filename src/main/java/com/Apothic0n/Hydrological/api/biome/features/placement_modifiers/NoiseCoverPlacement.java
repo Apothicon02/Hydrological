@@ -45,7 +45,7 @@ public class NoiseCoverPlacement extends PlacementModifier {
         List<BlockPos> list = new java.util.ArrayList<>(List.of());
         for (int x = pos.getX(); x <= pos.getX() + 16; x++) {
             for (int z = pos.getZ(); z <= pos.getZ() + 16; z++) {
-                if (chance > random.nextInt(0, 100)/100D) {
+                if (chance > random.nextInt(0, 1000)/1000D) {
                     double noise = HEIGHT_NOISE.getValue(x, z, false);
                     if (noise < max && noise > min) {
                         list.add(list.size(), new BlockPos(x, pos.getY(), z));

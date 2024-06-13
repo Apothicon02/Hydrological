@@ -231,7 +231,7 @@
               "biome": "minecraft:plains",
               "parameters": {
                 "temperature": [
-                  -1,
+                  -0.5,
                   0
                 ],
                 "humidity": [
@@ -258,8 +258,62 @@
               "biome": "minecraft:plains",
               "parameters": {
                 "temperature": [
-                  -1,
+                  -0.5,
                   0
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  0.4,
+                  1
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  1
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:taiga",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  -0.5
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  0.3
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:taiga",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  -0.5
                 ],
                 "humidity": [
                   -1,
