@@ -31,11 +31,11 @@ public class HydrolColorHelper {
             red += 0.3F;
             green += 0.125F;
             blue -= 0.035F;
+        } else if (blockName.contains("grass")) {
+            double darken = Math.max(-0.45, Math.min(-0.4, temperature) + 0.4) / 2;
+            green += darken;
+            blue += darken;
         }
-
-        double darken = Math.max(-0.5, Math.min(-0.4, temperature)+0.4)/3;
-        green += darken;
-        blue += darken;
 
         float gray = (float) ((red+green+blue)/(3+brighten));
         float height = (384f/(y+64))*10;

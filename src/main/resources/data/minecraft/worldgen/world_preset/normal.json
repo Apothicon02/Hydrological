@@ -285,7 +285,7 @@
               "biome": "minecraft:taiga",
               "parameters": {
                 "temperature": [
-                  -1,
+                  -0.8,
                   -0.5
                 ],
                 "humidity": [
@@ -312,8 +312,62 @@
               "biome": "minecraft:taiga",
               "parameters": {
                 "temperature": [
-                  -1,
+                  -0.8,
                   -0.5
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  0.4,
+                  1
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  1
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:snowy_taiga",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  -0.8
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  0.3
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:snowy_taiga",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  -0.8
                 ],
                 "humidity": [
                   -1,
@@ -340,8 +394,35 @@
               "biome": "minecraft:stony_peaks",
               "parameters": {
                 "temperature": [
+                  -0.8,
+                  1
+                ],
+                "humidity": [
                   -1,
                   1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.3,
+                  1
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:frozen_peaks",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  -0.8
                 ],
                 "humidity": [
                   -1,

@@ -21,10 +21,8 @@ public abstract class HydrolFeatureRegistry {
             new NewTreeFeature(NewTreeConfiguration.CODEC));
     public static final RegistryObject<Feature<SimpleBlockConfiguration>> SIMPLE_BLOCK_FEATURE = FEATURES.register("simple_block", () ->
             new SimpleBlockFeature(SimpleBlockConfiguration.CODEC));
-    public static final RegistryObject<Feature<SimpleBlockConfiguration>> ROCK_FEATURE = FEATURES.register("rock", () ->
-            new RockFeature(SimpleBlockConfiguration.CODEC));
-    public static final RegistryObject<Feature<RockConfiguration>> SPHEROID_ROCK = FEATURES.register("spheroid_rock", () ->
-            new SpheroidRockFeature(RockConfiguration.CODEC));
+    public static final RegistryObject<Feature<RockConfiguration>> ROCK_FEATURE = FEATURES.register("rock", () ->
+            new RockFeature(RockConfiguration.CODEC));
     public static final RegistryObject<Feature<VerticalBlobConfiguration>> ADDITIVE_BLOB = FEATURES.register("additive_blob", () ->
             new AdditiveBlobFeature(VerticalBlobConfiguration.CODEC));
     public static final RegistryObject<Feature<VerticalBlobConfiguration>> ADDITIVE_GROUND_BLOB = FEATURES.register("additive_ground_blob", () ->

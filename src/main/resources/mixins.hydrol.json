@@ -13,6 +13,7 @@
     "GrowingPlantBlockMixin",
     "LevelChunkMixin",
     "NoiseChunkGeneratorMixin",
+    "SnowLayerBlockMixin",
     "TallGrassBlockMixin",
     "UtilMixin",
     "WaterFluidMixin"
@@ -22,7 +23,8 @@
     "BiomeColorsMixin",
     "BiomeSpecialEffectsGrassMixin",
     "DimensionTypeMixin",
-    "FoliageColorMixin"
+    "FoliageColorMixin",
+    "ScreenEffectRendererMixin"
   ],
   "server": [
     "ServerLevelEntityCallbacksMixin"

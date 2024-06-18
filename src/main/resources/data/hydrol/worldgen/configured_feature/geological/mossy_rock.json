@@ -11,18 +11,48 @@
           }
         },
         {
-          "weight": 33,
+          "weight": 20,
           "data": {
             "Name": "minecraft:cobblestone"
           }
         },
         {
-          "weight": 3,
+          "weight": 16,
           "data": {
             "Name": "minecraft:moss_block"
           }
         }
       ]
+    },
+    "filler": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 98,
+          "data": {
+            "Name": "minecraft:stone"
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:cobblestone"
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:mossy_cobblestone"
+          }
+        }
+      ]
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 2,
+        "max_inclusive": 6
+      }
     }
   }
 }
