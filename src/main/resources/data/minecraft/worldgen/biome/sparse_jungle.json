@@ -49,9 +49,9 @@
       "hydrol:cover/grass_negative",
       "hydrol:cover/grass_positive",
       "hydrol:cover/tall_grass_middle",
+      "hydrol:shrubs/jungle",
       "hydrol:trees/palms_noise",
-      "hydrol:trees/dark_willow",
-      "hydrol:shrubs/jungle"
+      "hydrol:trees/dark_willow"
     ],
     [
       "minecraft:freeze_top_layer"

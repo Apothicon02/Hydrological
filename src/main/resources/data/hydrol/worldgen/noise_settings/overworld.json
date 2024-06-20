@@ -361,6 +361,71 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
+                  "minecraft:old_growth_pine_taiga"
+                ]
+              },
+              "then_run": {
+                "type": "minecraft:sequence",
+                "sequence": [
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "noise": "hydrol:global/surface_variation",
+                      "min_threshold": -0.2,
+                      "max_threshold": 0.2
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:grass_block"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "noise": "hydrol:global/surface_variation",
+                      "min_threshold": -0.33,
+                      "max_threshold": 0.33
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:podzol"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "noise": "hydrol:global/surface_variation",
+                      "min_threshold": -0.37,
+                      "max_threshold": 0.37
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:coarse_dirt"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "minecraft:podzol"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:biome",
+                "biome_is": [
                   "minecraft:snowy_taiga"
                 ]
               },
@@ -458,6 +523,35 @@
                     }
                   }
                 ]
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:biome",
+                "biome_is": [
+                  "minecraft:snowy_beach"
+                ]
+              },
+              "then_run": {
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:not",
+                  "invert": {
+                    "type": "minecraft:y_above",
+                    "anchor": {
+                      "absolute": 73
+                    },
+                    "surface_depth_multiplier": 0,
+                    "add_stone_depth": false
+                  }
+                },
+                "then_run": {
+                  "type": "minecraft:block",
+                  "result_state": {
+                    "Name": "minecraft:gravel"
+                  }
+                }
               }
             },
             {
@@ -574,7 +668,8 @@
                 "type": "minecraft:biome",
                 "biome_is": [
                   "minecraft:plains",
-                  "minecraft:taiga"
+                  "minecraft:taiga",
+                  "minecraft:old_growth_pine_taiga"
                 ]
               },
               "then_run": {
@@ -730,6 +825,35 @@
                     }
                   }
                 ]
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:biome",
+                "biome_is": [
+                  "minecraft:snowy_beach"
+                ]
+              },
+              "then_run": {
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:not",
+                  "invert": {
+                    "type": "minecraft:y_above",
+                    "anchor": {
+                      "absolute": 72
+                    },
+                    "surface_depth_multiplier": 0,
+                    "add_stone_depth": false
+                  }
+                },
+                "then_run": {
+                  "type": "minecraft:block",
+                  "result_state": {
+                    "Name": "minecraft:gravel"
+                  }
+                }
               }
             },
             {
@@ -1032,7 +1156,7 @@
           "type": "minecraft:noise_threshold",
           "noise": "hydrol:normal/temperature",
           "min_threshold": -10,
-          "max_threshold": -0.8
+          "max_threshold": -0.55
         },
         "then_run": {
           "type": "minecraft:sequence",
@@ -1093,8 +1217,8 @@
         "if_true": {
           "type": "minecraft:noise_threshold",
           "noise": "hydrol:normal/temperature",
-          "min_threshold": -0.8,
-          "max_threshold": -0.78
+          "min_threshold": -0.55,
+          "max_threshold": -0.53
         },
         "then_run": {
           "type": "minecraft:sequence",
@@ -1155,8 +1279,8 @@
         "if_true": {
           "type": "minecraft:noise_threshold",
           "noise": "hydrol:normal/temperature",
-          "min_threshold": -0.78,
-          "max_threshold": -0.76
+          "min_threshold": -0.53,
+          "max_threshold": -0.51
         },
         "then_run": {
           "type": "minecraft:sequence",
@@ -1217,8 +1341,8 @@
         "if_true": {
           "type": "minecraft:noise_threshold",
           "noise": "hydrol:normal/temperature",
-          "min_threshold": -0.76,
-          "max_threshold": -0.75
+          "min_threshold": -0.51,
+          "max_threshold": -0.5
         },
         "then_run": {
           "type": "minecraft:sequence",

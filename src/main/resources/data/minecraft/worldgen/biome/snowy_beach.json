@@ -3,7 +3,7 @@
     "air": [
     ]
   },
-  "downfall": 0.4,
+  "downfall": 0.3,
   "effects": {
     "fog_color": 12638463,
     "mood_sound": {
@@ -12,8 +12,8 @@
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
-    "sky_color": 7907327,
-    "water_color": 4159204,
+    "sky_color": 8364543,
+    "water_color": 4020182,
     "water_fog_color": 329011
   },
   "features": [
@@ -30,22 +30,12 @@
     [],
     [],
     [
-
     ],
     [],
     [
-
     ],
     [
-      "minecraft:glow_lichen",
-      "hydrol:cover/pale_flowers",
-      "hydrol:cover/red_flowers",
-      "hydrol:cover/grass_negative",
-      "hydrol:cover/grass_positive",
-      "hydrol:cover/tall_grass_middle",
-      "hydrol:shrubs/oak",
-      "hydrol:shrubs/birch",
-      "hydrol:trees/willow"
+      "minecraft:glow_lichen"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -63,44 +53,7 @@
       }
     ],
     "axolotls": [],
-    "creature": [
-      {
-        "type": "minecraft:sheep",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 12
-      },
-      {
-        "type": "minecraft:pig",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:chicken",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:cow",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 8
-      },
-      {
-        "type": "minecraft:horse",
-        "maxCount": 6,
-        "minCount": 2,
-        "weight": 5
-      },
-      {
-        "type": "minecraft:donkey",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 1
-      }
-    ],
+    "creature": [],
     "misc": [],
     "monster": [
       {
@@ -163,5 +116,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.8
+  "temperature": 0.05
 }
