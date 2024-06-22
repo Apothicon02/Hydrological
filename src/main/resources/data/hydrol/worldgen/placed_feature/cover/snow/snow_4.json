@@ -1,10 +1,10 @@
 {
-  "feature": "hydrol:cover/snow_1",
+  "feature": "hydrol:cover/snow/snow_4",
   "placement": [
     {
       "type": "hydrol:noise_cover",
-      "min": -10,
-      "max": -0.75,
+      "min": -0.25,
+      "max": 0.0,
       "chance": 1
     },
     {

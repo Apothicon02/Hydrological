@@ -58,6 +58,7 @@ public class Hydrological {
             addLight(Blocks.BLUE_ICE.getStateDefinition().getPossibleStates(), 7);
             addLight(Blocks.COCOA.getStateDefinition().getPossibleStates(), 7);
             addLight(Blocks.TALL_GRASS.getStateDefinition().getPossibleStates(), 8);
+            addLight(Blocks.TALL_SEAGRASS.getStateDefinition().getPossibleStates(), 8);
             addLight(Blocks.TORCHFLOWER.getStateDefinition().getPossibleStates(), 9);
             addLight(Blocks.TORCHFLOWER_CROP.getStateDefinition().getPossibleStates(), 9);
             addLight(Blocks.RED_MUSHROOM.getStateDefinition().getPossibleStates(), 9);

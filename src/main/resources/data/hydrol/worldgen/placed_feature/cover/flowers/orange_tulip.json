@@ -1,11 +1,11 @@
 {
-  "feature": "hydrol:cover/snow_4",
+  "feature": "hydrol:cover/flowers/orange_tulip",
   "placement": [
     {
       "type": "hydrol:noise_cover",
-      "min": -0.25,
-      "max": 0.0,
-      "chance": 1
+      "min": -0.11,
+      "max": -0.09,
+      "chance": 0.22
     },
     {
       "type": "minecraft:heightmap",
@@ -14,13 +14,15 @@
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:has_sturdy_face",
+        "type": "minecraft:would_survive",
         "offset": [
           0,
-          -1,
+          0,
           0
         ],
-        "direction": "up"
+        "state": {
+          "Name": "minecraft:orange_tulip"
+        }
       }
     },
     {

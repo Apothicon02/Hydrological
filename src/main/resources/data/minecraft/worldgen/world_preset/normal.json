@@ -173,7 +173,7 @@
             },
 
             {
-              "biome": "minecraft:beach",
+              "biome": "minecraft:mangrove_swamp",
               "parameters": {
                 "temperature": [
                   0,

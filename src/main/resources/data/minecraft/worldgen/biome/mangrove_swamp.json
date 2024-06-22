@@ -3,18 +3,26 @@
     "air": [
     ]
   },
-  "downfall": 0.8,
+  "downfall": 0.9,
   "effects": {
     "fog_color": 12638463,
+    "foliage_color": 9285927,
+    "grass_color_modifier": "swamp",
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
-    "sky_color": 8233983,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    "music": {
+      "max_delay": 24000,
+      "min_delay": 12000,
+      "replace_current_music": false,
+      "sound": "minecraft:music.overworld.swamp"
+    },
+    "sky_color": 7907327,
+    "water_color": 3832426,
+    "water_fog_color": 5077600
   },
   "features": [
     [],
@@ -36,17 +44,14 @@
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/flowers/orange_tulip",
-      "hydrol:cover/flowers/poppy",
-      "hydrol:cover/flowers/red_tulip",
-      "hydrol:cover/flowers/rose_bush",
-      "hydrol:cover/sweet_berry_bushes",
-      "hydrol:cover/grass_negative",
-      "hydrol:cover/grass_positive",
-      "hydrol:cover/tall_grass_middle",
-      "hydrol:trees/spruce_noise",
-      "hydrol:trees/pine",
-      "hydrol:trees/fir"
+      "hydrol:cover/roots",
+      "hydrol:cover/roots_edge",
+      "hydrol:cover/tall_grass",
+      "hydrol:cover/tall_seagrass_middle",
+      "hydrol:cover/lily_pads",
+      "hydrol:trees/dark_willow_extra",
+      "hydrol:trees/mangrove_large",
+      "hydrol:trees/mangrove"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -66,46 +71,10 @@
     "axolotls": [],
     "creature": [
       {
-        "type": "minecraft:sheep",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 12
-      },
-      {
-        "type": "minecraft:pig",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:chicken",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:cow",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 8
-      },
-      {
-        "type": "minecraft:wolf",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 8
-      },
-      {
-        "type": "minecraft:rabbit",
-        "maxCount": 3,
+        "type": "minecraft:frog",
+        "maxCount": 5,
         "minCount": 2,
-        "weight": 4
-      },
-      {
-        "type": "minecraft:fox",
-        "maxCount": 4,
-        "minCount": 2,
-        "weight": 8
+        "weight": 10
       }
     ],
     "misc": [],
@@ -157,6 +126,12 @@
         "maxCount": 1,
         "minCount": 1,
         "weight": 5
+      },
+      {
+        "type": "minecraft:slime",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 1
       }
     ],
     "underground_water_creature": [
@@ -167,8 +142,15 @@
         "weight": 10
       }
     ],
-    "water_ambient": [],
+    "water_ambient": [
+      {
+        "type": "minecraft:tropical_fish",
+        "maxCount": 8,
+        "minCount": 8,
+        "weight": 25
+      }
+    ],
     "water_creature": []
   },
-  "temperature": 0.25
+  "temperature": 0.8
 }

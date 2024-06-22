@@ -1,11 +1,11 @@
 {
-  "feature": "hydrol:cover/snow_inv_2",
+  "feature": "hydrol:cover/flowers/white_tulip",
   "placement": [
     {
       "type": "hydrol:noise_cover",
-      "min": 0.5,
-      "max": 0.75,
-      "chance": 1
+      "min": -0.21,
+      "max": -0.19,
+      "chance": 0.22
     },
     {
       "type": "minecraft:heightmap",
@@ -14,13 +14,15 @@
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:has_sturdy_face",
+        "type": "minecraft:would_survive",
         "offset": [
           0,
-          -1,
+          0,
           0
         ],
-        "direction": "up"
+        "state": {
+          "Name": "minecraft:white_tulip"
+        }
       }
     },
     {

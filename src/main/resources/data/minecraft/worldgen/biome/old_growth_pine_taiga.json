@@ -42,12 +42,16 @@
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/red_flowers",
+      "hydrol:cover/flowers/orange_tulip",
+      "hydrol:cover/flowers/poppy",
+      "hydrol:cover/flowers/red_tulip",
+      "hydrol:cover/flowers/rose_bush",
       "hydrol:cover/sweet_berry_bushes",
       "hydrol:cover/grass_negative",
       "hydrol:cover/grass_positive",
       "hydrol:cover/tall_grass_middle",
       "hydrol:shrubs/pumpkins",
+      "hydrol:shrubs/pumpkins_extra",
       "hydrol:trees/spruce_noise",
       "hydrol:trees/pine",
       "hydrol:trees/fir"

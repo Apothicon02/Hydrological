@@ -14,15 +14,24 @@
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:would_survive",
-        "offset": [
-          0,
-          0,
-          0
-        ],
-        "state": {
-          "Name": "minecraft:tall_seagrass"
-        }
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:would_survive",
+            "state": {
+              "Name": "minecraft:tall_seagrass"
+            }
+          },
+          {
+            "type": "minecraft:matching_fluids",
+            "offset": [
+              0,
+              1,
+              0
+            ],
+            "fluids": "#minecraft:water"
+          }
+        ]
       }
     },
     {

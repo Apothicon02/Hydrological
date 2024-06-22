@@ -1,15 +1,20 @@
 {
-  "feature": "hydrol:cover/seagrass",
+  "feature": "hydrol:cover/lily_pad",
   "placement": [
     {
       "type": "hydrol:noise_cover",
-      "min": -10,
-      "max": -0.1,
-      "chance": 1
+      "min": 0.5,
+      "max": 1,
+      "chance": 0.1
     },
     {
-      "type": "minecraft:heightmap",
-      "heightmap": "OCEAN_FLOOR"
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "absolute": 64
+      }
     },
     {
       "type": "minecraft:block_predicate_filter",
@@ -17,16 +22,14 @@
         "type": "minecraft:all_of",
         "predicates": [
           {
-            "type": "minecraft:would_survive",
-            "state": {
-              "Name": "minecraft:tall_seagrass"
-            }
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
           },
           {
             "type": "minecraft:matching_fluids",
             "offset": [
               0,
-              1,
+              -1,
               0
             ],
             "fluids": "#minecraft:water"

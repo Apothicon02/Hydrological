@@ -1,0 +1,89 @@
+{
+  "type": "hydrol:tree",
+  "config": {
+    "intersect": false,
+    "trunk": {
+      "type": "hydrol:branching_trunk",
+      "count": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 5,
+          "max_inclusive": 8
+        }
+      },
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 15,
+          "max_inclusive": 18
+        }
+      },
+      "wood": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:mangrove_wood"
+        }
+      }
+    },
+    "canopy": {
+      "type": "hydrol:drooping_canopy",
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 4,
+          "max_inclusive": 6
+        }
+      },
+      "radius": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 7,
+          "max_inclusive": 9
+        }
+      },
+      "leaves": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:mangrove_leaves",
+          "Properties": {
+            "persistent": "true"
+          }
+        }
+      }
+    },
+    "decorations": [
+      {
+        "type": "hydrol:hanging_leaves",
+        "length": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": -6,
+            "max_inclusive": 6
+          }
+        },
+        "leaves": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "hydrol:mangrove_leaves_wall"
+          }
+        }
+      },
+      {
+        "type": "hydrol:roots",
+        "length": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": 2,
+            "max_inclusive": 6
+          }
+        },
+        "roots": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "hydrol:mangrove_roots"
+          }
+        }
+      }
+    ]
+  }
+}
