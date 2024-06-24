@@ -12,6 +12,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -46,7 +47,7 @@ public class SnowLayerBlockMixin extends Block {
 
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (!HydrolJsonReader.serverSidedOnlyMode) {
+        if (!HydrolJsonReader.serverSidedOnlyMode && state.is(Blocks.SNOW)) {
             double eye = entity.getEyeY();
             double snow = pos.getY() + (state.getValue(SnowLayerBlock.LAYERS).doubleValue() / 10) + 0.2;
             if (eye < snow) {

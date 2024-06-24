@@ -1,0 +1,32 @@
+{
+  "feature": "hydrol:cover/jungle_roots",
+  "placement": [
+    {
+      "type": "hydrol:noise_cover",
+      "min": -0.04,
+      "max": 0.04,
+      "chance": 1
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "MOTION_BLOCKING"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "offset": [
+          0,
+          -1,
+          0
+        ],
+        "state": {
+          "Name": "minecraft:mangrove_propagule"
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

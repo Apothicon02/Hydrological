@@ -17,23 +17,42 @@
       "y_spread": 0
     },
     {
-      "type": "minecraft:height_range",
-      "height": {
-        "absolute": 63
-      }
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR"
     },
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:would_survive",
-        "offset": [
-          0,
-          0,
-          0
-        ],
-        "state": {
-          "Name": "minecraft:mangrove_propagule"
-        }
+        "type": "minecraft:any_of",
+        "predicates": [
+          {
+            "type": "minecraft:all_of",
+            "predicates": [
+              {
+                "type": "minecraft:not",
+                "predicate": {
+                  "type": "minecraft:matching_fluids",
+                  "fluids": "#minecraft:water"
+                }
+              },
+              {
+                "type": "minecraft:would_survive",
+                "state": {
+                  "Name": "minecraft:mangrove_propagule"
+                }
+              }
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "offset": [
+              0,
+              -1,
+              0
+            ],
+            "blocks": "minecraft:mangrove_roots"
+          }
+        ]
       }
     },
     {

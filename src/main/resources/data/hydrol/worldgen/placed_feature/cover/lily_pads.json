@@ -2,10 +2,10 @@
   "feature": "hydrol:cover/lily_pad",
   "placement": [
     {
-      "type": "hydrol:noise_cover",
-      "min": 0.5,
-      "max": 1,
-      "chance": 0.1
+      "type": "minecraft:noise_based_count",
+      "noise_to_count_ratio": 32,
+      "noise_factor": 16,
+      "noise_offset": 0.3
     },
     {
       "type": "minecraft:in_square"
@@ -13,7 +13,7 @@
     {
       "type": "minecraft:height_range",
       "height": {
-        "absolute": 64
+        "absolute": 63
       }
     },
     {

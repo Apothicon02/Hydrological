@@ -113,7 +113,8 @@
                     "if_true": {
                       "type": "minecraft:biome",
                       "biome_is": [
-                        "minecraft:river"
+                        "minecraft:river",
+                        "minecraft:bamboo_jungle"
                       ]
                     },
                     "then_run": {
@@ -487,7 +488,8 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
-                  "minecraft:sparse_jungle"
+                  "minecraft:sparse_jungle",
+                  "minecraft:jungle"
                 ]
               },
               "then_run": {
@@ -780,7 +782,8 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
-                  "minecraft:sparse_jungle"
+                  "minecraft:sparse_jungle",
+                  "minecraft:jungle"
                 ]
               },
               "then_run": {
@@ -1048,7 +1051,8 @@
                 "if_true": {
                   "type": "minecraft:biome",
                   "biome_is": [
-                    "minecraft:river"
+                    "minecraft:river",
+                    "minecraft:bamboo_jungle"
                   ]
                 },
                 "then_run": {

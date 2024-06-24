@@ -1,0 +1,35 @@
+{
+  "feature": "hydrol:unshaded/bamboo",
+  "placement": [
+    {
+      "type": "minecraft:noise_based_count",
+      "noise_to_count_ratio": 32,
+      "noise_factor": 1,
+      "noise_offset": -0.4
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "offset": [
+          0,
+          0,
+          0
+        ],
+        "state": {
+          "Name": "minecraft:bamboo"
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

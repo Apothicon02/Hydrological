@@ -6,7 +6,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 import java.util.List;
@@ -31,8 +33,8 @@ public class RootsDecorationType extends Decoration {
         return DecorationType.ROOTS_DECORATION_TYPE.get();
     }
 
-    private boolean addToMap(Map<BlockPos, BlockState> map, BlockPos pos, RandomSource random, BlockStateProvider leaves) {
-        map.put(pos, leaves.getState(random, pos));
+    private boolean addToMap(Map<BlockPos, BlockState> map, BlockPos pos, RandomSource random, BlockStateProvider roots) {
+        map.put(pos, roots.getState(random, pos));
         return true;
     }
 

@@ -80,7 +80,7 @@
         "roots": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "hydrol:mangrove_roots"
+            "Name": "minecraft:mangrove_roots"
           }
         }
       }

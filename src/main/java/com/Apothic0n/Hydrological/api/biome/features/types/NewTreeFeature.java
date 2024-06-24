@@ -16,8 +16,10 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.WallSide;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -74,6 +76,9 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
                 if (x >= minX && x <= maxX && z >= minZ && z <= maxZ && (level.getBlockState(pos).canBeReplaced() || (pos.getY() <= origin.getY() && state.isSolid() && !state.is(BlockTags.LEAVES)))) {
                     if (state.getBlock() instanceof WallBlock) {
                         state = state.updateShape(Direction.UP, state, level, pos, pos);
+                    }
+                    if (state.hasProperty(BlockStateProperties.WATERLOGGED) && level.getBlockState(pos).is(Blocks.WATER)) {
+                        state = state.setValue(BlockStateProperties.WATERLOGGED, true);
                     }
                     level.setBlock(pos, state, UPDATE_ALL);
                 }

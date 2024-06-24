@@ -25,7 +25,8 @@ public final class HydrolDensityFunctions {
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_BEACHES_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_beaches", FloatingBeaches.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_islands", FloatingIslands.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> TO_HEIGHTMAP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("to_heightmap", ToHeightmap.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> RANGE_CHOICE_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("range_choice", RangeChoice.CODEC::codec);
+    public static final RegistryObject<Codec<? extends DensityFunction>> POLARIZE_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("polarize", Polarize.CODEC::codec);
+    public static final RegistryObject<Codec<? extends DensityFunction>> RANGE_CHOICE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("range_choice", RangeChoice.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> GRADIENT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("gradient", Gradient.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> STRETCH_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("stretch", Stretch.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> SHIFT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("shift", Shift.CODEC::codec);
@@ -148,6 +149,49 @@ public final class HydrolDensityFunctions {
         public KeyDispatchDataCodec<? extends DensityFunction> codec() {
             return CODEC;
         }
+    }
+    protected record Polarize(DensityFunction input, DensityFunction polar, DensityFunction negativeMul) implements DensityFunction {
+        private static final MapCodec<Polarize> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(Polarize::input),
+                    DensityFunction.HOLDER_HELPER_CODEC.fieldOf("polar").forGetter(Polarize::polar),
+                    DensityFunction.HOLDER_HELPER_CODEC.fieldOf("negative_mul").forGetter(Polarize::negativeMul)).apply(data, Polarize::new);
+        });
+        public static final KeyDispatchDataCodec<Polarize> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
+
+        @Override
+        public double compute(@NotNull FunctionContext context) {
+            double pole = 1;
+            if (polar().compute(context) < 0) {
+                pole = negativeMul().compute(context);
+            }
+            return input.compute(context)*pole;
+        }
+
+        @Override
+        public void fillArray(double @NotNull [] densities, ContextProvider context) {
+            context.fillAllDirectly(densities, this);
+        }
+
+        @Override
+        public @NotNull DensityFunction mapAll(Visitor visitor) {
+            return visitor.apply(new Polarize(input().mapAll(visitor), polar().mapAll(visitor), negativeMul().mapAll(visitor)));
+        }
+
+        @Override
+        public double minValue() {
+            return -1875000d;
+        }
+
+        @Override
+        public double maxValue() {
+            return 1875000d;
+        }
+
+        @Override
+        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
+            return CODEC;
+        }
+
     }
     protected record RangeChoice(DensityFunction input, DensityFunction minInclusive, DensityFunction maxExclusive, DensityFunction whenInRange, DensityFunction whenOutOfRange) implements DensityFunction {
         private static final MapCodec<RangeChoice> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {

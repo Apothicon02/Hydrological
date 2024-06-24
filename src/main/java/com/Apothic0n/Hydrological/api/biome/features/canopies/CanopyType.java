@@ -23,6 +23,7 @@ public class CanopyType<P extends Canopy> {
     public static final RegistryObject<CanopyType<SpruceCanopyType>> SPRUCE_CANOPY_TYPE = CANOPY_TYPES.register("spruce_canopy", () -> new CanopyType<>(SpruceCanopyType.CODEC));
     public static final RegistryObject<CanopyType<PineCanopyType>> PINE_CANOPY_TYPE = CANOPY_TYPES.register("pine_canopy", () -> new CanopyType<>(PineCanopyType.CODEC));
     public static final RegistryObject<CanopyType<DroopingCanopyType>> DROOPING_CANOPY_TYPE = CANOPY_TYPES.register("drooping_canopy", () -> new CanopyType<>(DroopingCanopyType.CODEC));
+    public static final RegistryObject<CanopyType<JungleCanopyType>> JUNGLE_CANOPY_TYPE = CANOPY_TYPES.register("jungle_canopy", () -> new CanopyType<>(JungleCanopyType.CODEC));
 
     private final Codec<P> codec;
 

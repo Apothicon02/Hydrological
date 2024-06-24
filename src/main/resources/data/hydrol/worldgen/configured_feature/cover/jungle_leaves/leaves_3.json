@@ -1,0 +1,28 @@
+{
+  "type": "hydrol:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 3,
+          "data": {
+            "Name": "hydrol:jungle_leaves_pile",
+            "Properties": {
+              "layers": "8"
+            }
+          }
+        },
+        {
+          "weight": 7,
+          "data": {
+            "Name": "hydrol:jungle_leaves_pile",
+            "Properties": {
+              "layers": "7"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

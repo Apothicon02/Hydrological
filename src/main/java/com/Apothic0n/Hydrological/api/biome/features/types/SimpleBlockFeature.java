@@ -3,8 +3,10 @@ package com.Apothic0n.Hydrological.api.biome.features.types;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
@@ -21,6 +23,9 @@ public class SimpleBlockFeature extends Feature<SimpleBlockConfiguration> {
         BlockPos pos = context.origin();
         BlockState block = config.toPlace().getState(context.random(), pos);
         if (block.canSurvive(level, pos)) {
+            if (block.hasProperty(BlockStateProperties.WATERLOGGED) && level.getBlockState(pos).is(Blocks.WATER)) {
+                block = block.setValue(BlockStateProperties.WATERLOGGED, true);
+            }
             if (block.getBlock() instanceof DoublePlantBlock) {
                 if (!level.getBlockState(pos.above()).canBeReplaced()) {
                     return false;

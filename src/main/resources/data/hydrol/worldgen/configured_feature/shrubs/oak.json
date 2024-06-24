@@ -33,7 +33,7 @@
         "state": {
           "Name": "minecraft:oak_leaves",
           "Properties": {
-            "persistent": "true"
+            "persistent": "false"
           }
         }
       }
