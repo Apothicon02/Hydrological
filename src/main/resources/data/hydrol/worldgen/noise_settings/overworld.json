@@ -366,9 +366,23 @@
                 ]
               },
               "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "minecraft:sand"
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:not",
+                  "invert": {
+                    "type": "minecraft:y_above",
+                    "anchor": {
+                      "absolute": 83
+                    },
+                    "surface_depth_multiplier": 0,
+                    "add_stone_depth": false
+                  }
+                },
+                "then_run": {
+                  "type": "minecraft:block",
+                  "result_state": {
+                    "Name": "minecraft:sand"
+                  }
                 }
               }
             },
@@ -766,9 +780,23 @@
                 ]
               },
               "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "minecraft:sand"
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:not",
+                  "invert": {
+                    "type": "minecraft:y_above",
+                    "anchor": {
+                      "absolute": 83
+                    },
+                    "surface_depth_multiplier": 0,
+                    "add_stone_depth": false
+                  }
+                },
+                "then_run": {
+                  "type": "minecraft:block",
+                  "result_state": {
+                    "Name": "minecraft:sand"
+                  }
                 }
               }
             },
