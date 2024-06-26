@@ -176,8 +176,35 @@
               "biome": "minecraft:bamboo_jungle",
               "parameters": {
                 "temperature": [
-                  0.5,
+                  0.75,
                   1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0,
+                  0.243
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:beach",
+              "parameters": {
+                "temperature": [
+                  0.5,
+                  0.75
                 ],
                 "humidity": [
                   -1,
@@ -258,7 +285,7 @@
               "biome": "minecraft:jungle",
               "parameters": {
                 "temperature": [
-                  0.5,
+                  0.75,
                   1
                 ],
                 "humidity": [
@@ -285,7 +312,7 @@
               "biome": "minecraft:jungle",
               "parameters": {
                 "temperature": [
-                  0.5,
+                  0.75,
                   1
                 ],
                 "humidity": [
@@ -303,6 +330,87 @@
                 "weirdness": 0,
                 "depth": [
                   0.243,
+                  1
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:desert",
+              "parameters": {
+                "temperature": [
+                  0.5,
+                  0.75
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  0.3
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:desert",
+              "parameters": {
+                "temperature": [
+                  0.5,
+                  0.75
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  0.4,
+                  1
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  0.35
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:badlands",
+              "parameters": {
+                "temperature": [
+                  0.5,
+                  0.75
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  0.4,
+                  1
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.35,
                   1
                 ],
                 "offset": 0
@@ -553,11 +661,38 @@
             },
 
             {
+              "biome": "minecraft:badlands",
+              "parameters": {
+                "temperature": [
+                  0.5,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.3,
+                  1
+                ],
+                "offset": 0
+              }
+            },
+            {
               "biome": "minecraft:stony_peaks",
               "parameters": {
                 "temperature": [
                   -0.8,
-                  1
+                  0.5
                 ],
                 "humidity": [
                   -1,

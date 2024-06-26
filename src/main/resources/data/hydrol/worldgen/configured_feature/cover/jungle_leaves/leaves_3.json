@@ -7,7 +7,7 @@
         {
           "weight": 3,
           "data": {
-            "Name": "hydrol:jungle_leaves_pile",
+            "Name": "hydrol:mangrove_leaves_pile",
             "Properties": {
               "layers": "8"
             }
@@ -16,7 +16,7 @@
         {
           "weight": 7,
           "data": {
-            "Name": "hydrol:jungle_leaves_pile",
+            "Name": "hydrol:mangrove_leaves_pile",
             "Properties": {
               "layers": "7"
             }

@@ -1,11 +1,14 @@
 {
-  "feature": "hydrol:cover/dry_grass_patch",
+  "feature": "hydrol:shrubs/jungle",
   "placement": [
     {
       "type": "minecraft:noise_based_count",
-      "noise_to_count_ratio": 1,
-      "noise_factor": 24,
-      "noise_offset": -0.37
+      "noise_to_count_ratio": 3,
+      "noise_factor": 16,
+      "noise_offset": -0.4
+    },
+    {
+      "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:heightmap",
@@ -15,8 +18,13 @@
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:would_survive",
+        "offset": [
+          0,
+          0,
+          0
+        ],
         "state": {
-          "Name": "hydrol:dry_grass"
+          "Name": "minecraft:dead_bush"
         }
       }
     },

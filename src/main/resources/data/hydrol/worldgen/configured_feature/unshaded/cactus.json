@@ -1,5 +1,5 @@
 {
-  "type": "hydrol:block_column",
+  "type": "minecraft:block_column",
   "config": {
     "direction": "up",
     "allowed_placement": {
@@ -8,11 +8,17 @@
     "prioritize_tip": false,
     "layers": [
       {
-        "height": 2,
+        "height": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": 3,
+            "max_inclusive": 6
+          }
+        },
         "provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:mangrove_roots"
+            "Name": "minecraft:cactus"
           }
         }
       }

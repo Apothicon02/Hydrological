@@ -8,8 +8,11 @@
       "noise_offset": 0.3
     },
     {
+      "type": "minecraft:in_square"
+    },
+    {
       "type": "minecraft:heightmap",
-      "heightmap": "MOTION_BLOCKING"
+      "heightmap": "OCEAN_FLOOR_WG"
     },
     {
       "type": "minecraft:biome"

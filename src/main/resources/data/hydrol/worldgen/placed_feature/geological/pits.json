@@ -1,15 +1,20 @@
 {
-  "feature": "hydrol:cover/tube_coral",
+  "feature": "hydrol:geological/pit",
   "placement": [
     {
       "type": "hydrol:noise_cover",
-      "min": 0,
-      "max": 0.02,
-      "chance": 0.05
+      "min": 0.3,
+      "max": 0.4,
+      "chance": 1
     },
     {
       "type": "minecraft:heightmap",
       "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": 0,
+      "y_spread": -1
     },
     {
       "type": "minecraft:biome"

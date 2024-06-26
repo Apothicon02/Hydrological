@@ -39,22 +39,7 @@
               0
             ],
             "state": {
-              "Name": "hydrol:dry_grass"
-            }
-          }
-        },
-        {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:not",
-            "predicate": {
-              "type": "minecraft:matching_blocks",
-              "offset": [
-                0,
-                -1,
-                0
-              ],
-              "blocks": "hydrol:dry_grass"
+              "Name": "minecraft:dead_bush"
             }
           }
         }

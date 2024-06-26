@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:mul",
+  "argument1": 3,
+  "argument2": {
+    "type": "minecraft:interpolated",
+    "argument": "hydrol:global/surface_variation"
+  }
+}

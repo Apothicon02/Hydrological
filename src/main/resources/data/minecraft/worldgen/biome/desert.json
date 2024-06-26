@@ -3,7 +3,7 @@
     "air": [
     ]
   },
-  "downfall": 0.9,
+  "downfall": 0.0,
   "effects": {
     "fog_color": 12638463,
     "mood_sound": {
@@ -16,9 +16,9 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:music.overworld.jungle"
+      "sound": "minecraft:music.overworld.desert"
     },
-    "sky_color": 7842047,
+    "sky_color": 7254527,
     "water_color": 4159204,
     "water_fog_color": 329011
   },
@@ -33,7 +33,8 @@
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
-    [],
+    [
+    ],
     [],
     [
     ],
@@ -42,26 +43,16 @@
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/jungle_roots",
-      "hydrol:cover/jungle_roots_edge",
-      "hydrol:cover/jungle_leaves/leaves_4",
-      "hydrol:cover/jungle_leaves/leaves_3",
-      "hydrol:cover/jungle_leaves/leaves_2",
-      "hydrol:cover/jungle_leaves/leaves_1",
-      "hydrol:cover/flowers/orange_tulip",
-      "hydrol:cover/flowers/poppy",
-      "hydrol:cover/flowers/red_tulip",
-      "hydrol:cover/flowers/rose_bush",
-      "hydrol:trees/jungle",
-      "hydrol:trees/dark_willow_extra",
-      "hydrol:trees/palms",
-      "hydrol:unshaded/bamboo_clusters"
+      "hydrol:geological/pits",
+      "hydrol:cover/dry_grass/dry_grass_1",
+      "hydrol:shrubs/jungle_sparse",
+      "hydrol:unshaded/cacti"
     ],
     [
       "minecraft:freeze_top_layer"
     ]
   ],
-  "has_precipitation": true,
+  "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {
     "ambient": [
@@ -75,46 +66,10 @@
     "axolotls": [],
     "creature": [
       {
-        "type": "minecraft:sheep",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 12
-      },
-      {
-        "type": "minecraft:pig",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:chicken",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:cow",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 8
-      },
-      {
-        "type": "minecraft:chicken",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:parrot",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 40
-      },
-      {
-        "type": "minecraft:panda",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 1
+        "type": "minecraft:rabbit",
+        "maxCount": 3,
+        "minCount": 2,
+        "weight": 4
       }
     ],
     "misc": [],
@@ -129,13 +84,13 @@
         "type": "minecraft:zombie",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 95
+        "weight": 19
       },
       {
         "type": "minecraft:zombie_villager",
         "maxCount": 1,
         "minCount": 1,
-        "weight": 5
+        "weight": 1
       },
       {
         "type": "minecraft:skeleton",
@@ -168,10 +123,10 @@
         "weight": 5
       },
       {
-        "type": "minecraft:ocelot",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 2
+        "type": "minecraft:husk",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 80
       }
     ],
     "underground_water_creature": [
@@ -185,5 +140,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.95
+  "temperature": 2.0
 }

@@ -3,7 +3,7 @@
   "config": {
     "direction": "up",
     "allowed_placement": {
-      "type": "minecraft:true"
+      "type": "minecraft:replaceable"
     },
     "prioritize_tip": false,
     "layers": [
