@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class ScreenEffectRendererMixin {
     @Inject(method = "getOverlayBlock", at = @At("HEAD"), cancellable = true, remap = false)
     private static void getOverlayBlock(Player player, CallbackInfoReturnable<Pair<BlockState, BlockPos>> ci) {
-        if (!HydrolJsonReader.serverSidedOnlyMode) {
+        if (!HydrolJsonReader.serverSidedOnlyMode && HydrolJsonReader.removeCollisionFromSnowLayers) {
             BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
 
             for (int i = 0; i < 8; ++i) {

@@ -1,5 +1,6 @@
 package com.Apothic0n.Hydrological.mixin;
 
+import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.core.objects.HydrolParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -19,7 +20,7 @@ public abstract class TallGrassBlockMixin extends BushBlock {
     @Override
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
         super.animateTick(blockState, level, blockPos, randomSource);
-        if (randomSource.nextInt(33) == 0 && level.getDayTime() > 12750 && level.getDayTime() < 23500) {
+        if (randomSource.nextInt(33) == 0 && level.getDayTime() > 12750 && level.getDayTime() < 23500 && HydrolJsonReader.fireflies) {
             level.addAlwaysVisibleParticle(HydrolParticleTypes.FIRE_FLIES.get(), true, blockPos.getX(),  blockPos.getY() + randomSource.nextDouble()*4, blockPos.getZ(), 0, 0, 0);
         }
     }

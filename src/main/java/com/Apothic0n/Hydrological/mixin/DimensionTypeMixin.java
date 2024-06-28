@@ -1,6 +1,7 @@
 package com.Apothic0n.Hydrological.mixin;
 
 import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
+import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.api.HydrolMath;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
@@ -32,20 +33,22 @@ public abstract class DimensionTypeMixin {
      */
     @Inject(method = "ambientLight", at = @At("HEAD"), cancellable = true)
     public void ambientLight(CallbackInfoReturnable<Float> ci) {
-        Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.level != null && minecraft.level.dimension() == Level.OVERWORLD) {
-            float ambient = this.ambientLight;
-            if (this.hasSkyLight) {
-                ambient = (float) Math.min(hydrol$closenessToNight - 0.1, ambient);
-            }
-            float skyMultiplier = 1;
-            if (minecraft.player != null && (minecraft.player.blockPosition().getY() < 10 && !HydrolDensityFunctions.isFloatingIslands)) {
-                skyMultiplier = minecraft.level.getBrightness(LightLayer.SKY, minecraft.player.blockPosition()) / 15F;
-            }
-            if (minecraft.player != null && minecraft.player.hasEffect(MobEffects.NIGHT_VISION)) {
-                ci.setReturnValue(0F);
-            } else {
-                ci.setReturnValue(ambient * skyMultiplier);
+        if (HydrolJsonReader.customNightLighting) {
+            Minecraft minecraft = Minecraft.getInstance();
+            if (minecraft.level != null && minecraft.level.dimension() == Level.OVERWORLD) {
+                float ambient = this.ambientLight;
+                if (this.hasSkyLight) {
+                    ambient = (float) Math.min(hydrol$closenessToNight - 0.1, ambient);
+                }
+                float skyMultiplier = 1;
+                if (minecraft.player != null && (minecraft.player.blockPosition().getY() < 10 && !HydrolDensityFunctions.isFloatingIslands)) {
+                    skyMultiplier = minecraft.level.getBrightness(LightLayer.SKY, minecraft.player.blockPosition()) / 15F;
+                }
+                if (minecraft.player != null && minecraft.player.hasEffect(MobEffects.NIGHT_VISION)) {
+                    ci.setReturnValue(0F);
+                } else {
+                    ci.setReturnValue(ambient * skyMultiplier);
+                }
             }
         }
     }

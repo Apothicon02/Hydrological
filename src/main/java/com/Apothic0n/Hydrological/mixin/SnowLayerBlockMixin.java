@@ -35,7 +35,7 @@ public class SnowLayerBlockMixin extends Block {
 
     @Inject(method = "getCollisionShape", at = @At("HEAD"), cancellable = true)
     private void getCollisionShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context, CallbackInfoReturnable<VoxelShape> ci) {
-        if (!HydrolJsonReader.serverSidedOnlyMode) {
+        if (!HydrolJsonReader.serverSidedOnlyMode && HydrolJsonReader.removeCollisionFromSnowLayers) {
             if (context instanceof EntityCollisionContext entitycollisioncontext) {
                 Entity entity = entitycollisioncontext.getEntity();
                 if (entity != null && !canEntityWalkOnPowderSnow(entity)) {
@@ -47,7 +47,7 @@ public class SnowLayerBlockMixin extends Block {
 
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (!HydrolJsonReader.serverSidedOnlyMode && state.is(Blocks.SNOW)) {
+        if (!HydrolJsonReader.serverSidedOnlyMode && state.is(Blocks.SNOW) && HydrolJsonReader.removeCollisionFromSnowLayers) {
             double eye = entity.getEyeY();
             double snow = pos.getY() + (state.getValue(SnowLayerBlock.LAYERS).doubleValue() / 10) + 0.2;
             if (eye < snow) {
