@@ -14,6 +14,7 @@ import java.nio.file.Path;
 
 public class HydrolJsonReader {
     public static boolean serverSidedOnlyMode = false;
+    public static int cubicalTerrainScale = 1;
 
     public static void main() throws Exception {
         makeCustomBlocks(Path.of(FMLPaths.CONFIGDIR.get().toString() + "/hydrol-common.json"));
@@ -23,12 +24,13 @@ public class HydrolJsonReader {
         Gson gson = new Gson();
         if (!Files.exists(path)) {
             JsonWriter writer = new JsonWriter(new FileWriter(path.toString()));
-            JsonObject defaultData = gson.fromJson("{\"serverSidedOnlyMode\":\"false\"}", JsonObject.class);
+            JsonObject defaultData = gson.fromJson("{\"serverSidedOnlyMode\":\"false\", \"cubicalTerrainScale\":1}", JsonObject.class);
             gson.toJson(defaultData, writer);
             writer.close();
         }
         JsonReader reader = new JsonReader(new FileReader(path.toString()));
         JsonObject data = gson.fromJson(reader, JsonObject.class);
         serverSidedOnlyMode = data.get("serverSidedOnlyMode").getAsBoolean();
+        cubicalTerrainScale = data.get("cubicalTerrainScale").getAsInt();
     }
 }

@@ -24,6 +24,7 @@ public final class HydrolDensityFunctions {
 
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_BEACHES_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_beaches", FloatingBeaches.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_islands", FloatingIslands.CODEC::codec);
+    public static final RegistryObject<Codec<? extends DensityFunction>> CUBICAL_SCALE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("cubical_scale", CubicalScale.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> TO_HEIGHTMAP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("to_heightmap", ToHeightmap.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> POLARIZE_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("polarize", Polarize.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> RANGE_CHOICE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("range_choice", RangeChoice.CODEC::codec);
@@ -510,6 +511,46 @@ public final class HydrolDensityFunctions {
         @Override
         public @NotNull DensityFunction mapAll(Visitor visitor) {
             return visitor.apply(new ToHeightmap(minY(), maxY(), this.input().mapAll(visitor)));
+        }
+
+        @Override
+        public double minValue() {
+            return -1875000d;
+        }
+
+        @Override
+        public double maxValue() {
+            return 1875000d;
+        }
+
+        @Override
+        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
+            return CODEC;
+        }
+    }
+    protected record CubicalScale(DensityFunction input) implements DensityFunction {
+        private static final MapCodec<CubicalScale> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(CubicalScale::input)).apply(data, CubicalScale::new);
+        });
+        public static final KeyDispatchDataCodec<CubicalScale> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
+
+        @Override
+        public double compute(@NotNull FunctionContext context) {
+            int scale = HydrolJsonReader.cubicalTerrainScale;
+            int x = ((int)(context.blockX()/scale))*scale;
+            int y = ((int)((context.blockY() - ((scale ^ 1) == scale + 1 ? scale/2 : 0))/scale))*scale;
+            int z = ((int)(context.blockZ()/scale))*scale;
+            return input().compute(new SinglePointContext(x, y, z));
+        }
+
+        @Override
+        public void fillArray(double @NotNull [] densities, ContextProvider context) {
+            context.fillAllDirectly(densities, this);
+        }
+
+        @Override
+        public @NotNull DensityFunction mapAll(Visitor visitor) {
+            return visitor.apply(new CubicalScale(this.input().mapAll(visitor)));
         }
 
         @Override
