@@ -21,6 +21,7 @@ public class TrunkType<P extends Trunk> {
     public static final RegistryObject<TrunkType<TiltedTrunkType>> TILTED_TRNUK_TYPE = TRUNK_TYPES.register("tilted_trunk", () -> new TrunkType<>(TiltedTrunkType.CODEC));
     public static final RegistryObject<TrunkType<BranchingTrunkType>> BRANCHING_TRNUK_TYPE = TRUNK_TYPES.register("branching_trunk", () -> new TrunkType<>(BranchingTrunkType.CODEC));
     public static final RegistryObject<TrunkType<TwistingTrunkType>> TWISTING_TRNUK_TYPE = TRUNK_TYPES.register("twisting_trunk", () -> new TrunkType<>(TwistingTrunkType.CODEC));
+    public static final RegistryObject<TrunkType<ThickTrunkType>> THICK_TRUNK_TYPE = TRUNK_TYPES.register("thick_trunk", () -> new TrunkType<>(ThickTrunkType.CODEC));
 
     private final Codec<P> codec;
 

@@ -18,7 +18,7 @@
       "replace_current_music": false,
       "sound": "minecraft:music.overworld.old_growth_taiga"
     },
-    "sky_color": 8168447,
+    "sky_color": 8233983,
     "water_color": 4159204,
     "water_fog_color": 329011
   },
@@ -52,7 +52,7 @@
       "hydrol:cover/tall_grass_middle",
       "hydrol:shrubs/pumpkins",
       "hydrol:shrubs/pumpkins_extra",
-      "hydrol:trees/redwood_sparse",
+      "hydrol:trees/redwood",
       "hydrol:trees/spruce_noise",
       "hydrol:trees/pine",
       "hydrol:trees/fir"
@@ -129,13 +129,13 @@
         "type": "minecraft:zombie",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 100
+        "weight": 95
       },
       {
         "type": "minecraft:zombie_villager",
         "maxCount": 1,
         "minCount": 1,
-        "weight": 25
+        "weight": 5
       },
       {
         "type": "minecraft:skeleton",
@@ -179,5 +179,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.3
+  "temperature": 0.25
 }

@@ -582,7 +582,7 @@
               "biome": "minecraft:old_growth_pine_taiga",
               "parameters": {
                 "temperature": [
-                  -1,
+                  -0.85,
                   -0.75
                 ],
                 "humidity": [
@@ -609,8 +609,116 @@
               "biome": "minecraft:old_growth_pine_taiga",
               "parameters": {
                 "temperature": [
-                  -1,
+                  -0.85,
                   -0.75
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  0.4,
+                  1
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  0.3
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:old_growth_spruce_taiga",
+              "parameters": {
+                "temperature": [
+                  -0.9,
+                  -0.85
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  0.3
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:old_growth_spruce_taiga",
+              "parameters": {
+                "temperature": [
+                  -0.9,
+                  -0.85
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  0.4,
+                  1
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  0.3
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:old_growth_pine_taiga",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  -0.9
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  0.3
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:old_growth_pine_taiga",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  -0.9
                 ],
                 "humidity": [
                   -1,

@@ -1,0 +1,45 @@
+{
+  "type": "hydrol:tree",
+  "config": {
+    "intersect": false,
+    "trunk": {
+      "type": "hydrol:thick_trunk",
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 42,
+          "max_inclusive": 54
+        }
+      },
+      "wood": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:stripped_spruce_log"
+        }
+      }
+    },
+    "canopy": {
+      "type": "hydrol:square_canopy",
+      "height": 3,
+      "radius": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 3,
+          "max_inclusive": 4
+        }
+      },
+      "leaves": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:spruce_leaves",
+          "Properties": {
+            "persistent": "true"
+          }
+        }
+      }
+    },
+    "decorations": [
+
+    ]
+  }
+}
