@@ -4,6 +4,7 @@
     "intersect": false,
     "trunk": {
       "type": "hydrol:thick_trunk",
+      "singleCanopy": false,
       "height": {
         "type": "minecraft:uniform",
         "value": {

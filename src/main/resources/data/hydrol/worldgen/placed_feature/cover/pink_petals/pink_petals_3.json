@@ -1,0 +1,32 @@
+{
+  "feature": "hydrol:cover/pink_petals/pink_petals_3",
+  "placement": [
+    {
+      "type": "hydrol:noise_cover",
+      "min": -0.33,
+      "max": 0.33,
+      "chance": 0.33
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "offset": [
+          0,
+          0,
+          0
+        ],
+        "state": {
+          "Name": "minecraft:pink_petals"
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

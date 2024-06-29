@@ -346,6 +346,7 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
+                  "minecraft:cherry_grove",
                   "minecraft:plains",
                   "minecraft:taiga"
                 ]
@@ -759,6 +760,7 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
+                  "minecraft:cherry_grove",
                   "minecraft:plains",
                   "minecraft:taiga",
                   "minecraft:old_growth_pine_taiga",

@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:block_column",
+  "type": "hydrol:block_column",
   "config": {
     "direction": "up",
     "allowed_placement": {

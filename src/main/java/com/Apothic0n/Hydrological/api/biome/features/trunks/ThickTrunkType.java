@@ -15,14 +15,17 @@ import java.util.Set;
 
 public class ThickTrunkType extends Trunk {
     public static final Codec<ThickTrunkType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            (Codec.BOOL.fieldOf("singleCanopy")).forGetter(v -> v.singleCanopy),
             (IntProvider.codec(1, 64).fieldOf("height")).forGetter(v -> v.height),
             (BlockStateProvider.CODEC.fieldOf("wood")).forGetter(v -> v.wood)
     ).apply(instance, ThickTrunkType::new));
 
+    private final boolean singleCanopy;
     private final IntProvider height;
     private final BlockStateProvider wood;
 
-    public ThickTrunkType(IntProvider height, BlockStateProvider wood) {
+    public ThickTrunkType(boolean singleCanopy, IntProvider height, BlockStateProvider wood) {
+        this.singleCanopy = singleCanopy;
         this.height = height;
         this.wood = wood;
     }
@@ -91,24 +94,23 @@ public class ThickTrunkType extends Trunk {
                 } else {
                     map.put(pos.immutable(), getWood(random, pos.immutable()));
                 }
-                if (i == maxHeight) {
-                    canopies.add(pos.immutable().above());
-                } else if (i < maxHeight-1 && random.nextInt(0, 10) < 3) {
+                if (!singleCanopy && i < maxHeight-1 && random.nextInt(0, 10) < 3) {
                     canopies.add(makeBranch(map, pos, random, random.nextInt(1, 2)+baseRadius));
                 }
             } else if (currentHeight >= maxHeight/1.75) {
                 makeSquare(map, pos.immutable(), random, baseRadius, false);
-                if (random.nextInt(0, 10) < 3) {
+                if (!singleCanopy && random.nextInt(0, 10) < 3) {
                     canopies.add(makeBranch(map, pos, random, random.nextInt(1, 2)+baseRadius));
                 }
             } else {
                 makeSquare(map, pos.immutable(), random, baseRadius, true);
                 double trunkHeight = HydrolMath.gradient(pos.getY(), origin.getY()+(maxHeight/4), origin.getY()+maxHeight, 3, 1);
-                if (trunkHeight != 1 && random.nextInt(0, 10) < trunkHeight) {
+                if (!singleCanopy && trunkHeight != 1 && random.nextInt(0, 10) < trunkHeight) {
                     canopies.add(makeBranch(map, pos, random, random.nextInt(1, 2)+baseRadius));
                 }
             }
         }
+        canopies.add(origin.above(maxHeight));
 
         return new GeneratedTrunk(map, canopies, maxHeight);
     }

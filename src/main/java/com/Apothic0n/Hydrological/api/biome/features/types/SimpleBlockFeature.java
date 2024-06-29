@@ -22,8 +22,9 @@ public class SimpleBlockFeature extends Feature<SimpleBlockConfiguration> {
         WorldGenLevel level = context.level();
         BlockPos pos = context.origin();
         BlockState block = config.toPlace().getState(context.random(), pos);
-        if (block.canSurvive(level, pos)) {
-            if (block.hasProperty(BlockStateProperties.WATERLOGGED) && level.getBlockState(pos).is(Blocks.WATER)) {
+        BlockState state = level.getBlockState(pos);
+        if (block.canSurvive(level, pos) && ((state.canBeReplaced() && !block.isSolid()) || state.isAir() || state.is(Blocks.WATER))) {
+            if (block.hasProperty(BlockStateProperties.WATERLOGGED) && state.is(Blocks.WATER)) {
                 block = block.setValue(BlockStateProperties.WATERLOGGED, true);
             }
             if (block.getBlock() instanceof DoublePlantBlock) {

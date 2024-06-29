@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
@@ -36,8 +37,12 @@ public class SquareCanopyType extends Canopy {
         return this.leaves.getState(random, pos);
     }
 
-    private void addToMap(Map<BlockPos, BlockState> map, BlockPos pos, RandomSource random) {
-        map.put(pos, getLeaves(random, pos));
+    private void addToMap(Map<BlockPos, BlockState> map, BlockPos pos, RandomSource random, boolean lowestLayer) {
+        BlockState state = getLeaves(random, pos);
+        if (state.hasProperty(HugeMushroomBlock.DOWN) && lowestLayer) {
+            state = state.setValue(HugeMushroomBlock.DOWN, false);
+        }
+        map.put(pos, state);
     }
 
     @Override
@@ -53,13 +58,13 @@ public class SquareCanopyType extends Canopy {
             } else if (height >= 5 && i == height) {
                 radius -= 2;
             }
-            addSquare(map, origin.above(i), random, radius, false);
+            addSquare(map, origin.above(i), random, radius, false, i == 0);
         }
 
         return map;
     }
 
-    private void addSquare(Map<BlockPos, BlockState> map, BlockPos pos, RandomSource random, int radius, boolean corners) {
+    private void addSquare(Map<BlockPos, BlockState> map, BlockPos pos, RandomSource random, int radius, boolean corners, boolean lowestLayer) {
         int minX = pos.getX()-radius;
         int maxX = pos.getX()+radius;
         int minZ = pos.getZ()-radius;
@@ -67,7 +72,7 @@ public class SquareCanopyType extends Canopy {
         for (int x = pos.getX()-radius; x <= maxX; x++) {
             for (int z = pos.getZ()-radius; z <= maxZ; z++) {
                 if (!((x == minX || x == maxX) && (z == minZ || z == maxZ)) || corners) {
-                    addToMap(map, new BlockPos(x, pos.getY(), z), random);
+                    addToMap(map, new BlockPos(x, pos.getY(), z), random, lowestLayer);
                 }
             }
         }

@@ -6,7 +6,7 @@
     "y_spread": 2,
     "feature": {
       "feature": {
-        "type": "minecraft:simple_block",
+        "type": "hydrol:simple_block",
         "config": {
           "to_place": {
             "type": "minecraft:simple_state_provider",

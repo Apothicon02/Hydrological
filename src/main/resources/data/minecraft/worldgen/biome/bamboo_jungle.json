@@ -42,11 +42,9 @@
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/flowers/orange_tulip",
-      "hydrol:cover/flowers/red_tulip",
-      "hydrol:cover/flowers/torch_flower",
       "hydrol:cover/tall_grass",
       "hydrol:cover/seagrass_middle",
+      "hydrol:trees/red_mushroom_sparse",
       "hydrol:unshaded/bamboo",
       "hydrol:unshaded/bamboo_clusters"
     ],

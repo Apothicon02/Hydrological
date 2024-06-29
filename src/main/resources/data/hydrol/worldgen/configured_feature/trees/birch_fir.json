@@ -1,0 +1,37 @@
+{
+  "type": "hydrol:tree",
+  "config": {
+    "intersect": false,
+    "trunk": {
+      "type": "hydrol:straight_trunk",
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 5,
+          "max_inclusive": 24
+        }
+      },
+      "wood": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "hydrol:birch_wood_wall"
+        }
+      }
+    },
+    "canopy": {
+      "type": "hydrol:fir_canopy",
+      "leaves": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:birch_leaves",
+          "Properties": {
+            "persistent": "true"
+          }
+        }
+      }
+    },
+    "decorations": [
+
+    ]
+  }
+}
