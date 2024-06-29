@@ -9,10 +9,14 @@ import com.google.gson.stream.JsonWriter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -20,16 +24,20 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.storage.LevelResource;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.LevelEvent;
+import net.minecraftforge.event.level.SaplingGrowTreeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -40,6 +48,63 @@ import static net.minecraft.world.level.block.Block.UPDATE_ALL;
 
 @Mod.EventBusSubscriber(modid = Hydrological.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CommonForgeEvents {
+
+    @SubscribeEvent
+    public static void saplingGrowTree(SaplingGrowTreeEvent event) {
+        LevelAccessor level = event.getLevel();
+        BlockPos origin = event.getPos();
+        BlockState sapling = level.getBlockState(origin);
+        BlockState below = level.getBlockState(origin.below());
+        if (!below.is(Blocks.DIRT) && !below.is(Blocks.GRASS_BLOCK)) {
+            if (sapling.is(Blocks.OAK_SAPLING)) {
+                if (below.is(Blocks.COARSE_DIRT)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/willow")));
+                }
+            } else if (sapling.is(Blocks.DARK_OAK_SAPLING)) {
+                if (below.is(Blocks.COARSE_DIRT)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/dark_willow")));
+                }
+            } else if (sapling.is(Blocks.BIRCH_SAPLING)) {
+                if (below.is(Blocks.COARSE_DIRT)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/birch_fir")));
+                } else if (below.is(Blocks.SAND) || below.is(Blocks.GRAVEL)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/birch_spruce")));
+                }
+            } else if (sapling.is(Blocks.SPRUCE_SAPLING)) {
+                if (below.is(Blocks.PODZOL)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/redwood")));
+                } else if (below.is(Blocks.COARSE_DIRT)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/fir")));
+                } else if (below.is(BlockTags.SNOW)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/pine")));
+                } else if (below.is(Blocks.SAND) || below.is(Blocks.GRAVEL)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/spruce")));
+                }
+            } else if (sapling.is(Blocks.JUNGLE_SAPLING)) {
+                if (below.is(Blocks.PODZOL)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/jungle")));
+                } else if (below.is(BlockTags.SAND)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/palm")));
+                }
+            } else if (sapling.is(Blocks.CHERRY_SAPLING)) {
+                if (below.is(Blocks.PODZOL)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/cherry")));
+                }
+            } else if (sapling.is(Blocks.MANGROVE_PROPAGULE)) {
+                if (below.is(Blocks.MANGROVE_ROOTS) || below.is(Blocks.MUDDY_MANGROVE_ROOTS)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/mangrove")));
+                }
+            } else if (sapling.is(Blocks.RED_MUSHROOM)) {
+                if (below.is(Blocks.MYCELIUM)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/red_mushroom")));
+                }
+            } else if (sapling.is(Blocks.BROWN_MUSHROOM)) {
+                if (below.is(Blocks.MYCELIUM)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/brown_mushroom")));
+                }
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void onCreateSpawnPosition(LevelEvent.CreateSpawnPosition event) {

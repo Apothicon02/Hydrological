@@ -9,10 +9,12 @@
   "mixins": [
     "BeehiveDecoratorMixin",
     "BiomeMixin",
+    "BlockItemMixin",
     "DripstoneUtilsMixin",
     "GrowingPlantBlockMixin",
     "LevelChunkMixin",
     "NoiseChunkGeneratorMixin",
+    "SaplingBlockMixin",
     "SnowLayerBlockMixin",
     "TallGrassBlockMixin",
     "UtilMixin",
