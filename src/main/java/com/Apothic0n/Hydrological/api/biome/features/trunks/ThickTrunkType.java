@@ -15,18 +15,21 @@ import java.util.Set;
 
 public class ThickTrunkType extends Trunk {
     public static final Codec<ThickTrunkType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-            (Codec.BOOL.fieldOf("singleCanopy")).forGetter(v -> v.singleCanopy),
+            (Codec.BOOL.fieldOf("single_canopy")).forGetter(v -> v.singleCanopy),
             (IntProvider.codec(1, 64).fieldOf("height")).forGetter(v -> v.height),
+            (IntProvider.codec(1, 10).fieldOf("branch_chance")).forGetter(v -> v.branchChance),
             (BlockStateProvider.CODEC.fieldOf("wood")).forGetter(v -> v.wood)
     ).apply(instance, ThickTrunkType::new));
 
     private final boolean singleCanopy;
     private final IntProvider height;
+    private final IntProvider branchChance;
     private final BlockStateProvider wood;
 
-    public ThickTrunkType(boolean singleCanopy, IntProvider height, BlockStateProvider wood) {
+    public ThickTrunkType(boolean singleCanopy, IntProvider height, IntProvider branchChance, BlockStateProvider wood) {
         this.singleCanopy = singleCanopy;
         this.height = height;
+        this.branchChance = branchChance;
         this.wood = wood;
     }
 
@@ -44,6 +47,7 @@ public class ThickTrunkType extends Trunk {
         Map<BlockPos, BlockState> map = new java.util.HashMap<>(Map.of());
         Set<BlockPos> canopies = new HashSet<>();
         int maxHeight = this.height.sample(random);
+        int branchChance = this.branchChance.sample(random);
         int baseRadius = 1;
         origin = origin.below();
         BlockPos.MutableBlockPos pos = origin.mutable();
@@ -94,12 +98,12 @@ public class ThickTrunkType extends Trunk {
                 } else {
                     map.put(pos.immutable(), getWood(random, pos.immutable()));
                 }
-                if (!singleCanopy && i < maxHeight-1 && random.nextInt(0, 10) < 3) {
+                if (!singleCanopy && i < maxHeight-1 && random.nextInt(0, 10) < branchChance) {
                     canopies.add(makeBranch(map, pos, random, random.nextInt(1, 2)+baseRadius));
                 }
             } else if (currentHeight >= maxHeight/1.75) {
                 makeSquare(map, pos.immutable(), random, baseRadius, false);
-                if (!singleCanopy && random.nextInt(0, 10) < 3) {
+                if (!singleCanopy && random.nextInt(0, 10) < branchChance) {
                     canopies.add(makeBranch(map, pos, random, random.nextInt(1, 2)+baseRadius));
                 }
             } else {

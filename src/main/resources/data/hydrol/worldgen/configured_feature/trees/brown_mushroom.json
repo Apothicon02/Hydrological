@@ -4,7 +4,7 @@
     "intersect": false,
     "trunk": {
       "type": "hydrol:thick_trunk",
-      "singleCanopy": false,
+      "single_canopy": false,
       "height": {
         "type": "minecraft:uniform",
         "value": {
@@ -12,6 +12,7 @@
           "max_inclusive": 54
         }
       },
+      "branch_chance": 3,
       "wood": {
         "type": "minecraft:simple_state_provider",
         "state": {
