@@ -39,15 +39,15 @@
     ],
     [],
     [
-    ],
-    [
-      "minecraft:glow_lichen",
       "hydrol:cover/jungle_roots",
       "hydrol:cover/jungle_roots_edge",
       "hydrol:cover/jungle_leaves/leaves_4",
       "hydrol:cover/jungle_leaves/leaves_3",
       "hydrol:cover/jungle_leaves/leaves_2",
-      "hydrol:cover/jungle_leaves/leaves_1",
+      "hydrol:cover/jungle_leaves/leaves_1"
+    ],
+    [
+      "minecraft:glow_lichen",
       "hydrol:cover/flowers/orange_tulip",
       "hydrol:cover/flowers/poppy",
       "hydrol:cover/flowers/red_tulip",

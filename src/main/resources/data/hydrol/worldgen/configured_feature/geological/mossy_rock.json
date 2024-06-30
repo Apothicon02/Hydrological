@@ -28,7 +28,7 @@
       "type": "minecraft:weighted_state_provider",
       "entries": [
         {
-          "weight": 98,
+          "weight": 90,
           "data": {
             "Name": "minecraft:stone"
           }
@@ -43,6 +43,12 @@
           "weight": 1,
           "data": {
             "Name": "minecraft:mossy_cobblestone"
+          }
+        },
+        {
+          "weight": 8,
+          "data": {
+            "Name": "minecraft:coal_ore"
           }
         }
       ]

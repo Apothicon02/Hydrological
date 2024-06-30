@@ -41,11 +41,11 @@
     ],
     [],
     [
+      "hydrol:cover/roots",
+      "hydrol:cover/roots_edge"
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/roots",
-      "hydrol:cover/roots_edge",
       "hydrol:cover/tall_grass",
       "hydrol:cover/tall_seagrass_middle",
       "hydrol:cover/lily_pads",

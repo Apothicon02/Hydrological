@@ -21,7 +21,8 @@
     [
     ],
     [
-      "minecraft:amethyst_geode"
+      "minecraft:amethyst_geode",
+      "hydrol:geological/mossy_rocks"
     ],
     [
       "minecraft:monster_room",
@@ -36,7 +37,6 @@
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:geological/mossy_rocks",
       "hydrol:cover/tall_grass",
       "hydrol:cover/seagrass_middle",
       "hydrol:trees/spruce"

@@ -33,9 +33,6 @@
     ],
     [],
     [
-    ],
-    [
-      "minecraft:glow_lichen",
       "hydrol:cover/snow/snow_inv_1",
       "hydrol:cover/snow/snow_inv_2",
       "hydrol:cover/snow/snow_inv_3",
@@ -43,7 +40,10 @@
       "hydrol:cover/snow/snow_1",
       "hydrol:cover/snow/snow_2",
       "hydrol:cover/snow/snow_3",
-      "hydrol:cover/snow/snow_4",
+      "hydrol:cover/snow/snow_4"
+    ],
+    [
+      "minecraft:glow_lichen",
       "hydrol:trees/spruce_noise",
       "hydrol:trees/pine",
       "hydrol:trees/fir"

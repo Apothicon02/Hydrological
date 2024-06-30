@@ -21,7 +21,8 @@
     [
     ],
     [
-      "minecraft:amethyst_geode"
+      "minecraft:amethyst_geode",
+      "hydrol:geological/mossy_disks"
     ],
     [
       "minecraft:monster_room",
@@ -33,7 +34,6 @@
     ],
     [],
     [
-      "hydrol:geological/mossy_disks"
     ],
     [
       "minecraft:glow_lichen",

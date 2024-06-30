@@ -27,7 +27,8 @@
     [
     ],
     [
-      "minecraft:amethyst_geode"
+      "minecraft:amethyst_geode",
+      "hydrol:geological/pits"
     ],
     [
       "minecraft:monster_room",
@@ -43,7 +44,6 @@
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:geological/pits",
       "hydrol:cover/dry_grass/dry_grass_1",
       "hydrol:shrubs/jungle_sparse",
       "hydrol:unshaded/cacti"
