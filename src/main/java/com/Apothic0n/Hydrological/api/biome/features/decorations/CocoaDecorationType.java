@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CocoaBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -55,7 +56,7 @@ public class CocoaDecorationType extends Decoration {
     }
 
     @Override
-    public Map<BlockPos, BlockState> generateDecoration(RandomSource random, Map<BlockPos, BlockState> existing, BlockPos origin) {
+    public Map<BlockPos, BlockState> generateDecoration(RandomSource random, Map<BlockPos, BlockState> existing, BlockPos origin, WorldGenLevel level) {
         Map<BlockPos, BlockState> map = new java.util.HashMap<>(Map.of());
         int max = this.count.sample(random);
         if (max > 0 && existing.size() > 2) {

@@ -57,10 +57,13 @@ public class BranchingTrunkType extends Trunk {
             }
             for (int height = origin.getY()-1; height <= maxHeight; height++) {
                 float bendFactor = ((float) maxHeight /height)*2F;
-                BlockPos pos = new BlockPos(offsetX, height, offsetZ);
+                int xDist = offsetX-origin.getX();
+                int zDist = offsetZ-origin.getZ();
+                int dist = xDist*xDist+zDist*zDist;
+                BlockPos pos = new BlockPos(offsetX, height-(dist/35), offsetZ);
                 map.put(pos, getWood(random, pos));
                 if (height == maxHeight) {
-                    canopies.add(pos.above());
+                    canopies.add(pos.above((dist/35)+1));
                 } else if (height > origin.getY()+(maxHeight/16F)) {
                     if (trunks == 1) {
                         if (random.nextInt(0, 5) < 4 - bendFactor) {
@@ -100,7 +103,10 @@ public class BranchingTrunkType extends Trunk {
                             offsetZ += 1;
                         }
                     }
-                    pos = new BlockPos(offsetX, height, offsetZ);
+                    int newXDist = offsetX-origin.getX();
+                    int newZDist = offsetZ-origin.getZ();
+                    int newDist = newXDist*newXDist+newZDist*newZDist;
+                    pos = new BlockPos(offsetX, height-(newDist/35), offsetZ);
                     map.put(pos, getWood(random, pos));
                 }
             }

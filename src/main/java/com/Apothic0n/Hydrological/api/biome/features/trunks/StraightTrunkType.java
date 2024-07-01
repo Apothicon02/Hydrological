@@ -41,14 +41,6 @@ public class StraightTrunkType extends Trunk {
         Set<BlockPos> canopies = new HashSet<>();
         int maxHeight = this.height.sample(random);
 
-        int xTilt = 1;
-        if (random.nextBoolean()) {
-            xTilt = -1;
-        }
-        int zTilt = 1;
-        if (random.nextBoolean()) {
-            zTilt = -1;
-        }
         for (int i = 0; i <= maxHeight; i++) {
             BlockPos pos = origin.above(i);
             map.put(pos, getWood(random, pos));

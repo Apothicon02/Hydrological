@@ -77,6 +77,16 @@
             "Name": "minecraft:cherry_wood"
           }
         }
+      },
+      {
+        "type": "hydrol:leaf_piles",
+        "length": 12,
+        "leaves": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "hydrol:cherry_leaves_pile"
+          }
+        }
       }
     ]
   }

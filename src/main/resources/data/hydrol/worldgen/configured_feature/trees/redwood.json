@@ -47,7 +47,16 @@
       }
     },
     "decorations": [
-
+      {
+        "type": "hydrol:leaf_piles",
+        "length": 20,
+        "leaves": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "hydrol:spruce_leaves_pile"
+          }
+        }
+      }
     ]
   }
 }

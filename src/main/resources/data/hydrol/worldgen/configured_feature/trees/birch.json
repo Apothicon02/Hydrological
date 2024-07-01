@@ -3,27 +3,27 @@
   "config": {
     "intersect": false,
     "trunk": {
-      "type": "hydrol:straight_trunk",
+      "type": "hydrol:straight_dead_branched_trunk",
       "height": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 5,
-          "max_inclusive": 24
+          "min_inclusive": 11,
+          "max_inclusive": 30
         }
       },
       "wood": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:spruce_log"
+          "Name": "minecraft:birch_log"
         }
       }
     },
     "canopy": {
-      "type": "hydrol:pine_canopy",
+      "type": "hydrol:birch_canopy",
       "leaves": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:spruce_leaves",
+          "Name": "minecraft:birch_leaves",
           "Properties": {
             "persistent": "true"
           }
@@ -31,16 +31,7 @@
       }
     },
     "decorations": [
-      {
-        "type": "hydrol:leaf_piles",
-        "length": 6,
-        "leaves": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "hydrol:spruce_leaves_pile"
-          }
-        }
-      }
+
     ]
   }
 }

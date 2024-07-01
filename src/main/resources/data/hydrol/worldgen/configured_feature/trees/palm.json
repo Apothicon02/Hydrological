@@ -40,7 +40,7 @@
       "leaves": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:mangrove_leaves",
+          "Name": "minecraft:jungle_leaves",
           "Properties": {
             "persistent": "true"
           }

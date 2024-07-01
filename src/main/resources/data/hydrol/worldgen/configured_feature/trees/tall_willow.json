@@ -7,21 +7,21 @@
       "count": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 2,
-          "max_inclusive": 3
+          "min_inclusive": 7,
+          "max_inclusive": 8
         }
       },
       "height": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 6,
-          "max_inclusive": 9
+          "min_inclusive": 28,
+          "max_inclusive": 32
         }
       },
       "wood": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:mangrove_wood"
+          "Name": "minecraft:oak_wood"
         }
       }
     },
@@ -30,21 +30,21 @@
       "height": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 3,
-          "max_inclusive": 5
+          "min_inclusive": 4,
+          "max_inclusive": 6
         }
       },
       "radius": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 5,
-          "max_inclusive": 6
+          "min_inclusive": 7,
+          "max_inclusive": 9
         }
       },
       "leaves": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:mangrove_leaves",
+          "Name": "minecraft:oak_leaves",
           "Properties": {
             "persistent": "true"
           }
@@ -64,7 +64,7 @@
         "leaves": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "hydrol:mangrove_leaves_wall"
+            "Name": "hydrol:oak_leaves_wall"
           }
         }
       },
@@ -73,24 +73,14 @@
         "length": {
           "type": "minecraft:uniform",
           "value": {
-            "min_inclusive": 1,
-            "max_inclusive": 5
+            "min_inclusive": -4,
+            "max_inclusive": 4
           }
         },
         "roots": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:mangrove_roots"
-          }
-        }
-      },
-      {
-        "type": "hydrol:leaf_piles",
-        "length": 12,
-        "leaves": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "hydrol:mangrove_leaves_pile"
+            "Name": "hydrol:oak_wood_wall"
           }
         }
       }

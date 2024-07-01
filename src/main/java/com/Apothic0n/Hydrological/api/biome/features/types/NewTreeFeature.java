@@ -10,22 +10,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.WallSide;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
 
 import java.util.*;
 
@@ -62,7 +53,7 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
         }
         if (enoughSpace) {
             for (Decoration decoration : decorations) {
-                Map<BlockPos, BlockState> blocks = decoration.generateDecoration(random, map, origin);
+                Map<BlockPos, BlockState> blocks = decoration.generateDecoration(random, map, origin, level);
                 for (BlockPos block : blocks.keySet()) {
                     if (!map.containsKey(block) && level.getBlockState(block).canBeReplaced()) {
                         map.put(block, blocks.get(block));
@@ -81,6 +72,9 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
                         state = state.setValue(BlockStateProperties.WATERLOGGED, true);
                     }
                     level.setBlock(pos, state, UPDATE_ALL);
+                    if (state.getBlock() instanceof SnowLayerBlock && level.getBlockState(pos.above()).getBlock() instanceof BushBlock) {
+                        level.setBlock(pos.above(), Blocks.AIR.defaultBlockState(), UPDATE_ALL);
+                    }
                 }
             }
         }

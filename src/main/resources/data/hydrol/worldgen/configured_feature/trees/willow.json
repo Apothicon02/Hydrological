@@ -83,6 +83,16 @@
             "Name": "hydrol:oak_wood_wall"
           }
         }
+      },
+      {
+        "type": "hydrol:leaf_piles",
+        "length": 12,
+        "leaves": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "hydrol:oak_leaves_pile"
+          }
+        }
       }
     ]
   }

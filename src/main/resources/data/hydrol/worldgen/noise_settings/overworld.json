@@ -348,6 +348,8 @@
                 "biome_is": [
                   "minecraft:cherry_grove",
                   "minecraft:plains",
+                  "minecraft:forest",
+                  "minecraft:birch_forest",
                   "minecraft:taiga"
                 ]
               },
@@ -762,6 +764,8 @@
                 "biome_is": [
                   "minecraft:cherry_grove",
                   "minecraft:plains",
+                  "minecraft:forest",
+                  "minecraft:birch_forest",
                   "minecraft:taiga",
                   "minecraft:old_growth_pine_taiga",
                   "minecraft:old_growth_spruce_taiga",
@@ -872,7 +876,7 @@
                       "invert": {
                         "type": "minecraft:y_above",
                         "anchor": {
-                          "absolute": 86
+                          "absolute": 69
                         },
                         "surface_depth_multiplier": 0,
                         "add_stone_depth": false

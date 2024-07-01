@@ -83,6 +83,16 @@
             "Name": "minecraft:mangrove_roots"
           }
         }
+      },
+      {
+        "type": "hydrol:leaf_piles",
+        "length": 22,
+        "leaves": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "hydrol:mangrove_leaves_pile"
+          }
+        }
       }
     ]
   }

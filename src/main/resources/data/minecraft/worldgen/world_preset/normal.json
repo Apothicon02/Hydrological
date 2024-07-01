@@ -498,6 +498,114 @@
               }
             },
             {
+              "biome": "minecraft:forest",
+              "parameters": {
+                "temperature": [
+                  -0.25,
+                  0
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  0.3
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  0.3
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:forest",
+              "parameters": {
+                "temperature": [
+                  -0.25,
+                  0
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  0.4,
+                  1
+                ],
+                "continentalness": [
+                  0,
+                  0.3
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  1
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:birch_forest",
+              "parameters": {
+                "temperature": [
+                  -0.5,
+                  -0.25
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  0.3
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  0.3
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:birch_forest",
+              "parameters": {
+                "temperature": [
+                  -0.5,
+                  -0.25
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  0.4,
+                  1
+                ],
+                "continentalness": [
+                  0,
+                  0.3
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  1
+                ],
+                "offset": 0
+              }
+            },
+            {
               "biome": "minecraft:plains",
               "parameters": {
                 "temperature": [
@@ -513,7 +621,7 @@
                   0.4
                 ],
                 "continentalness": [
-                  0,
+                  0.3,
                   1
                 ],
                 "weirdness": 0,
@@ -540,7 +648,7 @@
                   1
                 ],
                 "continentalness": [
-                  0,
+                  0.3,
                   1
                 ],
                 "weirdness": 0,

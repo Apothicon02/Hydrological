@@ -56,7 +56,7 @@ public class GiantCanopiedTrunkPlacer extends TrunkPlacer {
 
     @Override
     protected TrunkPlacerType<?> type() {
-        return HydrolTrunkPlacerType.GIANT_BRANCHING_TRUNK_PLACER.get();
+        return HydrolTrunkPlacerType.GIANT_CANOPIED_TRUNK_PLACER.get();
     }
 
     @Override

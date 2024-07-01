@@ -1,11 +1,11 @@
 {
-  "feature": "hydrol:shrubs/jungle",
+  "feature": "hydrol:shrubs/mangrove",
   "placement": [
     {
       "type": "minecraft:noise_based_count",
-      "noise_to_count_ratio": 3,
-      "noise_factor": 16,
-      "noise_offset": -0.4
+      "noise_to_count_ratio": 25,
+      "noise_factor": 1,
+      "noise_offset": 0.5
     },
     {
       "type": "minecraft:in_square"

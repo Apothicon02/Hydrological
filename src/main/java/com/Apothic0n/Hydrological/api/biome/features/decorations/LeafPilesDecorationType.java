@@ -1,30 +1,33 @@
 package com.Apothic0n.Hydrological.api.biome.features.decorations;
 
+import com.Apothic0n.Hydrological.api.biome.features.placement_modifiers.NoiseCoverPlacement;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CocoaBlock;
+import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 import java.util.Map;
 
-public class HangingLeavesDecorationType extends Decoration {
-    public static final Codec<HangingLeavesDecorationType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+import static net.minecraft.world.level.block.Block.UPDATE_ALL;
+
+public class LeafPilesDecorationType extends Decoration {
+    public static final Codec<LeafPilesDecorationType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             (IntProvider.CODEC.fieldOf("length")).forGetter(v -> v.length),
             (BlockStateProvider.CODEC.fieldOf("leaves")).forGetter(v -> v.leaves)
-    ).apply(instance, HangingLeavesDecorationType::new));
+    ).apply(instance, LeafPilesDecorationType::new));
 
     private final IntProvider length;
     private final BlockStateProvider leaves;
 
-    public HangingLeavesDecorationType(IntProvider count, BlockStateProvider leaves) {
+    public LeafPilesDecorationType(IntProvider count, BlockStateProvider leaves) {
         this.length = count;
         this.leaves = leaves;
     }
@@ -35,7 +38,7 @@ public class HangingLeavesDecorationType extends Decoration {
     }
 
     private boolean addToMap(Map<BlockPos, BlockState> map, BlockPos pos, RandomSource random, BlockStateProvider leaves) {
-        map.put(pos, leaves.getState(random, pos));
+        map.put(pos, leaves.getState(random, pos).setValue(SnowLayerBlock.LAYERS, Mth.abs((int) (NoiseCoverPlacement.HEIGHT_NOISE.getValue(pos.getX(), pos.getZ(), false) * 4)) + random.nextInt(1, 4)));
         return true;
     }
 
@@ -48,7 +51,10 @@ public class HangingLeavesDecorationType extends Decoration {
                     int length = this.length.sample(random);
                     if (length > 0) {
                         for (int y = pos.getY() - 1; y >= pos.getY() - length; y--) {
-                            addToMap(map, pos.atY(y), random, leaves);
+                            BlockPos newPos = pos.atY(y);
+                            if (existing.get(newPos) == null && (level.getBlockState(newPos).isAir() || level.getBlockState(newPos).canBeReplaced()) && level.getBlockState(newPos.below()).isSolid()) {
+                                addToMap(map, newPos, random, leaves);
+                            }
                         }
                     }
                 }
