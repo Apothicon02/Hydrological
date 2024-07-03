@@ -20,6 +20,7 @@ public class DecorationType<P extends Decoration> {
     public static final RegistryObject<DecorationType<HangingLeavesDecorationType>> HANGING_LEAVES_DECORATION_TYPE = DECORATION_TYPES.register("hanging_leaves", () -> new DecorationType<>(HangingLeavesDecorationType.CODEC));
     public static final RegistryObject<DecorationType<LeafPilesDecorationType>> LEAF_PILES_DECORATION_TYPE = DECORATION_TYPES.register("leaf_piles", () -> new DecorationType<>(LeafPilesDecorationType.CODEC));
     public static final RegistryObject<DecorationType<RootsDecorationType>> ROOTS_DECORATION_TYPE = DECORATION_TYPES.register("roots", () -> new DecorationType<>(RootsDecorationType.CODEC));
+    public static final RegistryObject<DecorationType<GroundDecorationType>> GROUND_DECORATION_TYPE = DECORATION_TYPES.register("ground", () -> new DecorationType<>(GroundDecorationType.CODEC));
 
     private final Codec<P> codec;
 

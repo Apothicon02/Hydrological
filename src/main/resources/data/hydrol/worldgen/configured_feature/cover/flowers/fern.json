@@ -1,0 +1,22 @@
+{
+  "type": "hydrol:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 8,
+          "data": {
+            "Name": "minecraft:fern"
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "minecraft:large_fern"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -38,7 +38,29 @@
       }
     },
     "decorations": [
-
+      {
+        "type": "hydrol:ground",
+        "offset": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": -2,
+            "max_inclusive": 2
+          }
+        },
+        "radius": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": 13,
+            "max_inclusive": 16
+          }
+        },
+        "replace_with": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:mycelium"
+          }
+        }
+      }
     ]
   }
 }

@@ -3,6 +3,7 @@ package com.Apothic0n.Hydrological.api.biome.features.types;
 import com.Apothic0n.Hydrological.api.biome.features.canopies.Canopy;
 import com.Apothic0n.Hydrological.api.biome.features.configurations.NewTreeConfiguration;
 import com.Apothic0n.Hydrological.api.biome.features.decorations.Decoration;
+import com.Apothic0n.Hydrological.api.biome.features.decorations.GroundDecorationType;
 import com.Apothic0n.Hydrological.api.biome.features.trunks.GeneratedTrunk;
 import com.Apothic0n.Hydrological.api.biome.features.trunks.Trunk;
 import com.mojang.serialization.Codec;
@@ -55,7 +56,7 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
             for (Decoration decoration : decorations) {
                 Map<BlockPos, BlockState> blocks = decoration.generateDecoration(random, map, origin, level);
                 for (BlockPos block : blocks.keySet()) {
-                    if (!map.containsKey(block) && level.getBlockState(block).canBeReplaced()) {
+                    if (!map.containsKey(block) && (level.getBlockState(block).canBeReplaced() || decoration instanceof GroundDecorationType)) {
                         map.put(block, blocks.get(block));
                     }
                 }

@@ -24,8 +24,8 @@ public class RootsDecorationType extends Decoration {
     private final IntProvider length;
     private final BlockStateProvider roots;
 
-    public RootsDecorationType(IntProvider count, BlockStateProvider roots) {
-        this.length = count;
+    public RootsDecorationType(IntProvider length, BlockStateProvider roots) {
+        this.length = length;
         this.roots = roots;
     }
 

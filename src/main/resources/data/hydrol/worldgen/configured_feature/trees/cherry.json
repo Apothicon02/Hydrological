@@ -47,6 +47,29 @@
     },
     "decorations": [
       {
+        "type": "hydrol:ground",
+        "offset": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": -1,
+            "max_inclusive": 1
+          }
+        },
+        "radius": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": 3,
+            "max_inclusive": 5
+          }
+        },
+        "replace_with": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:podzol"
+          }
+        }
+      },
+      {
         "type": "hydrol:hanging_leaves",
         "length": {
           "type": "minecraft:uniform",

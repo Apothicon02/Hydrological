@@ -34,7 +34,7 @@ public class LeafPilesDecorationType extends Decoration {
 
     @Override
     protected DecorationType<?> type() {
-        return DecorationType.HANGING_LEAVES_DECORATION_TYPE.get();
+        return DecorationType.LEAF_PILES_DECORATION_TYPE.get();
     }
 
     private boolean addToMap(Map<BlockPos, BlockState> map, BlockPos pos, RandomSource random, BlockStateProvider leaves) {
