@@ -441,7 +441,8 @@
                 "type": "minecraft:biome",
                 "biome_is": [
                   "minecraft:old_growth_pine_taiga",
-                  "minecraft:old_growth_spruce_taiga"
+                  "minecraft:old_growth_spruce_taiga",
+                  "minecraft:dark_forest"
                 ]
               },
               "then_run": {
@@ -496,6 +497,56 @@
                     "type": "minecraft:block",
                     "result_state": {
                       "Name": "minecraft:podzol"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:biome",
+                "biome_is": [
+                  "minecraft:mushroom_fields"
+                ]
+              },
+              "then_run": {
+                "type": "minecraft:sequence",
+                "sequence": [
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "noise": "hydrol:global/surface_variation",
+                      "min_threshold": -0.3,
+                      "max_threshold": 0.3
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:mycelium"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "noise": "hydrol:global/surface_variation",
+                      "min_threshold": -0.37,
+                      "max_threshold": 0.37
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:gravel"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "minecraft:mycelium"
                     }
                   }
                 ]
@@ -769,6 +820,7 @@
                   "minecraft:taiga",
                   "minecraft:old_growth_pine_taiga",
                   "minecraft:old_growth_spruce_taiga",
+                  "minecraft:dark_forest",
                   "minecraft:jungle"
                 ]
               },

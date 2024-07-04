@@ -16,16 +16,19 @@ import java.util.Set;
 
 public class TwistingTrunkType extends Trunk {
     public static final Codec<TwistingTrunkType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            (IntProvider.codec(0, 64).fieldOf("min_branch_height")).forGetter(v -> v.minBranchHeight),
             (IntProvider.codec(1, 64).fieldOf("height")).forGetter(v -> v.height),
             (IntProvider.codec(-100, 100).fieldOf("overgrown_chance")).forGetter(v -> v.overgrownChance),
             (BlockStateProvider.CODEC.fieldOf("wood")).forGetter(v -> v.wood)
     ).apply(instance, TwistingTrunkType::new));
 
+    private final IntProvider minBranchHeight;
     private final IntProvider height;
     private final IntProvider overgrownChance;
     private final BlockStateProvider wood;
 
-    public TwistingTrunkType(IntProvider height, IntProvider overgrownChance, BlockStateProvider wood) {
+    public TwistingTrunkType(IntProvider minBranchHeight, IntProvider height, IntProvider overgrownChance, BlockStateProvider wood) {
+        this.minBranchHeight = minBranchHeight;
         this.height = height;
         this.overgrownChance = overgrownChance;
         this.wood = wood;
@@ -46,6 +49,7 @@ public class TwistingTrunkType extends Trunk {
         Set<BlockPos> canopies = new HashSet<>();
 
         boolean overgrown = overgrownChance.sample(random) > 0;
+        int minBranch = minBranchHeight.sample(random)+origin.getY();
         int prevXPositive = 0;
         int prevZPositive = 0;
         int twistable = 0;
@@ -80,7 +84,7 @@ public class TwistingTrunkType extends Trunk {
             pos.move(dir).setY(height);
             makeSquare(map, pos.immutable().below(), random);
             makeSquare(map, pos.immutable(), random);
-            if (branch) {
+            if (branch && pos.getY() >= minBranch) {
                 canopies.add(makeBranch(map, pos, random, dir.immutable()));
                 if (overgrown) {
                     canopies.add(makeBranch(map, pos, random, new BlockPos(dir.getX() * (random.nextBoolean() ? 1 : 0), +2, dir.getZ() * (random.nextBoolean() ? 1 : 0))));

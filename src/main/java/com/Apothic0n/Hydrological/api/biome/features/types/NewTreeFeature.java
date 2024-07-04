@@ -54,17 +54,11 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
         }
         if (enoughSpace) {
             for (Decoration decoration : decorations) {
-                Map<BlockPos, BlockState> blocks = decoration.generateDecoration(random, map, origin, level);
-                for (BlockPos block : blocks.keySet()) {
-                    if (!map.containsKey(block) && (level.getBlockState(block).canBeReplaced() || decoration instanceof GroundDecorationType)) {
-                        map.put(block, blocks.get(block));
-                    }
-                }
+                map.putAll(decoration.generateDecoration(random, map, origin, level));
             }
-            for (BlockPos pos : map.keySet()) {
+            map.forEach((BlockPos pos, BlockState state) -> {
                 int x = pos.getX();
                 int z = pos.getZ();
-                BlockState state = map.get(pos);
                 if (x >= minX && x <= maxX && z >= minZ && z <= maxZ && (level.getBlockState(pos).canBeReplaced() || (pos.getY() <= origin.getY() && state.isSolid() && !state.is(BlockTags.LEAVES)))) {
                     if (state.getBlock() instanceof WallBlock) {
                         state = state.updateShape(Direction.UP, state, level, pos, pos);
@@ -73,11 +67,16 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
                         state = state.setValue(BlockStateProperties.WATERLOGGED, true);
                     }
                     level.setBlock(pos, state, UPDATE_ALL);
-                    if (state.getBlock() instanceof SnowLayerBlock && level.getBlockState(pos.above()).getBlock() instanceof BushBlock) {
-                        level.setBlock(pos.above(), Blocks.AIR.defaultBlockState(), UPDATE_ALL);
+                    BlockState aboveState = level.getBlockState(pos.above());
+                    if (!state.isFaceSturdy(level, pos, Direction.UP) && aboveState.getBlock() instanceof BushBlock) {
+                        BlockState filler = Blocks.AIR.defaultBlockState();
+                        if (aboveState.hasProperty(BlockStateProperties.WATERLOGGED) && aboveState.getValue(BlockStateProperties.WATERLOGGED)) {
+                            filler = Blocks.WATER.defaultBlockState();
+                        }
+                        level.setBlock(pos.above(), filler, UPDATE_ALL);
                     }
                 }
-            }
+            });
         }
         return enoughSpace;
     }
@@ -89,11 +88,11 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
         Map<BlockPos, BlockState> map = new HashMap<>(generatedTrunk.getMap());
         for (BlockPos branch:generatedTrunk.getCanopies()) {
             Map<BlockPos, BlockState> leaves = canopy.generateCanopy(random, branch, generatedTrunk.getHeight(), origin);
-            for (BlockPos leaf:leaves.keySet()) {
-                if (!map.containsKey(leaf)) {
-                    map.put(leaf, leaves.get(leaf));
+            leaves.forEach((BlockPos pos, BlockState state) -> {
+                if (!map.containsKey(pos)) {
+                    map.put(pos, state);
                 }
-            }
+            });
         }
         return map;
     }

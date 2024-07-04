@@ -6,6 +6,7 @@
   "downfall": 0.8,
   "effects": {
     "fog_color": 12638463,
+    "grass_color_modifier": "dark_forest",
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -42,19 +43,24 @@
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/flowers/azure_bluet",
-      "hydrol:cover/flowers/lily_of_the_valley",
-      "hydrol:cover/flowers/oxeye_daisy",
-      "hydrol:cover/flowers/pink_tulip",
-      "hydrol:cover/flowers/white_tulip",
+      "hydrol:cover/flowers/orange_tulip",
+      "hydrol:cover/flowers/poppy",
+      "hydrol:cover/flowers/red_tulip",
+      "hydrol:cover/flowers/rose_bush",
+      "hydrol:cover/dry_grass/dry_grass_1",
       "hydrol:cover/tall_grass_middle",
       "hydrol:cover/grass_negative",
       "hydrol:cover/grass_positive",
       "hydrol:shrubs/oak",
       "hydrol:shrubs/birch",
-      "hydrol:trees/dark_willow",
-      "hydrol:trees/willow_tall",
-      "hydrol:trees/willow_extra"
+      "hydrol:trees/red_mushroom_sparse",
+      "hydrol:trees/brown_mushroom_sparse",
+      "hydrol:trees/dark_oak",
+      "hydrol:trees/dark_willow_extra",
+      "hydrol:trees/birch_spruce_noise",
+      "hydrol:trees/birch_fir",
+      "hydrol:trees/birch",
+      "hydrol:unshaded/bamboo_clusters"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -96,12 +102,6 @@
         "maxCount": 4,
         "minCount": 4,
         "weight": 8
-      },
-      {
-        "type": "minecraft:wolf",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 5
       }
     ],
     "misc": [],

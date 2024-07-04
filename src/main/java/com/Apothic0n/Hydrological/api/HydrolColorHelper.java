@@ -22,7 +22,7 @@ public class HydrolColorHelper {
         float blue = (float) (0.33);
         String blockName = blockState.getBlock().getDescriptionId();
         if (blockName.contains("dark")) {
-            green -= 0.15F;
+            green -= 0.15F + (Math.max(-0.25, Math.min(0, temperature))/2);
             blue += 0.07F;
         } else if (blockName.contains("mangrove")) {
             green -= 0.08F;

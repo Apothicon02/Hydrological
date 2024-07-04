@@ -4,6 +4,7 @@
     "intersect": false,
     "trunk": {
       "type": "hydrol:twisting_trunk",
+      "min_branch_height": 0,
       "height": {
         "type": "minecraft:uniform",
         "value": {

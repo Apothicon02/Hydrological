@@ -2,7 +2,6 @@ package com.Apothic0n.Hydrological.core.events;
 
 import com.Apothic0n.Hydrological.Hydrological;
 import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
-import com.Apothic0n.Hydrological.core.objects.HydrolBlocks;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
@@ -13,15 +12,10 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -30,14 +24,11 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.storage.LevelResource;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.event.level.SaplingGrowTreeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -61,7 +52,9 @@ public class CommonForgeEvents {
                     event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/willow")));
                 }
             } else if (sapling.is(Blocks.DARK_OAK_SAPLING)) {
-                if (below.is(Blocks.COARSE_DIRT)) {
+                if (below.is(Blocks.PODZOL)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/dark_oak")));
+                } else if (below.is(Blocks.COARSE_DIRT)) {
                     event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/dark_willow")));
                 }
             } else if (sapling.is(Blocks.BIRCH_SAPLING)) {

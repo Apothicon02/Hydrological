@@ -3,43 +3,48 @@
   "config": {
     "intersect": false,
     "trunk": {
-      "type": "hydrol:twisting_trunk",
-      "min_branch_height": 1,
+      "type": "hydrol:branching_trunk",
+      "count": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 7,
+          "max_inclusive": 8
+        }
+      },
       "height": {
         "type": "minecraft:uniform",
         "value": {
           "min_inclusive": 28,
-          "max_inclusive": 36
-        }
-      },
-      "overgrown_chance": {
-        "type": "minecraft:uniform",
-        "value": {
-          "min_inclusive": -100,
-          "max_inclusive": 40
+          "max_inclusive": 32
         }
       },
       "wood": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:jungle_wood"
+          "Name": "minecraft:oak_wood"
         }
       }
     },
     "canopy": {
-      "type": "hydrol:jungle_canopy",
-      "height": 1,
+      "type": "hydrol:drooping_canopy",
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 14,
+          "max_inclusive": 18
+        }
+      },
       "radius": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 3,
-          "max_inclusive": 4
+          "min_inclusive": 7,
+          "max_inclusive": 9
         }
       },
       "leaves": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:jungle_leaves",
+          "Name": "minecraft:oak_leaves",
           "Properties": {
             "persistent": "true"
           }
@@ -52,15 +57,15 @@
         "offset": {
           "type": "minecraft:uniform",
           "value": {
-            "min_inclusive": -2,
-            "max_inclusive": 2
+            "min_inclusive": -1,
+            "max_inclusive": 1
           }
         },
         "radius": {
           "type": "minecraft:uniform",
           "value": {
-            "min_inclusive": 6,
-            "max_inclusive": 8
+            "min_inclusive": 3,
+            "max_inclusive": 5
           }
         },
         "replace_with": {
@@ -82,7 +87,7 @@
         "leaves": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "hydrol:jungle_leaves_wall"
+            "Name": "hydrol:oak_leaves_wall"
           }
         }
       },
@@ -91,14 +96,14 @@
         "length": {
           "type": "minecraft:uniform",
           "value": {
-            "min_inclusive": 1,
-            "max_inclusive": 2
+            "min_inclusive": -4,
+            "max_inclusive": 4
           }
         },
         "roots": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:jungle_wood"
+            "Name": "hydrol:oak_wood_wall"
           }
         }
       }
