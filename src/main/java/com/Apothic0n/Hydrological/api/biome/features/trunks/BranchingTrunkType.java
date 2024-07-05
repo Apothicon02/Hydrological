@@ -14,16 +14,19 @@ import java.util.Set;
 
 public class BranchingTrunkType extends Trunk {
     public static final Codec<BranchingTrunkType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            (Codec.BOOL.fieldOf("canopy_offset")).forGetter(v -> v.canopyOffset),
             (IntProvider.codec(1, 8).fieldOf("count")).forGetter(v -> v.count),
             (IntProvider.codec(1, 64).fieldOf("height")).forGetter(v -> v.height),
             (BlockStateProvider.CODEC.fieldOf("wood")).forGetter(v -> v.wood)
     ).apply(instance, BranchingTrunkType::new));
 
+    private final  boolean canopyOffset;
     private final IntProvider count;
     private final IntProvider height;
     private final BlockStateProvider wood;
 
-    public BranchingTrunkType(IntProvider count, IntProvider height, BlockStateProvider wood) {
+    public BranchingTrunkType(Boolean canopyOffset, IntProvider count, IntProvider height, BlockStateProvider wood) {
+        this.canopyOffset = canopyOffset;
         this.count = count;
         this.height = height;
         this.wood = wood;
@@ -63,7 +66,11 @@ public class BranchingTrunkType extends Trunk {
                 BlockPos pos = new BlockPos(offsetX, height-(dist/35), offsetZ);
                 map.put(pos, getWood(random, pos));
                 if (height == maxHeight) {
-                    canopies.add(pos.above((dist/35)+1));
+                    if (canopyOffset) {
+                        canopies.add(pos.above((dist / 35) + 1));
+                    } else {
+                        canopies.add(pos.above(1));
+                    }
                 } else if (height > origin.getY()+(maxHeight/16F)) {
                     if (trunks == 1) {
                         if (random.nextInt(0, 5) < 4 - bendFactor) {

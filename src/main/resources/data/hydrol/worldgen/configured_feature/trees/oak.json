@@ -4,6 +4,7 @@
     "intersect": false,
     "trunk": {
       "type": "hydrol:branching_trunk",
+      "canopy_offset": false,
       "count": {
         "type": "minecraft:uniform",
         "value": {
@@ -14,8 +15,8 @@
       "height": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 28,
-          "max_inclusive": 32
+          "min_inclusive": 13,
+          "max_inclusive": 26
         }
       },
       "wood": {
@@ -26,19 +27,19 @@
       }
     },
     "canopy": {
-      "type": "hydrol:drooping_canopy",
+      "type": "hydrol:sphere_canopy",
       "height": {
         "type": "minecraft:uniform",
         "value": {
           "min_inclusive": 14,
-          "max_inclusive": 18
+          "max_inclusive": 20
         }
       },
       "radius": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 7,
-          "max_inclusive": 9
+          "min_inclusive": 12,
+          "max_inclusive": 16
         }
       },
       "leaves": {
@@ -64,8 +65,8 @@
         "radius": {
           "type": "minecraft:uniform",
           "value": {
-            "min_inclusive": 3,
-            "max_inclusive": 5
+            "min_inclusive": 5,
+            "max_inclusive": 12
           }
         },
         "replace_with": {
@@ -104,6 +105,16 @@
           "type": "minecraft:simple_state_provider",
           "state": {
             "Name": "hydrol:oak_wood_wall"
+          }
+        }
+      },
+      {
+        "type": "hydrol:leaf_piles",
+        "length": 22,
+        "leaves": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "hydrol:oak_leaves_pile"
           }
         }
       }

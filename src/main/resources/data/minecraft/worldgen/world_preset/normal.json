@@ -270,7 +270,7 @@
                 ],
                 "continentalness": [
                   0,
-                  0.3
+                  0.4
                 ],
                 "weirdness": 0,
                 "depth": [
@@ -296,7 +296,7 @@
                   0.4
                 ],
                 "continentalness": [
-                  0.3,
+                  0.4,
                   1
                 ],
                 "weirdness": 0,
@@ -541,7 +541,7 @@
                 ],
                 "continentalness": [
                   0,
-                  0.3
+                  0.4
                 ],
                 "weirdness": 0,
                 "depth": [
@@ -568,7 +568,7 @@
                 ],
                 "continentalness": [
                   0,
-                  0.3
+                  0.4
                 ],
                 "weirdness": 0,
                 "depth": [
@@ -595,7 +595,7 @@
                 ],
                 "continentalness": [
                   0,
-                  0.3
+                  0.4
                 ],
                 "weirdness": 0,
                 "depth": [
@@ -622,12 +622,12 @@
                 ],
                 "continentalness": [
                   0,
-                  0.3
+                  0.4
                 ],
                 "weirdness": 0,
                 "depth": [
                   0.243,
-                  0.3
+                  0.44
                 ],
                 "offset": 0
               }
@@ -649,11 +649,11 @@
                 ],
                 "continentalness": [
                   0,
-                  0.3
+                  0.4
                 ],
                 "weirdness": 0,
                 "depth": [
-                  0.3,
+                  0.44,
                   1
                 ],
                 "offset": 0
@@ -675,7 +675,7 @@
                   0.4
                 ],
                 "continentalness": [
-                  0.3,
+                  0.4,
                   1
                 ],
                 "weirdness": 0,
@@ -702,7 +702,7 @@
                   1
                 ],
                 "continentalness": [
-                  0.3,
+                  0.4,
                   1
                 ],
                 "weirdness": 0,

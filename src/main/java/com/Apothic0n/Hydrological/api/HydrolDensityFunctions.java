@@ -350,15 +350,15 @@ public final class HydrolDensityFunctions {
         }
 
     }
-    protected record Flatten(DensityFunction input, int atY) implements DensityFunction {
+    protected record Flatten(DensityFunction input, DensityFunction atY) implements DensityFunction {
         private static final MapCodec<Flatten> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
-            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(Flatten::input), Codec.INT.fieldOf("at_y").forGetter(Flatten::atY)).apply(data, Flatten::new);
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(Flatten::input), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("at_y").forGetter(Flatten::atY)).apply(data, Flatten::new);
         });
         public static final KeyDispatchDataCodec<Flatten> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
 
         @Override
         public double compute(@NotNull FunctionContext context) {
-            return input.compute(new DensityFunction.SinglePointContext(context.blockX(), atY(), context.blockZ()));
+            return input.compute(new DensityFunction.SinglePointContext(context.blockX(), (int) atY().compute(context), context.blockZ()));
         }
 
         @Override
@@ -368,7 +368,7 @@ public final class HydrolDensityFunctions {
 
         @Override
         public @NotNull DensityFunction mapAll(Visitor visitor) {
-            return visitor.apply(new Flatten(this.input().mapAll(visitor), atY()));
+            return visitor.apply(new Flatten(this.input().mapAll(visitor), atY().mapAll(visitor)));
         }
 
         @Override

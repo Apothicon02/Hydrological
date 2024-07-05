@@ -4,6 +4,7 @@
     "intersect": false,
     "trunk": {
       "type": "hydrol:branching_trunk",
+      "canopy_offset": true,
       "count": {
         "type": "minecraft:uniform",
         "value": {

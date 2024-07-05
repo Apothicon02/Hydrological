@@ -24,6 +24,7 @@ public abstract class BlockItemMixin {
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void appendHoverText(ItemStack item, Level level, List<Component> list, TooltipFlag tip, CallbackInfo ci) {
         if (item.is(Items.OAK_SAPLING)) {
+            list.add(Component.translatable("block.minecraft.podzol").withStyle(ChatFormatting.GOLD));
             list.add(Component.translatable("block.minecraft.coarse_dirt").withStyle(ChatFormatting.GOLD));
         } else if (item.is(Items.DARK_OAK_SAPLING)) {
             list.add(Component.translatable("block.minecraft.podzol").withStyle(ChatFormatting.GOLD));

@@ -8,6 +8,7 @@ import com.google.gson.stream.JsonWriter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -15,7 +16,12 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.entity.vehicle.ChestBoat;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -48,7 +54,9 @@ public class CommonForgeEvents {
         BlockState below = level.getBlockState(origin.below());
         if (!below.is(Blocks.DIRT) && !below.is(Blocks.GRASS_BLOCK)) {
             if (sapling.is(Blocks.OAK_SAPLING)) {
-                if (below.is(Blocks.COARSE_DIRT)) {
+                if (below.is(Blocks.PODZOL)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/oak")));
+                } else if (below.is(Blocks.COARSE_DIRT)) {
                     event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/willow")));
                 }
             } else if (sapling.is(Blocks.DARK_OAK_SAPLING)) {
@@ -101,75 +109,9 @@ public class CommonForgeEvents {
 
     @SubscribeEvent
     public static void onCreateSpawnPosition(LevelEvent.CreateSpawnPosition event) {
-        boolean cancel = false;
-        if (event.getLevel() instanceof ServerLevel level && !level.dimensionType().hasCeiling()) {
-            for (int x = 0; x < 128000; x = x+128) {
-                for (int z = 0; z < 128000; z = z+128) {
-                    BlockPos spawnPos = new BlockPos(x, 63, z);
-                    Holder<Biome> center = level.getBiome(spawnPos);
-                    if (!center.is(BiomeTags.IS_OCEAN)) {
-                        Holder<Biome> northEast = level.getBiome(spawnPos.north(24).east(24));
-                        if (!northEast.is(BiomeTags.IS_OCEAN)) {
-                            Holder<Biome> northWest = level.getBiome(spawnPos.north(24).west(24));
-                            if (!northWest.is(BiomeTags.IS_OCEAN)) {
-                                Holder<Biome> southEast = level.getBiome(spawnPos.south(24).east(24));
-                                if (!southEast.is(BiomeTags.IS_OCEAN)) {
-                                    Holder<Biome> southWest = level.getBiome(spawnPos.south(24).west(24));
-                                    if (!southWest.is(BiomeTags.IS_OCEAN)) {
-                                        ChunkPos chunkPos = level.getChunkAt(spawnPos).getPos();
-                                        level.setChunkForced(chunkPos.x, chunkPos.z, true);
-                                        event.getSettings().setSpawn(spawnPos.atY(level.getHeight(Heightmap.Types.WORLD_SURFACE, x, z)), 0.0F);
-                                        level.setChunkForced(chunkPos.x, chunkPos.z, true);
-                                        cancel = true;
-                                        x = 128000;
-                                        z = 128000;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        event.setCanceled(cancel);
-    }
-
-    @SubscribeEvent
-    public static void entityLoaded(EntityLoadEvent event) {
-        Level level = event.level;
-        Entity entity = event.entity;
-        BlockPos pos = entity.blockPosition();
-        if (entity instanceof Player && level.dimension().equals(Level.OVERWORLD) && (level.dimensionType().hasCeiling() || HydrolDensityFunctions.isFloatingIslands)) {
-            boolean hasSpawnPlatformGeneratedBefore = true;
-            final Path hasSpawnPlatformGenerated = Path.of(level.getServer().getWorldPath(LevelResource.LEVEL_DATA_FILE).getParent().toString() + "/hasSpawnPlatformGenerated");
-            Gson gson = new Gson();
-            if (!Files.exists(hasSpawnPlatformGenerated)) {
-                JsonWriter writer = null;
-                try {
-                    writer = new JsonWriter(new FileWriter(hasSpawnPlatformGenerated.toString()));
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                JsonObject defaultData = gson.fromJson("{\"values\":[\"delete\",\"file\",\"to\",\"regenerate\",\"spawn\",\"platform\"]}", JsonObject.class);
-                gson.toJson(defaultData, writer);
-                try {
-                    writer.close();
-                    hasSpawnPlatformGeneratedBefore = false;
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            int y = level.getMaxBuildHeight();
-            if (pos.getY() == y && level.getBlockState(pos.below()).is(Blocks.BEDROCK)) {
-                pos = pos.below(64);
-                generateSquare(level, pos.below(2), Blocks.OAK_WOOD.defaultBlockState());
-                generateSquare(level, pos.below(), Blocks.OAK_WOOD.defaultBlockState());
-                generateSquare(level, pos, Blocks.AIR.defaultBlockState());
-                generateSquare(level, pos.above(), Blocks.AIR.defaultBlockState());
-                level.setBlock(pos, Blocks.TORCH.defaultBlockState(), UPDATE_ALL);
-                entity.teleportRelative(0, -64, 0);
-            } else if (!hasSpawnPlatformGeneratedBefore) {
+        if (event.getLevel() instanceof ServerLevel level && !level.isClientSide()) {
+            if (HydrolDensityFunctions.isFloatingIslands) {
+                BlockPos pos = new BlockPos(event.getSettings().getXSpawn(), 256, event.getSettings().getZSpawn());
                 boolean overVoid = true;
                 for (int i = level.getMinBuildHeight() - 1; i < level.getMaxBuildHeight(); i++) {
                     if (!level.getBlockState(new BlockPos(pos.getX(), i, pos.getZ())).isAir()) {
@@ -222,9 +164,48 @@ public class CommonForgeEvents {
                     level.setBlock(pos.east(1).below(), Blocks.AIR.defaultBlockState(), UPDATE_ALL);
                     level.setBlock(pos.south(1).below(), Blocks.AIR.defaultBlockState(), UPDATE_ALL);
                     level.setBlock(pos.west(1).below(), Blocks.AIR.defaultBlockState(), UPDATE_ALL);
-                    entity.teleportTo(pos.getX(), pos.getY(), pos.getZ());
+                }
+            } else if (level.dimension().equals(Level.OVERWORLD) && level.dimensionType().hasCeiling()) {
+                BlockPos pos = new BlockPos(event.getSettings().getXSpawn(), level.getMaxBuildHeight()-64, event.getSettings().getZSpawn());
+                generateSquare(level, pos.below(2), Blocks.OAK_WOOD.defaultBlockState());
+                generateSquare(level, pos.below(), Blocks.OAK_WOOD.defaultBlockState());
+                generateSquare(level, pos, Blocks.AIR.defaultBlockState());
+                generateSquare(level, pos.above(), Blocks.AIR.defaultBlockState());
+                level.setBlock(pos, Blocks.TORCH.defaultBlockState(), UPDATE_ALL);
+            } else if (level.dimension().equals(Level.OVERWORLD)) {
+                BlockPos pos = new BlockPos(event.getSettings().getXSpawn(), 63, event.getSettings().getZSpawn());
+                if (level.getBiome(pos).is(BiomeTags.IS_OCEAN)) {
+                    ChestBoat chestBoat = new ChestBoat(level, pos.getX(), pos.getY(), pos.getZ());
+                    chestBoat.setVariant(Boat.Type.BAMBOO);
+                    chestBoat.setChestVehicleItem(0, new ItemStack(Items.BREAD, 5));
+                    chestBoat.setChestVehicleItem(11, new ItemStack(Items.BOW, 1));
+                    chestBoat.setChestVehicleItem(2, new ItemStack(Items.ARROW, 23));
+                    level.addFreshEntity(chestBoat);
+                    chestBoat = new ChestBoat(level, pos.getX()+3, pos.getY(), pos.getZ());
+                    chestBoat.setVariant(Boat.Type.BAMBOO);
+                    chestBoat.setChestVehicleItem(20, new ItemStack(Items.BREAD, 8));
+                    chestBoat.setChestVehicleItem(14, new ItemStack(Items.STONE_AXE, 1));
+                    level.addFreshEntity(chestBoat);
+                    chestBoat = new ChestBoat(level, pos.getX()+1, pos.getY(), pos.getZ()+3);
+                    chestBoat.setVariant(Boat.Type.BAMBOO);
+                    chestBoat.setChestVehicleItem(10, new ItemStack(Items.BREAD, 2));
+                    chestBoat.setChestVehicleItem(24, new ItemStack(Items.IRON_SWORD, 1));
+                    level.addFreshEntity(chestBoat);
+                    Boat boat = new Boat(level, pos.getX()-5, pos.getY(), pos.getZ()+2);
+                    boat.setVariant(Boat.Type.BAMBOO);
+                    level.addFreshEntity(boat);
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void entityLoaded(EntityLoadEvent event) {
+        Level level = event.level;
+        Entity entity = event.entity;
+        BlockPos pos = entity.blockPosition();
+        if (entity instanceof Player && level.dimension().equals(Level.OVERWORLD) && level.dimensionType().hasCeiling() && pos.getY() == level.getMaxBuildHeight() && level.getBlockState(pos.below(64)).is(Blocks.TORCH)) {
+            entity.teleportRelative(0, -64, 0);
         }
     }
 
