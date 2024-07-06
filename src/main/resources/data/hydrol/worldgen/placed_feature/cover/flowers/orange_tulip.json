@@ -14,15 +14,27 @@
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:would_survive",
-        "offset": [
-          0,
-          0,
-          0
-        ],
-        "state": {
-          "Name": "minecraft:orange_tulip"
-        }
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:matching_blocks",
+              "offset": [
+                0,
+                -1,
+                0
+              ],
+              "blocks": "minecraft:mud"
+            }
+          },
+          {
+            "type": "minecraft:would_survive",
+            "state": {
+              "Name": "minecraft:orange_tulip"
+            }
+          }
+        ]
       }
     },
     {

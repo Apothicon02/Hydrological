@@ -22,7 +22,6 @@
   ],
   "client": [
     "BiomeClientMixin",
-    "BiomeColorsMixin",
     "BiomeSpecialEffectsGrassMixin",
     "DimensionTypeMixin",
     "FoliageColorMixin",

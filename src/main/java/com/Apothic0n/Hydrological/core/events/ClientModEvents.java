@@ -1,7 +1,9 @@
 package com.Apothic0n.Hydrological.core.events;
 
 import com.Apothic0n.Hydrological.Hydrological;
+import com.Apothic0n.Hydrological.api.HydrolColorHelper;
 import com.Apothic0n.Hydrological.api.HydrolJsonReader;
+import com.Apothic0n.Hydrological.api.biome.features.placement_modifiers.NoiseCoverPlacement;
 import com.Apothic0n.Hydrological.core.objects.*;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.Minecraft;
@@ -14,7 +16,6 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.GrassColor;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
@@ -28,10 +29,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
-import java.util.Map;
-
-import static com.Apothic0n.Hydrological.core.objects.HydrolBlocks.pileBlocks;
-import static com.Apothic0n.Hydrological.core.objects.HydrolBlocks.wallBlocks;
 
 @Mod.EventBusSubscriber(modid = Hydrological.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientModEvents {
@@ -107,82 +104,16 @@ public class ClientModEvents {
         }
     }
 
-    private static final PerlinSimplexNoise SATURATION_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(2345L)), ImmutableList.of(0));
-    private static final PerlinSimplexNoise BRIGHTNESS_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(0));
-
     @SubscribeEvent
     public static void onBlockColors(RegisterColorHandlersEvent.Block event) {
-        Block spruceLeaves = Blocks.SPRUCE_LEAVES;
-        Block birchLeaves = Blocks.BIRCH_LEAVES;
-        Block oakLeaves = Blocks.OAK_LEAVES;
-        Block jungleLeaves = Blocks.JUNGLE_LEAVES;
-        Block acaciaLeaves = Blocks.ACACIA_LEAVES;
-        Block darkOakLeaves = Blocks.DARK_OAK_LEAVES;
-        Block mangroveLeaves = Blocks.MANGROVE_LEAVES;
-        Block sprucePile = Blocks.SPRUCE_LEAVES;
-        Block birchPile = Blocks.BIRCH_LEAVES;
-        Block oakPile = Blocks.OAK_LEAVES;
-        Block junglePile = Blocks.JUNGLE_LEAVES;
-        Block acaciaPile = Blocks.ACACIA_LEAVES;
-        Block darkOakPile = Blocks.DARK_OAK_LEAVES;
-        Block mangrovePile = Blocks.MANGROVE_LEAVES;
-
-        if (!HydrolJsonReader.serverSidedOnlyMode) {
-            for (int i = 0; i < wallBlocks.size(); i++) {
-                Map<Block, RegistryObject<Block>> map = wallBlocks.get(i);
-                if (map.containsKey(Blocks.SPRUCE_LEAVES)) {
-                    spruceLeaves = map.get(Blocks.SPRUCE_LEAVES).get();
-                } else if (map.containsKey(Blocks.BIRCH_LEAVES)) {
-                    birchLeaves = map.get(Blocks.BIRCH_LEAVES).get();
-                } else if (map.containsKey(Blocks.OAK_LEAVES)) {
-                    oakLeaves = map.get(Blocks.OAK_LEAVES).get();
-                } else if (map.containsKey(Blocks.JUNGLE_LEAVES)) {
-                    jungleLeaves = map.get(Blocks.JUNGLE_LEAVES).get();
-                } else if (map.containsKey(Blocks.ACACIA_LEAVES)) {
-                    acaciaLeaves = map.get(Blocks.ACACIA_LEAVES).get();
-                } else if (map.containsKey(Blocks.DARK_OAK_LEAVES)) {
-                    darkOakLeaves = map.get(Blocks.DARK_OAK_LEAVES).get();
-                } else if (map.containsKey(Blocks.MANGROVE_LEAVES)) {
-                    mangroveLeaves = map.get(Blocks.MANGROVE_LEAVES).get();
-                }
-            }
-            for (int i = 0; i < pileBlocks.size(); i++) {
-                Map<Block, RegistryObject<Block>> map = pileBlocks.get(i);
-                if (map.containsKey(Blocks.SPRUCE_LEAVES)) {
-                    sprucePile = map.get(Blocks.SPRUCE_LEAVES).get();
-                } else if (map.containsKey(Blocks.BIRCH_LEAVES)) {
-                    birchPile = map.get(Blocks.BIRCH_LEAVES).get();
-                } else if (map.containsKey(Blocks.OAK_LEAVES)) {
-                    oakPile = map.get(Blocks.OAK_LEAVES).get();
-                } else if (map.containsKey(Blocks.JUNGLE_LEAVES)) {
-                    junglePile = map.get(Blocks.JUNGLE_LEAVES).get();
-                } else if (map.containsKey(Blocks.ACACIA_LEAVES)) {
-                    acaciaPile = map.get(Blocks.ACACIA_LEAVES).get();
-                } else if (map.containsKey(Blocks.DARK_OAK_LEAVES)) {
-                    darkOakPile = map.get(Blocks.DARK_OAK_LEAVES).get();
-                } else if (map.containsKey(Blocks.MANGROVE_LEAVES)) {
-                    mangrovePile = map.get(Blocks.MANGROVE_LEAVES).get();
-                }
-            }
-        }
-
-        event.register((p_92636_, p_92637_, p_92638_, p_92639_) -> {
-            return FoliageColor.getEvergreenColor();
-        }, spruceLeaves, sprucePile);
-        event.register((p_92631_, p_92632_, p_92633_, p_92634_) -> {
-            return FoliageColor.getBirchColor();
-        }, birchLeaves, birchPile);
-        event.register((p_92626_, p_92627_, p_92628_, p_92629_) -> {
-            return p_92627_ != null && p_92628_ != null ? BiomeColors.getAverageFoliageColor(p_92627_, p_92628_) : FoliageColor.getDefaultColor();
-        }, oakLeaves, oakPile, jungleLeaves, junglePile, acaciaLeaves, acaciaPile, darkOakLeaves, darkOakPile, mangroveLeaves, mangrovePile);
 
         event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
                     if (blockPos != null) {
                         int x = blockPos.getX();
                         int z = blockPos.getZ();
                         int color = -328966;
-                        double saturate = Mth.clamp(SATURATION_NOISE.getValue(x * 0.077, z * 0.09, false) * 0.33, -0.03, 0.03) + 1;
-                        double brighten = Mth.clamp(BRIGHTNESS_NOISE.getValue(x * 0.05, z * 0.01, false) * 0.11, -0.1, 0.1);
+                        double saturate = Mth.clamp(NoiseCoverPlacement.HEIGHT_NOISE.getValue(x * 0.077, z * 0.09, false) * 0.33, -0.03, 0.03) + 1;
+                        double brighten = Mth.clamp(HydrolColorHelper.BRIGHTNESS_NOISE.getValue(x * 0.05, z * 0.01, false) * 0.11, -0.1, 0.1);
                         float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255) / 255;
                         float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255) / 255;
                         float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255) / 255;
@@ -206,7 +137,7 @@ public class ClientModEvents {
                         if (blockPos != null) {
                             int x = blockPos.getX();
                             int z = blockPos.getZ();
-                            double saturate = Mth.clamp(SATURATION_NOISE.getValue(x * 0.66, z * 0.6, false) * 0.1, -0.2, 0.22) + 0.9;
+                            double saturate = Mth.clamp(NoiseCoverPlacement.HEIGHT_NOISE.getValue(x * 0.66, z * 0.6, false) * 0.1, -0.2, 0.22) + 0.9;
                             float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255) / 255;
                             float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255) / 255;
                             float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255) / 255;
@@ -225,8 +156,8 @@ public class ClientModEvents {
                 int x = blockPos.getX();
                 int z = blockPos.getZ();
                 int color = -328966;
-                double saturate = Mth.clamp(SATURATION_NOISE.getValue(x * 0.077, z * 0.09, false) * 0.33, -0.03, 0.03) + 1;
-                double brighten = Mth.clamp(BRIGHTNESS_NOISE.getValue(x * 0.05, z * 0.01, false) * 0.55, -0.5, 0.5) + 0.75;
+                double saturate = Mth.clamp(NoiseCoverPlacement.HEIGHT_NOISE.getValue(x * 0.077, z * 0.09, false) * 0.33, -0.03, 0.03) + 1;
+                double brighten = Mth.clamp(HydrolColorHelper.BRIGHTNESS_NOISE.getValue(x * 0.05, z * 0.01, false) * 0.55, -0.5, 0.5) + 0.75;
                 float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255) / 255;
                 float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255) / 255;
                 float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255) / 255;
@@ -265,8 +196,8 @@ public class ClientModEvents {
                         int x = blockPos.getX();
                         int z = blockPos.getZ();
                         int color = -328966;
-                        double saturate = Mth.clamp(SATURATION_NOISE.getValue(x * 0.077, z * 0.09, false) * 0.33, -0.03, 0.03) + 1;
-                        double brighten = Mth.clamp(BRIGHTNESS_NOISE.getValue(x * 0.05, z * 0.01, false) * 0.11, -0.1, 0.1);
+                        double saturate = Mth.clamp(NoiseCoverPlacement.HEIGHT_NOISE.getValue(x * 0.077, z * 0.09, false) * 0.33, -0.03, 0.03) + 1;
+                        double brighten = Mth.clamp(HydrolColorHelper.BRIGHTNESS_NOISE.getValue(x * 0.05, z * 0.01, false) * 0.11, -0.1, 0.1);
                         float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255) / 255;
                         float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255) / 255;
                         float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255) / 255;
@@ -286,8 +217,8 @@ public class ClientModEvents {
                         int x = blockPos.getX();
                         int z = blockPos.getZ();
                         int color = -328966;
-                        double saturate = Mth.clamp(SATURATION_NOISE.getValue(x * 0.33, z * 0.3, false) * 0.3, -0.6, 0.66) + 0.9;
-                        double brighten = Mth.clamp(BRIGHTNESS_NOISE.getValue(x * 0.05, z * 0.01, false) * 0.3, -0.66, 0.66);
+                        double saturate = Mth.clamp(NoiseCoverPlacement.HEIGHT_NOISE.getValue(x * 0.33, z * 0.3, false) * 0.3, -0.6, 0.66) + 0.9;
+                        double brighten = Mth.clamp(HydrolColorHelper.BRIGHTNESS_NOISE.getValue(x * 0.05, z * 0.01, false) * 0.3, -0.66, 0.66);
                         float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255) / 255;
                         float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255) / 255;
                         float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255) / 255;
@@ -306,68 +237,6 @@ public class ClientModEvents {
 
     @SubscribeEvent
     public static void onItemColors(RegisterColorHandlersEvent.Item event) {
-        Block spruceLeaves = Blocks.SPRUCE_LEAVES;
-        Block birchLeaves = Blocks.BIRCH_LEAVES;
-        Block oakLeaves = Blocks.OAK_LEAVES;
-        Block jungleLeaves = Blocks.JUNGLE_LEAVES;
-        Block acaciaLeaves = Blocks.ACACIA_LEAVES;
-        Block darkOakLeaves = Blocks.DARK_OAK_LEAVES;
-        Block mangroveLeaves = Blocks.MANGROVE_LEAVES;
-        Block sprucePile = Blocks.SPRUCE_LEAVES;
-        Block birchPile = Blocks.BIRCH_LEAVES;
-        Block oakPile = Blocks.OAK_LEAVES;
-        Block junglePile = Blocks.JUNGLE_LEAVES;
-        Block acaciaPile = Blocks.ACACIA_LEAVES;
-        Block darkOakPile = Blocks.DARK_OAK_LEAVES;
-        Block mangrovePile = Blocks.MANGROVE_LEAVES;
-        if (!HydrolJsonReader.serverSidedOnlyMode) {
-            for (int i = 0; i < wallBlocks.size(); i++) {
-                Map<Block, RegistryObject<Block>> map = wallBlocks.get(i);
-                if (map.containsKey(Blocks.SPRUCE_LEAVES)) {
-                    spruceLeaves = map.get(Blocks.SPRUCE_LEAVES).get();
-                } else if (map.containsKey(Blocks.BIRCH_LEAVES)) {
-                    birchLeaves = map.get(Blocks.BIRCH_LEAVES).get();
-                } else if (map.containsKey(Blocks.OAK_LEAVES)) {
-                    oakLeaves = map.get(Blocks.OAK_LEAVES).get();
-                } else if (map.containsKey(Blocks.JUNGLE_LEAVES)) {
-                    jungleLeaves = map.get(Blocks.JUNGLE_LEAVES).get();
-                } else if (map.containsKey(Blocks.ACACIA_LEAVES)) {
-                    acaciaLeaves = map.get(Blocks.ACACIA_LEAVES).get();
-                } else if (map.containsKey(Blocks.DARK_OAK_LEAVES)) {
-                    darkOakLeaves = map.get(Blocks.DARK_OAK_LEAVES).get();
-                } else if (map.containsKey(Blocks.MANGROVE_LEAVES)) {
-                    mangroveLeaves = map.get(Blocks.MANGROVE_LEAVES).get();
-                }
-            }
-            for (int i = 0; i < pileBlocks.size(); i++) {
-                Map<Block, RegistryObject<Block>> map = pileBlocks.get(i);
-                if (map.containsKey(Blocks.SPRUCE_LEAVES)) {
-                    sprucePile = map.get(Blocks.SPRUCE_LEAVES).get();
-                } else if (map.containsKey(Blocks.BIRCH_LEAVES)) {
-                    birchPile = map.get(Blocks.BIRCH_LEAVES).get();
-                } else if (map.containsKey(Blocks.OAK_LEAVES)) {
-                    oakPile = map.get(Blocks.OAK_LEAVES).get();
-                } else if (map.containsKey(Blocks.JUNGLE_LEAVES)) {
-                    junglePile = map.get(Blocks.JUNGLE_LEAVES).get();
-                } else if (map.containsKey(Blocks.ACACIA_LEAVES)) {
-                    acaciaPile = map.get(Blocks.ACACIA_LEAVES).get();
-                } else if (map.containsKey(Blocks.DARK_OAK_LEAVES)) {
-                    darkOakPile = map.get(Blocks.DARK_OAK_LEAVES).get();
-                } else if (map.containsKey(Blocks.MANGROVE_LEAVES)) {
-                    mangrovePile = map.get(Blocks.MANGROVE_LEAVES).get();
-                }
-            }
-        }
-        event.register((p_92636_, p_92637_) -> {
-            return FoliageColor.getEvergreenColor();
-        }, spruceLeaves, sprucePile);
-        event.register((p_92631_, p_92632_) -> {
-            return FoliageColor.getBirchColor();
-        }, birchLeaves, birchPile);
-        event.register((p_92626_, p_92627_) -> {
-            return Minecraft.getInstance().level != null && Minecraft.getInstance().player != null ? BiomeColors.getAverageFoliageColor(Minecraft.getInstance().level, Minecraft.getInstance().player.blockPosition()) : FoliageColor.getDefaultColor();
-        }, oakLeaves, oakPile, jungleLeaves, junglePile, acaciaLeaves, acaciaPile, darkOakLeaves, darkOakPile, mangroveLeaves, mangrovePile);
-
         if (!HydrolJsonReader.serverSidedOnlyMode) {
             event.register((itemStack, tint) -> {
                         if (Minecraft.getInstance().level != null) {
@@ -375,7 +244,7 @@ public class ClientModEvents {
                             int color = Minecraft.getInstance().level != null && Minecraft.getInstance().player != null ? BiomeColors.getAverageFoliageColor(Minecraft.getInstance().level, Minecraft.getInstance().player.blockPosition()) : FoliageColor.getDefaultColor();
                             int x = blockPos.getX();
                             int z = blockPos.getZ();
-                            double saturate = Mth.clamp(SATURATION_NOISE.getValue(x * 0.66, z * 0.6, false) * 0.1, -0.2, 0.22) + 0.9;
+                            double saturate = Mth.clamp(NoiseCoverPlacement.HEIGHT_NOISE.getValue(x * 0.66, z * 0.6, false) * 0.1, -0.2, 0.22) + 0.9;
                             float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255) / 255;
                             float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255) / 255;
                             float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255) / 255;

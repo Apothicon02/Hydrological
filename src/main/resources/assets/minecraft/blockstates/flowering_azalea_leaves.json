@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "minecraft:block/flowering_azalea_leaves"
+      },
+      {
+        "model": "minecraft:block/flowering_azalea_leaves",
+        "y": 180
+      },
+      {
+        "model": "hydrol:block/flowering_azalea_leaves"
+      },
+      {
+        "model": "hydrol:block/flowering_azalea_leaves",
+        "y": 180
+      },
+      {
+        "model": "hydrol:block/flowering_azalea_leaves_bare"
+      },
+      {
+        "model": "hydrol:block/flowering_azalea_leaves_bare",
+        "y": 180
+      }
+    ]
+  }
+}

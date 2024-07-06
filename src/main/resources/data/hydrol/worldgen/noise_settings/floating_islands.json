@@ -28,10 +28,7 @@
       "type": "hydrol:store_temperature",
       "input": "hydrol:normal/temperature"
     },
-    "vegetation": {
-      "type": "hydrol:store_humidity",
-      "input": "hydrol:normal/vegetation"
-    },
+    "vegetation": "hydrol:normal/vegetation",
     "erosion": {
       "type": "minecraft:y_clamped_gradient",
       "from_y": 31,

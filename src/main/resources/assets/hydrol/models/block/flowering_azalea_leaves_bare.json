@@ -1,8 +1,7 @@
 {
   "parent": "minecraft:block/block",
   "textures": {
-    "all": "minecraft:block/jungle_leaves",
-    "berries": "hydrol:block/jungle_leaves_berries"
+    "all": "hydrol:block/flowering_azalea_leaves_bare"
   },
   "elements": [
     {
@@ -69,18 +68,6 @@
           "texture": "#all",
           "cullface": "east"
         }
-      }
-    },
-    {
-      "from": [ 0, 0, 0 ],
-      "to": [ 16, 16, 16 ],
-      "faces": {
-        "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#berries", "cullface": "down" },
-        "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#berries", "cullface": "up" },
-        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#berries", "cullface": "north" },
-        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#berries", "cullface": "south" },
-        "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#berries", "cullface": "west" },
-        "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#berries", "cullface": "east" }
       }
     }
   ]

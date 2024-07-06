@@ -50,8 +50,9 @@
       "hydrol:cover/tall_grass_middle",
       "hydrol:cover/grass_negative",
       "hydrol:cover/grass_positive",
-      "hydrol:shrubs/oak",
+      "hydrol:shrubs/azalea",
       "hydrol:shrubs/birch",
+      "hydrol:trees/dark_oak_sparse",
       "hydrol:trees/dark_willow",
       "hydrol:trees/oak",
       "hydrol:trees/willow_extra"

@@ -18,9 +18,8 @@ public class BiomeSpecialEffectsGrassMixin {
      */
     @Inject(at = @At("RETURN"), method = "modifyColor", cancellable = true)
     private void modifyColor(double x, double z, int unusedColor, CallbackInfoReturnable<Integer> cir) {
-        if (HydrolDensityFunctions.temperature != null && HydrolDensityFunctions.humidity != null) {
-            cir.setReturnValue(HydrolColorHelper.tintFoliageOrGrass(Blocks.GRASS_BLOCK.defaultBlockState(), (int) x, 0, (int) z, HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext((int) x, 0, (int) z)),
-                    HydrolDensityFunctions.humidity.compute(new DensityFunction.SinglePointContext((int) x, 0, (int) z)), false));
+        if (HydrolDensityFunctions.temperature != null) {
+            cir.setReturnValue(HydrolColorHelper.tintFoliageOrGrass((int) x, 0, (int) z, HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext((int) x, 0, (int) z))));
         }
     }
 }

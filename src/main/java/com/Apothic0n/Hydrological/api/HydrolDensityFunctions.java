@@ -33,7 +33,6 @@ public final class HydrolDensityFunctions {
     public static final RegistryObject<Codec<? extends DensityFunction>> SHIFT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("shift", Shift.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLATTEN_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("flatten", Flatten.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> STORE_TEMPERATURE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("store_temperature", StoreTemperature.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> STORE_HUMIDITY_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("store_humidity", StoreHumidity.CODEC::codec);
 
     public static void register(IEventBus eventBus) {
         DENSITY_FUNCTION_TYPES.register(eventBus);
@@ -41,7 +40,6 @@ public final class HydrolDensityFunctions {
 
     public static final Long2DoubleOpenHashMap heightmap = new Long2DoubleOpenHashMap();
     public static DensityFunction temperature;
-    public static DensityFunction humidity;
     public static boolean isFloatingIslands = false;
 
     protected record FloatingBeaches(DensityFunction input) implements DensityFunction {
@@ -409,46 +407,6 @@ public final class HydrolDensityFunctions {
         @Override
         public @NotNull DensityFunction mapAll(Visitor visitor) {
             return visitor.apply(new StoreTemperature(this.input().mapAll(visitor)));
-        }
-
-        @Override
-        public double minValue() {
-            return -1875000d;
-        }
-
-        @Override
-        public double maxValue() {
-            return 1875000d;
-        }
-
-        @Override
-        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
-            return CODEC;
-        }
-
-    }
-    protected record StoreHumidity(DensityFunction input) implements DensityFunction {
-        private static final MapCodec<StoreHumidity> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
-            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(StoreHumidity::input)).apply(data, StoreHumidity::new);
-        });
-        public static final KeyDispatchDataCodec<StoreHumidity> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
-
-        @Override
-        public double compute(@NotNull FunctionContext context) {
-            if (humidity == null) {
-                humidity = input();
-            }
-            return input.compute(context);
-        }
-
-        @Override
-        public void fillArray(double @NotNull [] densities, ContextProvider context) {
-            context.fillAllDirectly(densities, this);
-        }
-
-        @Override
-        public @NotNull DensityFunction mapAll(Visitor visitor) {
-            return visitor.apply(new StoreHumidity(this.input().mapAll(visitor)));
         }
 
         @Override

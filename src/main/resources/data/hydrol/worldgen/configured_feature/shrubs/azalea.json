@@ -1,0 +1,69 @@
+{
+  "type": "hydrol:tree",
+  "config": {
+    "intersect": true,
+    "trunk": {
+      "type": "hydrol:straight_trunk",
+      "height": 1,
+      "wood": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:stripped_oak_log"
+        }
+      }
+    },
+    "canopy": {
+      "type": "hydrol:square_canopy",
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 2,
+          "max_inclusive": 5
+        }
+      },
+      "radius": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 2,
+          "max_inclusive": 3
+        }
+      },
+      "leaves": {
+        "type": "minecraft:weighted_state_provider",
+        "entries": [
+          {
+            "data": {
+              "Name": "minecraft:azalea_leaves",
+              "Properties": {
+                "distance": "7",
+                "persistent": "true",
+                "waterlogged": "false"
+              }
+            },
+            "weight": 83
+          },
+          {
+            "data": {
+              "Name": "minecraft:flowering_azalea_leaves",
+              "Properties": {
+                "distance": "7",
+                "persistent": "true",
+                "waterlogged": "false"
+              }
+            },
+            "weight": 15
+          },
+          {
+            "data": {
+              "Name": "minecraft:air"
+            },
+            "weight": 2
+          }
+        ]
+      }
+    },
+    "decorations": [
+
+    ]
+  }
+}

@@ -59,8 +59,7 @@
       "hydrol:trees/dark_willow_extra",
       "hydrol:trees/birch_spruce_noise",
       "hydrol:trees/birch_fir",
-      "hydrol:trees/birch",
-      "hydrol:unshaded/bamboo_clusters"
+      "hydrol:trees/birch"
     ],
     [
       "minecraft:freeze_top_layer"
