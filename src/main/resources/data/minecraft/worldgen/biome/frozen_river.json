@@ -3,7 +3,7 @@
     "air": [
     ]
   },
-  "downfall": 0.3,
+  "downfall": 0.5,
   "effects": {
     "fog_color": 12638463,
     "mood_sound": {
@@ -12,14 +12,8 @@
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "minecraft:music.overworld.stony_peaks"
-    },
-    "sky_color": 7776511,
-    "water_color": 4159204,
+    "sky_color": 8364543,
+    "water_color": 3750089,
     "water_fog_color": 329011
   },
   "features": [
@@ -27,7 +21,8 @@
     [
     ],
     [
-      "minecraft:amethyst_geode"
+      "minecraft:amethyst_geode",
+      "hydrol:geological/mossy_rocks"
     ],
     [
       "minecraft:monster_room",
@@ -37,14 +32,14 @@
     [],
     [
     ],
+    [],
     [
     ],
     [
-      "hydrol:cover/moss_roots",
-      "hydrol:cover/moss_roots_edge"
-    ],
-    [
-      "minecraft:glow_lichen"
+      "minecraft:glow_lichen",
+      "hydrol:cover/tall_grass",
+      "hydrol:cover/seagrass_middle",
+      "hydrol:trees/spruce"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -112,6 +107,12 @@
         "maxCount": 1,
         "minCount": 1,
         "weight": 5
+      },
+      {
+        "type": "minecraft:drowned",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 1
       }
     ],
     "underground_water_creature": [
@@ -122,8 +123,22 @@
         "weight": 10
       }
     ],
-    "water_ambient": [],
-    "water_creature": []
+    "water_ambient": [
+      {
+        "type": "minecraft:salmon",
+        "maxCount": 5,
+        "minCount": 1,
+        "weight": 5
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 2
+      }
+    ]
   },
-  "temperature": 1.0
+  "temperature": 0.0
 }

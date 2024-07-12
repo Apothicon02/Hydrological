@@ -3,7 +3,7 @@
     "air": [
     ]
   },
-  "downfall": 0.3,
+  "downfall": 0.9,
   "effects": {
     "fog_color": 12638463,
     "mood_sound": {
@@ -16,9 +16,9 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:music.overworld.stony_peaks"
+      "sound": "minecraft:music.overworld.jagged_peaks"
     },
-    "sky_color": 7776511,
+    "sky_color": 8756735,
     "water_color": 4159204,
     "water_fog_color": 329011
   },
@@ -40,8 +40,6 @@
     [
     ],
     [
-      "hydrol:cover/moss_roots",
-      "hydrol:cover/moss_roots_edge"
     ],
     [
       "minecraft:glow_lichen"
@@ -62,7 +60,14 @@
       }
     ],
     "axolotls": [],
-    "creature": [],
+    "creature": [
+      {
+        "type": "minecraft:goat",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 5
+      }
+    ],
     "misc": [],
     "monster": [
       {
@@ -125,5 +130,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 1.0
+  "temperature": -0.7
 }

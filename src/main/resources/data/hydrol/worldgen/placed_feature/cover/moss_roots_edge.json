@@ -1,0 +1,39 @@
+{
+  "feature": "hydrol:cover/moss_roots_edge",
+  "placement": [
+    {
+      "type": "hydrol:noise_cover",
+      "min": -0.05,
+      "max": 0.05,
+      "chance": 1
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "offset": [
+          0,
+          -1,
+          0
+        ],
+        "blocks": [
+          "minecraft:calcite",
+          "minecraft:diorite"
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "hydrol:offset",
+      "x": 0,
+      "y": -9,
+      "z": 0
+    }
+  ]
+}

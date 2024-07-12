@@ -69,15 +69,11 @@
                   "shift_y": {
                     "type": "minecraft:add",
                     "argument1": {
-                      "type": "minecraft:mul",
-                      "argument1": 3,
+                      "type": "minecraft:min",
+                      "argument1": 0,
                       "argument2": {
-                        "type": "minecraft:min",
-                        "argument1": 0,
-                        "argument2": {
-                          "type": "minecraft:interpolated",
-                          "argument": "hydrol:global/surface_variation"
-                        }
+                        "type": "minecraft:interpolated",
+                        "argument": "hydrol:global/surface_variation"
                       }
                     },
                     "argument2": {

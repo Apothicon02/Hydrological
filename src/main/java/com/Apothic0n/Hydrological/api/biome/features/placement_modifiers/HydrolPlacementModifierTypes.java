@@ -12,6 +12,7 @@ public class HydrolPlacementModifierTypes {
 
     public static final RegistryObject<PlacementModifierType<NoiseCoverPlacement>> NOISE_COVER = PLACEMENT_MODIFIER_TYPE.register("noise_cover", () -> () -> NoiseCoverPlacement.CODEC);
     public static final RegistryObject<PlacementModifierType<HeightBasedChancePlacement>> HEIGHT_BASED_CHANCE = PLACEMENT_MODIFIER_TYPE.register("height_based_chance", () -> () -> HeightBasedChancePlacement.CODEC);
+    public static final RegistryObject<PlacementModifierType<OffsetPlacement>> OFFSET = PLACEMENT_MODIFIER_TYPE.register("offset", () -> () -> OffsetPlacement.CODEC);
 
     public static void register(IEventBus eventBus) {
         PLACEMENT_MODIFIER_TYPE.register(eventBus);

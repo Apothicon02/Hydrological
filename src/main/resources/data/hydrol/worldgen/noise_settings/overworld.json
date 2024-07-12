@@ -110,6 +110,7 @@
                     "if_true": {
                       "type": "minecraft:biome",
                       "biome_is": [
+                        "minecraft:frozen_river",
                         "minecraft:river",
                         "minecraft:bamboo_jungle"
                       ]
@@ -512,15 +513,26 @@
                   {
                     "type": "minecraft:condition",
                     "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:global/surface_variation",
-                      "min_threshold": -0.2,
-                      "max_threshold": 0.2
+                      "type": "minecraft:y_above",
+                      "anchor": {
+                        "absolute": 63
+                      },
+                      "surface_depth_multiplier": 0,
+                      "add_stone_depth": false
                     },
                     "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:air"
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "hydrol:global/surface_variation",
+                        "min_threshold": -0.2,
+                        "max_threshold": 0.2
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "minecraft:air"
+                        }
                       }
                     }
                   },
@@ -642,15 +654,26 @@
                   {
                     "type": "minecraft:condition",
                     "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "hydrol:global/surface_variation",
-                      "min_threshold": -0.15,
-                      "max_threshold": 0.15
+                      "type": "minecraft:y_above",
+                      "anchor": {
+                        "absolute": 63
+                      },
+                      "surface_depth_multiplier": 0,
+                      "add_stone_depth": false
                     },
                     "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:air"
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "hydrol:global/surface_variation",
+                        "min_threshold": -0.15,
+                        "max_threshold": 0.15
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "minecraft:air"
+                        }
                       }
                     }
                   },
@@ -1322,6 +1345,7 @@
                 "if_true": {
                   "type": "minecraft:biome",
                   "biome_is": [
+                    "minecraft:frozen_river",
                     "minecraft:river",
                     "minecraft:bamboo_jungle"
                   ]
@@ -1978,6 +2002,42 @@
               }
             }
           ]
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:biome",
+          "biome_is": [
+            "minecraft:stony_peaks"
+          ]
+        },
+        "then_run": {
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:y_above",
+            "anchor": {
+              "absolute": 74
+            },
+            "surface_depth_multiplier": 0,
+            "add_stone_depth": false
+          },
+          "then_run": {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:stone_depth",
+              "offset": 2,
+              "surface_type": "floor",
+              "add_surface_depth": false,
+              "secondary_depth_range": 0
+            },
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "minecraft:air"
+              }
+            }
+          }
         }
       },
       {
