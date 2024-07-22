@@ -1,4 +1,3 @@
 {
-  "parent": "hydrol:block/brown_mushroom_block_stairs",
-  "render_type": "minecraft:solid"
+  "parent": "hydrol:block/brown_mushroom_block_stairs"
 }

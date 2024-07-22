@@ -34,7 +34,7 @@ public class CommonModEvents {
                 String name = baseBlockBlock.toString();
                 String finalName = name.substring(16, name.length() - 1);
                 ResourceLocation baseBlock = new ResourceLocation("minecraft", "block/" + finalName);
-                map = makeWallModels(map, baseBlockBlock, baseBlock, new ResourceLocation("minecraft", "solid"));
+                map = makeWallModels(map, baseBlockBlock, baseBlock);
                 map = makeStairsModels(map, baseBlockBlock, baseBlock);
                 map = makeSlabModels(map, baseBlockBlock, baseBlock);
             }
@@ -46,21 +46,21 @@ public class CommonModEvents {
                     finalName = finalName.substring(0, finalName.length() - 4) + "log";
                 }
                 ResourceLocation baseBlock = new ResourceLocation("minecraft", "block/" + finalName);
-                map = makeWallModels(map, baseBlockBlock, baseBlock, new ResourceLocation("minecraft", "solid"));
+                map = makeWallModels(map, baseBlockBlock, baseBlock);
             }
             for (int i = 0; i < blocksWithFragileWalls.size(); i++) {
                 Block baseBlockBlock = blocksWithFragileWalls.get(i);
                 String name = baseBlockBlock.toString();
                 String finalName = name.substring(16, name.length() - 1);
                 ResourceLocation baseBlock = new ResourceLocation("minecraft", "block/" + finalName);
-                map = makeWallModels(map, baseBlockBlock, baseBlock, new ResourceLocation("minecraft", "cutout"));
+                map = makeWallModels(map, baseBlockBlock, baseBlock);
             }
             for (int i = 0; i < blocksWithPiles.size(); i++) {
                 Block baseBlockBlock = blocksWithPiles.get(i);
                 String name = baseBlockBlock.toString();
                 String finalName = name.substring(16, name.length() - 1);
                 ResourceLocation baseBlock = new ResourceLocation("minecraft", "block/" + finalName);
-                map = makePileModels(map, baseBlockBlock, baseBlock, new ResourceLocation("minecraft", "cutout"));
+                map = makePileModels(map, baseBlockBlock, baseBlock);
             }
         }));
         // blockstates
@@ -86,7 +86,7 @@ public class CommonModEvents {
         }));
     }
 
-    private static HashMap makePileModels(HashMap map, Block baseBlockBlock, ResourceLocation baseBlock, ResourceLocation renderType) {
+    private static HashMap makePileModels(HashMap map, Block baseBlockBlock, ResourceLocation baseBlock) {
         ResourceLocation tempPileBlock2 = new ResourceLocation("block/failure2");
         ResourceLocation tempPileBlock4 = new ResourceLocation("block/failure4");
         ResourceLocation tempPileBlock6 = new ResourceLocation("block/failure6");
@@ -120,35 +120,35 @@ public class CommonModEvents {
         ResourceLocation pileBlock16 = tempPileBlock16;
         ResourceLocation pileBlockItem = tempPileBlockItem;
         map.put(pileBlock2,
-                SimpleModel.create(new ResourceLocation("hydrol", "block/leaves_height2"), renderType)
+                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height2"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock4,
-                SimpleModel.create(new ResourceLocation("hydrol", "block/leaves_height4"), renderType)
+                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height4"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock6,
-                SimpleModel.create(new ResourceLocation("hydrol", "block/leaves_height6"), renderType)
+                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height6"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock8,
-                SimpleModel.create(new ResourceLocation("hydrol", "block/leaves_height8"), renderType)
+                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height8"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock10,
-                SimpleModel.create(new ResourceLocation("hydrol", "block/leaves_height10"), renderType)
+                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height10"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock12,
-                SimpleModel.create(new ResourceLocation("hydrol", "block/leaves_height12"), renderType)
+                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height12"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock14,
-                SimpleModel.create(new ResourceLocation("hydrol", "block/leaves_height14"), renderType)
+                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height14"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock16,
-                SimpleModel.create(new ResourceLocation("block/cube_all"), renderType)
+                SimpleModel.createWithoutRenderType(new ResourceLocation("block/cube_all"))
                         .addTexture("all", baseBlock));
         map.put(pileBlockItem,
-                SimpleModel.create(pileBlock2, renderType));
+                SimpleModel.createWithoutRenderType(pileBlock2));
         return map;
     }
 
-    private static HashMap makeWallModels(HashMap map, Block baseBlockBlock, ResourceLocation baseBlock, ResourceLocation renderType) {
+    private static HashMap makeWallModels(HashMap map, Block baseBlockBlock, ResourceLocation baseBlock) {
         ResourceLocation tempWallBlock = new ResourceLocation("block/failure");
         ResourceLocation tempWallBlockSide = new ResourceLocation("block/failure_side");
         ResourceLocation tempWallBlockSideTall = new ResourceLocation("block/failure_side_tall");
@@ -167,16 +167,16 @@ public class CommonModEvents {
         ResourceLocation wallBlockSideTall = tempWallBlockSideTall;
         ResourceLocation wallBlockItem = tempWallBlockItem;
         map.put(wallBlock,
-                SimpleModel.create(new ResourceLocation("block/template_wall_post"), renderType)
+                SimpleModel.createWithoutRenderType(new ResourceLocation("block/template_wall_post"))
                         .addTexture("wall", baseBlock));
         map.put(wallBlockSide,
-                SimpleModel.create(new ResourceLocation("block/template_wall_side"), renderType)
+                SimpleModel.createWithoutRenderType(new ResourceLocation("block/template_wall_side"))
                         .addTexture("wall", baseBlock));
         map.put(wallBlockSideTall,
-                SimpleModel.create(new ResourceLocation("block/template_wall_side_tall"), renderType)
+                SimpleModel.createWithoutRenderType(new ResourceLocation("block/template_wall_side_tall"))
                         .addTexture("wall", baseBlock));
         map.put(wallBlockItem,
-                SimpleModel.create(new ResourceLocation("block/wall_inventory"), renderType)
+                SimpleModel.createWithoutRenderType(new ResourceLocation("block/wall_inventory"))
                         .addTexture("wall", baseBlock));
         return map;
     }
@@ -200,22 +200,22 @@ public class CommonModEvents {
         ResourceLocation stairsBlockOuter = tempStairsBlockOuter;
         ResourceLocation stairsBlockItem = tempStairsBlockItem;
         map.put(stairsBlock,
-                SimpleModel.create(new ResourceLocation("block/stairs"))
+                SimpleModel.createWithoutRenderType(new ResourceLocation("block/stairs"))
                         .addTexture("bottom", baseBlock)
                         .addTexture("side", baseBlock)
                         .addTexture("top", baseBlock));
         map.put(stairsBlockInner,
-                SimpleModel.create(new ResourceLocation("block/inner_stairs"))
+                SimpleModel.createWithoutRenderType(new ResourceLocation("block/inner_stairs"))
                         .addTexture("bottom", baseBlock)
                         .addTexture("side", baseBlock)
                         .addTexture("top", baseBlock));
         map.put(stairsBlockOuter,
-                SimpleModel.create(new ResourceLocation("block/outer_stairs"))
+                SimpleModel.createWithoutRenderType(new ResourceLocation("block/outer_stairs"))
                         .addTexture("bottom", baseBlock)
                         .addTexture("side", baseBlock)
                         .addTexture("top", baseBlock));
         map.put(stairsBlockItem,
-                SimpleModel.create(stairsBlock));
+                SimpleModel.createWithoutRenderType(stairsBlock));
         return map;
     }
 
@@ -235,17 +235,17 @@ public class CommonModEvents {
         ResourceLocation slabBlockTop = tempSlabBlockTop;
         ResourceLocation slabBlockItem = tempSlabBlockItem;
         map.put(slabBlock,
-                SimpleModel.create(new ResourceLocation("block/slab"))
+                SimpleModel.createWithoutRenderType(new ResourceLocation("block/slab"))
                         .addTexture("bottom", baseBlock)
                         .addTexture("side", baseBlock)
                         .addTexture("top", baseBlock));
         map.put(slabBlockTop,
-                SimpleModel.create(new ResourceLocation("block/slab_top"))
+                SimpleModel.createWithoutRenderType(new ResourceLocation("block/slab_top"))
                         .addTexture("bottom", baseBlock)
                         .addTexture("side", baseBlock)
                         .addTexture("top", baseBlock));
         map.put(slabBlockItem,
-                SimpleModel.create(slabBlock));
+                SimpleModel.createWithoutRenderType(slabBlock));
         return map;
     }
 

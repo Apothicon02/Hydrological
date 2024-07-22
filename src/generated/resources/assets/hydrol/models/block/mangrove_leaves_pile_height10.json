@@ -1,6 +1,5 @@
 {
   "parent": "hydrol:block/leaves_height10",
-  "render_type": "minecraft:cutout",
   "textures": {
     "texture": "minecraft:block/mangrove_leaves"
   }

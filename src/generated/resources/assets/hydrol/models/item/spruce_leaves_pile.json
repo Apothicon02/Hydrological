@@ -1,4 +1,3 @@
 {
-  "parent": "hydrol:block/spruce_leaves_pile_height2",
-  "render_type": "minecraft:cutout"
+  "parent": "hydrol:block/spruce_leaves_pile_height2"
 }

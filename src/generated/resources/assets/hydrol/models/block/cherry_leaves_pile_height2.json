@@ -1,6 +1,5 @@
 {
   "parent": "hydrol:block/leaves_height2",
-  "render_type": "minecraft:cutout",
   "textures": {
     "texture": "minecraft:block/cherry_leaves"
   }
