@@ -27,10 +27,9 @@ public class SpruceLeavesParticle extends TextureSheetParticle {
         this.lifetime = 300;
         this.gravity = 7.5E-4F;
         float f = this.random.nextBoolean() ? 0.05F : 0.075F;
-        int rgb = FoliageColor.getEvergreenColor();
-        this.rCol = (float) FastColor.ARGB32.red(rgb) / 255;
-        this.gCol = (float) FastColor.ARGB32.green(rgb) / 255;
-        this.bCol = (float) FastColor.ARGB32.blue(rgb) / 255;
+        this.rCol = 0.1F;
+        this.gCol = 0.4F;
+        this.bCol = 0.14F;
         this.quadSize = f;
         this.setSize(f, f);
         this.friction = 1.0F;

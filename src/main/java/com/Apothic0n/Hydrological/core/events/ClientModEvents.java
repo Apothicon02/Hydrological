@@ -5,7 +5,6 @@ import com.Apothic0n.Hydrological.api.HydrolColorHelper;
 import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.api.biome.features.placement_modifiers.NoiseCoverPlacement;
 import com.Apothic0n.Hydrological.core.objects.*;
-import com.google.common.collect.ImmutableList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
@@ -17,9 +16,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.synth.PerlinSimplexNoise;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -53,12 +49,12 @@ public class ClientModEvents {
         if (!HydrolJsonReader.serverSidedOnlyMode) {
             event.registerSpriteSet(HydrolParticleTypes.OAK_LEAVES.get(), (spriteSet) -> {
                 return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
-                    return new LeavesParticle(level, x, y, z, spriteSet);
+                    return new OakLeavesParticle(level, x, y, z, spriteSet);
                 };
             });
             event.registerSpriteSet(HydrolParticleTypes.DARK_OAK_LEAVES.get(), (spriteSet) -> {
                 return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
-                    return new LeavesParticle(level, x, y, z, spriteSet);
+                    return new DarkOakLeavesParticle(level, x, y, z, spriteSet);
                 };
             });
             event.registerSpriteSet(HydrolParticleTypes.BIRCH_LEAVES.get(), (spriteSet) -> {
@@ -83,7 +79,7 @@ public class ClientModEvents {
             });
             event.registerSpriteSet(HydrolParticleTypes.MANGROVE_LEAVES.get(), (spriteSet) -> {
                 return (particleType, level, x, y, z, p_277222_, p_277223_, p_277224_) -> {
-                    return new LeavesParticle(level, x, y, z, spriteSet);
+                    return new MangroveLeavesParticle(level, x, y, z, spriteSet);
                 };
             });
             event.registerSpriteSet(HydrolParticleTypes.AZALEA_LEAVES.get(), (spriteSet) -> {

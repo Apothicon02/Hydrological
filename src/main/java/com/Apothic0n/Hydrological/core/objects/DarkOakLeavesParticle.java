@@ -4,11 +4,9 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.ParticleRenderType;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.particle.TextureSheetParticle;
-import net.minecraft.util.FastColor;
-import net.minecraft.world.level.FoliageColor;
 
 
-public class BirchLeavesParticle extends TextureSheetParticle {
+public class DarkOakLeavesParticle extends TextureSheetParticle {
     private static final float ACCELERATION_SCALE = 0.0025F;
     private static final int INITIAL_LIFETIME = 300;
     private static final int CURVE_ENDPOINT_TIME = 300;
@@ -18,7 +16,7 @@ public class BirchLeavesParticle extends TextureSheetParticle {
     private final float particleRandom;
     private final float spinAcceleration;
 
-    public BirchLeavesParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
+    public DarkOakLeavesParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
         super(level, x, y, z);
         this.setSprite(spriteSet.get(this.random.nextInt(12), 12));
         this.rotSpeed = (float)Math.toRadians(this.random.nextBoolean() ? -30.0D : 30.0D);
@@ -28,7 +26,7 @@ public class BirchLeavesParticle extends TextureSheetParticle {
         this.gravity = 7.5E-4F;
         float f = this.random.nextBoolean() ? 0.05F : 0.075F;
         this.rCol = 1;
-        this.gCol = 1;
+        this.gCol = 0.78F;
         this.bCol = 0;
         this.quadSize = f;
         this.setSize(f, f);

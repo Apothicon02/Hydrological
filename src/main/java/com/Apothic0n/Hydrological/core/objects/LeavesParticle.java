@@ -4,9 +4,6 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.ParticleRenderType;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.particle.TextureSheetParticle;
-import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.FastColor;
 
 
 public class LeavesParticle extends TextureSheetParticle {
@@ -28,10 +25,9 @@ public class LeavesParticle extends TextureSheetParticle {
         this.lifetime = 300;
         this.gravity = 7.5E-4F;
         float f = this.random.nextBoolean() ? 0.05F : 0.075F;
-        int rgb = BiomeColors.getAverageFoliageColor(level, new BlockPos((int) x, (int) (y+0.5), (int) z));
-        this.rCol = (float) FastColor.ARGB32.red(rgb) / 255;
-        this.gCol = (float) FastColor.ARGB32.green(rgb) / 255;
-        this.bCol = (float) FastColor.ARGB32.blue(rgb) / 255;
+        this.rCol = 0.05F;
+        this.gCol = 1;
+        this.bCol = 0.05F;
         this.quadSize = f;
         this.setSize(f, f);
         this.friction = 1.0F;
