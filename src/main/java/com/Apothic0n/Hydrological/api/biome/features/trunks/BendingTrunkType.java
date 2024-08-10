@@ -15,14 +15,17 @@ import java.util.Set;
 
 public class BendingTrunkType extends Trunk {
     public static final Codec<BendingTrunkType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            (IntProvider.codec(0, 8).fieldOf("count_override")).forGetter(v -> v.countOverride),
             (IntProvider.codec(1, 64).fieldOf("height")).forGetter(v -> v.height),
             (BlockStateProvider.CODEC.fieldOf("wood")).forGetter(v -> v.wood)
     ).apply(instance, BendingTrunkType::new));
 
+    private final IntProvider countOverride;
     private final IntProvider height;
     private final BlockStateProvider wood;
 
-    public BendingTrunkType(IntProvider height, BlockStateProvider wood) {
+    public BendingTrunkType(IntProvider countOverride, IntProvider height, BlockStateProvider wood) {
+        this.countOverride = countOverride;
         this.height = height;
         this.wood = wood;
     }
@@ -47,6 +50,10 @@ public class BendingTrunkType extends Trunk {
             extra = 0;
         } else {
             extra = -1;
+        }
+        int count = countOverride.sample(random);
+        if (count > 0) {
+            extra = count;
         }
         int highestHeight = 0;
 

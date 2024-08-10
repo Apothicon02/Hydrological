@@ -52,7 +52,7 @@ public class LeafPilesDecorationType extends Decoration {
                     if (length > 0) {
                         for (int y = pos.getY() - 1; y >= pos.getY() - length; y--) {
                             BlockPos newPos = pos.atY(y);
-                            if (existing.get(newPos) == null && (level.getBlockState(newPos).isAir() || level.getBlockState(newPos).canBeReplaced()) && level.getBlockState(newPos.below()).isSolid()) {
+                            if (existing.get(newPos) == null && (level.getBlockState(newPos).isAir() || level.getBlockState(newPos).canBeReplaced()) && level.getBlockState(newPos.below()).isSolid() && level.getBlockState(newPos.above()).isAir()) {
                                 addToMap(map, newPos, random, leaves);
                             }
                         }

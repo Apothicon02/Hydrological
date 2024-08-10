@@ -1,0 +1,99 @@
+{
+  "type": "hydrol:tree",
+  "config": {
+    "intersect": false,
+    "trunk": {
+      "type": "hydrol:bending_trunk",
+      "count_override": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 4,
+          "max_inclusive": 6
+        }
+      },
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 17,
+          "max_inclusive": 20
+        }
+      },
+      "wood": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:acacia_wood"
+        }
+      }
+    },
+    "canopy": {
+      "type": "hydrol:drooping_canopy",
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 4,
+          "max_inclusive": 5
+        }
+      },
+      "radius": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 7,
+          "max_inclusive": 9
+        }
+      },
+      "leaves": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:acacia_leaves",
+          "Properties": {
+            "persistent": "true"
+          }
+        }
+      }
+    },
+    "decorations": [
+      {
+        "type": "hydrol:hanging_leaves",
+        "length": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": -8,
+            "max_inclusive": 2
+          }
+        },
+        "leaves": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "hydrol:acacia_leaves_wall"
+          }
+        }
+      },
+      {
+        "type": "hydrol:roots",
+        "length": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": -4,
+            "max_inclusive": 3
+          }
+        },
+        "roots": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "hydrol:acacia_wood_wall"
+          }
+        }
+      },
+      {
+        "type": "hydrol:leaf_piles",
+        "length": 12,
+        "leaves": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "hydrol:acacia_leaves_pile"
+          }
+        }
+      }
+    ]
+  }
+}

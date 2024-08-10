@@ -20,7 +20,7 @@ public class BranchingTrunkType extends Trunk {
             (BlockStateProvider.CODEC.fieldOf("wood")).forGetter(v -> v.wood)
     ).apply(instance, BranchingTrunkType::new));
 
-    private final  boolean canopyOffset;
+    private final boolean canopyOffset;
     private final IntProvider count;
     private final IntProvider height;
     private final BlockStateProvider wood;

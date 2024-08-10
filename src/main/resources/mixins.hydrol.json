@@ -25,6 +25,7 @@
     "BiomeSpecialEffectsGrassMixin",
     "DimensionTypeMixin",
     "FoliageColorMixin",
+    "ItemBlockRenderTypesMixin",
     "ScreenEffectRendererMixin"
   ],
   "server": [

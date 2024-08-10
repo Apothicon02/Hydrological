@@ -34,8 +34,10 @@ public class RootsDecorationType extends Decoration {
         return DecorationType.ROOTS_DECORATION_TYPE.get();
     }
 
-    private boolean addToMap(Map<BlockPos, BlockState> map, BlockPos pos, RandomSource random, BlockStateProvider roots) {
-        map.put(pos, roots.getState(random, pos));
+    private boolean addToMap(Map<BlockPos, BlockState> existing, Map<BlockPos, BlockState> map, BlockPos pos, RandomSource random, BlockStateProvider roots, WorldGenLevel level) {
+        if (!existing.containsKey(pos) && level.getBlockState(pos).canBeReplaced()) {
+            map.put(pos, roots.getState(random, pos));
+        }
         return true;
     }
 
@@ -51,13 +53,13 @@ public class RootsDecorationType extends Decoration {
                 int length = this.length.sample(random);
                 if (length > 0) {
                     for (int y = pos.getY()-1; y <= pos.getY() + length; y++) {
-                        addToMap(map, pos.atY(y), random, roots);
+                        addToMap(existing, map, pos.atY(y), random, roots, level);
                     }
                     if (length >= 3) {
                         BlockPos offPos = getNeighbors(pos).get(random.nextInt(0, 3));
-                        addToMap(map, offPos, random, roots);
-                        addToMap(map, offPos.below(), random, roots);
-                        addToMap(map, offPos.below(2), random, roots);
+                        addToMap(existing, map, offPos, random, roots, level);
+                        addToMap(existing, map, offPos.below(), random, roots, level);
+                        addToMap(existing, map, offPos.below(2), random, roots, level);
                     }
                 }
             }

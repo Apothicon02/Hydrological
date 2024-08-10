@@ -3,26 +3,18 @@
     "air": [
     ]
   },
-  "downfall": 0.8,
+  "downfall": 0.0,
   "effects": {
     "fog_color": 12638463,
-    "foliage_color": 11983713,
-    "grass_color": 11983713,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "minecraft:music.overworld.cherry_grove"
-    },
-    "sky_color": 8103167,
-    "water_color": 6141935,
-    "water_fog_color": 6141935
+    "sky_color": 7254527,
+    "water_color": 4159204,
+    "water_fog_color": 329011
   },
   "features": [
     [],
@@ -39,36 +31,26 @@
     [],
     [
     ],
-    [
-    ],
+    [],
     [
     ],
     [
       "minecraft:glow_lichen",
       "hydrol:cover/flowers/orange_tulip",
       "hydrol:cover/flowers/red_tulip",
-      "hydrol:cover/flowers/torch_flower",
-      "hydrol:cover/tall_grass_middle",
-      "hydrol:cover/pink_petals/pink_petals_4",
-      "hydrol:cover/pink_petals/pink_petals_3",
-      "hydrol:cover/pink_petals/pink_petals_2",
-      "hydrol:cover/pink_petals/pink_petals_1",
+      "hydrol:cover/dry_grass/tall_dry_grass_middle",
+      "hydrol:cover/dry_grass/short_dry_grass_negative",
+      "hydrol:cover/dry_grass/dry_grass_positive",
       "hydrol:cover/grass_negative",
-      "hydrol:cover/grass_positive",
-      "hydrol:shrubs/oak",
-      "hydrol:shrubs/birch",
-      "hydrol:trees/red_mushroom_sparse",
-      "hydrol:trees/cherry",
-      "hydrol:trees/dark_willow",
-      "hydrol:trees/birch_spruce_noise",
-      "hydrol:trees/birch_fir",
-      "hydrol:unshaded/bamboo_clusters"
+      "hydrol:shrubs/mangrove_very_sparse",
+      "hydrol:trees/acacia",
+      "hydrol:trees/baobob_bunched"
     ],
     [
       "minecraft:freeze_top_layer"
     ]
   ],
-  "has_precipitation": true,
+  "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {
     "ambient": [
@@ -82,22 +64,40 @@
     "axolotls": [],
     "creature": [
       {
+        "type": "minecraft:sheep",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 12
+      },
+      {
         "type": "minecraft:pig",
-        "maxCount": 2,
-        "minCount": 1,
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 10
+      },
+      {
+        "type": "minecraft:chicken",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 10
+      },
+      {
+        "type": "minecraft:cow",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 8
+      },
+      {
+        "type": "minecraft:horse",
+        "maxCount": 6,
+        "minCount": 2,
         "weight": 1
       },
       {
-        "type": "minecraft:rabbit",
-        "maxCount": 6,
-        "minCount": 2,
-        "weight": 2
-      },
-      {
-        "type": "minecraft:sheep",
-        "maxCount": 4,
-        "minCount": 2,
-        "weight": 2
+        "type": "minecraft:donkey",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 1
       }
     ],
     "misc": [],
@@ -162,5 +162,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.5
+  "temperature": 2.0
 }

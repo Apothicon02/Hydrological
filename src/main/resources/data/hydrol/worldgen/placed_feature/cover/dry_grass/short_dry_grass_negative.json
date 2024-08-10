@@ -1,0 +1,36 @@
+{
+  "feature": "hydrol:cover/dry_grass/dry_grass_1",
+  "placement": [
+    {
+      "type": "hydrol:noise_cover",
+      "min": -0.08,
+      "max": -0.05,
+      "chance": 0.6
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:would_survive",
+            "state": {
+              "Name": "minecraft:dead_bush"
+            }
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
