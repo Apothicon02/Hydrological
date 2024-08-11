@@ -41,7 +41,9 @@
     ],
     [
       "hydrol:cover/moss_roots",
-      "hydrol:cover/moss_roots_edge"
+      "hydrol:cover/moss_roots_edge",
+      "hydrol:cover/moss_roots_tall",
+      "hydrol:cover/moss_roots_tall_edge"
     ],
     [
       "minecraft:glow_lichen"

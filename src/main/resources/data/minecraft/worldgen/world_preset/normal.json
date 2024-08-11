@@ -375,7 +375,7 @@
                 ],
                 "erosion": [
                   -1,
-                  1
+                  0.4
                 ],
                 "continentalness": [
                   0,
@@ -633,7 +633,7 @@
               }
             },
             {
-              "biome": "minecraft:savanna",
+              "biome": "minecraft:savanna_plateau",
               "parameters": {
                 "temperature": [
                   0.15,
@@ -942,7 +942,7 @@
                 ],
                 "erosion": [
                   -1,
-                  1
+                  0.4
                 ],
                 "continentalness": [
                   0,
@@ -969,7 +969,7 @@
                 ],
                 "erosion": [
                   -1,
-                  1
+                  0.4
                 ],
                 "continentalness": [
                   0,
@@ -996,7 +996,7 @@
                 ],
                 "erosion": [
                   -1,
-                  1
+                  0.4
                 ],
                 "continentalness": [
                   0,

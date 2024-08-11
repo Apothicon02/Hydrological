@@ -33,16 +33,15 @@
     ],
     [],
     [
+      "hydrol:geological/red_sandstone_anvil_rocks"
     ],
     [
       "minecraft:glow_lichen",
       "hydrol:cover/flowers/orange_tulip",
       "hydrol:cover/flowers/red_tulip",
       "hydrol:cover/dry_grass/tall_dry_grass_middle",
-      "hydrol:cover/dry_grass/dry_grass_negative",
+      "hydrol:cover/dry_grass/short_dry_grass_negative",
       "hydrol:cover/dry_grass/dry_grass_positive",
-      "hydrol:shrubs/mangrove_very_sparse",
-      "hydrol:trees/acacia",
       "hydrol:trees/baobob_bunched"
     ],
     [
@@ -97,6 +96,12 @@
         "maxCount": 1,
         "minCount": 1,
         "weight": 1
+      },
+      {
+        "type": "minecraft:llama",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 8
       }
     ],
     "misc": [],

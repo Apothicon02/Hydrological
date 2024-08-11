@@ -81,6 +81,10 @@ public class CommonForgeEvents {
                 } else if (below.is(Blocks.SAND) || below.is(Blocks.GRAVEL)) {
                     event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/spruce")));
                 }
+            } else if (sapling.is(Blocks.ACACIA_SAPLING)) {
+                if (below.is(Blocks.COARSE_DIRT)) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/acacia")));
+                }
             } else if (sapling.is(Blocks.JUNGLE_SAPLING)) {
                 if (below.is(Blocks.PODZOL)) {
                     event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation("hydrol", "trees/jungle")));

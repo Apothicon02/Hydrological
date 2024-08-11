@@ -1,5 +1,5 @@
 {
-  "feature": "hydrol:cover/moss_roots",
+  "feature": "hydrol:cover/moss_roots_tall",
   "placement": [
     {
       "type": "hydrol:noise_cover",
@@ -21,7 +21,7 @@
           0
         ],
         "blocks": [
-          "minecraft:sandstone"
+          "minecraft:smooth_sandstone"
         ]
       }
     },

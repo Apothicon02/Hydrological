@@ -1,10 +1,10 @@
 {
-  "feature": "hydrol:cover/moss_roots",
+  "feature": "hydrol:cover/moss_roots_tall_edge",
   "placement": [
     {
       "type": "hydrol:noise_cover",
-      "min": -0.04,
-      "max": 0.04,
+      "min": -0.05,
+      "max": 0.05,
       "chance": 1
     },
     {
@@ -21,7 +21,7 @@
           0
         ],
         "blocks": [
-          "minecraft:sandstone"
+          "minecraft:smooth_sandstone"
         ]
       }
     },
@@ -31,7 +31,7 @@
     {
       "type": "hydrol:offset",
       "x": 0,
-      "y": -10,
+      "y": -9,
       "z": 0
     }
   ]

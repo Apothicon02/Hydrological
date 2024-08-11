@@ -27,6 +27,8 @@ public abstract class HydrolFeatureRegistry {
             new RockFeature(RockConfiguration.CODEC));
     public static final RegistryObject<Feature<SimpleBlockConfiguration>> STEMMED_2X2X2_CUBE_FEATURE = FEATURES.register("stemmed_2x2x2_cube", () ->
             new Stemmed2x2x2CubeFeature(SimpleBlockConfiguration.CODEC));
+    public static final RegistryObject<Feature<AnvilRockConfiguration>> ANVIL_ROCK_FEATURE = FEATURES.register("anvil_rock", () ->
+            new AnvilRockFeature(AnvilRockConfiguration.CODEC));
 
     public static final RegistryObject<Feature<VerticalBlobConfiguration>> ADDITIVE_BLOB = FEATURES.register("additive_blob", () ->
             new AdditiveBlobFeature(VerticalBlobConfiguration.CODEC));
@@ -82,8 +84,6 @@ public abstract class HydrolFeatureRegistry {
             new ThinFallenTreeFeature(FallenTreeConfiguration.CODEC));
     public static final RegistryObject<Feature<FallenTreeConfiguration>> THICK_FALLEN_TREE_FEATURE = FEATURES.register("thick_fallen_tree", () ->
             new ThickFallenTreeFeature(FallenTreeConfiguration.CODEC));
-    public static final RegistryObject<Feature<AnvilRockConfiguration>> ANVIL_ROCK_FEATURE = FEATURES.register("anvil_rock", () ->
-            new AnvilRockFeature(AnvilRockConfiguration.CODEC));
     public static final RegistryObject<Feature<SimpleIntConfiguration>> THIN_BUSH_FEATURE = FEATURES.register("thin_bush", () ->
             new ThinBushFeature(SimpleIntConfiguration.CODEC));
     public static final RegistryObject<Feature<SimpleIntConfiguration>> THICK_BUSH_FEATURE = FEATURES.register("thick_bush", () ->
