@@ -2,45 +2,52 @@
   "type": "hydrol:tree",
   "config": {
     "intersect": true,
-    "canopy_offset": 0,
+    "canopy_offset": -4,
     "trunk": {
-      "type": "hydrol:straight_trunk",
-      "height": {
-        "type": "minecraft:uniform",
-        "value": {
-          "min_inclusive": 1,
-          "max_inclusive": 2
-        }
-      },
-      "wood": {
-        "type": "minecraft:simple_state_provider",
-        "state": {
-          "Name": "minecraft:dark_oak_log"
-        }
-      }
-    },
-    "canopy": {
-      "type": "hydrol:square_canopy",
-      "height": {
-        "type": "minecraft:uniform",
-        "value": {
-          "min_inclusive": 2,
-          "max_inclusive": 5
-        }
-      },
-      "radius": {
+      "type": "hydrol:bending_trunk",
+      "count_override": {
         "type": "minecraft:uniform",
         "value": {
           "min_inclusive": 2,
           "max_inclusive": 3
         }
       },
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 3,
+          "max_inclusive": 6
+        }
+      },
+      "wood": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:acacia_wood"
+        }
+      }
+    },
+    "canopy": {
+      "type": "hydrol:sphere_canopy",
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 7,
+          "max_inclusive": 11
+        }
+      },
+      "radius": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 8,
+          "max_inclusive": 12
+        }
+      },
       "leaves": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:dark_oak_leaves",
+          "Name": "minecraft:acacia_leaves",
           "Properties": {
-            "persistent": "false"
+            "persistent": "true"
           }
         }
       }

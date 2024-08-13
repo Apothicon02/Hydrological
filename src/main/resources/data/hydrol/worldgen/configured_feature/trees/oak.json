@@ -2,6 +2,7 @@
   "type": "hydrol:tree",
   "config": {
     "intersect": false,
+    "canopy_offset": 0,
     "trunk": {
       "type": "hydrol:branching_trunk",
       "canopy_offset": false,

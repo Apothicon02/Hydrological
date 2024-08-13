@@ -33,6 +33,10 @@
     ],
     [],
     [
+      "hydrol:geological/deepslate_anvil_rocks_low",
+      "hydrol:geological/stone_mossy_copper_rocks_low",
+      "hydrol:geological/andesite_anvil_rocks_low",
+      "hydrol:geological/cliff_carvings"
     ],
     [
       "minecraft:glow_lichen"

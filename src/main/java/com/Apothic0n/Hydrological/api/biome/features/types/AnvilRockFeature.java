@@ -23,13 +23,14 @@ public class AnvilRockFeature extends Feature<AnvilRockConfiguration> {
         Integer height = config.getHeight().sample(random);
         Integer stretch = config.getStretch().sample(random);
         Integer maxHeight = height-1;
-        if (worldGenLevel.isEmptyBlock(blockpos.below())) {
+        Boolean forced = config.getForced();
+        if (!forced && worldGenLevel.isEmptyBlock(blockpos.below())) {
             return false;
         } else {
             int randomNumber = (int)(Math.random()*(4));
             for (int s = 0; s <= stretch; ++s) {
                 for (int h = 0; h < height; ++h) {
-                    BlockPos pos = blockpos;
+                    BlockPos pos;
                     if (randomNumber == 3) {
                         pos = blockpos.offset(-((h/4)*s), 0, -((h/6)));
                     } else if (randomNumber == 2) {

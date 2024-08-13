@@ -1,0 +1,60 @@
+{
+  "type": "hydrol:spike",
+  "config": {
+    "material": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 99,
+          "data": {
+            "Name": "minecraft:ice"
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:packed_ice"
+          }
+        }
+      ]
+    },
+    "lowerState": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 99,
+          "data": {
+            "Name": "minecraft:ice"
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:packed_ice"
+          }
+        }
+      ]
+    },
+    "mass": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 4,
+        "max_inclusive": 15
+      }
+    },
+    "width": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 6,
+        "max_inclusive": 9
+      }
+    },
+    "height": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 1,
+        "max_inclusive": 13
+      }
+    }
+  }
+}

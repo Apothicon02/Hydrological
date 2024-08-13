@@ -6,15 +6,15 @@
         "type": "minecraft:weighted_state_provider",
         "entries": [
           {
-            "weight": 149,
+            "weight": 169,
             "data": {
-              "Name": "minecraft:smooth_red_sandstone"
+              "Name": "minecraft:andesite"
             }
           },
           {
-            "weight": 50,
+            "weight": 30,
             "data": {
-              "Name": "minecraft:red_sandstone"
+              "Name": "minecraft:stone"
             }
           },
           {
@@ -37,17 +37,17 @@
     "height": {
       "type": "minecraft:uniform",
       "value": {
-        "min_inclusive": 4,
-        "max_inclusive": 15
+        "min_inclusive": 3,
+        "max_inclusive": 7
       }
     },
     "stretch": {
       "type": "minecraft:uniform",
       "value": {
         "min_inclusive": 1,
-        "max_inclusive": 3
+        "max_inclusive": 2
       }
     },
-    "forced": false
+    "forced": true
   }
 }

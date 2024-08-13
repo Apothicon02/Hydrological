@@ -15,6 +15,8 @@ public class AnvilRockConfiguration implements FeatureConfiguration {
             return v.height;
         }), IntProvider.codec(0, 16).fieldOf("stretch").forGetter((v) -> {
             return v.stretch;
+        }), Codec.BOOL.fieldOf("forced").forGetter((v) -> {
+            return v.forced;
         })).apply(fields, AnvilRockConfiguration::new);
     });
 
@@ -22,16 +24,19 @@ public class AnvilRockConfiguration implements FeatureConfiguration {
     private final IntProvider radius;
     private final IntProvider height;
     private final IntProvider stretch;
+    private final Boolean forced;
 
-    public AnvilRockConfiguration(RuleBasedBlockStateProvider material, IntProvider radius, IntProvider height, IntProvider stretch) {
+    public AnvilRockConfiguration(RuleBasedBlockStateProvider material, IntProvider radius, IntProvider height, IntProvider stretch, Boolean forced) {
         this.material = material;
         this.radius = radius;
         this.height = height;
         this.stretch = stretch;
+        this.forced = forced;
     }
 
     public RuleBasedBlockStateProvider getMaterial() {return this.material;}
     public IntProvider getRadius() {return this.radius;}
     public IntProvider getHeight() {return this.height;}
     public IntProvider getStretch() {return this.stretch;}
+    public Boolean getForced() {return this.forced;}
 }

@@ -1,0 +1,15 @@
+{
+  "feature": "hydrol:geological/cliff_carving",
+  "placement": [
+    {
+      "type": "hydrol:noise_cover",
+      "min": -10,
+      "max": 10,
+      "chance": 1
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE"
+    }
+  ]
+}

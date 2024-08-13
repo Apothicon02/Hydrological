@@ -114,7 +114,7 @@ public class ThickTrunkType extends Trunk {
                 }
             }
         }
-        canopies.add(origin.above(maxHeight));
+        canopies.add(origin.above(maxHeight+1));
 
         return new GeneratedTrunk(map, canopies, maxHeight);
     }

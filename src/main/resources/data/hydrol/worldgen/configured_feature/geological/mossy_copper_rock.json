@@ -1,0 +1,65 @@
+{
+  "type": "hydrol:rock",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 163,
+          "data": {
+            "Name": "minecraft:mossy_cobblestone"
+          }
+        },
+        {
+          "weight": 20,
+          "data": {
+            "Name": "minecraft:cobblestone"
+          }
+        },
+        {
+          "weight": 16,
+          "data": {
+            "Name": "minecraft:moss_block"
+          }
+        }
+      ]
+    },
+    "filler": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 90,
+          "data": {
+            "Name": "minecraft:stone"
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:cobblestone"
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:mossy_cobblestone"
+          }
+        },
+        {
+          "weight": 8,
+          "data": {
+            "Name": "minecraft:copper_ore"
+          }
+        }
+      ]
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 2,
+        "max_inclusive": 10
+      }
+    },
+    "forced": true
+  }
+}

@@ -2,6 +2,7 @@
   "type": "hydrol:tree",
   "config": {
     "intersect": false,
+    "canopy_offset": 0,
     "trunk": {
       "type": "hydrol:twisting_trunk",
       "min_branch_height": 12,

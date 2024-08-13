@@ -2,6 +2,7 @@ package com.Apothic0n.Hydrological.api.biome.features;
 
 import com.Apothic0n.Hydrological.Hydrological;
 import com.Apothic0n.Hydrological.api.biome.features.configurations.*;
+import com.Apothic0n.Hydrological.api.biome.features.configurations.SpikeConfiguration;
 import com.Apothic0n.Hydrological.api.biome.features.types.*;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
@@ -29,6 +30,10 @@ public abstract class HydrolFeatureRegistry {
             new Stemmed2x2x2CubeFeature(SimpleBlockConfiguration.CODEC));
     public static final RegistryObject<Feature<AnvilRockConfiguration>> ANVIL_ROCK_FEATURE = FEATURES.register("anvil_rock", () ->
             new AnvilRockFeature(AnvilRockConfiguration.CODEC));
+    public static final RegistryObject<Feature<SpikeConfiguration>> SPIKE_FEATURE = FEATURES.register("spike", () ->
+            new SpikeFeature(SpikeConfiguration.CODEC));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> CLIFF_CARVING_FEATURE = FEATURES.register("cliff_carving", () ->
+            new CliffCarvingFeature(NoneFeatureConfiguration.CODEC));
 
     public static final RegistryObject<Feature<VerticalBlobConfiguration>> ADDITIVE_BLOB = FEATURES.register("additive_blob", () ->
             new AdditiveBlobFeature(VerticalBlobConfiguration.CODEC));

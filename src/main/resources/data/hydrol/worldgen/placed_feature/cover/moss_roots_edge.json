@@ -21,7 +21,8 @@
           0
         ],
         "blocks": [
-          "minecraft:sandstone"
+          "minecraft:sandstone",
+          "minecraft:smooth_sandstone"
         ]
       }
     },

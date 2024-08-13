@@ -1,15 +1,20 @@
 {
-  "feature": "hydrol:cover/moss_roots_tall",
+  "feature": "hydrol:geological/ice_spike",
   "placement": [
     {
       "type": "hydrol:noise_cover",
-      "min": -0.04,
-      "max": 0.04,
-      "chance": 1
+      "min": -0.11,
+      "max": -0.1,
+      "chance": 0.07
     },
     {
       "type": "minecraft:heightmap",
       "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": 0,
+      "y_spread": -1
     },
     {
       "type": "minecraft:block_predicate_filter",
@@ -17,22 +22,14 @@
         "type": "minecraft:matching_blocks",
         "offset": [
           0,
-          -1,
+          0,
           0
         ],
-        "blocks": [
-          "minecraft:smooth_sandstone"
-        ]
+        "blocks": "minecraft:snow_block"
       }
     },
     {
       "type": "minecraft:biome"
-    },
-    {
-      "type": "hydrol:offset",
-      "x": 0,
-      "y": -10,
-      "z": 0
     }
   ]
 }
