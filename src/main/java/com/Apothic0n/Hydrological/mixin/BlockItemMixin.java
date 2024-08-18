@@ -39,6 +39,8 @@ public abstract class BlockItemMixin {
             list.add(Component.translatable("block.minecraft.snow").withStyle(ChatFormatting.WHITE));
             list.add(Component.translatable("block.minecraft.sand").withStyle(ChatFormatting.YELLOW));
             list.add(Component.translatable("block.minecraft.gravel").withStyle(ChatFormatting.DARK_GRAY));
+        } else if (item.is(Items.ACACIA_SAPLING)) {
+            list.add(Component.translatable("block.minecraft.coarse_dirt").withStyle(ChatFormatting.GOLD));
         } else if (item.is(Items.JUNGLE_SAPLING)) {
             list.add(Component.translatable("block.minecraft.podzol").withStyle(ChatFormatting.GOLD));
             list.add(Component.translatable("block.minecraft.sand").withStyle(ChatFormatting.YELLOW));

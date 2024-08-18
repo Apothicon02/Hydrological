@@ -5,6 +5,7 @@
     "canopy_offset": 0,
     "trunk": {
       "type": "hydrol:bending_trunk",
+      "crown": true,
       "count_override": 0,
       "height": {
         "type": "minecraft:uniform",
