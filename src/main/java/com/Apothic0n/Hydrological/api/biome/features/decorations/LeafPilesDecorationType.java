@@ -1,5 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.decorations;
 
+import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.api.biome.features.placement_modifiers.NoiseCoverPlacement;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -38,7 +39,8 @@ public class LeafPilesDecorationType extends Decoration {
     }
 
     private boolean addToMap(Map<BlockPos, BlockState> map, BlockPos pos, RandomSource random, BlockStateProvider leaves) {
-        map.put(pos, leaves.getState(random, pos).setValue(SnowLayerBlock.LAYERS, Mth.abs((int) (NoiseCoverPlacement.HEIGHT_NOISE.getValue(pos.getX(), pos.getZ(), false) * 4)) + random.nextInt(1, 4)));
+        float scale = HydrolJsonReader.noiseScale;
+        map.put(pos, leaves.getState(random, pos).setValue(SnowLayerBlock.LAYERS, Mth.abs((int) (NoiseCoverPlacement.HEIGHT_NOISE.getValue(pos.getX()*scale, pos.getZ()*scale, false) * 4)) + random.nextInt(1, 4)));
         return true;
     }
 

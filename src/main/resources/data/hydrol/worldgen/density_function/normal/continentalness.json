@@ -3,7 +3,7 @@
   "argument": {
     "type": "minecraft:cache_once",
     "argument": {
-      "type": "minecraft:noise",
+      "type": "hydrol:scalable_noise",
       "noise": "hydrol:normal/continentalness",
       "xz_scale": 1,
       "y_scale": 0

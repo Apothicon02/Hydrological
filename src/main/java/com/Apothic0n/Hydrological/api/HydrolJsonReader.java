@@ -16,6 +16,7 @@ public class HydrolJsonReader {
     //Common
     public static boolean serverSidedOnlyMode = false;
     public static int cubicalTerrainScale = 1;
+    public static float noiseScale = 1;
     public static boolean removeCollisionFromSnowLayers = false;
 
     //Client
@@ -52,6 +53,16 @@ public class HydrolJsonReader {
             }
         } else {
             data.addProperty("cubicalTerrainScale", 1);
+        }
+        if (data.get("noiseScale") != null) {
+            noiseScale = data.get("noiseScale").getAsFloat();
+            if (noiseScale < 0.33) {
+                noiseScale = 0.33f;
+            } else if (noiseScale > 5) {
+                noiseScale = 5;
+            }
+        } else {
+            data.addProperty("noiseScale", 1);
         }
         if (data.get("removeCollisionFromSnowLayers") != null) {
             removeCollisionFromSnowLayers = data.get("removeCollisionFromSnowLayers").getAsBoolean();

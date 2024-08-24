@@ -9,6 +9,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.DensityFunction;
+import net.minecraft.world.level.levelgen.DensityFunctions;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -25,6 +26,7 @@ public final class HydrolDensityFunctions {
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_BEACHES_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_beaches", FloatingBeaches.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_islands", FloatingIslands.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> CUBICAL_SCALE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("cubical_scale", CubicalScale.CODEC::codec);
+    public static final RegistryObject<Codec<? extends DensityFunction>> SCALABLE_NOISE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("scalable_noise", ScalableNoise.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> TO_HEIGHTMAP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("to_heightmap", ToHeightmap.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> POLARIZE_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("polarize", Polarize.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> RANGE_CHOICE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("range_choice", RangeChoice.CODEC::codec);
@@ -519,6 +521,45 @@ public final class HydrolDensityFunctions {
         @Override
         public double maxValue() {
             return 1875000d;
+        }
+
+        @Override
+        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
+            return CODEC;
+        }
+    }
+    protected record ScalableNoise(DensityFunction.NoiseHolder noise, double xzScale, double yScale) implements DensityFunction {
+        private static final MapCodec<ScalableNoise> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
+            return data.group(DensityFunction.NoiseHolder.CODEC.fieldOf("noise").forGetter(ScalableNoise::noise),
+                    Codec.DOUBLE.fieldOf("xz_scale").forGetter(ScalableNoise::xzScale),
+                    Codec.DOUBLE.fieldOf("y_scale").forGetter(ScalableNoise::yScale)).apply(data, ScalableNoise::new);
+        });
+        public static final KeyDispatchDataCodec<ScalableNoise> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
+
+        @Override
+        public double compute(@NotNull FunctionContext context) {
+            float scale = HydrolJsonReader.noiseScale;
+            return this.noise.getValue((double)context.blockX() * this.xzScale * scale, (double)context.blockY() * this.yScale, (double)context.blockZ() * this.xzScale * scale);
+        }
+
+        @Override
+        public void fillArray(double @NotNull [] densities, ContextProvider context) {
+            context.fillAllDirectly(densities, this);
+        }
+
+        @Override
+        public @NotNull DensityFunction mapAll(Visitor visitor) {
+            return visitor.apply(new ScalableNoise(visitor.visitNoise(this.noise), this.xzScale, this.yScale));
+        }
+
+        @Override
+        public double minValue() {
+            return -this.maxValue();
+        }
+
+        @Override
+        public double maxValue() {
+            return this.noise.maxValue();
         }
 
         @Override
