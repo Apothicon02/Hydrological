@@ -88,11 +88,7 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
         Map<BlockPos, BlockState> map = new HashMap<>(generatedTrunk.getMap());
         for (BlockPos branch:generatedTrunk.getCanopies()) {
             Map<BlockPos, BlockState> leaves = canopy.generateCanopy(random, branch.above(config.getCanopyOffset().sample(random)), generatedTrunk.getHeight(), origin);
-            leaves.forEach((BlockPos pos, BlockState state) -> {
-                if (!map.containsKey(pos)) {
-                    map.put(pos, state);
-                }
-            });
+            leaves.forEach(map::putIfAbsent);
         }
         return map;
     }
