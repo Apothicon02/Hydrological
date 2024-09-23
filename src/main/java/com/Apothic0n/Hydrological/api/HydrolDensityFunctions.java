@@ -19,6 +19,7 @@ import org.joml.SimplexNoise;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static com.Apothic0n.Hydrological.api.HydrolMath.progressBetweenInts;
+import static com.Apothic0n.Hydrological.api.HydrolMath.unprogressBetweenInts;
 
 public final class HydrolDensityFunctions {
     public static final DeferredRegister<Codec<? extends DensityFunction>> DENSITY_FUNCTION_TYPES = DeferredRegister.create(Registries.DENSITY_FUNCTION_TYPE, Hydrological.MODID);
@@ -436,6 +437,7 @@ public final class HydrolDensityFunctions {
         @Override
         public double compute(@NotNull FunctionContext context) {
             int x = context.blockX();
+            int y = context.blockY();
             int z = context.blockZ();
             long key = ChunkPos.asLong(x/4, z/4);
             double storedValue;
@@ -444,7 +446,8 @@ public final class HydrolDensityFunctions {
                 storedValue = heightmap.get(key);
             }
             if (!Double.isNaN(storedValue)) {
-                return storedValue;
+                int newY = unprogressBetweenInts(minY(), maxY(), storedValue);
+                return newY-20 > y ? -1 : storedValue;
             } else {
                 for (int newY = maxY(); newY > minY(); newY -= 4) {
                     double value = input().compute(new SinglePointContext(x, newY, z));
@@ -453,14 +456,14 @@ public final class HydrolDensityFunctions {
                         synchronized (heightmap) {
                             heightmap.put(key, returnValue);
                         }
-                        return returnValue;
+                        return newY-20 > y ? -1 : returnValue;
                     }
                 }
             }
             synchronized (heightmap) {
                 heightmap.put(key, 0D);
             }
-            return 0;
+            return minY()-20 > y ? -1 : 0;
         }
 
         @Override

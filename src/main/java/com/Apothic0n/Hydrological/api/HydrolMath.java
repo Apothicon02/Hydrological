@@ -33,6 +33,10 @@ public class HydrolMath {
         return (double) value / (max + min);
     }
 
+    public static int unprogressBetweenInts(int min, int max, double value) {
+        return (int) (value * (max + min));
+    }
+
     public static float getClosenessToNight(double timeOfDay) {
         if (timeOfDay > 0.305 && timeOfDay < 0.694) {
             return 0.0F;

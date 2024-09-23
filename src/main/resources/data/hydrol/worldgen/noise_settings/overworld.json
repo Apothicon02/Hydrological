@@ -1,7 +1,7 @@
 {
   "sea_level": 63,
   "disable_mob_generation": false,
-  "aquifers_enabled": true,
+  "aquifers_enabled": false,
   "ore_veins_enabled": true,
   "legacy_random_source": false,
   "default_block": {
@@ -17,9 +17,9 @@
     "size_vertical": 1
   },
   "noise_router": {
-    "barrier": -1,
-    "fluid_level_floodedness": -1,
-    "fluid_level_spread": -1,
+    "barrier": "hydrol:normal/heightmap",
+    "fluid_level_floodedness": "hydrol:normal/heightmap",
+    "fluid_level_spread": "hydrol:normal/heightmap",
     "lava": -1,
     "temperature": {
       "type": "hydrol:store_temperature",
