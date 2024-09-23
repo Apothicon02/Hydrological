@@ -16,10 +16,6 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
 import static com.Apothic0n.Hydrological.api.HydrolMath.unprogressBetweenInts;
 
 @Mixin(NoiseBasedChunkGenerator.class)
@@ -30,21 +26,6 @@ public abstract class NoiseBasedChunkGeneratorMixin {
     @Shadow @Final private Holder<NoiseGeneratorSettings> settings;
 
     @Shadow protected abstract BlockState debugPreliminarySurfaceLevel(NoiseChunk p_198232_, int p_198233_, int p_198234_, int p_198235_, BlockState p_198236_);
-
-    /**
-     * @author Apothic0n
-     * @reason Removes lava aquifers.
-     */
-    @Inject(method = "createFluidPicker", at = @At("HEAD"), cancellable = true)
-    private static void createFluidPicker(NoiseGeneratorSettings noiseGeneratorSettings, CallbackInfoReturnable<Aquifer.FluidPicker> ci) {
-        int y = -128;
-        Aquifer.FluidStatus aquifer$fluidstatus = new Aquifer.FluidStatus(y, Blocks.LAVA.defaultBlockState());
-        int sea = noiseGeneratorSettings.seaLevel();
-        Aquifer.FluidStatus aquifer$fluidstatus1 = new Aquifer.FluidStatus(sea, noiseGeneratorSettings.defaultFluid());
-        ci.setReturnValue((p_224274_, p_224275_, p_224276_) -> {
-            return p_224275_ < Math.min(y, sea) ? aquifer$fluidstatus : aquifer$fluidstatus1;
-        });
-    }
 
     /**
      * @author Apothicon
