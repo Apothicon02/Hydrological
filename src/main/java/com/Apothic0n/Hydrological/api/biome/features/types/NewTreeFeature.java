@@ -68,7 +68,7 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
                     }
                     level.setBlock(pos, state, UPDATE_ALL);
                     BlockState aboveState = level.getBlockState(pos.above());
-                    if (!state.isFaceSturdy(level, pos, Direction.UP) && aboveState.getBlock() instanceof BushBlock) {
+                    if ((!state.isFaceSturdy(level, pos, Direction.UP) || state.is(Blocks.PODZOL)) && aboveState.getBlock() instanceof BushBlock) {
                         BlockState filler = Blocks.AIR.defaultBlockState();
                         if (aboveState.hasProperty(BlockStateProperties.WATERLOGGED) && aboveState.getValue(BlockStateProperties.WATERLOGGED)) {
                             filler = Blocks.WATER.defaultBlockState();

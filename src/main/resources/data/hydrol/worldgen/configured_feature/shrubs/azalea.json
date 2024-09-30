@@ -9,7 +9,7 @@
       "wood": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:stripped_oak_log"
+          "Name": "minecraft:stripped_oak_wood"
         }
       }
     },

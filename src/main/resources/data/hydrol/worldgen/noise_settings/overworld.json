@@ -541,8 +541,7 @@
                 "type": "minecraft:biome",
                 "biome_is": [
                   "minecraft:old_growth_pine_taiga",
-                  "minecraft:old_growth_spruce_taiga",
-                  "minecraft:dark_forest"
+                  "minecraft:old_growth_spruce_taiga"
                 ]
               },
               "then_run": {
@@ -607,7 +606,8 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
-                  "minecraft:forest"
+                  "minecraft:forest",
+                  "minecraft:dark_forest"
                 ]
               },
               "then_run": {
@@ -624,7 +624,7 @@
                     "then_run": {
                       "type": "minecraft:block",
                       "result_state": {
-                        "Name": "minecraft:podzol"
+                        "Name": "minecraft:grass_block"
                       }
                     }
                   },
@@ -646,7 +646,7 @@
                   {
                     "type": "minecraft:block",
                     "result_state": {
-                      "Name": "minecraft:podzol"
+                      "Name": "minecraft:grass_block"
                     }
                   }
                 ]

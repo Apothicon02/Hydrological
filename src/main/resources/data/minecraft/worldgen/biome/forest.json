@@ -20,7 +20,8 @@
     },
     "sky_color": 7972607,
     "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_fog_color": 329011,
+    "grass_color": 7392647
   },
   "features": [
     [],
@@ -50,7 +51,7 @@
       "hydrol:cover/tall_grass_middle",
       "hydrol:cover/grass_negative",
       "hydrol:cover/grass_positive",
-      "hydrol:shrubs/azalea",
+      "hydrol:shrubs/mangrove_square",
       "hydrol:shrubs/birch",
       "hydrol:trees/dark_oak_sparse",
       "hydrol:trees/dark_willow",

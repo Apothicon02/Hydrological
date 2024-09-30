@@ -6,7 +6,6 @@
   "downfall": 0.8,
   "effects": {
     "fog_color": 12638463,
-    "grass_color_modifier": "dark_forest",
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -21,7 +20,8 @@
     },
     "sky_color": 7972607,
     "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_fog_color": 329011,
+    "grass_color": 7392647
   },
   "features": [
     [],
@@ -51,15 +51,12 @@
       "hydrol:cover/tall_grass_middle",
       "hydrol:cover/grass_negative",
       "hydrol:cover/grass_positive",
+      "hydrol:shrubs/mangrove_square",
       "hydrol:shrubs/oak",
       "hydrol:shrubs/birch",
       "hydrol:trees/red_mushroom_sparse",
-      "hydrol:trees/brown_mushroom_sparse",
       "hydrol:trees/dark_oak",
-      "hydrol:trees/dark_willow_extra",
-      "hydrol:trees/birch_spruce_noise",
-      "hydrol:trees/birch_fir",
-      "hydrol:trees/birch"
+      "hydrol:trees/dark_willow_extra"
     ],
     [
       "minecraft:freeze_top_layer"

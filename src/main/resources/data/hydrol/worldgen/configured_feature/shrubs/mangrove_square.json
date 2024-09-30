@@ -9,7 +9,7 @@
       "wood": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:oak_wood"
+          "Name": "minecraft:mangrove_wood"
         }
       }
     },
@@ -32,7 +32,7 @@
       "leaves": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:oak_leaves",
+          "Name": "minecraft:mangrove_leaves",
           "Properties": {
             "persistent": "false"
           }
