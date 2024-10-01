@@ -36,6 +36,11 @@
     [],
     [],
     [
+      "hydrol:mineral/copper",
+      "hydrol:mineral/gold",
+      "hydrol:mineral/redstone",
+      "hydrol:mineral/diamond",
+      "hydrol:mineral/emerald"
     ],
     [
     ],

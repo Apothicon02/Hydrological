@@ -8,6 +8,7 @@
       "feature": {
         "type": "hydrol:simple_block",
         "config": {
+          "replace": false,
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {

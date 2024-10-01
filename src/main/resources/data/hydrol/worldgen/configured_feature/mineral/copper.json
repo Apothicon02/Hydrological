@@ -1,0 +1,23 @@
+{
+  "type": "hydrol:simple_block",
+  "config": {
+    "replace": true,
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 4,
+          "data": {
+            "Name": "minecraft:raw_copper_block"
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:copper_ore"
+          }
+        }
+      ]
+    }
+  }
+}

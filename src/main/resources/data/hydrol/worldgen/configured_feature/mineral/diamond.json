@@ -1,0 +1,23 @@
+{
+  "type": "hydrol:simple_block",
+  "config": {
+    "replace": true,
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:diamond_ore"
+          }
+        },
+        {
+          "weight": 199,
+          "data": {
+            "Name": "minecraft:magma_block"
+          }
+        }
+      ]
+    }
+  }
+}

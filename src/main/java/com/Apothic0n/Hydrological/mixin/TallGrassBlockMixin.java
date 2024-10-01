@@ -20,8 +20,10 @@ public abstract class TallGrassBlockMixin extends BushBlock {
     @Override
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
         super.animateTick(blockState, level, blockPos, randomSource);
-        if (randomSource.nextInt(33) == 0 && level.getDayTime() > 12750 && level.getDayTime() < 23500 && HydrolJsonReader.fireflies) {
-            level.addAlwaysVisibleParticle(HydrolParticleTypes.FIRE_FLIES.get(), true, blockPos.getX(),  blockPos.getY() + randomSource.nextDouble()*4, blockPos.getZ(), 0, 0, 0);
+        if (!HydrolJsonReader.serverSidedOnlyMode) {
+            if (randomSource.nextInt(33) == 0 && level.getDayTime() > 12750 && level.getDayTime() < 23500 && HydrolJsonReader.fireflies) {
+                level.addAlwaysVisibleParticle(HydrolParticleTypes.FIRE_FLIES.get(), true, blockPos.getX(), blockPos.getY() + randomSource.nextDouble() * 4, blockPos.getZ(), 0, 0, 0);
+            }
         }
     }
 }

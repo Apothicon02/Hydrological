@@ -1,0 +1,23 @@
+{
+  "type": "hydrol:simple_block",
+  "config": {
+    "replace": true,
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 15,
+          "data": {
+            "Name": "minecraft:emerald_ore"
+          }
+        },
+        {
+          "weight": 85,
+          "data": {
+            "Name": "minecraft:cobblestone"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -674,7 +674,7 @@
                     "then_run": {
                       "type": "minecraft:block",
                       "result_state": {
-                        "Name": "minecraft:mycelium"
+                        "Name": "minecraft:gravel"
                       }
                     }
                   },
@@ -689,14 +689,14 @@
                     "then_run": {
                       "type": "minecraft:block",
                       "result_state": {
-                        "Name": "minecraft:gravel"
+                        "Name": "minecraft:mycelium"
                       }
                     }
                   },
                   {
                     "type": "minecraft:block",
                     "result_state": {
-                      "Name": "minecraft:mycelium"
+                      "Name": "minecraft:gravel"
                     }
                   }
                 ]
@@ -1004,7 +1004,8 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
-                  "minecraft:mangrove_swamp"
+                  "minecraft:mangrove_swamp",
+                  "minecraft:mushroom_fields"
                 ]
               },
               "then_run": {

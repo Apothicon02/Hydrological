@@ -1,0 +1,23 @@
+{
+  "type": "hydrol:simple_block",
+  "config": {
+    "replace": true,
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 7,
+          "data": {
+            "Name": "minecraft:coal_ore"
+          }
+        },
+        {
+          "weight": 3,
+          "data": {
+            "Name": "minecraft:cobblestone"
+          }
+        }
+      ]
+    }
+  }
+}

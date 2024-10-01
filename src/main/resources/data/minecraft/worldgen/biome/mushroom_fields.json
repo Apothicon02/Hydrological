@@ -41,7 +41,7 @@
       "hydrol:cover/dry_grass/dry_grass_1",
       "hydrol:cover/seagrass_middle",
       "hydrol:trees/red_mushroom",
-      "hydrol:trees/brown_mushroom"
+      "hydrol:trees/brown_mushroom_short"
     ],
     [
       "minecraft:freeze_top_layer"

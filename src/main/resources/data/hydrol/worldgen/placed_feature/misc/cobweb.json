@@ -1,0 +1,26 @@
+{
+  "feature": "hydrol:misc/cobweb",
+  "placement": [
+    {
+      "type": "hydrol:vein",
+      "min": -0.0222,
+      "max": 0.0222,
+      "chance": 0.93,
+      "altitude": 256
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": [
+          "minecraft:air",
+          "minecraft:cave_air",
+          "minecraft:void_air"
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

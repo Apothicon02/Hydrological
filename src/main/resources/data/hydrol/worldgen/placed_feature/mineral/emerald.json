@@ -1,0 +1,113 @@
+{
+  "feature": "hydrol:mineral/emerald",
+  "placement": [
+    {
+      "type": "hydrol:vein",
+      "min": -0.045,
+      "max": 0.02,
+      "chance": 1,
+      "altitude": 256
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": [
+              "minecraft:calcite",
+              "minecraft:diorite"
+            ]
+          },
+          {
+            "type": "minecraft:any_of",
+            "predicates": [
+              {
+                "type": "minecraft:matching_blocks",
+                "offset": [
+                  0,
+                  0,
+                  1
+                ],
+                "blocks": [
+                  "minecraft:air",
+                  "minecraft:cave_air",
+                  "minecraft:void_air"
+                ]
+              },
+              {
+                "type": "minecraft:matching_blocks",
+                "offset": [
+                  0,
+                  0,
+                  -1
+                ],
+                "blocks": [
+                  "minecraft:air",
+                  "minecraft:cave_air",
+                  "minecraft:void_air"
+                ]
+              },
+              {
+                "type": "minecraft:matching_blocks",
+                "offset": [
+                  1,
+                  0,
+                  0
+                ],
+                "blocks": [
+                  "minecraft:air",
+                  "minecraft:cave_air",
+                  "minecraft:void_air"
+                ]
+              },
+              {
+                "type": "minecraft:matching_blocks",
+                "offset": [
+                  -1,
+                  0,
+                  0
+                ],
+                "blocks": [
+                  "minecraft:air",
+                  "minecraft:cave_air",
+                  "minecraft:void_air"
+                ]
+              },
+              {
+                "type": "minecraft:matching_blocks",
+                "offset": [
+                  0,
+                  1,
+                  0
+                ],
+                "blocks": [
+                  "minecraft:air",
+                  "minecraft:cave_air",
+                  "minecraft:void_air"
+                ]
+              },
+              {
+                "type": "minecraft:matching_blocks",
+                "offset": [
+                  0,
+                  -1,
+                  0
+                ],
+                "blocks": [
+                  "minecraft:air",
+                  "minecraft:cave_air",
+                  "minecraft:void_air"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
