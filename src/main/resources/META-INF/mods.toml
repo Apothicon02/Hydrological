@@ -38,3 +38,9 @@ Hydrological:
 
 It's a whole new (over)world!
 '''
+[[dependencies.hydrol]]
+modId="noisium"
+mandatory=false
+versionRange = "[0.0.0-NOT-COMPATIBLE]"
+ordering="NONE"
+side="BOTH"
