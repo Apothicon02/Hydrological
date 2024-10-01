@@ -27,13 +27,17 @@
     [
     ],
     [
-      "minecraft:amethyst_geode"
+      "minecraft:amethyst_geode",
+      "hydrol:geological/dripstone_column"
     ],
     [
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
-    [],
+    [
+      "hydrol:misc/clay_water_fall_sparse",
+      "hydrol:misc/magma_lava_fall"
+    ],
     [],
     [
       "hydrol:mineral/copper",
@@ -43,11 +47,14 @@
       "hydrol:mineral/emerald"
     ],
     [
+      "minecraft:dripstone_cluster",
+      "minecraft:pointed_dripstone"
     ],
     [
     ],
     [
-      "minecraft:glow_lichen"
+      "minecraft:glow_lichen",
+      "hydrol:trees/palm_underground"
     ],
     [
       "minecraft:freeze_top_layer"

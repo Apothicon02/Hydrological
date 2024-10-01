@@ -13,7 +13,7 @@
               "parameters": {
                 "temperature": [
                   -1,
-                  -0.5
+                  1
                 ],
                 "humidity": [
                   -1,
@@ -25,7 +25,7 @@
                 ],
                 "continentalness": [
                   -1,
-                  1
+                  0
                 ],
                 "weirdness": 0,
                 "depth": [
@@ -39,7 +39,7 @@
               "biome": "minecraft:lush_caves",
               "parameters": {
                 "temperature": [
-                  -0.5,
+                  -1,
                   0.5
                 ],
                 "humidity": [
@@ -51,7 +51,7 @@
                   1
                 ],
                 "continentalness": [
-                  -1,
+                  0,
                   1
                 ],
                 "weirdness": 0,
@@ -78,7 +78,7 @@
                   1
                 ],
                 "continentalness": [
-                  -1,
+                  0,
                   1
                 ],
                 "weirdness": 0,

@@ -44,8 +44,8 @@
       "hydrol:cover/dry_grass/dry_grass_positive",
       "hydrol:cover/grass_negative",
       "hydrol:shrubs/mangrove_less",
-      "hydrol:trees/palms_noise",
-      "hydrol:trees/palms_bunched"
+      "hydrol:trees/palm_noise",
+      "hydrol:trees/palm_bunched"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -46,11 +46,12 @@ public class GroundDecorationType extends Decoration {
         for (int x = offsetPos.getX()-maxRadius; x <= offsetPos.getX()+maxRadius; x++) {
             for (int z = offsetPos.getZ()-maxRadius; z <= offsetPos.getZ()+maxRadius; z++) {
                 for (int y = offsetPos.getY()+1; y >= offsetPos.getY()-1; y--) {
-                    int xDist = x - offsetPos.getX();
-                    int zDist = z - offsetPos.getZ();
-                    int dist = xDist * xDist + zDist * zDist;
+                    int xDist = x-offsetPos.getX();
+                    int zDist = z-offsetPos.getZ();
+                    int dist = xDist*xDist + zDist*zDist;
                     BlockPos newPos = new BlockPos(x, y, z);
-                    if (dist <= maxRadius*2 && level.getBlockState(newPos).is(BlockTags.DIRT)) {
+                    BlockState oldState = level.getBlockState(newPos);
+                    if (dist <= (maxRadius*maxRadius)-maxRadius && oldState.is(BlockTags.DIRT) || oldState.is(BlockTags.TERRACOTTA) || oldState.is(BlockTags.BASE_STONE_OVERWORLD)) {
                         addToMap(map, newPos, random);
                     }
                 }

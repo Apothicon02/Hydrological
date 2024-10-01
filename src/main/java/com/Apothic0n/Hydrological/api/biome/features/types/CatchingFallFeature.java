@@ -17,7 +17,7 @@ public class CatchingFallFeature extends Feature<CatchingFallConfiguration> {
         CatchingFallConfiguration springconfiguration = pContext.config();
         WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockpos = pContext.origin();
-        if (!springconfiguration.validBlocks.contains(worldGenLevel.getBlockState(blockpos.above()).getBlock().defaultBlockState())) {
+        if (!springconfiguration.validBlocks.contains(worldGenLevel.getBlockState(blockpos.above()).getBlock())) {
             return false;
         } else if (springconfiguration.requiresBlockBelow && !springconfiguration.validBlocks.contains(worldGenLevel.getBlockState(blockpos.below()).getBlock())) {
             return false;
@@ -72,7 +72,7 @@ public class CatchingFallFeature extends Feature<CatchingFallConfiguration> {
                 if (j >= springconfiguration.rockCount && k >= springconfiguration.holeCount) {
                     BlockPos blockpos1 = blockpos.below();
                     Boolean shouldGenerate = true;
-                    if (!worldGenLevel.isEmptyBlock(blockpos1.below())) {
+                    if (worldGenLevel.getBlockState(blockpos1.below()).isSolid()) {
                         blockpos1 = blockpos1.above();
                         if (worldGenLevel.isEmptyBlock(blockpos1.north())) {
                             blockpos1 = blockpos1.north();
@@ -84,7 +84,7 @@ public class CatchingFallFeature extends Feature<CatchingFallConfiguration> {
                             blockpos1 = blockpos1.west();
                         }
                     }
-                    if (worldGenLevel.isEmptyBlock(blockpos1.below(5))) {
+                    if (!worldGenLevel.getBlockState(blockpos1.below(5)).isSolid()) {
                         for(int l = 0; l < 200; ++l) {
                             BlockState blockBelow = worldGenLevel.getBlockState(blockpos1.below());
 
@@ -135,6 +135,12 @@ public class CatchingFallFeature extends Feature<CatchingFallConfiguration> {
                                 worldGenLevel.setBlock(blockpos1.east().east().south(), springconfiguration.basinMaterial.defaultBlockState(), 2);
                                 worldGenLevel.setBlock(blockpos1.east().south().south(), springconfiguration.basinMaterial.defaultBlockState(), 2);
                                 worldGenLevel.setBlock(blockpos1.east().east().south().south(), springconfiguration.basinMaterial.defaultBlockState(), 2);
+
+                                worldGenLevel.setBlock(blockpos1.below(), springconfiguration.basinMaterial2.defaultBlockState(), 2);
+                                worldGenLevel.setBlock(blockpos1.below().north(), springconfiguration.basinMaterial.defaultBlockState(), 2);
+                                worldGenLevel.setBlock(blockpos1.below().east(), springconfiguration.basinMaterial.defaultBlockState(), 2);
+                                worldGenLevel.setBlock(blockpos1.below().south(), springconfiguration.basinMaterial.defaultBlockState(), 2);
+                                worldGenLevel.setBlock(blockpos1.below().west(), springconfiguration.basinMaterial.defaultBlockState(), 2);
 
                                 l = 200;
                             } else if (springconfiguration.invalidBlocks.contains(blockBelow.getBlock())) { //cant generate over these to prevent large lava cast-like formations

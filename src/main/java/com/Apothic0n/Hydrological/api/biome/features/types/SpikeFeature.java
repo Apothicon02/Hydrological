@@ -1,6 +1,5 @@
 package com.Apothic0n.Hydrological.api.biome.features.types;
 
-import com.Apothic0n.Hydrological.api.biome.features.configurations.OreSpikeConfiguration;
 import com.Apothic0n.Hydrological.api.biome.features.configurations.SpikeConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;

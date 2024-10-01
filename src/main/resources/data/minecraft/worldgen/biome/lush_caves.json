@@ -33,7 +33,9 @@
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
-    [],
+    [
+      "hydrol:misc/clay_water_fall_sparse"
+    ],
     [],
     [
       "hydrol:mineral/iron",

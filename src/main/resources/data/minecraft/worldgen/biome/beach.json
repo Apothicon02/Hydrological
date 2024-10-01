@@ -33,8 +33,6 @@
     ],
     [],
     [
-      "minecraft:spring_water",
-      "minecraft:spring_lava"
     ],
     [
       "minecraft:glow_lichen",
@@ -44,7 +42,7 @@
       "hydrol:cover/fire_coral",
       "hydrol:cover/horn_coral",
       "hydrol:cover/bubble_coral",
-      "hydrol:trees/palms"
+      "hydrol:trees/palm"
     ],
     [
       "minecraft:freeze_top_layer"

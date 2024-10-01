@@ -61,7 +61,7 @@
           "type": "minecraft:uniform",
           "value": {
             "min_inclusive": 10,
-            "max_inclusive": 13
+            "max_inclusive": 16
           }
         },
         "replace_with": {

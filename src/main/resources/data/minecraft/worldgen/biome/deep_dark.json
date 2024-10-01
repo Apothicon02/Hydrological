@@ -32,14 +32,15 @@
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
-    [],
+    [
+      "hydrol:misc/clay_water_fall"
+    ],
     [],
     [
       "hydrol:mineral/iron",
       "hydrol:mineral/coal",
-      "hydrol:mineral/redstone",
-      "hydrol:mineral/diamond",
-      "hydrol:mineral/emerald"
+      "hydrol:mineral/lapis",
+      "hydrol:mineral/diamond"
     ],
     [
       "minecraft:sculk_vein",

@@ -74,6 +74,14 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
                             filler = Blocks.WATER.defaultBlockState();
                         }
                         level.setBlock(pos.above(), filler, UPDATE_ALL);
+                        if (aboveState.getBlock() instanceof DoublePlantBlock) {
+                            aboveState = level.getBlockState(pos.above(2));
+                            filler = Blocks.AIR.defaultBlockState();
+                            if (aboveState.hasProperty(BlockStateProperties.WATERLOGGED) && aboveState.getValue(BlockStateProperties.WATERLOGGED)) {
+                                filler = Blocks.WATER.defaultBlockState();
+                            }
+                            level.setBlock(pos.above(2), filler, UPDATE_ALL);
+                        }
                     }
                 }
             });

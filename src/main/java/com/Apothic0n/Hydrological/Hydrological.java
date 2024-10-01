@@ -6,10 +6,7 @@ import com.Apothic0n.Hydrological.api.biome.HydrolSurfaceRules;
 import com.Apothic0n.Hydrological.api.biome.features.HydrolFeatureRegistry;
 import com.Apothic0n.Hydrological.api.biome.features.canopies.CanopyType;
 import com.Apothic0n.Hydrological.api.biome.features.decorations.DecorationType;
-import com.Apothic0n.Hydrological.api.biome.features.decorators.HydrolTreeDecoratorType;
-import com.Apothic0n.Hydrological.api.biome.features.foliage_placers.HydrolFoliagePlacerType;
 import com.Apothic0n.Hydrological.api.biome.features.placement_modifiers.HydrolPlacementModifierTypes;
-import com.Apothic0n.Hydrological.api.biome.features.trunk_placers.HydrolTrunkPlacerType;
 import com.Apothic0n.Hydrological.api.biome.features.trunks.TrunkType;
 import com.Apothic0n.Hydrological.core.objects.HydrolBlocks;
 import com.Apothic0n.Hydrological.core.objects.HydrolItems;
@@ -46,9 +43,6 @@ public class Hydrological {
         }
         HydrolPlacementModifierTypes.register(eventBus);
         HydrolFeatureRegistry.register(eventBus);
-        HydrolTrunkPlacerType.register(eventBus);
-        HydrolFoliagePlacerType.register(eventBus);
-        HydrolTreeDecoratorType.register(eventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
