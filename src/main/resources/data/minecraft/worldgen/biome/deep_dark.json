@@ -39,12 +39,9 @@
     [
       "hydrol:mineral/iron",
       "hydrol:mineral/coal",
-      "hydrol:mineral/lapis",
-      "hydrol:mineral/diamond"
+      "hydrol:mineral/diamond_lapis_frozen"
     ],
     [
-      "minecraft:sculk_vein",
-      "minecraft:sculk_patch_deep_dark"
     ],
     [],
     [

@@ -1,0 +1,31 @@
+{
+  "feature": "hydrol:mineral/diamond_lapis_frozen",
+  "placement": [
+    {
+      "type": "hydrol:vein",
+      "min": -0.045,
+      "max": 0.045,
+      "chance": 0.93,
+      "altitude": -42
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:any_of",
+        "predicates": [
+          {
+            "type": "minecraft:matching_block_tag",
+            "tag": "minecraft:base_stone_overworld"
+          },
+          {
+            "type": "minecraft:matching_block_tag",
+            "tag": "minecraft:terracotta"
+          }
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

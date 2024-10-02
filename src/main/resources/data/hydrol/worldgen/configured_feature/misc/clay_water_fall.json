@@ -39,7 +39,8 @@
     "invalidBlocks": [
       "minecraft:dripstone_block",
       "minecraft:amethyst_block",
-      "minecraft:sculk_vein"
+      "minecraft:sculk_vein",
+      "minecraft:ice"
     ],
     "basinMaterial": "minecraft:clay",
     "basinMaterial2": "minecraft:clay"

@@ -1,0 +1,29 @@
+{
+  "type": "hydrol:simple_block",
+  "config": {
+    "replace": true,
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:diamond_ore"
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "minecraft:lapis_ore"
+          }
+        },
+        {
+          "weight": 197,
+          "data": {
+            "Name": "minecraft:packed_ice"
+          }
+        }
+      ]
+    }
+  }
+}
