@@ -26,26 +26,28 @@
     [],
     [],
     [
-      "minecraft:amethyst_geode"
+      "minecraft:amethyst_geode",
+      "hydrol:geological/ice_column"
     ],
     [
+      "hydrol:mineral/fossil_coal",
+      "hydrol:mineral/fossil_diamond",
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
     [
-      "hydrol:misc/clay_water_fall"
+      "hydrol:misc/blue_ice_water_fall"
     ],
     [],
     [
-      "hydrol:mineral/iron",
-      "hydrol:mineral/coal",
       "hydrol:mineral/diamond_lapis_frozen"
     ],
     [
     ],
     [],
     [
-      "minecraft:glow_lichen"
+      "minecraft:glow_lichen",
+      "hydrol:geological/amethyst_vines"
     ],
     [
       "minecraft:freeze_top_layer"

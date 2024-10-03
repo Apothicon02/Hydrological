@@ -1,0 +1,102 @@
+{
+  "type": "minecraft:block_column",
+  "config": {
+    "allowed_placement": {
+      "type": "minecraft:matching_blocks",
+      "blocks": [
+        "minecraft:air",
+        "minecraft:cave_air"
+      ]
+    },
+    "direction": "down",
+    "layers": [
+      {
+        "height": {
+          "type": "minecraft:weighted_list",
+          "distribution": [
+            {
+              "data": {
+                "type": "minecraft:uniform",
+                "value": {
+                  "max_inclusive": 5,
+                  "min_inclusive": 0
+                }
+              },
+              "weight": 2
+            },
+            {
+              "data": {
+                "type": "minecraft:uniform",
+                "value": {
+                  "max_inclusive": 2,
+                  "min_inclusive": 0
+                }
+              },
+              "weight": 3
+            },
+            {
+              "data": {
+                "type": "minecraft:uniform",
+                "value": {
+                  "max_inclusive": 6,
+                  "min_inclusive": 0
+                }
+              },
+              "weight": 10
+            }
+          ]
+        },
+        "provider": {
+          "type": "minecraft:weighted_state_provider",
+          "entries": [
+            {
+              "data": {
+                "Name": "hydrol:amethyst_vines_plant",
+                "Properties": {
+                  "berries": "false"
+                }
+              },
+              "weight": 4
+            },
+            {
+              "data": {
+                "Name": "hydrol:amethyst_vines_plant",
+                "Properties": {
+                  "berries": "true"
+                }
+              },
+              "weight": 1
+            }
+          ]
+        }
+      },
+      {
+        "height": 1,
+        "provider": {
+          "type": "minecraft:weighted_state_provider",
+          "entries": [
+            {
+              "data": {
+                "Name": "hydrol:amethyst_vines",
+                "Properties": {
+                  "berries": "false"
+                }
+              },
+              "weight": 4
+            },
+            {
+              "data": {
+                "Name": "hydrol:amethyst_vines",
+                "Properties": {
+                  "berries": "true"
+                }
+              },
+              "weight": 1
+            }
+          ]
+        }
+      }
+    ],
+    "prioritize_tip": true
+  }
+}

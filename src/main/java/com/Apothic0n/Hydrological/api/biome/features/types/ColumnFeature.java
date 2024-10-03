@@ -28,7 +28,7 @@ public class ColumnFeature extends Feature<ColumnConfiguration> {
     }
 
     public boolean isMaterialBaseOrLava(BlockState state) {
-        return state.is(Blocks.DRIPSTONE_BLOCK) || state.is(BlockTags.DRIPSTONE_REPLACEABLE) || state.is(BlockTags.TERRACOTTA);
+        return state.is(Blocks.DRIPSTONE_BLOCK) || state.is(BlockTags.DRIPSTONE_REPLACEABLE) || state.is(BlockTags.TERRACOTTA) || state.is(BlockTags.ICE) || state.is(Blocks.SCULK);
     }
 
     public boolean place(FeaturePlaceContext<ColumnConfiguration> context) {

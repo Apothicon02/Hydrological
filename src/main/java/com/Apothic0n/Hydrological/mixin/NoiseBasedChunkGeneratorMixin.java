@@ -95,7 +95,7 @@ public abstract class NoiseBasedChunkGeneratorMixin {
                                         if (newY-20 > $$24) {
                                             state = Blocks.CAVE_AIR.defaultBlockState();
                                         }
-                                        if (newY <= 56 && $$24 < -55) {
+                                        if (newY <= 48 && $$24 < -55) {
                                             state = Blocks.WATER.defaultBlockState();
                                         }
                                     }

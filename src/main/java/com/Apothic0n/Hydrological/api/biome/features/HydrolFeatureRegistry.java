@@ -5,6 +5,7 @@ import com.Apothic0n.Hydrological.api.biome.features.configurations.*;
 import com.Apothic0n.Hydrological.api.biome.features.configurations.SpikeConfiguration;
 import com.Apothic0n.Hydrological.api.biome.features.types.*;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.FossilFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -38,6 +39,8 @@ public abstract class HydrolFeatureRegistry {
             new CatchingFallFeature(CatchingFallConfiguration.CODEC));
     public static final RegistryObject<Feature<ColumnConfiguration>> COLUMN = FEATURES.register("column", () ->
             new ColumnFeature(ColumnConfiguration.CODEC));
+    public static final RegistryObject<Feature<FossilFeatureConfiguration>> FOSSIL = FEATURES.register("fossil", () ->
+            new FossilFeature(FossilFeatureConfiguration.CODEC));
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);

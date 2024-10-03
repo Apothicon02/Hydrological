@@ -447,7 +447,7 @@ public final class HydrolDensityFunctions {
             }
             if (!Double.isNaN(storedValue)) {
                 int newY = unprogressBetweenInts(minY(), maxY(), storedValue);
-                return newY-20 > y ? -1 : storedValue;
+                return newY-30 > y ? -1 : storedValue;
             } else {
                 for (int newY = maxY(); newY > minY(); newY -= 4) {
                     double value = input().compute(new SinglePointContext(x, newY, z));
@@ -463,7 +463,7 @@ public final class HydrolDensityFunctions {
             synchronized (heightmap) {
                 heightmap.put(key, 0D);
             }
-            return minY()-20 > y ? -1 : 0;
+            return minY()-30 > y ? -1 : 0;
         }
 
         @Override

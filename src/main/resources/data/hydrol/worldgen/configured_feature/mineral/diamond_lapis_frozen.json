@@ -8,17 +8,17 @@
         {
           "weight": 1,
           "data": {
-            "Name": "minecraft:diamond_ore"
+            "Name": "minecraft:deepslate_diamond_ore"
           }
         },
         {
-          "weight": 2,
+          "weight": 12,
           "data": {
-            "Name": "minecraft:lapis_ore"
+            "Name": "minecraft:deepslate_lapis_ore"
           }
         },
         {
-          "weight": 197,
+          "weight": 487,
           "data": {
             "Name": "minecraft:packed_ice"
           }

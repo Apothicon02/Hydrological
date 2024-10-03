@@ -34,16 +34,16 @@
       "minecraft:brown_terracotta",
       "minecraft:green_terracotta",
       "minecraft:red_terracotta",
-      "minecraft:black_terracotta"
+      "minecraft:black_terracotta",
+      "minecraft:ice"
     ],
     "invalidBlocks": [
       "minecraft:dripstone_block",
       "minecraft:amethyst_block",
       "minecraft:sculk_vein",
-      "minecraft:ice",
       "minecraft:lava"
     ],
-    "basinMaterial": "minecraft:clay",
-    "basinMaterial2": "minecraft:clay"
+    "basinMaterial": "minecraft:packed_ice",
+    "basinMaterial2": "minecraft:blue_ice"
   }
 }

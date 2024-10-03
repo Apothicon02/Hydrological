@@ -48,7 +48,8 @@
     [
     ],
     [
-      "minecraft:glow_lichen"
+      "minecraft:glow_lichen",
+      "hydrol:cover/cave_vines"
     ],
     [
       "minecraft:freeze_top_layer"
