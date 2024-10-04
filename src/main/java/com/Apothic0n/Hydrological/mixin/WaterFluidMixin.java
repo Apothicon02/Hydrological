@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class WaterFluidMixin {
     @Inject(method = "canConvertToSource", at = @At("HEAD"), cancellable = true)
     public void canConvertToSource(Level level, CallbackInfoReturnable<Boolean> ci) {
-        if (HydrolDensityFunctions.isFloatingIslands == true && level.dimension().equals(Level.OVERWORLD)) {
+        if (HydrolDensityFunctions.isFloatingIslands && level.dimension().equals(Level.OVERWORLD)) {
             ci.setReturnValue(false);
         }
     }

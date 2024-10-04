@@ -78,17 +78,12 @@ public class HydrolJsonReader {
         Gson gson = new Gson();
         if (!Files.exists(path)) {
             JsonWriter writer = new JsonWriter(new FileWriter(path.toString()));
-            JsonObject defaultData = gson.fromJson("{\"customNightLighting\":\"true\", \"customOverworldFog\":\"true\", \"fireflies\":\"true\"}", JsonObject.class);
+            JsonObject defaultData = gson.fromJson("{\"customOverworldFog\":\"true\", \"fireflies\":\"true\"}", JsonObject.class);
             gson.toJson(defaultData, writer);
             writer.close();
         }
         JsonReader reader = new JsonReader(new FileReader(path.toString()));
         JsonObject data = gson.fromJson(reader, JsonObject.class);
-        if (data.get("customNightLighting") != null) {
-            customNightLighting = data.get("customNightLighting").getAsBoolean();
-        } else {
-            data.addProperty("customNightLighting", false);
-        }
         if (data.get("customOverworldFog") != null) {
             customOverworldFog = data.get("customOverworldFog").getAsBoolean();
         } else {
