@@ -66,21 +66,33 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
                     if (state.hasProperty(BlockStateProperties.WATERLOGGED) && level.getBlockState(pos).is(Blocks.WATER)) {
                         state = state.setValue(BlockStateProperties.WATERLOGGED, true);
                     }
-                    level.setBlock(pos, state, UPDATE_ALL);
                     BlockState aboveState = level.getBlockState(pos.above());
-                    if ((!state.isFaceSturdy(level, pos, Direction.UP) || state.is(Blocks.PODZOL)) && aboveState.getBlock() instanceof BushBlock) {
-                        BlockState filler = Blocks.AIR.defaultBlockState();
-                        if (aboveState.hasProperty(BlockStateProperties.WATERLOGGED) && aboveState.getValue(BlockStateProperties.WATERLOGGED)) {
-                            filler = Blocks.WATER.defaultBlockState();
+                    boolean cancel = false;
+                    if (state.is(Blocks.MYCELIUM) || state.is(Blocks.PODZOL)) {
+                        if (aboveState.isSolid()) {
+                            if (!aboveState.is(Blocks.ROOTED_DIRT) && !aboveState.is(Blocks.MYCELIUM) && !aboveState.is(Blocks.PODZOL)) {
+                                cancel = true;
+                            } else {
+                                state = Blocks.ROOTED_DIRT.defaultBlockState();
+                            }
                         }
-                        level.setBlock(pos.above(), filler, UPDATE_ALL);
-                        if (aboveState.getBlock() instanceof DoublePlantBlock) {
-                            aboveState = level.getBlockState(pos.above(2));
-                            filler = Blocks.AIR.defaultBlockState();
+                    }
+                    if (!cancel) {
+                        level.setBlock(pos, state, UPDATE_ALL);
+                        if ((!state.isFaceSturdy(level, pos, Direction.UP) || state.is(Blocks.PODZOL)) && aboveState.getBlock() instanceof BushBlock) {
+                            BlockState filler = Blocks.AIR.defaultBlockState();
                             if (aboveState.hasProperty(BlockStateProperties.WATERLOGGED) && aboveState.getValue(BlockStateProperties.WATERLOGGED)) {
                                 filler = Blocks.WATER.defaultBlockState();
                             }
-                            level.setBlock(pos.above(2), filler, UPDATE_ALL);
+                            level.setBlock(pos.above(), filler, UPDATE_ALL);
+                            if (aboveState.getBlock() instanceof DoublePlantBlock) {
+                                aboveState = level.getBlockState(pos.above(2));
+                                filler = Blocks.AIR.defaultBlockState();
+                                if (aboveState.hasProperty(BlockStateProperties.WATERLOGGED) && aboveState.getValue(BlockStateProperties.WATERLOGGED)) {
+                                    filler = Blocks.WATER.defaultBlockState();
+                                }
+                                level.setBlock(pos.above(2), filler, UPDATE_ALL);
+                            }
                         }
                     }
                 }

@@ -155,6 +155,9 @@ public class ColumnFeature extends Feature<ColumnConfiguration> {
                                 if (DripstoneUtils.isEmptyOrWaterOrLava(p_225146_, level1)) {
                                     $$8 = true;
                                     BlockState level2 = configuration.material.getState(randomSource, level1);
+                                    if (level2.is(Blocks.MANGROVE_ROOTS) && level1.getY() < -49) {
+                                        level2 = Blocks.MUDDY_MANGROVE_ROOTS.defaultBlockState();
+                                    }
                                     p_225146_.setBlock(level1, level2, 2);
                                 } else if ($$8 && (existing.is(BlockTags.BASE_STONE_OVERWORLD) || existing.is(BlockTags.TERRACOTTA))) {
                                     break;

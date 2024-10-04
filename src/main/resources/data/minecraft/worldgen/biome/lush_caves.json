@@ -27,7 +27,8 @@
     [
     ],
     [
-      "minecraft:amethyst_geode"
+      "minecraft:amethyst_geode",
+      "hydrol:geological/mangrove_roots_column"
     ],
     [
       "minecraft:monster_room",
@@ -49,7 +50,11 @@
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/cave_vines"
+      "hydrol:cover/cave_vines",
+      "hydrol:cover/flowers/spore_blossom",
+      "hydrol:trees/mangrove_large_underground",
+      "hydrol:trees/red_mushroom_underground",
+      "hydrol:trees/brown_mushroom_short_underground"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -3,7 +3,6 @@ package com.Apothic0n.Hydrological.mixin;
 import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;
@@ -15,8 +14,11 @@ import net.minecraft.world.level.levelgen.*;
 import net.minecraft.world.level.levelgen.blending.Blender;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
 import static com.Apothic0n.Hydrological.api.HydrolMath.unprogressBetweenInts;
 
 @Mixin(NoiseBasedChunkGenerator.class)
@@ -32,8 +34,8 @@ public abstract class NoiseBasedChunkGeneratorMixin {
      * @author Apothicon
      * @reason Prevent flooded caves, and adds lava / water aquifers to them.
      */
-    @Overwrite
-    private ChunkAccess doFill(Blender blender, StructureManager structureManager, RandomState randomState, ChunkAccess chunkAccess, int p_224289_, int p_224290_) {
+    @Inject(method = "doFill", at = @At("HEAD"), cancellable = true)
+    private void doFill(Blender blender, StructureManager structureManager, RandomState randomState, ChunkAccess chunkAccess, int p_224289_, int p_224290_,  CallbackInfoReturnable<ChunkAccess> ci) {
         NoiseChunk $$6 = chunkAccess.getOrCreateNoiseChunk((p_224255_) -> {
             return this.createNoiseChunk(p_224255_, structureManager, blender, randomState);
         });
@@ -91,7 +93,13 @@ public abstract class NoiseBasedChunkGeneratorMixin {
                                 state = this.debugPreliminarySurfaceLevel($$6, $$29, $$24, $$33, state);
                                 if (state != Blocks.AIR.defaultBlockState() && !SharedConstants.debugVoidTerrain(chunkAccess.getPos())) {
                                     if (state == Blocks.WATER.defaultBlockState() || state == Blocks.LAVA.defaultBlockState()) {
-                                        int newY = unprogressBetweenInts(16, 239, HydrolDensityFunctions.heightmap.get(ChunkPos.asLong($$29/4, $$33/4)));
+                                        int newY = 16;
+                                        for (int currentY = 240; currentY > 16; currentY = currentY-4) {
+                                            if (chunkAccess.getBlockState(new BlockPos($$30, currentY, $$34)).isSolid()) {
+                                                newY = currentY;
+                                                currentY = 0;
+                                            }
+                                        }
                                         if (newY-20 > $$24) {
                                             state = Blocks.CAVE_AIR.defaultBlockState();
                                         }
@@ -120,6 +128,6 @@ public abstract class NoiseBasedChunkGeneratorMixin {
         }
 
         $$6.stopInterpolation();
-        return chunkAccess;
+        ci.setReturnValue(chunkAccess);
     }
 }
