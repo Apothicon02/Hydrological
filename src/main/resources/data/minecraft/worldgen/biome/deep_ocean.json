@@ -43,7 +43,8 @@
       "hydrol:cover/sea_pickle"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "minecraft:freeze_top_layer",
+      "hydrol:cover/aquatic_lichen"
     ]
   ],
   "has_precipitation": true,

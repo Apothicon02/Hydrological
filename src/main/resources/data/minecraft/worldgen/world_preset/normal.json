@@ -118,10 +118,64 @@
             },
 
             {
-              "biome": "minecraft:deep_ocean",
+              "biome": "minecraft:deep_frozen_ocean",
               "parameters": {
                 "temperature": [
                   -1,
+                  -0.8
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  1
+                ],
+                "continentalness": [
+                  -1,
+                  -0
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0,
+                  0.03
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:frozen_ocean",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  -0.8
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  1
+                ],
+                "continentalness": [
+                  -1,
+                  -0
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.03,
+                  0.216
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:deep_ocean",
+              "parameters": {
+                "temperature": [
+                  -0.8,
                   1
                 ],
                 "humidity": [
@@ -148,7 +202,7 @@
               "biome": "minecraft:ocean",
               "parameters": {
                 "temperature": [
-                  -1,
+                  -0.8,
                   1
                 ],
                 "humidity": [

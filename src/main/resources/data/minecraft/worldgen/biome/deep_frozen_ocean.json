@@ -13,7 +13,7 @@
       "tick_delay": 6000
     },
     "sky_color": 8103167,
-    "water_color": 4159204,
+    "water_color": 3750089,
     "water_fog_color": 329011
   },
   "features": [
@@ -27,7 +27,8 @@
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
-    [],
+    [
+    ],
     [],
     [
     ],
@@ -36,14 +37,11 @@
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/sugar_cane",
-      "hydrol:cover/tall_grass",
       "hydrol:cover/seagrass_middle",
-      "hydrol:trees/birch_spruce"
+      "hydrol:cover/kelp"
     ],
     [
-      "minecraft:freeze_top_layer",
-      "hydrol:cover/aquatic_lichen"
+      "minecraft:freeze_top_layer"
     ]
   ],
   "has_precipitation": true,
@@ -58,7 +56,14 @@
       }
     ],
     "axolotls": [],
-    "creature": [],
+    "creature": [
+      {
+        "type": "minecraft:polar_bear",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
+      }
+    ],
     "misc": [],
     "monster": [
       {
@@ -113,7 +118,7 @@
         "type": "minecraft:drowned",
         "maxCount": 1,
         "minCount": 1,
-        "weight": 100
+        "weight": 5
       }
     ],
     "underground_water_creature": [
@@ -129,7 +134,7 @@
         "type": "minecraft:salmon",
         "maxCount": 5,
         "minCount": 1,
-        "weight": 5
+        "weight": 15
       }
     ],
     "water_creature": [
@@ -137,9 +142,10 @@
         "type": "minecraft:squid",
         "maxCount": 4,
         "minCount": 1,
-        "weight": 2
+        "weight": 1
       }
     ]
   },
-  "temperature": 0.5
+  "temperature": 0.5,
+  "temperature_modifier": "frozen"
 }

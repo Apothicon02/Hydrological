@@ -23,7 +23,7 @@ public class CliffCarvingFeature extends Feature<NoneFeatureConfiguration> {
         for (int y = 0; y >= -3; y--) {
             BlockPos pos = blockPos.above(y);
             BlockState block = worldGenLevel.getBlockState(pos);
-            if (block.is(Blocks.DIORITE) || block.is(Blocks.GRAVEL) || block.is(Blocks.DEEPSLATE) || block.is(Blocks.SMOOTH_SANDSTONE) || block.isAir() || worldGenLevel.isEmptyBlock(pos)) {
+            if (block.is(Blocks.DIORITE) || block.is(Blocks.DEEPSLATE) || block.is(Blocks.SMOOTH_SANDSTONE)) {
                 worldGenLevel.setBlock(pos, Blocks.AIR.defaultBlockState(), UPDATE_ALL);
             } else {
                 return false;
