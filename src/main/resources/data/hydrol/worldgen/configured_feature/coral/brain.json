@@ -1,0 +1,37 @@
+{
+  "type": "hydrol:tree",
+  "config": {
+    "intersect": true,
+    "canopy_offset": -1,
+    "trunk": {
+      "type": "hydrol:bending_trunk",
+      "crown": false,
+      "count_override": 0,
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 1,
+          "max_inclusive": 5
+        }
+      },
+      "wood": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:brain_coral_block"
+        }
+      }
+    },
+    "canopy": {
+      "type": "hydrol:palm_canopy",
+      "leaves": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:brain_coral_block"
+        }
+      }
+    },
+    "decorations": [
+
+    ]
+  }
+}

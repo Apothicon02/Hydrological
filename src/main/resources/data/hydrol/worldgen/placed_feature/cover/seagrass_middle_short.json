@@ -1,0 +1,53 @@
+{
+  "feature": "hydrol:cover/seagrass_short",
+  "placement": [
+    {
+      "type": "hydrol:noise_cover",
+      "min": -0.1,
+      "max": 0.1,
+      "chance": 0.6
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:would_survive",
+            "state": {
+              "Name": "minecraft:tall_seagrass"
+            }
+          },
+          {
+            "type": "minecraft:matching_fluids",
+            "offset": [
+              0,
+              1,
+              0
+            ],
+            "fluids": "#minecraft:water"
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:matching_blocks",
+              "offset": [
+                0,
+                -1,
+                0
+              ],
+              "blocks": "minecraft:blue_ice"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

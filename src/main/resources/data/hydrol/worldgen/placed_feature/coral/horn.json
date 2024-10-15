@@ -1,0 +1,33 @@
+{
+  "feature": "hydrol:coral/horn",
+  "placement": [
+    {
+      "type": "hydrol:noise_cover",
+      "min": -0.04,
+      "max": 0.04,
+      "chance": 1
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "offset": [
+          0,
+          -1,
+          0
+        ],
+        "blocks": [
+          "minecraft:sand",
+          "minecraft:red_sand"
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
