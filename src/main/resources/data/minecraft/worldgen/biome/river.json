@@ -42,8 +42,7 @@
       "hydrol:trees/birch_spruce"
     ],
     [
-      "hydrol:cover/freeze",
-      "hydrol:cover/aquatic_lichen"
+      "hydrol:cover/freeze"
     ]
   ],
   "has_precipitation": true,

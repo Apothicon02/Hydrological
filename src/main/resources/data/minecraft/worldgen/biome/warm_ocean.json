@@ -46,8 +46,7 @@
       "hydrol:cover/sea_pickle"
     ],
     [
-      "hydrol:cover/freeze",
-      "hydrol:cover/aquatic_lichen"
+      "hydrol:cover/freeze"
     ]
   ],
   "has_precipitation": true,

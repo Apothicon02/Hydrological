@@ -21,8 +21,6 @@ public final class HydrolItems extends Items {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Hydrological.MODID);
 
-    public static final RegistryObject<Item> AQUATIC_LICHEN = ITEMS.register("aquatic_lichen", () ->
-            new PlaceOnWaterBlockItem(HydrolBlocks.AQUATIC_LICHEN.get(), new Item.Properties()));
     public static final RegistryObject<Item> DRY_GRASS = ITEMS.register("dry_grass", () ->
             new BlockItem(HydrolBlocks.DRY_GRASS.get(), new Item.Properties()));
 
@@ -86,6 +84,6 @@ public final class HydrolItems extends Items {
                 return blockList.get(i).get(block);
             }
         }
-        return HydrolBlocks.AQUATIC_LICHEN; //this means it messed up
+        return HydrolBlocks.DRY_GRASS; //this means it messed up
     }
 }

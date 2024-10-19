@@ -32,7 +32,6 @@ public class ClientModEvents {
     @SubscribeEvent
     public static void addItemsToTabs(BuildCreativeModeTabContentsEvent event) {
         if (!HydrolJsonReader.serverSidedOnlyMode && event.getTabKey().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
-            event.accept(HydrolItems.AQUATIC_LICHEN.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(HydrolItems.DRY_GRASS.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             List<List<RegistryObject<Item>>> buildingBlockItems = List.of(HydrolItems.wallItems, HydrolItems.stairItems, HydrolItems.slabItems, HydrolItems.pileItems);
             for (int i = 0; i < buildingBlockItems.size(); i++) {
@@ -126,26 +125,6 @@ public class ClientModEvents {
                     }
                 },
                 Blocks.SAND);
-
-        if (!HydrolJsonReader.serverSidedOnlyMode) {
-            event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
-                        int color = blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageGrassColor(blockAndTintGetter, blockPos) : GrassColor.getDefaultColor();
-                        if (blockPos != null) {
-                            int x = blockPos.getX();
-                            int z = blockPos.getZ();
-                            double saturate = Mth.clamp(NoiseCoverPlacement.HEIGHT_NOISE.getValue(x * 0.66, z * 0.6, false) * 0.1, -0.2, 0.22) + 0.9;
-                            float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255) / 255;
-                            float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255) / 255;
-                            float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255) / 255;
-                            return FastColor.ABGR32.color(FastColor.ABGR32.alpha(color),
-                                    (int) (Mth.clamp(blue * saturate, 0, 1) * 255),
-                                    (int) (Mth.clamp(green * saturate, 0, 1) * 255),
-                                    (int) (Mth.clamp(red * saturate, 0, 1) * 255));
-                        }
-                        return color;
-                    },
-                    HydrolBlocks.AQUATIC_LICHEN.get());
-        }
         
         event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
             if (blockPos != null) {
@@ -229,30 +208,5 @@ public class ClientModEvents {
                 },
                 Blocks.MUD, Blocks.PACKED_MUD, Blocks.MUD_BRICKS, Blocks.MUD_BRICK_STAIRS, Blocks.MUD_BRICK_SLAB, Blocks.MUD_BRICK_WALL,
                 Blocks.MANGROVE_ROOTS);
-    }
-
-    @SubscribeEvent
-    public static void onItemColors(RegisterColorHandlersEvent.Item event) {
-        if (!HydrolJsonReader.serverSidedOnlyMode) {
-            event.register((itemStack, tint) -> {
-                        if (Minecraft.getInstance().level != null) {
-                            BlockPos blockPos = Minecraft.getInstance().player.blockPosition();
-                            int color = Minecraft.getInstance().level != null && Minecraft.getInstance().player != null ? BiomeColors.getAverageFoliageColor(Minecraft.getInstance().level, Minecraft.getInstance().player.blockPosition()) : FoliageColor.getDefaultColor();
-                            int x = blockPos.getX();
-                            int z = blockPos.getZ();
-                            double saturate = Mth.clamp(NoiseCoverPlacement.HEIGHT_NOISE.getValue(x * 0.66, z * 0.6, false) * 0.1, -0.2, 0.22) + 0.9;
-                            float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255) / 255;
-                            float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255) / 255;
-                            float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255) / 255;
-                            return FastColor.ABGR32.color(FastColor.ABGR32.alpha(color),
-                                    (int) (Mth.clamp(blue * saturate, 0, 1) * 255),
-                                    (int) (Mth.clamp(green * saturate, 0, 1) * 255),
-                                    (int) (Mth.clamp(red * saturate, 0, 1) * 255));
-                        } else {
-                            return FastColor.ABGR32.color(1, 0, 179, 89);
-                        }
-                    },
-                    HydrolBlocks.AQUATIC_LICHEN.get());
-        }
     }
 }

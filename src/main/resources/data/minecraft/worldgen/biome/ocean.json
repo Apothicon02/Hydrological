@@ -43,8 +43,7 @@
       "hydrol:cover/sparse_kelp"
     ],
     [
-      "hydrol:cover/freeze",
-      "hydrol:cover/aquatic_lichen"
+      "hydrol:cover/freeze"
     ]
   ],
   "has_precipitation": true,
