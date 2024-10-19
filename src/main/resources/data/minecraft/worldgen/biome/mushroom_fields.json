@@ -44,7 +44,7 @@
       "hydrol:trees/brown_mushroom_short"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "hydrol:cover/freeze"
     ]
   ],
   "has_precipitation": true,

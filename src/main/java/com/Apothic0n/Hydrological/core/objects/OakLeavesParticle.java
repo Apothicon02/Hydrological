@@ -25,8 +25,8 @@ public class OakLeavesParticle extends TextureSheetParticle {
         this.lifetime = 300;
         this.gravity = 7.5E-4F;
         float f = this.random.nextBoolean() ? 0.05F : 0.075F;
-        this.rCol = 1;
-        this.gCol = 0.04F;
+        this.rCol = 0.2F;
+        this.gCol = 1;
         this.bCol = 0;
         this.quadSize = f;
         this.setSize(f, f);

@@ -7,11 +7,31 @@
       "input": "hydrol:normal/heightmap",
       "shift_x": 0,
       "shift_y": {
-        "type": "minecraft:mul",
-        "argument1": 15,
+        "type": "minecraft:add",
+        "argument1": {
+          "type": "minecraft:mul",
+          "argument1": 400,
+          "argument2": {
+            "type": "minecraft:add",
+            "argument1": -0.5,
+            "argument2": {
+              "type": "minecraft:max",
+              "argument1": 0.5,
+              "argument2": {
+                "type": "minecraft:min",
+                "argument1": 0.6,
+                "argument2": "hydrol:normal/temperature"
+              }
+            }
+          }
+        },
         "argument2": {
-          "type": "minecraft:abs",
-          "argument": "hydrol:global/random_variation"
+          "type": "minecraft:mul",
+          "argument1": 15,
+          "argument2": {
+            "type": "minecraft:abs",
+            "argument": "hydrol:global/random_variation"
+          }
         }
       },
       "shift_z": 0

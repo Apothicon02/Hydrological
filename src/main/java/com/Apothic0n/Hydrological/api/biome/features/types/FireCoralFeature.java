@@ -65,9 +65,12 @@ public class FireCoralFeature extends Feature<NoneFeatureConfiguration> {
         }
 
         blocks.forEach((BlockPos pos, BlockState state) -> {
-            level.setBlock(pos, state, UPDATE_ALL);
-            if (context.origin().above(maxHeight).getY() < pos.getY() && level.getBlockState(pos.above()).is(Blocks.WATER)) {
-                level.setBlock(pos.above(), Blocks.FIRE_CORAL.defaultBlockState(), UPDATE_ALL);
+            BlockState aboveBlock = level.getBlockState(pos.above());
+            if (aboveBlock.liquid() || aboveBlock.is(Blocks.FIRE_CORAL_BLOCK)) {
+                level.setBlock(pos, state, UPDATE_ALL);
+                if (context.origin().above(maxHeight).getY() < pos.getY() && aboveBlock.is(Blocks.WATER)) {
+                    level.setBlock(pos.above(), Blocks.FIRE_CORAL.defaultBlockState(), UPDATE_ALL);
+                }
             }
         });
         int randomDirection = random.nextInt(0, 3);

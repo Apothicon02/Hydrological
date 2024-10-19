@@ -1,17 +1,24 @@
 {
   "type": "hydrol:tree",
   "config": {
+    "must_be_fully_submerged": false,
     "intersect": false,
     "canopy_offset": 0,
     "trunk": {
-      "type": "hydrol:branching_trunk",
-      "canopy_offset": false,
-      "count": 1,
+      "type": "hydrol:twisting_trunk",
+      "min_branch_height": 0,
       "height": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 5,
-          "max_inclusive": 12
+          "min_inclusive": 12,
+          "max_inclusive": 28
+        }
+      },
+      "overgrown_chance": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": -100,
+          "max_inclusive": 25
         }
       },
       "wood": {
@@ -26,15 +33,15 @@
       "height": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 2,
-          "max_inclusive": 3
+          "min_inclusive": 3,
+          "max_inclusive": 6
         }
       },
       "radius": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 4,
-          "max_inclusive": 6
+          "min_inclusive": 6,
+          "max_inclusive": 10
         }
       },
       "leaves": {

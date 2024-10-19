@@ -33,14 +33,14 @@
     ],
     [],
     [
-      "hydrol:cover/snow/snow_inv_1",
-      "hydrol:cover/snow/snow_inv_2",
-      "hydrol:cover/snow/snow_inv_3",
+      "hydrol:cover/snow/snow_4",
       "hydrol:cover/snow/snow_inv_4",
-      "hydrol:cover/snow/snow_1",
-      "hydrol:cover/snow/snow_2",
       "hydrol:cover/snow/snow_3",
-      "hydrol:cover/snow/snow_4"
+      "hydrol:cover/snow/snow_inv_3",
+      "hydrol:cover/snow/snow_2",
+      "hydrol:cover/snow/snow_inv_2",
+      "hydrol:cover/snow/snow_1",
+      "hydrol:cover/snow/snow_inv_1"
     ],
     [
       "minecraft:glow_lichen",
@@ -49,7 +49,7 @@
       "hydrol:trees/fir"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "hydrol:cover/freeze"
     ]
   ],
   "has_precipitation": true,

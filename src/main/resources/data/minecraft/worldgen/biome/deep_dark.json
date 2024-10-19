@@ -50,7 +50,7 @@
       "hydrol:geological/amethyst_vines"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "hydrol:cover/freeze"
     ]
   ],
   "has_precipitation": true,

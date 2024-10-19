@@ -43,6 +43,9 @@ public abstract class HydrolFeatureRegistry {
             new FossilFeature(FossilFeatureConfiguration.CODEC));
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> FIRE_CORAL = FEATURES.register("fire_coral", () ->
             new FireCoralFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> FREEZE = FEATURES.register("freeze", () ->
+            new FreezeFeature(NoneFeatureConfiguration.CODEC));
+
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);

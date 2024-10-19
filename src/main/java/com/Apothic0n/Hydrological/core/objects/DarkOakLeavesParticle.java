@@ -25,9 +25,9 @@ public class DarkOakLeavesParticle extends TextureSheetParticle {
         this.lifetime = 300;
         this.gravity = 7.5E-4F;
         float f = this.random.nextBoolean() ? 0.05F : 0.075F;
-        this.rCol = 1;
-        this.gCol = 0.78F;
-        this.bCol = 0;
+        this.rCol = 0;
+        this.gCol = 0.28F;
+        this.bCol = 0.06F;
         this.quadSize = f;
         this.setSize(f, f);
         this.friction = 1.0F;

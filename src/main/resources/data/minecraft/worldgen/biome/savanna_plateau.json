@@ -45,7 +45,7 @@
       "hydrol:trees/baobob_bunched"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "hydrol:cover/freeze"
     ]
   ],
   "has_precipitation": false,

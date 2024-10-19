@@ -59,7 +59,7 @@
       "hydrol:trees/fir"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "hydrol:cover/freeze"
     ]
   ],
   "has_precipitation": true,

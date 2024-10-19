@@ -51,6 +51,12 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
                     break;
                 }
             }
+            if (config.getMustBeFullySubmerged()) {
+                if (!level.getBlockState(pos).liquid() || !level.getBlockState(pos.above()).liquid()) {
+                    enoughSpace = false;
+                    break;
+                }
+            }
         }
         if (enoughSpace) {
             for (Decoration decoration : decorations) {

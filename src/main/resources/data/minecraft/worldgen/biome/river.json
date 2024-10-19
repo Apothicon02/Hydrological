@@ -42,7 +42,7 @@
       "hydrol:trees/birch_spruce"
     ],
     [
-      "minecraft:freeze_top_layer",
+      "hydrol:cover/freeze",
       "hydrol:cover/aquatic_lichen"
     ]
   ],

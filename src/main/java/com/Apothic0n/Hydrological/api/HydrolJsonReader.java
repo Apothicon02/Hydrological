@@ -17,10 +17,10 @@ public class HydrolJsonReader {
     public static boolean serverSidedOnlyMode = false;
     public static int cubicalTerrainScale = 1;
     public static float noiseScale = 1;
-    public static boolean removeCollisionFromSnowLayers = false;
+    public static boolean removeCollisionFromSnowLayers = true;
+    public static boolean addLightEmissionToVanillaBlocks = true;
 
     //Client
-    public static boolean customNightLighting = true;
     public static boolean customOverworldFog = true;
     public static boolean fireflies = true;
 
@@ -33,7 +33,7 @@ public class HydrolJsonReader {
         Gson gson = new Gson();
         if (!Files.exists(path)) {
             JsonWriter writer = new JsonWriter(new FileWriter(path.toString()));
-            JsonObject defaultData = gson.fromJson("{\"serverSidedOnlyMode\":\"false\", \"cubicalTerrainScale\":1}", JsonObject.class);
+            JsonObject defaultData = gson.fromJson("{}", JsonObject.class);
             gson.toJson(defaultData, writer);
             writer.close();
         }
@@ -69,6 +69,11 @@ public class HydrolJsonReader {
         } else {
             data.addProperty("removeCollisionFromSnowLayers", true);
         }
+        if (data.get("addLightEmissionToVanillaBlocks") != null) {
+            addLightEmissionToVanillaBlocks = data.get("addLightEmissionToVanillaBlocks").getAsBoolean();
+        } else {
+            data.addProperty("addLightEmissionToVanillaBlocks", true);
+        }
         JsonWriter writer = new JsonWriter(new FileWriter(path.toString()));
         gson.toJson(data, writer);
         writer.close();
@@ -78,7 +83,7 @@ public class HydrolJsonReader {
         Gson gson = new Gson();
         if (!Files.exists(path)) {
             JsonWriter writer = new JsonWriter(new FileWriter(path.toString()));
-            JsonObject defaultData = gson.fromJson("{\"customOverworldFog\":\"true\", \"fireflies\":\"true\"}", JsonObject.class);
+            JsonObject defaultData = gson.fromJson("{}", JsonObject.class);
             gson.toJson(defaultData, writer);
             writer.close();
         }

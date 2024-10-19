@@ -57,7 +57,7 @@
       "hydrol:trees/palm_underground"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "hydrol:cover/freeze"
     ]
   ],
   "has_precipitation": true,

@@ -46,7 +46,7 @@
       "minecraft:glow_lichen"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "hydrol:cover/freeze"
     ]
   ],
   "has_precipitation": false,

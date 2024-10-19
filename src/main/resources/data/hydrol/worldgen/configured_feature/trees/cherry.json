@@ -1,6 +1,7 @@
 {
   "type": "hydrol:tree",
   "config": {
+    "must_be_fully_submerged": false,
     "intersect": false,
     "canopy_offset": 0,
     "trunk": {

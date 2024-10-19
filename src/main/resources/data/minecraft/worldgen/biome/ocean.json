@@ -43,7 +43,7 @@
       "hydrol:cover/sparse_kelp"
     ],
     [
-      "minecraft:freeze_top_layer",
+      "hydrol:cover/freeze",
       "hydrol:cover/aquatic_lichen"
     ]
   ],
