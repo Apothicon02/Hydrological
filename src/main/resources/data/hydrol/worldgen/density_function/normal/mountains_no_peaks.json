@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:add",
+    "argument1": {
+      "type": "minecraft:y_clamped_gradient",
+      "from_y": 58,
+      "to_y": 72,
+      "from_value": 0,
+      "to_value": -0.05
+    },
+    "argument2": {
+      "type": "minecraft:y_clamped_gradient",
+      "from_y": 63,
+      "to_y": 310,
+      "from_value": 0,
+      "to_value": -0.95
+    }
+  },
+  "argument2": {
+    "type": "minecraft:add",
+    "argument1": "hydrol:normal/base_noise",
+    "argument2": -0.17
+  }
+}

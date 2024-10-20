@@ -1,8 +1,0 @@
-{
-  "type": "hydrol:flatten",
-  "input": {
-    "type": "minecraft:interpolated",
-    "argument": "hydrol:normal/base_terrain"
-  },
-  "at_y": 62
-}
