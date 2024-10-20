@@ -31,6 +31,7 @@ public final class HydrolDensityFunctions {
     public static final RegistryObject<Codec<? extends DensityFunction>> TO_HEIGHTMAP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("to_heightmap", ToHeightmap.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> POLARIZE_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("polarize", Polarize.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> RANGE_CHOICE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("range_choice", RangeChoice.CODEC::codec);
+    public static final RegistryObject<Codec<? extends DensityFunction>> COMPARE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("compare", Compare.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> GRADIENT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("gradient", Gradient.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> STRETCH_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("stretch", Stretch.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> SHIFT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("shift", Shift.CODEC::codec);
@@ -217,6 +218,48 @@ public final class HydrolDensityFunctions {
         @Override
         public @NotNull DensityFunction mapAll(Visitor visitor) {
             return visitor.apply(new RangeChoice(input().mapAll(visitor), minInclusive().mapAll(visitor), maxExclusive().mapAll(visitor), whenInRange().mapAll(visitor), whenOutOfRange().mapAll(visitor)));
+        }
+
+        @Override
+        public double minValue() {
+            return -1875000d;
+        }
+
+        @Override
+        public double maxValue() {
+            return 1875000d;
+        }
+
+        @Override
+        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
+            return CODEC;
+        }
+
+    }
+    protected record Compare(DensityFunction less, DensityFunction greater, DensityFunction correct, DensityFunction incorrect) implements DensityFunction {
+        private static final MapCodec<Compare> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("less").forGetter(Compare::less), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("greater").forGetter(Compare::greater),
+                    DensityFunction.HOLDER_HELPER_CODEC.fieldOf("correct").forGetter(Compare::correct), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("incorrect").forGetter(Compare::incorrect)).apply(data, Compare::new);
+        });
+        public static final KeyDispatchDataCodec<Compare> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
+
+        @Override
+        public double compute(@NotNull FunctionContext context) {
+            if (greater().compute(context) > less().compute(context)) {
+                return correct().compute(context);
+            } else {
+                return incorrect().compute(context);
+            }
+        }
+
+        @Override
+        public void fillArray(double @NotNull [] densities, ContextProvider context) {
+            context.fillAllDirectly(densities, this);
+        }
+
+        @Override
+        public @NotNull DensityFunction mapAll(Visitor visitor) {
+            return visitor.apply(new Compare(less().mapAll(visitor), greater().mapAll(visitor), correct().mapAll(visitor), incorrect().mapAll(visitor)));
         }
 
         @Override
