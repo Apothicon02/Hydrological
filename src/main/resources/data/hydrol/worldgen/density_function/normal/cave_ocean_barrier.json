@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:add",
+  "argument1": 50,
+  "argument2": {
+    "type": "minecraft:mul",
+    "argument1": -1000,
+    "argument2": {
+      "type": "minecraft:abs",
+      "argument": {
+        "type": "minecraft:add",
+        "argument1": 0.05,
+        "argument2": "hydrol:normal/continentalness"
+      }
+    }
+  }
+}

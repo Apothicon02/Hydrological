@@ -1,27 +1,18 @@
 {
-  "type": "minecraft:range_choice",
-  "input": {
-    "type": "minecraft:y_clamped_gradient",
-    "from_y": 15,
-    "to_y": 16,
-    "from_value": 0,
-    "to_value": 1
-  },
-  "min_inclusive": 0,
-  "max_exclusive": 0.1,
-  "when_in_range": 1,
-  "when_out_of_range": {
+  "type": "minecraft:min",
+  "argument1": "hydrol:normal/noodle_caves",
+  "argument2": {
     "type": "minecraft:range_choice",
     "input": {
       "type": "minecraft:y_clamped_gradient",
-      "from_y": 310,
-      "to_y": 310,
-      "from_value": -1,
+      "from_y": 15,
+      "to_y": 16,
+      "from_value": 0,
       "to_value": 1
     },
     "min_inclusive": 0,
-    "max_exclusive": 1000,
-    "when_in_range": 0,
+    "max_exclusive": 0.1,
+    "when_in_range": 1,
     "when_out_of_range": "hydrol:normal/density"
   }
 }
