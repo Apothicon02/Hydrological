@@ -19,6 +19,6 @@
   },
   "argument2": {
     "type": "minecraft:abs",
-    "argument": "hydrol:normal/base_noise"
+    "argument": "hydrol:normal/erosion"
   }
 }

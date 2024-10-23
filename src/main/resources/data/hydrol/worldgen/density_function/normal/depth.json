@@ -26,63 +26,103 @@
       "type": "hydrol:shift",
       "input": {
         "type": "minecraft:range_choice",
-        "input": "hydrol:normal/base_noise",
-        "min_inclusive": 0.2,
-        "max_exclusive": 1,
+        "input": "hydrol:normal/continentalness",
+        "min_inclusive": -2,
+        "max_exclusive": 0,
         "when_in_range": {
           "type": "minecraft:range_choice",
           "input": {
-            "type": "minecraft:add",
-            "argument1": {
-              "type": "minecraft:y_clamped_gradient",
-              "from_y": 63,
-              "to_y": 256,
-              "from_value": 0.025,
-              "to_value": -0.25
-            },
-            "argument2": "hydrol:normal/mountains_no_peaks"
+            "type": "hydrol:flatten",
+            "input": "hydrol:normal/density",
+            "at_y": 67
           },
-          "min_inclusive": -1,
-          "max_exclusive": 0,
+          "min_inclusive": 0.0001,
+          "max_exclusive": 2,
           "when_in_range": 1,
-          "when_out_of_range": 0.1
-        },
-        "when_out_of_range": {
-          "type": "minecraft:range_choice",
-          "input": "hydrol:normal/base_noise",
-          "min_inclusive": -0.4,
-          "max_exclusive": -0.29,
-          "when_in_range": {
+          "when_out_of_range": {
             "type": "minecraft:range_choice",
             "input": {
               "type": "hydrol:flatten",
-              "input": "hydrol:normal/cliff_carvings",
-              "at_y": 72
+              "input": "hydrol:normal/density",
+              "at_y": 61
             },
-            "min_inclusive": -0.1,
-            "max_exclusive": 0,
-            "when_in_range": {
-              "type": "hydrol:compare",
-              "less": {
-                "type": "hydrol:shift",
-                "input": "hydrol:normal/base_noise",
-                "shift_x": 16,
-                "shift_y": 0,
-                "shift_z": 0
-              },
-              "greater": "hydrol:normal/base_noise",
-              "correct": 1,
-              "incorrect": 0.1
-            },
+            "min_inclusive": 0.0001,
+            "max_exclusive": 2,
+            "when_in_range": 0.23,
             "when_out_of_range": 0.1
+          }
+        },
+        "when_out_of_range": {
+          "type": "minecraft:range_choice",
+          "input": {
+            "type": "hydrol:flatten",
+            "input": "hydrol:normal/density",
+            "at_y": 90
           },
+          "min_inclusive": 0.0001,
+          "max_exclusive": 2,
+          "when_in_range": 0.5,
           "when_out_of_range": {
             "type": "minecraft:range_choice",
-            "input": "hydrol:normal/base_noise",
-            "min_inclusive": -0.03,
-            "max_exclusive": 0.03,
-            "when_in_range": 0.01,
-            "when_out_of_range": 0.1
+            "input": "hydrol:normal/erosion",
+            "min_inclusive": 0.2,
+            "max_exclusive": 1,
+            "when_in_range": {
+              "type": "minecraft:range_choice",
+              "input": {
+                "type": "minecraft:add",
+                "argument1": {
+                  "type": "minecraft:y_clamped_gradient",
+                  "from_y": 63,
+                  "to_y": 256,
+                  "from_value": 0.025,
+                  "to_value": -0.25
+                },
+                "argument2": "hydrol:normal/mountains_no_peaks"
+              },
+              "min_inclusive": -1,
+              "max_exclusive": 0,
+              "when_in_range": 1,
+              "when_out_of_range": 0.1
+            },
+            "when_out_of_range": {
+              "type": "minecraft:range_choice",
+              "input": "hydrol:normal/erosion",
+              "min_inclusive": -0.4,
+              "max_exclusive": -0.29,
+              "when_in_range": {
+                "type": "minecraft:range_choice",
+                "input": {
+                  "type": "hydrol:flatten",
+                  "input": "hydrol:normal/cliff_carvings",
+                  "at_y": 72
+                },
+                "min_inclusive": -0.1,
+                "max_exclusive": 0,
+                "when_in_range": {
+                  "type": "hydrol:compare",
+                  "less": {
+                    "type": "hydrol:shift",
+                    "input": "hydrol:normal/erosion",
+                    "shift_x": 16,
+                    "shift_y": 0,
+                    "shift_z": 0
+                  },
+                  "greater": "hydrol:normal/erosion",
+                  "correct": 1,
+                  "incorrect": 0.1
+                },
+                "when_out_of_range": 0.1
+              },
+              "when_out_of_range": {
+                "type": "minecraft:range_choice",
+                "input": "hydrol:normal/erosion",
+                "min_inclusive": -0.03,
+                "max_exclusive": 0.03,
+                "when_in_range": 0.01,
+                "when_out_of_range": 0.1
+              }
+            }
           }
         }
       },

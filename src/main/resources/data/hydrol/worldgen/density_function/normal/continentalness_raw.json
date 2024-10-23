@@ -4,9 +4,9 @@
     "type": "minecraft:cache_once",
     "argument": {
       "type": "hydrol:scalable_noise",
-      "noise": "hydrol:normal/erosion",
-      "xz_scale": 5,
-      "y_scale": 7
+      "noise": "hydrol:normal/continentalness",
+      "xz_scale": 1,
+      "y_scale": 0
     }
   }
 }
