@@ -1,9 +1,12 @@
 {
-  "type": "minecraft:cache_once",
+  "type": "minecraft:interpolated",
   "argument": {
-    "type": "hydrol:scalable_noise",
-    "noise": "hydrol:normal/base_noise",
-    "xz_scale": 5,
-    "y_scale": 7
+    "type": "minecraft:cache_once",
+    "argument": {
+      "type": "hydrol:scalable_noise",
+      "noise": "hydrol:normal/erosion",
+      "xz_scale": 5,
+      "y_scale": 7
+    }
   }
 }

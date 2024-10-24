@@ -17,22 +17,18 @@
     "size_vertical": 1
   },
   "noise_router": {
-    "barrier": "hydrol:normal/heightmap",
-    "fluid_level_floodedness": "hydrol:normal/heightmap",
-    "fluid_level_spread": "hydrol:normal/heightmap",
+    "barrier": -1,
+    "fluid_level_floodedness": -1,
+    "fluid_level_spread": -1,
     "lava": -1,
     "temperature": {
       "type": "hydrol:store_temperature",
       "input": "hydrol:normal/temperature"
     },
-    "vegetation": "hydrol:normal/vegetation",
-    "erosion": {
-      "type": "minecraft:mul",
-      "argument1": 0.01,
-      "argument2": "hydrol:normal/rivers"
-    },
+    "vegetation": 0,
+    "erosion": "hydrol:normal/erosion",
     "continents": "hydrol:normal/continentalness",
-    "depth": "hydrol:normal/heightmap",
+    "depth": "hydrol:normal/depth",
     "ridges": 0,
     "initial_density_without_jaggedness": {
       "type": "minecraft:range_choice",
@@ -2486,10 +2482,10 @@
           "type": "minecraft:vertical_gradient",
           "random_name": "minecraft:deepslate",
           "true_at_and_below": {
-            "absolute": 66
+            "absolute": 65
           },
           "false_at_and_above": {
-            "absolute": 74
+            "absolute": 66
           }
         },
         "then_run": {

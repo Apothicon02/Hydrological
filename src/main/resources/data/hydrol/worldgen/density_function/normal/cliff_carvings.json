@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:mul",
+  "argument1": {
+    "type": "minecraft:y_clamped_gradient",
+    "from_y": 66,
+    "to_y": 256,
+    "from_value": 0,
+    "to_value": -10
+  },
+  "argument2": {
+    "type": "minecraft:add",
+    "argument1": 0.4,
+    "argument2": {
+      "type": "minecraft:max",
+      "argument1": -0.4,
+      "argument2": "hydrol:normal/erosion"
+    }
+  }
+}

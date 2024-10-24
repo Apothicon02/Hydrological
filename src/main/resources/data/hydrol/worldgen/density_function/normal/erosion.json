@@ -1,8 +1,8 @@
 {
-  "type": "hydrol:flatten",
-  "input": {
-    "type": "minecraft:interpolated",
-    "argument": "hydrol:normal/base_terrain"
-  },
-  "at_y": 62
+  "type": "minecraft:mul",
+  "argument1": 0.8,
+  "argument2": {
+    "type": "hydrol:precomputed_noise",
+    "noise": "erosion"
+  }
 }

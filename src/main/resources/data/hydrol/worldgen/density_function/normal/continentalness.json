@@ -1,12 +1,42 @@
 {
-  "type": "minecraft:interpolated",
-  "argument": {
-    "type": "minecraft:cache_once",
-    "argument": {
-      "type": "hydrol:scalable_noise",
-      "noise": "hydrol:normal/continentalness",
-      "xz_scale": 1,
-      "y_scale": 0
+  "type": "minecraft:range_choice",
+  "input": "hydrol:normal/continentalness_raw",
+  "min_inclusive": -0.1,
+  "max_exclusive": 0,
+  "when_in_range": {
+    "type": "minecraft:mul",
+    "argument1": -10,
+    "argument2": {
+      "type": "minecraft:add",
+      "argument1": 0.1,
+      "argument2": "hydrol:normal/continentalness_raw"
+    }
+  },
+  "when_out_of_range": {
+    "type": "minecraft:range_choice",
+    "input": "hydrol:normal/continentalness_raw",
+    "min_inclusive": 0,
+    "max_exclusive": 0.1,
+    "when_in_range": {
+      "type": "minecraft:mul",
+      "argument1": 10,
+      "argument2": {
+        "type": "minecraft:add",
+        "argument1": -0.1,
+        "argument2": "hydrol:normal/continentalness_raw"
+      }
+    },
+    "when_out_of_range": {
+      "type": "minecraft:mul",
+      "argument1": 1.11,
+      "argument2": {
+        "type": "minecraft:add",
+        "argument1": -0.1,
+        "argument2": {
+          "type": "minecraft:abs",
+          "argument": "hydrol:normal/continentalness_raw"
+        }
+      }
     }
   }
 }
