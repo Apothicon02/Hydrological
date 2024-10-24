@@ -1,21 +1,8 @@
 {
-  "type": "hydrol:shift",
-  "input": {
-    "type": "minecraft:range_choice",
-    "input": "hydrol:normal/base_noise",
-    "min_inclusive": 0.2,
-    "max_exclusive": 2,
-    "when_in_range": "hydrol:normal/mountains",
-    "when_out_of_range": {
-      "type": "minecraft:range_choice",
-      "input": "hydrol:normal/base_noise",
-      "min_inclusive": -2,
-      "max_exclusive": -0.2,
-      "when_in_range": "hydrol:normal/cliffs",
-      "when_out_of_range": "hydrol:normal/base"
-    }
-  },
-  "shift_x": 0,
-  "shift_y": "hydrol:normal/vertical_shift",
-  "shift_z": 0
+  "type": "minecraft:range_choice",
+  "input": "hydrol:normal/base_noise",
+  "min_inclusive": 0.2,
+  "max_exclusive": 1,
+  "when_in_range": "hydrol:normal/mountains",
+  "when_out_of_range": "hydrol:normal/base"
 }
