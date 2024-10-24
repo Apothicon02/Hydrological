@@ -8,7 +8,6 @@ import com.mojang.blaze3d.shaders.FogShape;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.util.Mth;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.material.FogType;
 import net.minecraftforge.api.distmarker.Dist;
@@ -40,10 +39,8 @@ public class ClientForgeEvents {
             if (level != null && level.dimension().location().toString().contains("overworld") && event.getCamera().getFluidInCamera() == FogType.NONE) {
                 float y = (float) event.getCamera().getPosition().y();
                 float temp = level.getBiome(event.getCamera().getBlockPosition()).get().getBaseTemperature() * 3;
-                int x = (int) event.getCamera().getPosition().x();
-                int z = (int) event.getCamera().getPosition().z();
-                if (HydrolDensityFunctions.precomputedMaps.get("temperature") != null && x > 0 && x < HydrolDensityFunctions.worldSize && z > 0 && z < HydrolDensityFunctions.worldSize) { //smoother transitions if this is here
-                    temp = HydrolDensityFunctions.precomputedMaps.get("temperature").get(ChunkPos.asLong(x, z)) * 3;
+                if (HydrolDensityFunctions.temperature != null) { //smoother transitions if this is here
+                    temp = (float) HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext((int) event.getCamera().getPosition().x(), (int) y, (int) event.getCamera().getPosition().z())) * 3;
                 }
                 event.setRed(event.getRed() + (((temp - 0.8F) / 25)));
                 event.setGreen(event.getGreen() - (((temp - 0.8F) / 20)));

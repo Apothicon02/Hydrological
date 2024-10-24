@@ -15,7 +15,7 @@ public abstract class BiomeClientMixin {
 
     @Unique
     private int biox$getGrassColorFromTexture() {
-        if (HydrolDensityFunctions.precomputedMaps.get("temperature") != null) {
+        if (HydrolDensityFunctions.temperature != null) {
             return GrassColor.get(1D, 1D);
         } else {
             return getGrassColorFromTexture();

@@ -16,7 +16,7 @@
       "type": "hydrol:shift",
       "input": "hydrol:normal/density",
       "shift_x": 0,
-      "shift_y": 32,
+      "shift_y": 12,
       "shift_z": 0
     },
     "min_inclusive": 0.00001,

@@ -4,34 +4,18 @@ import com.Apothic0n.Hydrological.Hydrological;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2DoubleOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2FloatOpenHashMap;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.DensityFunctions;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 import org.joml.SimplexNoise;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static com.Apothic0n.Hydrological.api.HydrolMath.progressBetweenInts;
@@ -44,8 +28,6 @@ public final class HydrolDensityFunctions {
     public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_islands", FloatingIslands.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> CUBICAL_SCALE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("cubical_scale", CubicalScale.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> SCALABLE_NOISE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("scalable_noise", ScalableNoise.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> PRECOMPUTED_NOISE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("precomputed_noise", PrecomputedNoise.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> SHIFTED_PRECOMPUTED_NOISE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("shifted_precomputed_noise", ShiftedPrecomputedNoise.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> TO_HEIGHTMAP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("to_heightmap", ToHeightmap.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> POLARIZE_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("polarize", Polarize.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> RANGE_CHOICE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("range_choice", RangeChoice.CODEC::codec);
@@ -54,7 +36,6 @@ public final class HydrolDensityFunctions {
     public static final RegistryObject<Codec<? extends DensityFunction>> STRETCH_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("stretch", Stretch.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> SHIFT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("shift", Shift.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> FLATTEN_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("flatten", Flatten.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> STEEP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("steep", Steep.CODEC::codec);
     public static final RegistryObject<Codec<? extends DensityFunction>> STORE_TEMPERATURE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("store_temperature", StoreTemperature.CODEC::codec);
 
     public static void register(IEventBus eventBus) {
@@ -62,6 +43,7 @@ public final class HydrolDensityFunctions {
     }
 
     public static final Long2DoubleOpenHashMap heightmap = new Long2DoubleOpenHashMap();
+    public static DensityFunction temperature;
     public static boolean isFloatingIslands = false;
 
     protected record FloatingBeaches(DensityFunction input) implements DensityFunction {
@@ -449,60 +431,6 @@ public final class HydrolDensityFunctions {
         }
 
     }
-    protected record Steep(DensityFunction input) implements DensityFunction {
-        private static final MapCodec<Steep> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
-            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(Steep::input)).apply(data, Steep::new);
-        });
-        public static final KeyDispatchDataCodec<Steep> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
-
-        @Override
-        public double compute(@NotNull FunctionContext context) {
-            if (context.blockY() >= 66) {
-                if (input.compute(new DensityFunction.SinglePointContext(context.blockX(), context.blockY() - 2, context.blockZ())) < 0.0001) {
-                    return 0;
-                }
-                if (input.compute(new DensityFunction.SinglePointContext(context.blockX() + 2, context.blockY() - 2, context.blockZ())) < 0.0001) {
-                    return 1;
-                }
-                if (input.compute(new DensityFunction.SinglePointContext(context.blockX() - 2, context.blockY() - 2, context.blockZ())) < 0.0001) {
-                    return 1;
-                }
-                if (input.compute(new DensityFunction.SinglePointContext(context.blockX(), context.blockY() - 2, context.blockZ() + 2)) < 0.0001) {
-                    return 1;
-                }
-                if (input.compute(new DensityFunction.SinglePointContext(context.blockX(), context.blockY() - 2, context.blockZ() - 2)) < 0.0001) {
-                    return 1;
-                }
-            }
-            return 0;
-        }
-
-        @Override
-        public void fillArray(double @NotNull [] densities, ContextProvider context) {
-            context.fillAllDirectly(densities, this);
-        }
-
-        @Override
-        public @NotNull DensityFunction mapAll(Visitor visitor) {
-            return visitor.apply(new Steep(this.input().mapAll(visitor)));
-        }
-
-        @Override
-        public double minValue() {
-            return -1875000d;
-        }
-
-        @Override
-        public double maxValue() {
-            return 1875000d;
-        }
-
-        @Override
-        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
-            return CODEC;
-        }
-
-    }
     protected record StoreTemperature(DensityFunction input) implements DensityFunction {
         private static final MapCodec<StoreTemperature> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
             return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(StoreTemperature::input)).apply(data, StoreTemperature::new);
@@ -511,9 +439,9 @@ public final class HydrolDensityFunctions {
 
         @Override
         public double compute(@NotNull FunctionContext context) {
-            //if (temperature == null) {
-                //temperature = input();
-            //}
+            if (temperature == null) {
+                temperature = input();
+            }
             return input.compute(context);
         }
 
@@ -678,104 +606,6 @@ public final class HydrolDensityFunctions {
         @Override
         public double maxValue() {
             return this.noise.maxValue();
-        }
-
-        @Override
-        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
-            return CODEC;
-        }
-    }
-
-    //public static BufferedImage erosion;
-    public static int worldSize = 1000;
-    public static Map<String, Map<Long, Float>> precomputedMaps = Map.of(
-            "surface_variation", Hydrological.generateNoiseMap(worldSize, 1f, 9, new NormalNoise.NoiseParameters(-6, 1)),
-            "erosion", Hydrological.generateNoiseMap(worldSize, 0.66f, 9, new NormalNoise.NoiseParameters(-8, 1)),
-            "continentalness", Hydrological.generateNoiseMap(worldSize, 1f, 9, new NormalNoise.NoiseParameters(-11, 1, 0, 0, 0, -0.1)),
-            "temperature", Hydrological.generateNoiseMap(worldSize, 1f, 9, new NormalNoise.NoiseParameters(-11, 1.5, 0, 1, 0, 0, 0, 3, 0, -1, 0, 0, 0, 2))
-    );
-
-    public static void init() throws IOException {
-        //erosion = ImageIO.read(new File(FMLPaths.MODSDIR.get()+"/noise_images/erosion0.png"));
-    }
-
-    protected record PrecomputedNoise(String noise) implements DensityFunction {
-        private static final MapCodec<PrecomputedNoise> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
-            return data.group(Codec.STRING.fieldOf("noise").forGetter(PrecomputedNoise::noise)).apply(data, PrecomputedNoise::new);
-        });
-        public static final KeyDispatchDataCodec<PrecomputedNoise> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
-
-        @Override
-        public double compute(@NotNull FunctionContext context) {
-            int x = context.blockX();
-            int z = context.blockZ();
-            if (x >= 0 && z >= 0 && x < worldSize && z < worldSize) {
-                //return ((erosion.getRGB(x, z) & 0xff)-127)/100f;
-                return precomputedMaps.get(noise).get(ChunkPos.asLong(x, z));
-            }
-            return 0;
-        }
-
-        @Override
-        public void fillArray(double @NotNull [] densities, ContextProvider context) {
-            context.fillAllDirectly(densities, this);
-        }
-
-        @Override
-        public @NotNull DensityFunction mapAll(Visitor visitor) {
-            return visitor.apply(new PrecomputedNoise(noise));
-        }
-
-        @Override
-        public double minValue() {
-            return -1875000d;
-        }
-
-        @Override
-        public double maxValue() {
-            return 1875000d;
-        }
-
-        @Override
-        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
-            return CODEC;
-        }
-    }
-    protected record ShiftedPrecomputedNoise(String noise, DensityFunction shiftX, DensityFunction shiftZ) implements DensityFunction {
-        private static final MapCodec<ShiftedPrecomputedNoise> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
-            return data.group(Codec.STRING.fieldOf("noise").forGetter(ShiftedPrecomputedNoise::noise), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("shift_x").forGetter(ShiftedPrecomputedNoise::shiftX), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("shift_z").forGetter(ShiftedPrecomputedNoise::shiftZ)).apply(data, ShiftedPrecomputedNoise::new);
-        });
-        public static final KeyDispatchDataCodec<ShiftedPrecomputedNoise> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
-
-        @Override
-        public double compute(@NotNull FunctionContext context) {
-            int x = context.blockX() + (int) shiftX.compute(context);
-            int z = context.blockZ() + (int) shiftZ.compute(context);
-            if (x >= 0 && z >= 0 && x < worldSize && z < worldSize) {
-                //return ((erosion.getRGB(x, z) & 0xff)-127)/100f;
-                return precomputedMaps.get(noise).get(ChunkPos.asLong(x, z));
-            }
-            return 0;
-        }
-
-        @Override
-        public void fillArray(double @NotNull [] densities, ContextProvider context) {
-            context.fillAllDirectly(densities, this);
-        }
-
-        @Override
-        public @NotNull DensityFunction mapAll(Visitor visitor) {
-            return visitor.apply(new ShiftedPrecomputedNoise(noise, shiftX.mapAll(visitor), shiftZ.mapAll(visitor)));
-        }
-
-        @Override
-        public double minValue() {
-            return -1875000d;
-        }
-
-        @Override
-        public double maxValue() {
-            return 1875000d;
         }
 
         @Override
