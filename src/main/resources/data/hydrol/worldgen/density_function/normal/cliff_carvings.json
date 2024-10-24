@@ -13,7 +13,7 @@
     "argument2": {
       "type": "minecraft:max",
       "argument1": -0.4,
-      "argument2": "hydrol:normal/erosion"
+      "argument2": "hydrol:normal/base_noise"
     }
   }
 }

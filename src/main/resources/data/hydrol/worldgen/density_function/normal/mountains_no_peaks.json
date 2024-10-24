@@ -19,7 +19,7 @@
   },
   "argument2": {
     "type": "minecraft:add",
-    "argument1": "hydrol:normal/erosion",
+    "argument1": "hydrol:normal/base_noise",
     "argument2": -0.17
   }
 }

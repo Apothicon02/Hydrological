@@ -281,11 +281,38 @@
               }
             },
             {
+              "biome": "minecraft:stony_shore",
+              "parameters": {
+                "temperature": [
+                  -0.8,
+                  -0.7
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  1
+                ],
+                "continentalness": [
+                  -1,
+                  0
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.216,
+                  0.25
+                ],
+                "offset": 0
+              }
+            },
+            {
               "biome": "minecraft:snowy_beach",
               "parameters": {
                 "temperature": [
                   -1,
-                  -0.7
+                  -0.8
                 ],
                 "humidity": [
                   -1,
