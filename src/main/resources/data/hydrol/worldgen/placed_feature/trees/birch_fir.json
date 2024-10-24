@@ -5,7 +5,8 @@
       "type": "hydrol:noise_cover",
       "min": 0.35,
       "max": 10,
-      "chance": 0.025
+      "chance": 0.025,
+      "multilpier": 1
     },
     {
       "type": "minecraft:in_square"

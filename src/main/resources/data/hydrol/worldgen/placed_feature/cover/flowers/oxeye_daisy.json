@@ -5,7 +5,8 @@
       "type": "hydrol:noise_cover",
       "min": -0.11,
       "max": -0.09,
-      "chance": 0.22
+      "chance": 0.22,
+      "multilpier": 1
     },
     {
       "type": "minecraft:heightmap",

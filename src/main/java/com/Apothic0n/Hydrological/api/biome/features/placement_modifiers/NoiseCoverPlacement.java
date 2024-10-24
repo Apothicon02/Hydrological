@@ -23,22 +23,26 @@ public class NoiseCoverPlacement extends PlacementModifier {
             return v.max;
         }), Codec.DOUBLE.fieldOf("chance").forGetter((v) -> {
             return v.chance;
+        }), Codec.DOUBLE.fieldOf("multilpier").forGetter((v) -> {
+            return v.chance;
         })).apply(p_191761_, NoiseCoverPlacement::new);
     });
     private final double min;
     private final double max;
     private final double chance;
+    private final double multiplier;
 
-    private NoiseCoverPlacement(double min, double max, double chance) {
+    private NoiseCoverPlacement(double min, double max, double chance, double multiplier) {
         this.min = min;
         this.max = max;
         this.chance = chance;
+        this.multiplier = multiplier;
     }
 
     public static final PerlinSimplexNoise HEIGHT_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(-6, 1));
 
-    public static NoiseCoverPlacement of(double min, double max, double chance) {
-        return new NoiseCoverPlacement(min, max, chance);
+    public static NoiseCoverPlacement of(double min, double max, double chance, double multiplier) {
+        return new NoiseCoverPlacement(min, max, chance, multiplier);
     }
 
     public Stream<BlockPos> getPositions(PlacementContext context, RandomSource random, BlockPos pos) {
@@ -46,7 +50,7 @@ public class NoiseCoverPlacement extends PlacementModifier {
         for (int x = pos.getX(); x <= pos.getX() + 15; x++) {
             for (int z = pos.getZ(); z <= pos.getZ() + 15; z++) {
                 if (chance > random.nextInt(0, 1000)/1000D) {
-                    double noise = HEIGHT_NOISE.getValue(x, z, false);
+                    double noise = HEIGHT_NOISE.getValue(x, z, false)*multiplier;
                     if (noise < max && noise > min) {
                         list.add(list.size(), new BlockPos(x, pos.getY(), z));
                     }

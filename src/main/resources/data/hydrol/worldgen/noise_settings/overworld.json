@@ -957,7 +957,8 @@
                 "type": "minecraft:biome",
                 "biome_is": [
                   "minecraft:forest",
-                  "minecraft:dark_forest"
+                  "minecraft:dark_forest",
+                  "minecraft:flower_forest"
                 ]
               },
               "then_run": {
@@ -1423,7 +1424,8 @@
                   "minecraft:jungle",
                   "minecraft:forest",
                   "minecraft:sparse_jungle",
-                  "minecraft:sunflower_plains"
+                  "minecraft:sunflower_plains",
+                  "minecraft:flower_forest"
                 ]
               },
               "then_run": {

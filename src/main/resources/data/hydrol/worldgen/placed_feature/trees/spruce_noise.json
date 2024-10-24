@@ -5,7 +5,8 @@
       "type": "hydrol:noise_cover",
       "min": -10,
       "max": -0.1,
-      "chance": 0.004
+      "chance": 0.004,
+      "multilpier": 1
     },
     {
       "type": "minecraft:random_offset",
