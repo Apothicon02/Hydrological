@@ -100,7 +100,7 @@ public abstract class NoiseBasedChunkGeneratorMixin {
                                                 currentY = 0;
                                             }
                                         }
-                                        if (newY-8 > $$24) {
+                                        if (newY-20 > $$24) {
                                             state = Blocks.CAVE_AIR.defaultBlockState();
                                         }
                                         if (newY <= 48 && $$24 < -55) {

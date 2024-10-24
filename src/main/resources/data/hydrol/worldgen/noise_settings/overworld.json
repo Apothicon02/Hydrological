@@ -27,7 +27,7 @@
     },
     "vegetation": 0,
     "erosion": 0,
-    "continents": "hydrol:normal/continentalness",
+    "continents": 1,
     "depth": "hydrol:normal/depth",
     "ridges": 0,
     "initial_density_without_jaggedness": {
