@@ -1,15 +1,4 @@
 {
-  "type": "minecraft:interpolated",
-  "argument": {
-    "type": "minecraft:cache_once",
-    "argument": {
-      "type": "minecraft:cache_2d",
-      "argument": {
-        "type": "hydrol:scalable_noise",
-        "noise": "hydrol:normal/temperature",
-        "xz_scale": 1,
-        "y_scale": 0
-      }
-    }
-  }
+  "type": "hydrol:precomputed_noise",
+  "noise": "temperature"
 }

@@ -2,15 +2,7 @@
   "type": "minecraft:mul",
   "argument1": 0.8,
   "argument2": {
-    "type": "minecraft:interpolated",
-    "argument": {
-      "type": "minecraft:cache_once",
-      "argument": {
-        "type": "minecraft:noise",
-        "noise": "hydrol:normal/erosion",
-        "xz_scale": 0.66,
-        "y_scale": 0
-      }
-    }
+    "type": "hydrol:precomputed_noise",
+    "noise": "erosion"
   }
 }

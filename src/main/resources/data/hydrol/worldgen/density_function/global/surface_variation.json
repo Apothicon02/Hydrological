@@ -1,12 +1,4 @@
 {
-  "type": "minecraft:interpolated",
-  "argument": {
-    "type": "minecraft:cache_once",
-    "argument": {
-      "type": "hydrol:scalable_noise",
-      "noise": "hydrol:global/surface_variation",
-      "xz_scale": 1,
-      "y_scale": 0
-    }
-  }
+  "type": "hydrol:precomputed_noise",
+  "noise": "surface_variation"
 }
