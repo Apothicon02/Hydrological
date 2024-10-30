@@ -1,0 +1,77 @@
+{
+  "type": "hydrol:simple_block",
+  "config": {
+    "replace": false,
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 132,
+          "data": {
+            "Name": "minecraft:small_dripleaf",
+            "Properties": {
+              "facing": "north",
+              "half": "lower",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "weight": 130,
+          "data": {
+            "Name": "minecraft:small_dripleaf",
+            "Properties": {
+              "facing": "east",
+              "half": "lower",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "weight": 128,
+          "data": {
+            "Name": "minecraft:small_dripleaf",
+            "Properties": {
+              "facing": "south",
+              "half": "lower",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "weight": 4,
+          "data": {
+            "Name": "minecraft:big_dripleaf",
+            "Properties": {
+              "facing": "north",
+              "tilt": "none",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "weight": 3,
+          "data": {
+            "Name": "minecraft:big_dripleaf",
+            "Properties": {
+              "facing": "east",
+              "tilt": "none",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "weight": 3,
+          "data": {
+            "Name": "minecraft:big_dripleaf",
+            "Properties": {
+              "facing": "south",
+              "tilt": "none",
+              "waterlogged": "false"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

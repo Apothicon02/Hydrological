@@ -53,10 +53,10 @@
       "hydrol:cover/grass_positive",
       "hydrol:shrubs/mangrove_square",
       "hydrol:shrubs/birch",
-      "hydrol:trees/dark_oak_sparse",
       "hydrol:trees/dark_willow",
-      "hydrol:trees/oak",
-      "hydrol:trees/willow_extra"
+      "hydrol:trees/dark_oak_sparse",
+      "hydrol:trees/willow",
+      "hydrol:trees/oak"
     ],
     [
       "hydrol:cover/freeze"

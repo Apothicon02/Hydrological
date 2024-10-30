@@ -62,8 +62,8 @@
       "hydrol:shrubs/mangrove_square",
       "hydrol:shrubs/birch",
       "hydrol:trees/red_mushroom_sparse",
-      "hydrol:trees/dark_oak",
-      "hydrol:trees/dark_willow_extra"
+      "hydrol:trees/dark_willow_extra",
+      "hydrol:trees/dark_oak"
     ],
     [
       "hydrol:cover/freeze"

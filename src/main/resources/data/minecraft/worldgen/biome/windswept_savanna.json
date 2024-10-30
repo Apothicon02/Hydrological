@@ -3,7 +3,7 @@
     "air": [
     ]
   },
-  "downfall": 0.8,
+  "downfall": 0.0,
   "effects": {
     "fog_color": 12638463,
     "mood_sound": {
@@ -12,16 +12,9 @@
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "minecraft:music.overworld.forest"
-    },
-    "sky_color": 7972607,
+    "sky_color": 7254527,
     "water_color": 4159204,
-    "water_fog_color": 329011,
-    "grass_color": 7392647
+    "water_fog_color": 329011
   },
   "features": [
     [],
@@ -43,26 +36,20 @@
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/flowers/orange_tulip",
-      "hydrol:cover/flowers/poppy",
-      "hydrol:cover/flowers/red_tulip",
-      "hydrol:cover/flowers/rose_bush",
-      "hydrol:cover/dry_grass/dry_grass_1",
-      "hydrol:cover/tall_grass_middle",
-      "hydrol:cover/grass_negative",
-      "hydrol:cover/grass_positive",
-      "hydrol:shrubs/mangrove_square",
-      "hydrol:shrubs/birch",
-      "hydrol:trees/red_mushroom_sparse",
-      "hydrol:trees/dark_willow_extra",
-      "hydrol:trees/dark_oak_short",
-      "hydrol:trees/dark_oak"
+      "hydrol:cover/flowers/azure_bluet_negative",
+      "hydrol:cover/flowers/blue_orchid",
+      "hydrol:cover/flowers/pitcher_plant",
+      "hydrol:cover/dry_grass/tall_dry_grass_middle",
+      "hydrol:cover/dry_grass/short_dry_grass_negative",
+      "hydrol:cover/dry_grass/dry_grass_positive",
+      "hydrol:cover/dripleaves_negative",
+      "hydrol:shrubs/mangrove_less"
     ],
     [
       "hydrol:cover/freeze"
     ]
   ],
-  "has_precipitation": true,
+  "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {
     "ambient": [
@@ -98,6 +85,18 @@
         "maxCount": 4,
         "minCount": 4,
         "weight": 8
+      },
+      {
+        "type": "minecraft:horse",
+        "maxCount": 6,
+        "minCount": 2,
+        "weight": 1
+      },
+      {
+        "type": "minecraft:donkey",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 1
       }
     ],
     "misc": [],
@@ -162,5 +161,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.7
+  "temperature": 2.0
 }

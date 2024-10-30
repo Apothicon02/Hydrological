@@ -25,22 +25,24 @@ public abstract class BiomeMixin {
     @Inject(method = "shouldFreeze(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Z)Z", at = @At("HEAD"), cancellable = true)
     public void shouldFreeze(LevelReader level, BlockPos blockPos, boolean bool, CallbackInfoReturnable<Boolean> ci) {
         boolean shouldFreeze = false;
-        if (HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext(blockPos.getX(), blockPos.getY(), blockPos.getZ())) < -0.8) {
-            if (blockPos.getY() >= level.getMinBuildHeight() && blockPos.getY() < level.getMaxBuildHeight() && level.getBrightness(LightLayer.BLOCK, blockPos) < 10) {
-                BlockState blockstate = level.getBlockState(blockPos);
-                FluidState fluidstate = level.getFluidState(blockPos);
-                if (fluidstate.getType() == Fluids.WATER && blockstate.getBlock() instanceof LiquidBlock) {
-                    if (!bool) {
-                        shouldFreeze = true;
-                    } else {
-                        boolean flag = level.isWaterAt(blockPos.west()) && level.isWaterAt(blockPos.east()) && level.isWaterAt(blockPos.north()) && level.isWaterAt(blockPos.south());
-                        if (!flag) {
+        if (HydrolDensityFunctions.temperature != null) {
+            if (HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext(blockPos.getX(), blockPos.getY(), blockPos.getZ())) < -0.8) {
+                if (blockPos.getY() >= level.getMinBuildHeight() && blockPos.getY() < level.getMaxBuildHeight() && level.getBrightness(LightLayer.BLOCK, blockPos) < 10) {
+                    BlockState blockstate = level.getBlockState(blockPos);
+                    FluidState fluidstate = level.getFluidState(blockPos);
+                    if (fluidstate.getType() == Fluids.WATER && blockstate.getBlock() instanceof LiquidBlock) {
+                        if (!bool) {
                             shouldFreeze = true;
+                        } else {
+                            boolean flag = level.isWaterAt(blockPos.west()) && level.isWaterAt(blockPos.east()) && level.isWaterAt(blockPos.north()) && level.isWaterAt(blockPos.south());
+                            if (!flag) {
+                                shouldFreeze = true;
+                            }
                         }
                     }
                 }
             }
+            ci.setReturnValue(shouldFreeze);
         }
-        ci.setReturnValue(shouldFreeze);
     }
 }

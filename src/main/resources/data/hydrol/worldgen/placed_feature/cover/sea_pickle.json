@@ -12,6 +12,25 @@
       "heightmap": "OCEAN_FLOOR_WG"
     },
     {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "offset": [
+          0,
+          -1,
+          0
+        ],
+        "blocks": [
+          "minecraft:moss_block",
+          "minecraft:mossy_cobblestone",
+          "minecraft:gravel",
+          "minecraft:sand",
+          "minecraft:dirt",
+          "minecraft:clay"
+        ]
+      }
+    },
+    {
       "type": "minecraft:biome"
     }
   ]

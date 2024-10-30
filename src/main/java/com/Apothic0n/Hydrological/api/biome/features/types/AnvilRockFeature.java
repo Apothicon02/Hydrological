@@ -24,7 +24,7 @@ public class AnvilRockFeature extends Feature<AnvilRockConfiguration> {
         Integer stretch = config.getStretch().sample(random);
         Integer maxHeight = height-1;
         Boolean forced = config.getForced();
-        if (!forced && worldGenLevel.isEmptyBlock(blockpos.below())) {
+        if (!forced && !worldGenLevel.getBlockState(blockpos.below()).isSolid()) {
             return false;
         } else {
             int randomNumber = (int)(Math.random()*(4));

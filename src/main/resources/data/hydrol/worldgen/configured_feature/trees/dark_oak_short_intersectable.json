@@ -2,46 +2,46 @@
   "type": "hydrol:tree",
   "config": {
     "must_be_fully_submerged": false,
-    "intersect": false,
+    "intersect": true,
     "canopy_offset": 0,
     "trunk": {
       "type": "hydrol:twisting_trunk",
-      "min_branch_height": 8,
+      "min_branch_height": 7,
       "height": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 12,
-          "max_inclusive": 28
+          "min_inclusive": 9,
+          "max_inclusive": 13
         }
       },
       "overgrown_chance": 1,
       "wood": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:oak_wood"
+          "Name": "minecraft:dark_oak_wood"
         }
       }
     },
     "canopy": {
-      "type": "hydrol:sphere_canopy",
+      "type": "hydrol:square_canopy",
       "height": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 3,
-          "max_inclusive": 6
+          "min_inclusive": 2,
+          "max_inclusive": 4
         }
       },
       "radius": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 6,
-          "max_inclusive": 10
+          "min_inclusive": 3,
+          "max_inclusive": 5
         }
       },
       "leaves": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:oak_leaves",
+          "Name": "minecraft:dark_oak_leaves",
           "Properties": {
             "persistent": "true"
           }
@@ -54,14 +54,14 @@
         "offset": {
           "type": "minecraft:uniform",
           "value": {
-            "min_inclusive": -1,
-            "max_inclusive": 1
+            "min_inclusive": -2,
+            "max_inclusive": 2
           }
         },
         "radius": {
           "type": "minecraft:uniform",
           "value": {
-            "min_inclusive": 5,
+            "min_inclusive": 6,
             "max_inclusive": 8
           }
         },
@@ -77,14 +77,14 @@
         "length": {
           "type": "minecraft:uniform",
           "value": {
-            "min_inclusive": -3,
-            "max_inclusive": 2
+            "min_inclusive": -4,
+            "max_inclusive": 4
           }
         },
         "leaves": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "hydrol:oak_leaves_wall"
+            "Name": "hydrol:dark_oak_leaves_wall"
           }
         }
       },
@@ -93,24 +93,14 @@
         "length": {
           "type": "minecraft:uniform",
           "value": {
-            "min_inclusive": -3,
+            "min_inclusive": 1,
             "max_inclusive": 3
           }
         },
         "roots": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "hydrol:oak_wood_wall"
-          }
-        }
-      },
-      {
-        "type": "hydrol:leaf_piles",
-        "length": 7,
-        "leaves": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "hydrol:oak_leaves_pile"
+            "Name": "minecraft:dark_oak_wood"
           }
         }
       }
