@@ -1,0 +1,45 @@
+{
+  "feature": "hydrol:cover/flowers/pitcher_plant",
+  "placement": [
+    {
+      "type": "hydrol:noise_cover",
+      "min": -10,
+      "max": -0.07,
+      "chance": 0.003,
+      "multilpier": 1
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:matching_blocks",
+              "offset": [
+                0,
+                -1,
+                0
+              ],
+              "blocks": "minecraft:mud"
+            }
+          },
+          {
+            "type": "minecraft:would_survive",
+            "state": {
+              "Name": "minecraft:pitcher_plant"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
