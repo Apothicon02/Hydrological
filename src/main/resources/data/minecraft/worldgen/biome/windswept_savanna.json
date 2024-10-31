@@ -43,7 +43,9 @@
       "hydrol:cover/dry_grass/short_dry_grass_negative",
       "hydrol:cover/dry_grass/dry_grass_positive",
       "hydrol:cover/dripleaves_negative",
-      "hydrol:shrubs/mangrove_less"
+      "hydrol:shrubs/acacia_rare",
+      "hydrol:trees/acacia",
+      "hydrol:trees/baobob_bunched"
     ],
     [
       "hydrol:cover/freeze"
