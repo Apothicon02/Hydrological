@@ -12,6 +12,7 @@
     "BlockItemMixin",
     "DripstoneUtilsMixin",
     "GrowingPlantBlockMixin",
+    "LeavesBlockMixin",
     "LevelChunkMixin",
     "NoiseBasedChunkGeneratorMixin",
     "SaplingBlockMixin",

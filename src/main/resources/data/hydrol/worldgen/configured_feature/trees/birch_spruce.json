@@ -27,7 +27,7 @@
         "state": {
           "Name": "minecraft:birch_leaves",
           "Properties": {
-            "persistent": "true"
+            "persistent": "false"
           }
         }
       }

@@ -29,7 +29,7 @@
         "state": {
           "Name": "minecraft:jungle_leaves",
           "Properties": {
-            "persistent": "true"
+            "persistent": "false"
           }
         }
       }

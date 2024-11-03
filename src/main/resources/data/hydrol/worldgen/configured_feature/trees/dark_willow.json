@@ -49,7 +49,7 @@
         "state": {
           "Name": "minecraft:dark_oak_leaves",
           "Properties": {
-            "persistent": "true"
+            "persistent": "false"
           }
         }
       }
