@@ -1,6 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.decorations;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.Mutable;
 import java.util.Map;
 
 public class HangingLeavesDecorationType extends Decoration {
-    public static final Codec<HangingLeavesDecorationType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<HangingLeavesDecorationType> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             (IntProvider.CODEC.fieldOf("length")).forGetter(v -> v.length),
             (BlockStateProvider.CODEC.fieldOf("leaves")).forGetter(v -> v.leaves)
     ).apply(instance, HangingLeavesDecorationType::new));

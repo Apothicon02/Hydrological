@@ -9,10 +9,8 @@
       "min_branch_height": 8,
       "height": {
         "type": "minecraft:uniform",
-        "value": {
           "min_inclusive": 12,
           "max_inclusive": 18
-        }
       },
       "overgrown_chance": 1,
       "wood": {
@@ -26,17 +24,13 @@
       "type": "hydrol:sphere_canopy",
       "height": {
         "type": "minecraft:uniform",
-        "value": {
           "min_inclusive": 3,
           "max_inclusive": 6
-        }
       },
       "radius": {
         "type": "minecraft:uniform",
-        "value": {
           "min_inclusive": 6,
           "max_inclusive": 10
-        }
       },
       "leaves": {
         "type": "minecraft:simple_state_provider",
@@ -53,17 +47,13 @@
         "type": "hydrol:ground",
         "offset": {
           "type": "minecraft:uniform",
-          "value": {
             "min_inclusive": -1,
             "max_inclusive": 1
-          }
         },
         "radius": {
           "type": "minecraft:uniform",
-          "value": {
             "min_inclusive": 5,
             "max_inclusive": 8
-          }
         },
         "replace_with": {
           "type": "minecraft:simple_state_provider",
@@ -76,10 +66,8 @@
         "type": "hydrol:hanging_leaves",
         "length": {
           "type": "minecraft:uniform",
-          "value": {
             "min_inclusive": -3,
             "max_inclusive": 2
-          }
         },
         "leaves": {
           "type": "minecraft:simple_state_provider",
@@ -92,10 +80,8 @@
         "type": "hydrol:roots",
         "length": {
           "type": "minecraft:uniform",
-          "value": {
             "min_inclusive": -3,
             "max_inclusive": 3
-          }
         },
         "roots": {
           "type": "minecraft:simple_state_provider",

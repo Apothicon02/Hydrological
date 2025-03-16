@@ -10,12 +10,12 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.material.FogType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ViewportEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ViewportEvent;
 
-@Mod.EventBusSubscriber(modid = Hydrological.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Hydrological.MODID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
 public class ClientForgeEvents {
     @SubscribeEvent
     public static void renderFog(ViewportEvent.RenderFog event) {
@@ -38,7 +38,7 @@ public class ClientForgeEvents {
             ClientLevel level = instance.level;
             if (level != null && level.dimension().location().toString().contains("overworld") && event.getCamera().getFluidInCamera() == FogType.NONE) {
                 float y = (float) event.getCamera().getPosition().y();
-                float temp = level.getBiome(event.getCamera().getBlockPosition()).get().getBaseTemperature() * 3;
+                float temp = level.getBiome(event.getCamera().getBlockPosition()).value().getBaseTemperature() * 3;
                 if (HydrolDensityFunctions.temperature != null) { //smoother transitions if this is here
                     temp = (float) HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext((int) event.getCamera().getPosition().x(), (int) y, (int) event.getCamera().getPosition().z())) * 3;
                 }

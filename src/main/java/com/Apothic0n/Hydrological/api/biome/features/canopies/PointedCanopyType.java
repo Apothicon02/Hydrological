@@ -1,6 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.canopies;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
@@ -15,7 +15,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import java.util.Map;
 
 public class PointedCanopyType extends Canopy {
-    public static final Codec<PointedCanopyType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<PointedCanopyType> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             (BlockStateProvider.CODEC.fieldOf("leaves")).forGetter(v -> v.leaves)
     ).apply(instance, PointedCanopyType::new));
 

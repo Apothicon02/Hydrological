@@ -1,0 +1,3 @@
+/gamerule randomTickSpeed 130
+/gamemode spectator
+/time set 0

@@ -2,7 +2,7 @@ package com.Apothic0n.Hydrological.api.biome.features.decorations;
 
 import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.api.biome.features.placement_modifiers.NoiseCoverPlacement;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
@@ -20,7 +20,7 @@ import java.util.Map;
 import static net.minecraft.world.level.block.Block.UPDATE_ALL;
 
 public class LeafPilesDecorationType extends Decoration {
-    public static final Codec<LeafPilesDecorationType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<LeafPilesDecorationType> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             (IntProvider.CODEC.fieldOf("length")).forGetter(v -> v.length),
             (BlockStateProvider.CODEC.fieldOf("leaves")).forGetter(v -> v.leaves)
     ).apply(instance, LeafPilesDecorationType::new));

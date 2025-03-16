@@ -1,6 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.trunks;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 
@@ -9,7 +9,7 @@ import java.util.Map;
 
 public abstract class Trunk {
 
-    public static final Codec<Trunk> CODEC = TrunkType.TRUNK_TYPE_REGISTRY.get().getCodec().dispatch(Trunk::type, TrunkType::codec);
+    public static final MapCodec<Trunk> CODEC = TrunkType.TRUNK_TYPE_REGISTRY.byNameCodec().dispatchMap(Trunk::type, TrunkType::codec);
 
     protected abstract TrunkType<?> type();
 

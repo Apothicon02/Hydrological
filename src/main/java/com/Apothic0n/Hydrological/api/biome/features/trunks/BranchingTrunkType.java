@@ -1,6 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.trunks;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -13,7 +14,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class BranchingTrunkType extends Trunk {
-    public static final Codec<BranchingTrunkType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<BranchingTrunkType> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             (Codec.BOOL.fieldOf("canopy_offset")).forGetter(v -> v.canopyOffset),
             (IntProvider.codec(1, 8).fieldOf("count")).forGetter(v -> v.count),
             (IntProvider.codec(1, 64).fieldOf("height")).forGetter(v -> v.height),

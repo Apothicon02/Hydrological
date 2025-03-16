@@ -1,6 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.decorations;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
@@ -13,7 +13,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import java.util.Map;
 
 public class GroundDecorationType extends Decoration {
-    public static final Codec<GroundDecorationType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<GroundDecorationType> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             (IntProvider.CODEC.fieldOf("offset")).forGetter(v -> v.offset),
             (IntProvider.CODEC.fieldOf("radius")).forGetter(v -> v.radius),
             (BlockStateProvider.CODEC.fieldOf("replace_with")).forGetter(v -> v.replaceWith)

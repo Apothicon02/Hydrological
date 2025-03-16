@@ -2,10 +2,7 @@ package com.Apothic0n.Hydrological.mixin;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,7 +19,7 @@ public abstract class BlockItemMixin {
     @Shadow public abstract Block getBlock();
 
     @Inject(method = "appendHoverText", at = @At("HEAD"))
-    private void appendHoverText(ItemStack item, Level level, List<Component> list, TooltipFlag tip, CallbackInfo ci) {
+    private void appendHoverText(ItemStack item, Item.TooltipContext context, List<Component> list, TooltipFlag tip, CallbackInfo ci) {
         if (item.is(Items.OAK_SAPLING)) {
             list.add(Component.translatable("block.minecraft.podzol").withStyle(ChatFormatting.GOLD));
             list.add(Component.translatable("block.minecraft.coarse_dirt").withStyle(ChatFormatting.GOLD));

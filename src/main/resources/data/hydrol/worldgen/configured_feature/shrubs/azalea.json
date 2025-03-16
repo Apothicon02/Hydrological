@@ -18,17 +18,13 @@
       "type": "hydrol:square_canopy",
       "height": {
         "type": "minecraft:uniform",
-        "value": {
           "min_inclusive": 2,
           "max_inclusive": 5
-        }
       },
       "radius": {
         "type": "minecraft:uniform",
-        "value": {
           "min_inclusive": 2,
           "max_inclusive": 3
-        }
       },
       "leaves": {
         "type": "minecraft:weighted_state_provider",

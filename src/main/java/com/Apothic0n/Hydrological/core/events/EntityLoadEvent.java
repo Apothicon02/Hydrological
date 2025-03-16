@@ -2,7 +2,7 @@ package com.Apothic0n.Hydrological.core.events;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.eventbus.api.Event;
+import net.neoforged.bus.api.Event;
 
 public final class EntityLoadEvent extends Event {
     public EntityLoadEvent(Entity entity, Level level) {

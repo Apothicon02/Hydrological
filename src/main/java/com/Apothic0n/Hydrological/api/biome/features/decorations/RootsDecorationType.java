@@ -1,6 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.decorations;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RootsDecorationType extends Decoration {
-    public static final Codec<RootsDecorationType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<RootsDecorationType> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             (IntProvider.CODEC.fieldOf("length")).forGetter(v -> v.length),
             (BlockStateProvider.CODEC.fieldOf("roots")).forGetter(v -> v.roots)
     ).apply(instance, RootsDecorationType::new));

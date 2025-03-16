@@ -3,18 +3,18 @@ package com.Apothic0n.Hydrological.core.events;
 import com.Apothic0n.Hydrological.Hydrological;
 import com.Apothic0n.Hydrological.core.objects.HydrolBlocks;
 import com.mojang.serialization.JsonOps;
-import commoble.databuddy.datagen.BlockStateFile;
-import commoble.databuddy.datagen.SimpleModel;
+import net.commoble.databuddy.datagen.BlockStateFile;
+import net.commoble.databuddy.datagen.SimpleModel;
 import net.minecraft.Util;
 import net.minecraft.client.resources.model.BlockModelRotation;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.*;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.Map;
 
 import static com.Apothic0n.Hydrological.core.objects.HydrolBlocks.*;
 
-@Mod.EventBusSubscriber(modid = Hydrological.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Hydrological.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class CommonModEvents {
     @SubscribeEvent
     public static void onGatherData(GatherDataEvent event) {
@@ -33,7 +33,7 @@ public class CommonModEvents {
                 Block baseBlockBlock = blocksWithStairsSlabsAndWalls.get(i);
                 String name = baseBlockBlock.toString();
                 String finalName = name.substring(16, name.length() - 1);
-                ResourceLocation baseBlock = new ResourceLocation("minecraft", "block/" + finalName);
+                ResourceLocation baseBlock = ResourceLocation.fromNamespaceAndPath("minecraft", "block/" + finalName);
                 map = makeWallModels(map, baseBlockBlock, baseBlock);
                 map = makeStairsModels(map, baseBlockBlock, baseBlock);
                 map = makeSlabModels(map, baseBlockBlock, baseBlock);
@@ -45,21 +45,21 @@ public class CommonModEvents {
                 if (finalName.contains("wood")) {
                     finalName = finalName.substring(0, finalName.length() - 4) + "log";
                 }
-                ResourceLocation baseBlock = new ResourceLocation("minecraft", "block/" + finalName);
+                ResourceLocation baseBlock = ResourceLocation.fromNamespaceAndPath("minecraft", "block/" + finalName);
                 map = makeWallModels(map, baseBlockBlock, baseBlock);
             }
             for (int i = 0; i < blocksWithFragileWalls.size(); i++) {
                 Block baseBlockBlock = blocksWithFragileWalls.get(i);
                 String name = baseBlockBlock.toString();
                 String finalName = name.substring(16, name.length() - 1);
-                ResourceLocation baseBlock = new ResourceLocation("minecraft", "block/" + finalName);
+                ResourceLocation baseBlock = ResourceLocation.fromNamespaceAndPath("minecraft", "block/" + finalName);
                 map = makeWallModels(map, baseBlockBlock, baseBlock);
             }
             for (int i = 0; i < blocksWithPiles.size(); i++) {
                 Block baseBlockBlock = blocksWithPiles.get(i);
                 String name = baseBlockBlock.toString();
                 String finalName = name.substring(16, name.length() - 1);
-                ResourceLocation baseBlock = new ResourceLocation("minecraft", "block/" + finalName);
+                ResourceLocation baseBlock = ResourceLocation.fromNamespaceAndPath("minecraft", "block/" + finalName);
                 map = makePileModels(map, baseBlockBlock, baseBlock);
             }
         }));
@@ -87,27 +87,27 @@ public class CommonModEvents {
     }
 
     private static HashMap makePileModels(HashMap map, Block baseBlockBlock, ResourceLocation baseBlock) {
-        ResourceLocation tempPileBlock2 = new ResourceLocation("block/failure2");
-        ResourceLocation tempPileBlock4 = new ResourceLocation("block/failure4");
-        ResourceLocation tempPileBlock6 = new ResourceLocation("block/failure6");
-        ResourceLocation tempPileBlock8 = new ResourceLocation("block/failure8");
-        ResourceLocation tempPileBlock10 = new ResourceLocation("block/failure10");
-        ResourceLocation tempPileBlock12 = new ResourceLocation("block/failure12");
-        ResourceLocation tempPileBlock14 = new ResourceLocation("block/failure14");
-        ResourceLocation tempPileBlock16 = new ResourceLocation("block/failure16");
-        ResourceLocation tempPileBlockItem = new ResourceLocation("block/failure_block_item");
+        ResourceLocation tempPileBlock2 = ResourceLocation.parse("block/failure2");
+        ResourceLocation tempPileBlock4 = ResourceLocation.parse("block/failure4");
+        ResourceLocation tempPileBlock6 = ResourceLocation.parse("block/failure6");
+        ResourceLocation tempPileBlock8 = ResourceLocation.parse("block/failure8");
+        ResourceLocation tempPileBlock10 = ResourceLocation.parse("block/failure10");
+        ResourceLocation tempPileBlock12 = ResourceLocation.parse("block/failure12");
+        ResourceLocation tempPileBlock14 = ResourceLocation.parse("block/failure14");
+        ResourceLocation tempPileBlock16 = ResourceLocation.parse("block/failure16");
+        ResourceLocation tempPileBlockItem = ResourceLocation.parse("block/failure_block_item");
         for (int o = 0; o < pileBlocks.size(); o++) {
-            Map<Block, RegistryObject<Block>> pileBlockMap = pileBlocks.get(o);
+            Map<Block, DeferredHolder<Block, Block>> pileBlockMap = pileBlocks.get(o);
             if (pileBlockMap.containsKey(baseBlockBlock)) {
-                tempPileBlock2 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height2");
-                tempPileBlock4 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height4");
-                tempPileBlock6 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height6");
-                tempPileBlock8 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height8");
-                tempPileBlock10 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height10");
-                tempPileBlock12 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height12");
-                tempPileBlock14 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height14");
-                tempPileBlock16 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height16");
-                tempPileBlockItem = new ResourceLocation(Hydrological.MODID, "item/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7));
+                tempPileBlock2 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height2");
+                tempPileBlock4 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height4");
+                tempPileBlock6 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height6");
+                tempPileBlock8 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height8");
+                tempPileBlock10 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height10");
+                tempPileBlock12 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height12");
+                tempPileBlock14 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height14");
+                tempPileBlock16 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height16");
+                tempPileBlockItem = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "item/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7));
             }
         }
         ResourceLocation pileBlock2 = tempPileBlock2;
@@ -120,28 +120,28 @@ public class CommonModEvents {
         ResourceLocation pileBlock16 = tempPileBlock16;
         ResourceLocation pileBlockItem = tempPileBlockItem;
         map.put(pileBlock2,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height2"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.fromNamespaceAndPath("hydrol", "block/leaves_height2"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock4,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height4"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.fromNamespaceAndPath("hydrol", "block/leaves_height4"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock6,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height6"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.fromNamespaceAndPath("hydrol", "block/leaves_height6"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock8,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height8"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.fromNamespaceAndPath("hydrol", "block/leaves_height8"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock10,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height10"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.fromNamespaceAndPath("hydrol", "block/leaves_height10"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock12,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height12"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.fromNamespaceAndPath("hydrol", "block/leaves_height12"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock14,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("hydrol", "block/leaves_height14"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.fromNamespaceAndPath("hydrol", "block/leaves_height14"))
                         .addTexture("texture", baseBlock));
         map.put(pileBlock16,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("block/cube_all"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.parse("block/cube_all"))
                         .addTexture("all", baseBlock));
         map.put(pileBlockItem,
                 SimpleModel.createWithoutRenderType(pileBlock2));
@@ -149,17 +149,17 @@ public class CommonModEvents {
     }
 
     private static HashMap makeWallModels(HashMap map, Block baseBlockBlock, ResourceLocation baseBlock) {
-        ResourceLocation tempWallBlock = new ResourceLocation("block/failure");
-        ResourceLocation tempWallBlockSide = new ResourceLocation("block/failure_side");
-        ResourceLocation tempWallBlockSideTall = new ResourceLocation("block/failure_side_tall");
-        ResourceLocation tempWallBlockItem = new ResourceLocation("block/failure_block_item");
+        ResourceLocation tempWallBlock = ResourceLocation.parse("block/failure");
+        ResourceLocation tempWallBlockSide = ResourceLocation.parse("block/failure_side");
+        ResourceLocation tempWallBlockSideTall = ResourceLocation.parse("block/failure_side_tall");
+        ResourceLocation tempWallBlockItem = ResourceLocation.parse("block/failure_block_item");
         for (int o = 0; o < HydrolBlocks.wallBlocks.size(); o++) {
-            Map<Block, RegistryObject<Block>> wallBlockMap = HydrolBlocks.wallBlocks.get(o);
+            Map<Block, DeferredHolder<Block, Block>> wallBlockMap = HydrolBlocks.wallBlocks.get(o);
             if (wallBlockMap.containsKey(baseBlockBlock)) {
-                tempWallBlock = new ResourceLocation(Hydrological.MODID, "block/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_post");
-                tempWallBlockSide = new ResourceLocation(Hydrological.MODID, "block/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_side");
-                tempWallBlockSideTall = new ResourceLocation(Hydrological.MODID, "block/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_side_tall");
-                tempWallBlockItem = new ResourceLocation(Hydrological.MODID, "item/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7));
+                tempWallBlock = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_post");
+                tempWallBlockSide = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_side");
+                tempWallBlockSideTall = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_side_tall");
+                tempWallBlockItem = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "item/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7));
             }
         }
         ResourceLocation wallBlock = tempWallBlock;
@@ -167,32 +167,32 @@ public class CommonModEvents {
         ResourceLocation wallBlockSideTall = tempWallBlockSideTall;
         ResourceLocation wallBlockItem = tempWallBlockItem;
         map.put(wallBlock,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("block/template_wall_post"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.parse("block/template_wall_post"))
                         .addTexture("wall", baseBlock));
         map.put(wallBlockSide,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("block/template_wall_side"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.parse("block/template_wall_side"))
                         .addTexture("wall", baseBlock));
         map.put(wallBlockSideTall,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("block/template_wall_side_tall"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.parse("block/template_wall_side_tall"))
                         .addTexture("wall", baseBlock));
         map.put(wallBlockItem,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("block/wall_inventory"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.parse("block/wall_inventory"))
                         .addTexture("wall", baseBlock));
         return map;
     }
 
     private static HashMap makeStairsModels(HashMap map, Block baseBlockBlock, ResourceLocation baseBlock) {
-        ResourceLocation tempStairsBlock = new ResourceLocation("block/failure");
-        ResourceLocation tempStairsBlockInner = new ResourceLocation("block/failure_inner");
-        ResourceLocation tempStairsBlockOuter = new ResourceLocation("block/failure_outer");
-        ResourceLocation tempStairsBlockItem = new ResourceLocation("block/failure_block_item");
+        ResourceLocation tempStairsBlock = ResourceLocation.parse("block/failure");
+        ResourceLocation tempStairsBlockInner = ResourceLocation.parse("block/failure_inner");
+        ResourceLocation tempStairsBlockOuter = ResourceLocation.parse("block/failure_outer");
+        ResourceLocation tempStairsBlockItem = ResourceLocation.parse("block/failure_block_item");
         for (int o = 0; o < HydrolBlocks.stairBlocks.size(); o++) {
-            Map<Block, RegistryObject<Block>> stairBlockMap = HydrolBlocks.stairBlocks.get(o);
+            Map<Block, DeferredHolder<Block, Block>> stairBlockMap = HydrolBlocks.stairBlocks.get(o);
             if (stairBlockMap.containsKey(baseBlockBlock)) {
-                tempStairsBlock = new ResourceLocation(Hydrological.MODID, "block/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7));
-                tempStairsBlockInner = new ResourceLocation(Hydrological.MODID, "block/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_inner");
-                tempStairsBlockOuter = new ResourceLocation(Hydrological.MODID, "block/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_outer");
-                tempStairsBlockItem = new ResourceLocation(Hydrological.MODID, "item/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7));
+                tempStairsBlock = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7));
+                tempStairsBlockInner = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_inner");
+                tempStairsBlockOuter = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_outer");
+                tempStairsBlockItem = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "item/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7));
             }
         }
         ResourceLocation stairsBlock = tempStairsBlock;
@@ -200,17 +200,17 @@ public class CommonModEvents {
         ResourceLocation stairsBlockOuter = tempStairsBlockOuter;
         ResourceLocation stairsBlockItem = tempStairsBlockItem;
         map.put(stairsBlock,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("block/stairs"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.parse("block/stairs"))
                         .addTexture("bottom", baseBlock)
                         .addTexture("side", baseBlock)
                         .addTexture("top", baseBlock));
         map.put(stairsBlockInner,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("block/inner_stairs"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.parse("block/inner_stairs"))
                         .addTexture("bottom", baseBlock)
                         .addTexture("side", baseBlock)
                         .addTexture("top", baseBlock));
         map.put(stairsBlockOuter,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("block/outer_stairs"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.parse("block/outer_stairs"))
                         .addTexture("bottom", baseBlock)
                         .addTexture("side", baseBlock)
                         .addTexture("top", baseBlock));
@@ -220,27 +220,27 @@ public class CommonModEvents {
     }
 
     private static HashMap makeSlabModels(HashMap map, Block baseBlockBlock, ResourceLocation baseBlock) {
-        ResourceLocation tempSlabBlock = new ResourceLocation("block/failure");
-        ResourceLocation tempSlabBlockTop = new ResourceLocation("block/failure_top");
-        ResourceLocation tempSlabBlockItem = new ResourceLocation("block/failure_block_item");
+        ResourceLocation tempSlabBlock = ResourceLocation.parse("block/failure");
+        ResourceLocation tempSlabBlockTop = ResourceLocation.parse("block/failure_top");
+        ResourceLocation tempSlabBlockItem = ResourceLocation.parse("block/failure_block_item");
         for (int o = 0; o < HydrolBlocks.slabBlocks.size(); o++) {
-            Map<Block, RegistryObject<Block>> slabBlockMap = HydrolBlocks.slabBlocks.get(o);
+            Map<Block, DeferredHolder<Block, Block>> slabBlockMap = HydrolBlocks.slabBlocks.get(o);
             if (slabBlockMap.containsKey(baseBlockBlock)) {
-                tempSlabBlock = new ResourceLocation(Hydrological.MODID, "block/" + slabBlockMap.get(baseBlockBlock).getId().toString().substring(7));
-                tempSlabBlockTop = new ResourceLocation(Hydrological.MODID, "block/" + slabBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_top");
-                tempSlabBlockItem = new ResourceLocation(Hydrological.MODID, "item/" + slabBlockMap.get(baseBlockBlock).getId().toString().substring(7));
+                tempSlabBlock = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + slabBlockMap.get(baseBlockBlock).getId().toString().substring(7));
+                tempSlabBlockTop = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + slabBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_top");
+                tempSlabBlockItem = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "item/" + slabBlockMap.get(baseBlockBlock).getId().toString().substring(7));
             }
         }
         ResourceLocation slabBlock = tempSlabBlock;
         ResourceLocation slabBlockTop = tempSlabBlockTop;
         ResourceLocation slabBlockItem = tempSlabBlockItem;
         map.put(slabBlock,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("block/slab"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.parse("block/slab"))
                         .addTexture("bottom", baseBlock)
                         .addTexture("side", baseBlock)
                         .addTexture("top", baseBlock));
         map.put(slabBlockTop,
-                SimpleModel.createWithoutRenderType(new ResourceLocation("block/slab_top"))
+                SimpleModel.createWithoutRenderType(ResourceLocation.parse("block/slab_top"))
                         .addTexture("bottom", baseBlock)
                         .addTexture("side", baseBlock)
                         .addTexture("top", baseBlock));
@@ -250,27 +250,27 @@ public class CommonModEvents {
     }
 
     private static HashMap makePileBlockstates(HashMap map, Block baseBlockBlock) {
-        ResourceLocation tempBlockstate = new ResourceLocation("block/failure_blockstate");
-        ResourceLocation tempPileBlock2 = new ResourceLocation("block/failure2");
-        ResourceLocation tempPileBlock4 = new ResourceLocation("block/failure4");
-        ResourceLocation tempPileBlock6 = new ResourceLocation("block/failure6");
-        ResourceLocation tempPileBlock8 = new ResourceLocation("block/failure8");
-        ResourceLocation tempPileBlock10 = new ResourceLocation("block/failure10");
-        ResourceLocation tempPileBlock12 = new ResourceLocation("block/failure12");
-        ResourceLocation tempPileBlock14 = new ResourceLocation("block/failure14");
-        ResourceLocation tempPileBlock16 = new ResourceLocation("block/failure16");
+        ResourceLocation tempBlockstate = ResourceLocation.parse("block/failure_blockstate");
+        ResourceLocation tempPileBlock2 = ResourceLocation.parse("block/failure2");
+        ResourceLocation tempPileBlock4 = ResourceLocation.parse("block/failure4");
+        ResourceLocation tempPileBlock6 = ResourceLocation.parse("block/failure6");
+        ResourceLocation tempPileBlock8 = ResourceLocation.parse("block/failure8");
+        ResourceLocation tempPileBlock10 = ResourceLocation.parse("block/failure10");
+        ResourceLocation tempPileBlock12 = ResourceLocation.parse("block/failure12");
+        ResourceLocation tempPileBlock14 = ResourceLocation.parse("block/failure14");
+        ResourceLocation tempPileBlock16 = ResourceLocation.parse("block/failure16");
         for (int o = 0; o < pileBlocks.size(); o++) {
-            Map<Block, RegistryObject<Block>> pileBlockMap = pileBlocks.get(o);
+            Map<Block, DeferredHolder<Block, Block>> pileBlockMap = pileBlocks.get(o);
             if (pileBlockMap.containsKey(baseBlockBlock)) {
-                tempBlockstate = new ResourceLocation(Hydrological.MODID, pileBlockMap.get(baseBlockBlock).getId().toString().substring(7));
-                tempPileBlock2 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height2");
-                tempPileBlock4 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height4");
-                tempPileBlock6 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height6");
-                tempPileBlock8 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height8");
-                tempPileBlock10 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height10");
-                tempPileBlock12 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height12");
-                tempPileBlock14 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height14");
-                tempPileBlock16 = new ResourceLocation(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height16");
+                tempBlockstate = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, pileBlockMap.get(baseBlockBlock).getId().toString().substring(7));
+                tempPileBlock2 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height2");
+                tempPileBlock4 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height4");
+                tempPileBlock6 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height6");
+                tempPileBlock8 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height8");
+                tempPileBlock10 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height10");
+                tempPileBlock12 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height12");
+                tempPileBlock14 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height14");
+                tempPileBlock16 = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + pileBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_height16");
             }
         }
         ResourceLocation blockstate = tempBlockstate;
@@ -312,17 +312,17 @@ public class CommonModEvents {
     }
 
     private static HashMap makeWallBlockstates(HashMap map, Block baseBlockBlock) {
-        ResourceLocation tempWallState = new ResourceLocation("failure");
-        ResourceLocation tempWallBlock = new ResourceLocation("block/failure");
-        ResourceLocation tempWallBlockSide = new ResourceLocation("block/failure_side");
-        ResourceLocation tempWallBlockSideTall = new ResourceLocation("block/failure_side_tall");
+        ResourceLocation tempWallState = ResourceLocation.parse("failure");
+        ResourceLocation tempWallBlock = ResourceLocation.parse("block/failure");
+        ResourceLocation tempWallBlockSide = ResourceLocation.parse("block/failure_side");
+        ResourceLocation tempWallBlockSideTall = ResourceLocation.parse("block/failure_side_tall");
         for (int o = 0; o < HydrolBlocks.wallBlocks.size(); o++) {
-            Map<Block, RegistryObject<Block>> wallBlockMap = HydrolBlocks.wallBlocks.get(o);
+            Map<Block, DeferredHolder<Block, Block>> wallBlockMap = HydrolBlocks.wallBlocks.get(o);
             if (wallBlockMap.containsKey(baseBlockBlock)) {
-                tempWallState = new ResourceLocation(Hydrological.MODID, wallBlockMap.get(baseBlockBlock).getId().toString().substring(7));
-                tempWallBlock = new ResourceLocation(Hydrological.MODID, "block/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_post");
-                tempWallBlockSide = new ResourceLocation(Hydrological.MODID, "block/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_side");
-                tempWallBlockSideTall = new ResourceLocation(Hydrological.MODID, "block/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_side_tall");
+                tempWallState = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, wallBlockMap.get(baseBlockBlock).getId().toString().substring(7));
+                tempWallBlock = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_post");
+                tempWallBlockSide = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_side");
+                tempWallBlockSideTall = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + wallBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_side_tall");
             }
         }
         ResourceLocation wallState = tempWallState;
@@ -363,17 +363,17 @@ public class CommonModEvents {
     }
 
     private static HashMap makeStairsBlockstates(HashMap map, Block baseBlockBlock) {
-        ResourceLocation tempStairState = new ResourceLocation("failure");
-        ResourceLocation tempStairBlock = new ResourceLocation("block/failure");
-        ResourceLocation tempStairBlockInner = new ResourceLocation("block/failure_inner");
-        ResourceLocation tempStairBlockOuter = new ResourceLocation("block/failure_outer");
+        ResourceLocation tempStairState = ResourceLocation.parse("failure");
+        ResourceLocation tempStairBlock = ResourceLocation.parse("block/failure");
+        ResourceLocation tempStairBlockInner = ResourceLocation.parse("block/failure_inner");
+        ResourceLocation tempStairBlockOuter = ResourceLocation.parse("block/failure_outer");
         for (int o = 0; o < HydrolBlocks.stairBlocks.size(); o++) {
-            Map<Block, RegistryObject<Block>> stairBlockMap = HydrolBlocks.stairBlocks.get(o);
+            Map<Block, DeferredHolder<Block, Block>> stairBlockMap = HydrolBlocks.stairBlocks.get(o);
             if (stairBlockMap.containsKey(baseBlockBlock)) {
-                tempStairState = new ResourceLocation(Hydrological.MODID, stairBlockMap.get(baseBlockBlock).getId().toString().substring(7));
-                tempStairBlock = new ResourceLocation(Hydrological.MODID, "block/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7));
-                tempStairBlockInner = new ResourceLocation(Hydrological.MODID, "block/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_inner");
-                tempStairBlockOuter = new ResourceLocation(Hydrological.MODID, "block/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_outer");
+                tempStairState = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, stairBlockMap.get(baseBlockBlock).getId().toString().substring(7));
+                tempStairBlock = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7));
+                tempStairBlockInner = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_inner");
+                tempStairBlockOuter = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + stairBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_outer");
             }
         }
         ResourceLocation stairState = tempStairState;
@@ -405,25 +405,25 @@ public class CommonModEvents {
 
     private static HashMap makeSlabBlockstates(HashMap map, Block baseBlockBlock) {
         String name = baseBlockBlock.toString();
-        ResourceLocation baseBlock = new ResourceLocation("minecraft", "block/" + name.substring(16, name.length() - 1));
-        ResourceLocation tempSlabState = new ResourceLocation("failure");
-        ResourceLocation tempSlabBlock = new ResourceLocation("block/failure");
-        ResourceLocation tempSlabBlockTop = new ResourceLocation("block/failure_top");
+        ResourceLocation baseBlock = ResourceLocation.fromNamespaceAndPath("minecraft", "block/" + name.substring(16, name.length() - 1));
+        ResourceLocation tempSlabState = ResourceLocation.parse("failure");
+        ResourceLocation tempSlabBlock = ResourceLocation.parse("block/failure");
+        ResourceLocation tempSlabBlockTop = ResourceLocation.parse("block/failure_top");
         for (int o = 0; o < HydrolBlocks.slabBlocks.size(); o++) {
-            Map<Block, RegistryObject<Block>> slabBlockMap = HydrolBlocks.slabBlocks.get(o);
+            Map<Block, DeferredHolder<Block, Block>> slabBlockMap = HydrolBlocks.slabBlocks.get(o);
             if (slabBlockMap.containsKey(baseBlockBlock)) {
-                tempSlabState = new ResourceLocation(Hydrological.MODID, slabBlockMap.get(baseBlockBlock).getId().toString().substring(7));
-                tempSlabBlock = new ResourceLocation(Hydrological.MODID, "block/" + slabBlockMap.get(baseBlockBlock).getId().toString().substring(7));
-                tempSlabBlockTop = new ResourceLocation(Hydrological.MODID, "block/" + slabBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_top");
+                tempSlabState = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, slabBlockMap.get(baseBlockBlock).getId().toString().substring(7));
+                tempSlabBlock = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + slabBlockMap.get(baseBlockBlock).getId().toString().substring(7));
+                tempSlabBlockTop = ResourceLocation.fromNamespaceAndPath(Hydrological.MODID, "block/" + slabBlockMap.get(baseBlockBlock).getId().toString().substring(7) + "_top");
             }
         }
         ResourceLocation slabState = tempSlabState;
         ResourceLocation slabBlock = tempSlabBlock;
         ResourceLocation slabBlockTop = tempSlabBlockTop;
         if (name.contains("red_mushroom_block")) {
-            baseBlock = new ResourceLocation("hydrol", "block/red_mushroom_block_double_slab");
+            baseBlock = ResourceLocation.fromNamespaceAndPath("hydrol", "block/red_mushroom_block_double_slab");
         } else if (name.contains("brown_mushroom_block")) {
-            baseBlock = new ResourceLocation("hydrol", "block/brown_mushroom_block_double_slab");
+            baseBlock = ResourceLocation.fromNamespaceAndPath("hydrol", "block/brown_mushroom_block_double_slab");
         }
         map.put(slabState,
                 BlockStateFile.variants(BlockStateFile.Variants.builder()

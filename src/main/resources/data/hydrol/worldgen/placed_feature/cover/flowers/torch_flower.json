@@ -34,7 +34,7 @@
           {
             "type": "minecraft:would_survive",
             "state": {
-              "Name": "minecraft:torch_flower"
+              "Name": "minecraft:torchflower"
             }
           }
         ]

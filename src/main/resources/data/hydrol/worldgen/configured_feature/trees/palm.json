@@ -10,10 +10,8 @@
       "count_override": 0,
       "height": {
         "type": "minecraft:uniform",
-        "value": {
           "min_inclusive": 8,
           "max_inclusive": 22
-        }
       },
       "wood": {
         "type": "minecraft:simple_state_provider",
@@ -39,10 +37,8 @@
         "type": "hydrol:cocoa",
         "count": {
           "type": "minecraft:uniform",
-          "value": {
             "min_inclusive": 1,
             "max_inclusive": 4
-          }
         }
       }
     ]

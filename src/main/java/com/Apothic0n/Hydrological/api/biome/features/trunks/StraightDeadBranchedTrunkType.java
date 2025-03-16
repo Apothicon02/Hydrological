@@ -1,6 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.trunks;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -19,7 +19,7 @@ import java.util.Set;
 import java.util.function.BiConsumer;
 
 public class StraightDeadBranchedTrunkType extends Trunk {
-    public static final Codec<StraightDeadBranchedTrunkType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<StraightDeadBranchedTrunkType> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             (IntProvider.codec(1, 64).fieldOf("height")).forGetter(v -> v.height),
             (BlockStateProvider.CODEC.fieldOf("wood")).forGetter(v -> v.wood)
     ).apply(instance, StraightDeadBranchedTrunkType::new));

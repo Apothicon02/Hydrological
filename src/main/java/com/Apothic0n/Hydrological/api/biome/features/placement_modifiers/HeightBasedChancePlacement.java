@@ -2,6 +2,7 @@ package com.Apothic0n.Hydrological.api.biome.features.placement_modifiers;
 
 import com.Apothic0n.Hydrological.api.HydrolMath;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -10,7 +11,7 @@ import net.minecraft.world.level.levelgen.placement.PlacementFilter;
 import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 
 public class HeightBasedChancePlacement extends PlacementFilter {
-    public static final Codec<HeightBasedChancePlacement> CODEC = RecordCodecBuilder.create((p_191761_) -> {
+    public static final MapCodec<HeightBasedChancePlacement> CODEC = RecordCodecBuilder.mapCodec((p_191761_) -> {
         return p_191761_.group(Codec.INT.fieldOf("impossible").forGetter((v) -> {
             return v.impossible;
         }), Codec.INT.fieldOf("guaranteed").forGetter((v) -> {

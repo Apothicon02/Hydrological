@@ -6,7 +6,7 @@ import com.Apothic0n.Hydrological.core.objects.FragileWallBlock;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.ChunkRenderTypeSet;
+import net.neoforged.neoforge.client.ChunkRenderTypeSet;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,8 +21,7 @@ public class ItemBlockRenderTypesMixin {
     @Shadow @Final private static ChunkRenderTypeSet CUTOUT_MIPPED;
 
     @Shadow @Final private static ChunkRenderTypeSet SOLID;
-
-    @Inject(method = "getRenderLayers(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraftforge/client/ChunkRenderTypeSet;", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = "getRenderLayers(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/neoforged/neoforge/client/ChunkRenderTypeSet;", at = @At("HEAD"), cancellable = true, remap = false)
     private static void getRenderLayers(BlockState state, CallbackInfoReturnable<ChunkRenderTypeSet> ci) {
         if (!HydrolJsonReader.serverSidedOnlyMode) {
             Block block = state.getBlock();

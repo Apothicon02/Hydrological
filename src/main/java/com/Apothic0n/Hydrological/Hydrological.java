@@ -14,19 +14,19 @@ import com.Apothic0n.Hydrological.core.objects.HydrolParticleTypes;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+
 @Mod(Hydrological.MODID)
 public class Hydrological {
     public static final String MODID = "hydrol";
 
-    public Hydrological() throws Exception {
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+    public Hydrological(IEventBus eventBus, ModContainer container) throws Exception {
+        eventBus.register(this);
 
         HydrolJsonReader.main();
         TrunkType.register(eventBus);
@@ -45,6 +45,7 @@ public class Hydrological {
         HydrolFeatureRegistry.register(eventBus);
     }
 
+    @SubscribeEvent
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             if (!HydrolJsonReader.serverSidedOnlyMode && HydrolJsonReader.addLightEmissionToVanillaBlocks) {
@@ -69,6 +70,7 @@ public class Hydrological {
         }
     }
 
+    @SubscribeEvent
     private void clientSetup(final FMLClientSetupEvent event) {
         if (!HydrolJsonReader.serverSidedOnlyMode) {
             HydrolBlocks.fixBlockRenderLayers();

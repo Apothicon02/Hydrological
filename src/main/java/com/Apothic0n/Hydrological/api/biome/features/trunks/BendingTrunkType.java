@@ -1,6 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.trunks;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -11,11 +12,10 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 
 public class BendingTrunkType extends Trunk {
-    public static final Codec<BendingTrunkType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<BendingTrunkType> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             (Codec.BOOL.fieldOf("crown")).forGetter(v -> v.crown),
             (IntProvider.codec(0, 8).fieldOf("count_override")).forGetter(v -> v.countOverride),
             (IntProvider.codec(1, 64).fieldOf("height")).forGetter(v -> v.height),

@@ -1,6 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.placement_modifiers;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -11,7 +12,7 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 import java.util.stream.Stream;
 
 public class OffsetPlacement extends PlacementModifier {
-    public static final Codec<OffsetPlacement> CODEC = RecordCodecBuilder.create((p_191761_) -> {
+    public static final MapCodec<OffsetPlacement> CODEC = RecordCodecBuilder.mapCodec((p_191761_) -> {
         return p_191761_.group(Codec.INT.fieldOf("x").forGetter((v) -> {
             return v.x;
         }), Codec.INT.fieldOf("y").forGetter((v) -> {
@@ -39,6 +40,6 @@ public class OffsetPlacement extends PlacementModifier {
     }
 
     public PlacementModifierType<?> type() {
-        return HydrolPlacementModifierTypes.NOISE_COVER.get();
+        return HydrolPlacementModifierTypes.OFFSET.get();
     }
 }

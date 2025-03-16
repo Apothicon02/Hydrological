@@ -1,6 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.decorations;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.Map;
 
 public class CocoaDecorationType extends Decoration {
-    public static final Codec<CocoaDecorationType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<CocoaDecorationType> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             (IntProvider.CODEC.fieldOf("count")).forGetter(v -> v.count)
     ).apply(instance, CocoaDecorationType::new));
 

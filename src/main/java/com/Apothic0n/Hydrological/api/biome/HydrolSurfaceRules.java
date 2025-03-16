@@ -4,22 +4,23 @@ import com.Apothic0n.Hydrological.Hydrological;
 import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.api.biome.features.placement_modifiers.NoiseCoverPlacement;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public final class HydrolSurfaceRules {
-    public static final DeferredRegister<Codec<? extends SurfaceRules.ConditionSource>> SURFACE_RULE_TYPES = DeferredRegister.create(Registries.MATERIAL_CONDITION, Hydrological.MODID);
+    public static final DeferredRegister<MapCodec<? extends SurfaceRules.ConditionSource>> SURFACE_RULE_TYPES = DeferredRegister.create(Registries.MATERIAL_CONDITION, Hydrological.MODID);
 
-    public static final RegistryObject<Codec<? extends SurfaceRules.ConditionSource>> ABOVE_SURFACE_RULE_TYPE = SURFACE_RULE_TYPES.register("above", HydrolSurfaceRules.Above.CODEC::codec);
-    public static final RegistryObject<Codec<? extends SurfaceRules.ConditionSource>> NOISE_THRESHOLD_SURFACE_RULE_TYPE = SURFACE_RULE_TYPES.register("noise_threshold", HydrolSurfaceRules.NoiseThreshold.CODEC::codec);
-    public static final RegistryObject<Codec<? extends SurfaceRules.ConditionSource>> HEIGHT_NOISE_THRESHOLD_SURFACE_RULE_TYPE = SURFACE_RULE_TYPES.register("height_noise_threshold", HydrolSurfaceRules.HeightNoiseThreshold.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends SurfaceRules.ConditionSource>, ?> ABOVE_SURFACE_RULE_TYPE = SURFACE_RULE_TYPES.register("above", HydrolSurfaceRules.Above.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends SurfaceRules.ConditionSource>, ?> NOISE_THRESHOLD_SURFACE_RULE_TYPE = SURFACE_RULE_TYPES.register("noise_threshold", HydrolSurfaceRules.NoiseThreshold.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends SurfaceRules.ConditionSource>, ?> HEIGHT_NOISE_THRESHOLD_SURFACE_RULE_TYPE = SURFACE_RULE_TYPES.register("height_noise_threshold", HydrolSurfaceRules.HeightNoiseThreshold.CODEC::codec);
 
     public static void register(IEventBus eventBus) {
         SURFACE_RULE_TYPES.register(eventBus);

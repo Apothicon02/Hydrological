@@ -51,7 +51,7 @@ public class SnowLayerBlockMixin extends Block {
             double eye = entity.getEyeY();
             double snow = pos.getY() + (state.getValue(SnowLayerBlock.LAYERS).doubleValue() / 10) + 0.2;
             if (eye < snow) {
-                if (!(entity instanceof LivingEntity) || entity.getFeetBlockState().is(this)) {
+                if (!(entity instanceof LivingEntity) || level.getBlockState(entity.getOnPos()).is(this)) {
                     entity.makeStuckInBlock(state, new Vec3((double) 0.9F, 1.5D, (double) 0.9F));
                     if (level.isClientSide) {
                         RandomSource randomsource = level.getRandom();

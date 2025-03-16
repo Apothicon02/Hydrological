@@ -8,10 +8,8 @@
       "type": "hydrol:straight_trunk",
       "height": {
         "type": "minecraft:uniform",
-        "value": {
           "min_inclusive": 4,
           "max_inclusive": 7
-        }
       },
       "wood": {
         "type": "minecraft:simple_state_provider",

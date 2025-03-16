@@ -9,33 +9,30 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.DensityFunction;
-import net.minecraft.world.level.levelgen.DensityFunctions;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
 import org.joml.SimplexNoise;
-
-import java.util.concurrent.ConcurrentHashMap;
 
 import static com.Apothic0n.Hydrological.api.HydrolMath.progressBetweenInts;
 import static com.Apothic0n.Hydrological.api.HydrolMath.unprogressBetweenInts;
 
 public final class HydrolDensityFunctions {
-    public static final DeferredRegister<Codec<? extends DensityFunction>> DENSITY_FUNCTION_TYPES = DeferredRegister.create(Registries.DENSITY_FUNCTION_TYPE, Hydrological.MODID);
+    public static final DeferredRegister<MapCodec<? extends DensityFunction>> DENSITY_FUNCTION_TYPES = DeferredRegister.create(Registries.DENSITY_FUNCTION_TYPE, Hydrological.MODID);
 
-    public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_BEACHES_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_beaches", FloatingBeaches.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> FLOATING_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_islands", FloatingIslands.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> CUBICAL_SCALE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("cubical_scale", CubicalScale.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> SCALABLE_NOISE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("scalable_noise", ScalableNoise.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> TO_HEIGHTMAP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("to_heightmap", ToHeightmap.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> POLARIZE_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("polarize", Polarize.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> RANGE_CHOICE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("range_choice", RangeChoice.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> GRADIENT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("gradient", Gradient.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> STRETCH_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("stretch", Stretch.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> SHIFT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("shift", Shift.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> FLATTEN_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("flatten", Flatten.CODEC::codec);
-    public static final RegistryObject<Codec<? extends DensityFunction>> STORE_TEMPERATURE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("store_temperature", StoreTemperature.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> FLOATING_BEACHES_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_beaches", FloatingBeaches.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> FLOATING_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_islands", FloatingIslands.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> CUBICAL_SCALE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("cubical_scale", CubicalScale.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> SCALABLE_NOISE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("scalable_noise", ScalableNoise.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> TO_HEIGHTMAP_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("to_heightmap", ToHeightmap.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> POLARIZE_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("polarize", Polarize.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> RANGE_CHOICE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("range_choice", RangeChoice.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> GRADIENT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("gradient", Gradient.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> STRETCH_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("stretch", Stretch.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> SHIFT_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("shift", Shift.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> FLATTEN_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("flatten", Flatten.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> STORE_TEMPERATURE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("store_temperature", StoreTemperature.CODEC::codec);
 
     public static void register(IEventBus eventBus) {
         DENSITY_FUNCTION_TYPES.register(eventBus);

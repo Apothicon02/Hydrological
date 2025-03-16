@@ -1,5 +1,6 @@
 package com.Apothic0n.Hydrological.core.objects;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -36,6 +37,11 @@ public class DryGrassBlock extends GrowingPlantHeadBlock {
 
     protected int getBlocksToGrowWhenBonemealed(RandomSource p_222649_) {
         return NetherVines.getBlocksToGrowWhenBonemealed(p_222649_);
+    }
+
+    @Override
+    protected MapCodec<? extends GrowingPlantHeadBlock> codec() {
+        return null;
     }
 
     @Override

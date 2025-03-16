@@ -6,36 +6,33 @@ import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.api.biome.features.placement_modifiers.NoiseCoverPlacement;
 import com.Apothic0n.Hydrological.core.objects.*;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.core.BlockPos;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.FoliageColor;
-import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = Hydrological.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Hydrological.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientModEvents {
 
     @SubscribeEvent
     public static void addItemsToTabs(BuildCreativeModeTabContentsEvent event) {
         if (!HydrolJsonReader.serverSidedOnlyMode && event.getTabKey().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
             event.accept(HydrolItems.DRY_GRASS.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            List<List<RegistryObject<Item>>> buildingBlockItems = List.of(HydrolItems.wallItems, HydrolItems.stairItems, HydrolItems.slabItems, HydrolItems.pileItems);
+            List<List<DeferredHolder<Item, Item>>> buildingBlockItems = List.of(HydrolItems.wallItems, HydrolItems.stairItems, HydrolItems.slabItems, HydrolItems.pileItems);
             for (int i = 0; i < buildingBlockItems.size(); i++) {
-                List<RegistryObject<Item>> blockItemTypeList = buildingBlockItems.get(i);
+                List<DeferredHolder<Item, Item>> blockItemTypeList = buildingBlockItems.get(i);
                 for (int o = 0; o < blockItemTypeList.size(); o++) {
                     event.accept(blockItemTypeList.get(o).get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                 }

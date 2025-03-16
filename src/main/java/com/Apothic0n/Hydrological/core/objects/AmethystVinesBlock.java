@@ -1,5 +1,6 @@
 package com.Apothic0n.Hydrological.core.objects;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -40,6 +41,11 @@ public class AmethystVinesBlock extends GrowingPlantHeadBlock implements Amethys
 
     protected BlockState updateBodyAfterConvertedFromHead(BlockState blockState1, BlockState blockState2) {
         return blockState2.setValue(BERRIES, blockState1.getValue(BERRIES));
+    }
+
+    @Override
+    protected MapCodec<? extends GrowingPlantHeadBlock> codec() {
+        return null;
     }
 
     protected BlockState getGrowIntoState(BlockState blockState1, RandomSource blockState2) {

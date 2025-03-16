@@ -9,17 +9,13 @@
       "crown": false,
       "count_override": {
         "type": "minecraft:uniform",
-        "value": {
           "min_inclusive": 2,
           "max_inclusive": 3
-        }
       },
       "height": {
         "type": "minecraft:uniform",
-        "value": {
           "min_inclusive": 3,
           "max_inclusive": 6
-        }
       },
       "wood": {
         "type": "minecraft:simple_state_provider",
@@ -32,17 +28,13 @@
       "type": "hydrol:sphere_canopy",
       "height": {
         "type": "minecraft:uniform",
-        "value": {
           "min_inclusive": 7,
           "max_inclusive": 11
-        }
       },
       "radius": {
         "type": "minecraft:uniform",
-        "value": {
           "min_inclusive": 8,
           "max_inclusive": 12
-        }
       },
       "leaves": {
         "type": "minecraft:simple_state_provider",

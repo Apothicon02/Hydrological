@@ -2,6 +2,7 @@ package com.Apothic0n.Hydrological.api.biome.features.trunks;
 
 import com.Apothic0n.Hydrological.api.HydrolMath;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -14,7 +15,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class ThickTrunkType extends Trunk {
-    public static final Codec<ThickTrunkType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<ThickTrunkType> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             (Codec.BOOL.fieldOf("single_canopy")).forGetter(v -> v.singleCanopy),
             (IntProvider.codec(1, 64).fieldOf("height")).forGetter(v -> v.height),
             (IntProvider.codec(1, 10).fieldOf("branch_chance")).forGetter(v -> v.branchChance),

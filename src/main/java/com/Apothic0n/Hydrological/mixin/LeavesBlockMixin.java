@@ -1,6 +1,7 @@
 package com.Apothic0n.Hydrological.mixin;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
@@ -22,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LeavesBlock.class)
-public abstract class LeavesBlockMixin extends Block implements SimpleWaterloggedBlock, net.minecraftforge.common.IForgeShearable {
+public abstract class LeavesBlockMixin extends Block implements SimpleWaterloggedBlock, net.neoforged.neoforge.common.IShearable {
     @Shadow protected abstract boolean decaying(BlockState p_221386_);
 
     @Unique
@@ -79,6 +80,17 @@ public abstract class LeavesBlockMixin extends Block implements SimpleWaterlogge
         LevelAccessor level = context.getLevel();
         BlockPos pos = context.getClickedPos();
 
-        ci.setReturnValue(LeavesBlock.updateDistance(this.defaultBlockState().setValue(LeavesBlock.PERSISTENT, Boolean.valueOf(true)).setValue(LeavesBlock.WATERLOGGED, Boolean.valueOf(level.getFluidState(pos).getType() == Fluids.WATER)), level, pos));
+        int i = 7;
+        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+
+        for (Direction direction : Direction.values()) {
+            blockpos$mutableblockpos.setWithOffset(pos, direction);
+            i = Math.min(i, LeavesBlock.getOptionalDistanceAt(level.getBlockState(blockpos$mutableblockpos)).orElse(13) + 1);
+            if (i == 1) {
+                break;
+            }
+        }
+
+        ci.setReturnValue(this.defaultBlockState().setValue(LeavesBlock.PERSISTENT, Boolean.valueOf(true)).setValue(LeavesBlock.WATERLOGGED, Boolean.valueOf(level.getFluidState(pos).getType() == Fluids.WATER)).setValue(LeavesBlock.DISTANCE, Integer.valueOf(i)));
     }
 }

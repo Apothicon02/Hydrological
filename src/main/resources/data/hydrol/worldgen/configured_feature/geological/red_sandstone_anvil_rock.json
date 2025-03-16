@@ -29,24 +29,18 @@
     },
     "radius": {
       "type": "minecraft:uniform",
-      "value": {
         "min_inclusive": 1,
         "max_inclusive": 3
-      }
     },
     "height": {
       "type": "minecraft:uniform",
-      "value": {
-        "min_inclusive": 4,
-        "max_inclusive": 15
-      }
+      "min_inclusive": 4,
+      "max_inclusive": 15
     },
     "stretch": {
       "type": "minecraft:uniform",
-      "value": {
         "min_inclusive": 1,
         "max_inclusive": 3
-      }
     },
     "forced": false
   }

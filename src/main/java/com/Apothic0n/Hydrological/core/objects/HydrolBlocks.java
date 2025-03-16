@@ -3,14 +3,13 @@ package com.Apothic0n.Hydrological.core.objects;
 import com.Apothic0n.Hydrological.Hydrological;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,15 +20,15 @@ import static net.minecraft.world.level.block.Blocks.*;
 public final class HydrolBlocks {
     private HydrolBlocks() {}
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Hydrological.MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, Hydrological.MODID);
 
-    public static final RegistryObject<Block> AMETHYST_VINES = BLOCKS.register("amethyst_vines", () ->
-            new AmethystVinesBlock(BlockBehaviour.Properties.copy(AMETHYST_CLUSTER)
+    public static final DeferredHolder<Block, Block> AMETHYST_VINES = BLOCKS.register("amethyst_vines", () ->
+            new AmethystVinesBlock(BlockBehaviour.Properties.ofFullCopy(AMETHYST_CLUSTER)
                     .randomTicks().strength(0.2F).noCollission().sound(SoundType.MEDIUM_AMETHYST_BUD)));
-    public static final RegistryObject<Block> AMETHYST_VINES_PLANT = BLOCKS.register("amethyst_vines_plant", () ->
-            new AmethystVinesBlock(BlockBehaviour.Properties.copy(AMETHYST_CLUSTER)
+    public static final DeferredHolder<Block, Block> AMETHYST_VINES_PLANT = BLOCKS.register("amethyst_vines_plant", () ->
+            new AmethystVinesBlock(BlockBehaviour.Properties.ofFullCopy(AMETHYST_CLUSTER)
                     .noCollission().strength(0.2F).sound(SoundType.LARGE_AMETHYST_BUD)));
-    public static final RegistryObject<Block> DRY_GRASS = BLOCKS.register("dry_grass", () ->
+    public static final DeferredHolder<Block, Block> DRY_GRASS = BLOCKS.register("dry_grass", () ->
             new DryGrassBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW)
                     .replaceable().noCollission().instabreak().offsetType(BlockBehaviour.OffsetType.XZ).sound(SoundType.CROP).pushReaction(PushReaction.DESTROY)));
 
@@ -56,10 +55,10 @@ public final class HydrolBlocks {
     );
 
 
-    public static final List<Map<Block, RegistryObject<Block>>> wallBlocks = new ArrayList<>(List.of());
-    public static final List<Map<Block, RegistryObject<Block>>> stairBlocks = new ArrayList<>(List.of());
-    public static final List<Map<Block, RegistryObject<Block>>> slabBlocks = new ArrayList<>(List.of());
-    public static final List<Map<Block, RegistryObject<Block>>> pileBlocks = new ArrayList<>(List.of());
+    public static final List<Map<Block, DeferredHolder<Block, Block>>> wallBlocks = new ArrayList<>(List.of());
+    public static final List<Map<Block, DeferredHolder<Block, Block>>> stairBlocks = new ArrayList<>(List.of());
+    public static final List<Map<Block, DeferredHolder<Block, Block>>> slabBlocks = new ArrayList<>(List.of());
+    public static final List<Map<Block, DeferredHolder<Block, Block>>> pileBlocks = new ArrayList<>(List.of());
 
     public static void generateStairsSlabsWalls() {
         for (int i = 0; i < blocksWithStairsSlabsAndWalls.size(); i++) {
@@ -86,43 +85,43 @@ public final class HydrolBlocks {
         }
     }
 
-    public static Map<Block, RegistryObject<Block>> createPileBlocks(Block baseBlock, int brightness) {
+    public static Map<Block, DeferredHolder<Block, Block>> createPileBlocks(Block baseBlock, int brightness) {
         String name = baseBlock.toString();
         return Map.of(
                 baseBlock, BLOCKS.register(name.substring(16, name.length() - 1) + "_pile", () ->
-                        new CollisionlessLayerBlock(BlockBehaviour.Properties.copy(baseBlock).forceSolidOff().noCollission().noOcclusion().replaceable().instabreak().lightLevel((something) -> brightness)))
+                        new CollisionlessLayerBlock(BlockBehaviour.Properties.ofFullCopy(baseBlock).forceSolidOff().noCollission().noOcclusion().replaceable().instabreak().lightLevel((something) -> brightness)))
         );
     }
 
-    public static Map<Block, RegistryObject<Block>> createFragileWallBlocks(Block baseBlock, int brightness) {
+    public static Map<Block, DeferredHolder<Block, Block>> createFragileWallBlocks(Block baseBlock, int brightness) {
         String name = baseBlock.toString();
         return Map.of(
                 baseBlock, BLOCKS.register(name.substring(16, name.length() - 1) + "_wall", () ->
-                        new FragileWallBlock(BlockBehaviour.Properties.copy(baseBlock).forceSolidOff().noCollission().noOcclusion().replaceable().instabreak().lightLevel((something) -> brightness)))
+                        new FragileWallBlock(BlockBehaviour.Properties.ofFullCopy(baseBlock).forceSolidOff().noCollission().noOcclusion().replaceable().instabreak().lightLevel((something) -> brightness)))
         );
     }
 
-    public static Map<Block, RegistryObject<Block>> createWallBlocks(Block baseBlock, int brightness) {
+    public static Map<Block, DeferredHolder<Block, Block>> createWallBlocks(Block baseBlock, int brightness) {
         String name = baseBlock.toString();
         return Map.of(
                 baseBlock, BLOCKS.register(name.substring(16, name.length() - 1) + "_wall", () ->
-                        new WallBlock(BlockBehaviour.Properties.copy(baseBlock).lightLevel((something) -> brightness)))
+                        new WallBlock(BlockBehaviour.Properties.ofFullCopy(baseBlock).lightLevel((something) -> brightness)))
         );
     }
 
-    public static Map<Block, RegistryObject<Block>> createStairBlocks(Block baseBlock, int brightness) {
+    public static Map<Block, DeferredHolder<Block, Block>> createStairBlocks(Block baseBlock, int brightness) {
         String name = baseBlock.toString();
         return Map.of(
                 baseBlock, BLOCKS.register(name.substring(16, name.length() - 1) + "_stairs", () ->
-                        new StairBlock(baseBlock.defaultBlockState(), BlockBehaviour.Properties.copy(baseBlock).lightLevel((something) -> brightness)))
+                        new StairBlock(baseBlock.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(baseBlock).lightLevel((something) -> brightness)))
         );
     }
 
-    public static Map<Block, RegistryObject<Block>> createSlabBlocks(Block baseBlock, int brightness) {
+    public static Map<Block, DeferredHolder<Block, Block>> createSlabBlocks(Block baseBlock, int brightness) {
         String name = baseBlock.toString();
         return Map.of(
                 baseBlock, BLOCKS.register(name.substring(16, name.length() - 1) + "_slab", () ->
-                        new SlabBlock(BlockBehaviour.Properties.copy(baseBlock).lightLevel((something) -> brightness)))
+                        new SlabBlock(BlockBehaviour.Properties.ofFullCopy(baseBlock).lightLevel((something) -> brightness)))
         );
     }
 }

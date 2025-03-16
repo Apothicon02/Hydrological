@@ -8,10 +8,8 @@
       "type": "hydrol:straight_dead_branched_trunk",
       "height": {
         "type": "minecraft:uniform",
-        "value": {
           "min_inclusive": 11,
           "max_inclusive": 30
-        }
       },
       "wood": {
         "type": "minecraft:simple_state_provider",

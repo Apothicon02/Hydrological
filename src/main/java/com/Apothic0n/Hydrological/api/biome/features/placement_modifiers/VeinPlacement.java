@@ -1,6 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.placement_modifiers;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class VeinPlacement extends PlacementModifier {
-    public static final Codec<VeinPlacement> CODEC = RecordCodecBuilder.create((p_191761_) -> {
+    public static final MapCodec<VeinPlacement> CODEC = RecordCodecBuilder.mapCodec((p_191761_) -> {
         return p_191761_.group(Codec.DOUBLE.fieldOf("min").forGetter((v) -> {
             return v.min;
         }), Codec.DOUBLE.fieldOf("max").forGetter((v) -> {
@@ -63,6 +64,6 @@ public class VeinPlacement extends PlacementModifier {
     }
 
     public PlacementModifierType<?> type() {
-        return HydrolPlacementModifierTypes.NOISE_COVER.get();
+        return HydrolPlacementModifierTypes.VEIN.get();
     }
 }

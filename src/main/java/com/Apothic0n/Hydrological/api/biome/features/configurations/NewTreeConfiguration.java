@@ -22,7 +22,7 @@ public class NewTreeConfiguration implements FeatureConfiguration {
             return v.trunk;
         }), Canopy.CODEC.fieldOf("canopy").forGetter((v) -> {
             return v.canopy;
-        }), Decoration.CODEC.listOf().fieldOf("decorations").forGetter((v) -> {
+        }), Decoration.CODEC.codec().listOf().fieldOf("decorations").forGetter((v) -> {
             return v.decorations;
         })).apply(fields, NewTreeConfiguration::new);
     });

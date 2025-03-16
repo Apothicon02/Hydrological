@@ -1,6 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.canopies;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.Map;
 
 public abstract class Canopy {
-    public static final Codec<Canopy> CODEC = CanopyType.CANOPY_TYPE_REGISTRY.get().getCodec().dispatch(Canopy::type, CanopyType::codec);
+    public static final MapCodec<Canopy> CODEC = CanopyType.CANOPY_TYPE_REGISTRY.byNameCodec().dispatchMap(Canopy::type, CanopyType::codec);
 
     protected abstract CanopyType<?> type();
 

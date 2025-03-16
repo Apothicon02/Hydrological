@@ -3,7 +3,6 @@ package com.Apothic0n.Hydrological.api.biome.features.types;
 import com.Apothic0n.Hydrological.api.biome.features.configurations.ReplaceableBlockConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoublePlantBlock;

@@ -1,6 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.decorations;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.Map;
 
 public abstract class Decoration {
-    public static final Codec<Decoration> CODEC = DecorationType.DECORATION_TYPE_REGISTRY.get().getCodec().dispatch(Decoration::type, DecorationType::codec);
+    public static final MapCodec<Decoration> CODEC = DecorationType.DECORATION_TYPE_REGISTRY.byNameCodec().dispatchMap(Decoration::type, DecorationType::codec);
 
     protected abstract DecorationType<?> type();
 

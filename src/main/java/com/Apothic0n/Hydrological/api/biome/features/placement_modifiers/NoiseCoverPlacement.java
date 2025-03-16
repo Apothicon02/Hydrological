@@ -2,6 +2,7 @@ package com.Apothic0n.Hydrological.api.biome.features.placement_modifiers;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class NoiseCoverPlacement extends PlacementModifier {
-    public static final Codec<NoiseCoverPlacement> CODEC = RecordCodecBuilder.create((p_191761_) -> {
+    public static final MapCodec<NoiseCoverPlacement> CODEC = RecordCodecBuilder.mapCodec((p_191761_) -> {
         return p_191761_.group(Codec.DOUBLE.fieldOf("min").forGetter((v) -> {
             return v.min;
         }), Codec.DOUBLE.fieldOf("max").forGetter((v) -> {
@@ -32,7 +33,7 @@ public class NoiseCoverPlacement extends PlacementModifier {
     private final double chance;
     private final double multiplier;
 
-    private NoiseCoverPlacement(double min, double max, double chance, double multiplier) {
+    public NoiseCoverPlacement(double min, double max, double chance, double multiplier) {
         this.min = min;
         this.max = max;
         this.chance = chance;

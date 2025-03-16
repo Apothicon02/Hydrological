@@ -1,6 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.configurations;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.valueproviders.FloatProvider;
 import net.minecraft.util.valueproviders.IntProvider;

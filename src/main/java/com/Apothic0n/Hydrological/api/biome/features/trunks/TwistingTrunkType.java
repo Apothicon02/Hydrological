@@ -1,6 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.trunks;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class TwistingTrunkType extends Trunk {
-    public static final Codec<TwistingTrunkType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<TwistingTrunkType> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             (IntProvider.codec(0, 64).fieldOf("min_branch_height")).forGetter(v -> v.minBranchHeight),
             (IntProvider.codec(1, 64).fieldOf("height")).forGetter(v -> v.height),
             (IntProvider.codec(-100, 100).fieldOf("overgrown_chance")).forGetter(v -> v.overgrownChance),
