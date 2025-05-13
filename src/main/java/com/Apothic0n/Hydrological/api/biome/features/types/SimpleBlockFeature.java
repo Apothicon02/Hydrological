@@ -23,7 +23,7 @@ public class SimpleBlockFeature extends Feature<ReplaceableBlockConfiguration> {
         BlockPos pos = context.origin();
         BlockState block = config.toPlace().getState(context.random(), pos);
         BlockState state = level.getBlockState(pos);
-        if (block.canSurvive(level, pos) && (((state.canBeReplaced() && !block.isSolid()) || config.replace()) || state.isAir() || state.is(Blocks.WATER))) {
+        if ((((state.canBeReplaced() && !block.isSolid()) || config.replace()) || state.isAir() || state.is(Blocks.WATER))) {
             if (block.hasProperty(BlockStateProperties.WATERLOGGED) && state.is(Blocks.WATER)) {
                 block = block.setValue(BlockStateProperties.WATERLOGGED, true);
             }
