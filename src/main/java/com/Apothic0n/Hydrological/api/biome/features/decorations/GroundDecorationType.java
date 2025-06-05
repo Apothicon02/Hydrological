@@ -1,5 +1,6 @@
 package com.Apothic0n.Hydrological.api.biome.features.decorations;
 
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
@@ -50,7 +51,7 @@ public class GroundDecorationType extends Decoration {
                     int zDist = z-offsetPos.getZ();
                     int dist = xDist*xDist + zDist*zDist;
                     BlockPos newPos = new BlockPos(x, y, z);
-                    BlockState oldState = level.getBlockState(newPos);
+                    BlockState oldState = FeatureHelper.getBlockState(level, newPos);
                     if (dist <= (maxRadius*maxRadius)-maxRadius && oldState.is(BlockTags.DIRT) || oldState.is(BlockTags.TERRACOTTA) || oldState.is(BlockTags.BASE_STONE_OVERWORLD)) {
                         addToMap(map, newPos, random);
                     }

@@ -1,5 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.types;
 
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
+
 import com.Apothic0n.Hydrological.api.biome.features.configurations.SpikeConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
@@ -17,7 +19,7 @@ public class SpikeFeature extends Feature<SpikeConfiguration> {
     }
 
     public boolean place(FeaturePlaceContext<SpikeConfiguration> pContext) {
-        WorldGenLevel worldGenLevel = pContext.level();
+        WorldGenLevel level = pContext.level();
         BlockPos blockpos = pContext.origin();
         RandomSource random = pContext.random();
         SpikeConfiguration config = pContext.config();
@@ -26,7 +28,7 @@ public class SpikeFeature extends Feature<SpikeConfiguration> {
         int width = config.getWidth().sample(random);
         int height = config.getHeight().sample(random);
         boolean facingUp = true;
-        worldGenLevel.setBlock(blockpos, material.getState(random, blockpos), UPDATE_ALL);
+        FeatureHelper.setBlock(level, blockpos, material.getState(random, blockpos), UPDATE_ALL);
         BlockPos blockpos1 = blockpos;
         BlockPos blockpos2 = blockpos;
         //boolean northNegative = false;
@@ -74,7 +76,7 @@ public class SpikeFeature extends Feature<SpikeConfiguration> {
                 i = mass * 5;
             }
 
-            worldGenLevel.setBlock(blockpos1, material.getState(random, blockpos1), UPDATE_ALL);
+            FeatureHelper.setBlock(level, blockpos1, material.getState(random, blockpos1), UPDATE_ALL);
             thickness += 1;
             i += 3;
         }
@@ -106,14 +108,14 @@ public class SpikeFeature extends Feature<SpikeConfiguration> {
             for (int w = 0; w < thickness; w++) {
                 for (int l = 0; l < thickness; l++) {
                     if (!(w == l && l == thickness-1)) {
-                        worldGenLevel.setBlock(blockpos2.north(w).east(l), material.getState(random, blockpos2.north(w).east(l)), UPDATE_ALL);
-                        worldGenLevel.setBlock(blockpos2.north(w).west(l), material.getState(random, blockpos2.north(w).west(l)), UPDATE_ALL);
-                        worldGenLevel.setBlock(blockpos2.south(w).east(l), material.getState(random, blockpos2.south(w).east(l)), UPDATE_ALL);
-                        worldGenLevel.setBlock(blockpos2.south(w).west(l), material.getState(random, blockpos2.south(w).west(l)), UPDATE_ALL);
-                        worldGenLevel.setBlock(blockpos2.north(l).east(w), material.getState(random, blockpos2.north(l).east(w)), UPDATE_ALL);
-                        worldGenLevel.setBlock(blockpos2.north(l).west(w), material.getState(random, blockpos2.north(l).west(w)), UPDATE_ALL);
-                        worldGenLevel.setBlock(blockpos2.south(l).east(w), material.getState(random, blockpos2.south(l).east(w)), UPDATE_ALL);
-                        worldGenLevel.setBlock(blockpos2.south(l).west(w), material.getState(random, blockpos2.south(l).west(w)), UPDATE_ALL);
+                        FeatureHelper.setBlock(level, blockpos2.north(w).east(l), material.getState(random, blockpos2.north(w).east(l)), UPDATE_ALL);
+                        FeatureHelper.setBlock(level, blockpos2.north(w).west(l), material.getState(random, blockpos2.north(w).west(l)), UPDATE_ALL);
+                        FeatureHelper.setBlock(level, blockpos2.south(w).east(l), material.getState(random, blockpos2.south(w).east(l)), UPDATE_ALL);
+                        FeatureHelper.setBlock(level, blockpos2.south(w).west(l), material.getState(random, blockpos2.south(w).west(l)), UPDATE_ALL);
+                        FeatureHelper.setBlock(level, blockpos2.north(l).east(w), material.getState(random, blockpos2.north(l).east(w)), UPDATE_ALL);
+                        FeatureHelper.setBlock(level, blockpos2.north(l).west(w), material.getState(random, blockpos2.north(l).west(w)), UPDATE_ALL);
+                        FeatureHelper.setBlock(level, blockpos2.south(l).east(w), material.getState(random, blockpos2.south(l).east(w)), UPDATE_ALL);
+                        FeatureHelper.setBlock(level, blockpos2.south(l).west(w), material.getState(random, blockpos2.south(l).west(w)), UPDATE_ALL);
                     }
                 }
             }

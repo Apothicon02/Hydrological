@@ -1,5 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.types;
 
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
+
 import com.Apothic0n.Hydrological.api.biome.features.configurations.VentConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
@@ -17,7 +19,7 @@ public class VentFeature extends Feature<VentConfiguration> {
     }
 
     public boolean place(FeaturePlaceContext<VentConfiguration> pContext) {
-        WorldGenLevel worldGenLevel = pContext.level();
+        WorldGenLevel level = pContext.level();
         RandomSource random = pContext.random();
         VentConfiguration config = pContext.config();
         int height = config.getHeight().sample(random);
@@ -26,8 +28,8 @@ public class VentFeature extends Feature<VentConfiguration> {
         int offset = (int) (10-(radius/1.33));
         BlockPos origin = new BlockPos((int) pContext.origin().getCenter().x() + random.nextInt(-offset, offset), pContext.origin().getY() - 2, (int) pContext.origin().getCenter().z() + random.nextInt(-offset, offset));
         boolean placedAnything = false;
-        if (pContext.origin().getY()+height < config.getMaxAltitude().sample(random) && worldGenLevel.getBlockState(origin.north(radius).below(1)).isSolid() && worldGenLevel.getBlockState(origin.east(radius).below(1)).isSolid() &&
-                worldGenLevel.getBlockState(origin.south(radius).below(1)).isSolid() && worldGenLevel.getBlockState(origin.west(radius).below(1)).isSolid()) {
+        if (pContext.origin().getY()+height < config.getMaxAltitude().sample(random) && FeatureHelper.getBlockState(level, origin.north(radius).below(1)).isSolid() && FeatureHelper.getBlockState(level, origin.east(radius).below(1)).isSolid() &&
+                FeatureHelper.getBlockState(level, origin.south(radius).below(1)).isSolid() && FeatureHelper.getBlockState(level, origin.west(radius).below(1)).isSolid()) {
             int xWarp = 0;
             int zWarp = 0;
             for (int y = origin.getY(); y <= origin.getY()+height; y++) {
@@ -49,13 +51,13 @@ public class VentFeature extends Feature<VentConfiguration> {
                         int distance = (Math.abs(origin.getX()-x)) + (Math.abs(origin.getZ()-z));
                         if (radius-1 >= distance+currentHeight) {
                             if (y < origin.getY()+height) {
-                                worldGenLevel.setBlock(pos, inner, UPDATE_ALL);
+                                FeatureHelper.setBlock(level, pos, inner, UPDATE_ALL);
                             }
                         } else if (radius >= distance+currentHeight) {
                             if (y == origin.getY()+height || (y+1 == origin.getY()+height && random.nextGaussian() > -0.4) || (y+2 == origin.getY()+height && random.nextGaussian() > 0.5)) {
-                                worldGenLevel.setBlock(pos, rim, UPDATE_ALL);
+                                FeatureHelper.setBlock(level, pos, rim, UPDATE_ALL);
                             } else {
-                                worldGenLevel.setBlock(pos, outer, UPDATE_ALL);
+                                FeatureHelper.setBlock(level, pos, outer, UPDATE_ALL);
                             }
                         }
                     }

@@ -1,5 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.types;
 
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
+
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -33,7 +35,7 @@ public class FireCoralFeature extends Feature<NoneFeatureConfiguration> {
 
         for (int height = 0; height <= maxHeight; height++) {
             BlockPos pos = context.origin().above(height);
-            if (level.getBlockState(pos).is(Blocks.WATER)) {
+            if (FeatureHelper.getBlockState(level, pos).is(Blocks.WATER)) {
                 blocks.put(pos, Blocks.FIRE_CORAL_BLOCK.defaultBlockState());
                 if (height > 0 && direction <= 3 && random.nextInt(0, 100) > 18) {
                     BlockPos branchPos = pos;
@@ -51,7 +53,7 @@ public class FireCoralFeature extends Feature<NoneFeatureConfiguration> {
                     }
                     for (int branchHeight = 1; branchHeight <= random.nextInt(1, 5); branchHeight++) {
                         BlockPos upBranchPos = branchPos.above(branchHeight);
-                        if (level.getBlockState(upBranchPos).is(Blocks.WATER)) {
+                        if (FeatureHelper.getBlockState(level, upBranchPos).is(Blocks.WATER)) {
                             blocks.put(upBranchPos, Blocks.FIRE_CORAL_BLOCK.defaultBlockState());
                         } else {
                             return false;
@@ -65,11 +67,11 @@ public class FireCoralFeature extends Feature<NoneFeatureConfiguration> {
         }
 
         blocks.forEach((BlockPos pos, BlockState state) -> {
-            BlockState aboveBlock = level.getBlockState(pos.above());
+            BlockState aboveBlock = FeatureHelper.getBlockState(level, pos.above());
             if (aboveBlock.liquid() || aboveBlock.is(Blocks.FIRE_CORAL_BLOCK)) {
-                level.setBlock(pos, state, UPDATE_ALL);
+                FeatureHelper.setBlock(level, pos, state, UPDATE_ALL);
                 if (context.origin().above(maxHeight).getY() < pos.getY() && aboveBlock.is(Blocks.WATER)) {
-                    level.setBlock(pos.above(), Blocks.FIRE_CORAL.defaultBlockState(), UPDATE_ALL);
+                    FeatureHelper.setBlock(level, pos.above(), Blocks.FIRE_CORAL.defaultBlockState(), UPDATE_ALL);
                 }
             }
         });
@@ -84,9 +86,9 @@ public class FireCoralFeature extends Feature<NoneFeatureConfiguration> {
         } else if (randomDirection == 3) {
             fanPos = fanPos.west();
         }
-        if (level.getBlockState(fanPos).is(Blocks.WATER) && level.getBlockState(fanPos.below()).isSolid()) {
+        if (FeatureHelper.getBlockState(level, fanPos).is(Blocks.WATER) && FeatureHelper.getBlockState(level, fanPos.below()).isSolid()) {
             BlockState fan = Blocks.FIRE_CORAL_FAN.defaultBlockState();
-            level.setBlock(fanPos, fan, UPDATE_ALL);
+            FeatureHelper.setBlock(level, fanPos, fan, UPDATE_ALL);
         }
         return true;
     }

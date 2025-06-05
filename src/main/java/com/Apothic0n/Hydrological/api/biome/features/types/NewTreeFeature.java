@@ -1,5 +1,8 @@
 package com.Apothic0n.Hydrological.api.biome.features.types;
 
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
+
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
 import com.Apothic0n.Hydrological.api.biome.features.canopies.Canopy;
 import com.Apothic0n.Hydrological.api.biome.features.configurations.NewTreeConfiguration;
 import com.Apothic0n.Hydrological.api.biome.features.decorations.Decoration;
@@ -46,13 +49,13 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
             int x = pos.getX();
             int z = pos.getZ();
             if (!config.getIntersect() && pos.getY() > origin.getY()) {
-                if (x >= minX && x <= maxX && z >= minZ && z <= maxZ && !level.getBlockState(pos).canBeReplaced()) {
+                if (x >= minX && x <= maxX && z >= minZ && z <= maxZ && !FeatureHelper.getBlockState(level, pos).canBeReplaced()) {
                     enoughSpace = false;
                     break;
                 }
             }
             if (config.getMustBeFullySubmerged()) {
-                if (!level.getBlockState(pos).liquid() || !level.getBlockState(pos.above()).liquid()) {
+                if (!FeatureHelper.getBlockState(level, pos).liquid() || !FeatureHelper.getBlockState(level, pos.above()).liquid()) {
                     enoughSpace = false;
                     break;
                 }
@@ -65,14 +68,14 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
             map.forEach((BlockPos pos, BlockState state) -> {
                 int x = pos.getX();
                 int z = pos.getZ();
-                if (x >= minX && x <= maxX && z >= minZ && z <= maxZ && (level.getBlockState(pos).canBeReplaced() || (pos.getY() <= origin.getY() && state.isSolid() && !state.is(BlockTags.LEAVES)))) {
+                if (x >= minX && x <= maxX && z >= minZ && z <= maxZ && (FeatureHelper.getBlockState(level, pos).canBeReplaced() || (pos.getY() <= origin.getY() && state.isSolid() && !state.is(BlockTags.LEAVES)))) {
                     if (state.getBlock() instanceof WallBlock) {
                         state = state.updateShape(Direction.UP, state, level, pos, pos);
                     }
-                    if (state.hasProperty(BlockStateProperties.WATERLOGGED) && level.getBlockState(pos).is(Blocks.WATER)) {
+                    if (state.hasProperty(BlockStateProperties.WATERLOGGED) && FeatureHelper.getBlockState(level, pos).is(Blocks.WATER)) {
                         state = state.setValue(BlockStateProperties.WATERLOGGED, true);
                     }
-                    BlockState aboveState = level.getBlockState(pos.above());
+                    BlockState aboveState = FeatureHelper.getBlockState(level, pos.above());
                     boolean cancel = false;
                     if (state.is(Blocks.MYCELIUM) || state.is(Blocks.PODZOL)) {
                         if (aboveState.isSolid()) {
@@ -84,20 +87,20 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
                         }
                     }
                     if (!cancel) {
-                        level.setBlock(pos, state, UPDATE_ALL);
+                        FeatureHelper.setBlock(level, pos, state, UPDATE_ALL);
                         if ((!state.isFaceSturdy(level, pos, Direction.UP) || state.is(Blocks.PODZOL)) && aboveState.getBlock() instanceof BushBlock) {
                             BlockState filler = Blocks.AIR.defaultBlockState();
                             if (aboveState.hasProperty(BlockStateProperties.WATERLOGGED) && aboveState.getValue(BlockStateProperties.WATERLOGGED)) {
                                 filler = Blocks.WATER.defaultBlockState();
                             }
-                            level.setBlock(pos.above(), filler, UPDATE_ALL);
+                            FeatureHelper.setBlock(level, pos.above(), filler, UPDATE_ALL);
                             if (aboveState.getBlock() instanceof DoublePlantBlock) {
-                                aboveState = level.getBlockState(pos.above(2));
+                                aboveState = FeatureHelper.getBlockState(level, pos.above(2));
                                 filler = Blocks.AIR.defaultBlockState();
                                 if (aboveState.hasProperty(BlockStateProperties.WATERLOGGED) && aboveState.getValue(BlockStateProperties.WATERLOGGED)) {
                                     filler = Blocks.WATER.defaultBlockState();
                                 }
-                                level.setBlock(pos.above(2), filler, UPDATE_ALL);
+                                FeatureHelper.setBlock(level, pos.above(2), filler, UPDATE_ALL);
                             }
                         }
                     }

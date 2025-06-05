@@ -2,6 +2,7 @@ package com.Apothic0n.Hydrological.core.events;
 
 import com.Apothic0n.Hydrological.Hydrological;
 import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
+import it.unimi.dsi.fastutil.longs.Long2DoubleOpenHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
@@ -23,13 +24,20 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent;
 import net.neoforged.neoforge.event.level.BlockGrowFeatureEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 
 import static net.minecraft.world.level.block.Block.UPDATE_ALL;
 
 @EventBusSubscriber(modid = Hydrological.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class CommonForgeEvents {
+
+    @SubscribeEvent
+    public static void onServerStopping(ServerStoppingEvent event) {
+        HydrolDensityFunctions.heightmap = new Long2DoubleOpenHashMap();
+    }
 
     @SubscribeEvent
     public static void saplingGrowTree(BlockGrowFeatureEvent event) {

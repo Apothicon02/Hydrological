@@ -1,5 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.types;
 
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
+
 import com.Apothic0n.Hydrological.api.biome.features.configurations.AnvilRockConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
@@ -15,7 +17,7 @@ public class FloatingRockFeature extends Feature<AnvilRockConfiguration> {
     }
 
     public boolean place(FeaturePlaceContext<AnvilRockConfiguration> pContext) {
-        WorldGenLevel worldGenLevel = pContext.level();
+        WorldGenLevel level = pContext.level();
         BlockPos blockpos = new BlockPos((int) pContext.origin().getCenter().x(), pContext.origin().getY(), (int) pContext.origin().getCenter().z());
         RandomSource random = pContext.random();
         AnvilRockConfiguration config = pContext.config();
@@ -41,283 +43,283 @@ public class FloatingRockFeature extends Feature<AnvilRockConfiguration> {
                 boolean anorexic = maxHeight >= 9 && h > 5 && h < height-5;
                 //Radius 1
                 if (narrow) {
-                    genNarrowRadius1(pContext, worldGenLevel, pos, h);
+                    genNarrowRadius1(pContext, level, pos, h);
                 } else if (anorexic) {
-                    genAnorexicRadius1(pContext, worldGenLevel, pos, h);
+                    genAnorexicRadius1(pContext, level, pos, h);
                 } else if (obese) {
-                    genObeseRadius1(pContext, worldGenLevel, pos, h);
+                    genObeseRadius1(pContext, level, pos, h);
                 } else {
-                    genRadius1(pContext, worldGenLevel, pos, h);
+                    genRadius1(pContext, level, pos, h);
                 }
                 //Radius 2
                 if (radius >= 2 || h == 1 || h == maxHeight) {
                     if (narrow) {
-                        genNarrowRadius2(pContext, worldGenLevel, pos, h);
+                        genNarrowRadius2(pContext, level, pos, h);
                     } else if (!anorexic) {
                         if (obese) {
-                            genObeseRadius2(pContext, worldGenLevel, pos, h);
+                            genObeseRadius2(pContext, level, pos, h);
                         } else {
-                            genRadius2(pContext, worldGenLevel, pos, h);
+                            genRadius2(pContext, level, pos, h);
                         }
                     }
                 }
                 //Radius 3
                 if (radius >= 3) {
                     if (anorexic) {
-                        genNarrowRadius2(pContext, worldGenLevel, pos, h);
+                        genNarrowRadius2(pContext, level, pos, h);
                     } else if (narrow) {
-                        genRadius2(pContext, worldGenLevel, pos, h);
+                        genRadius2(pContext, level, pos, h);
                     } else if (obese) {
-                        genObeseRadius3(pContext, worldGenLevel, pos, h);
+                        genObeseRadius3(pContext, level, pos, h);
                     } else {
-                        genRadius3(pContext, worldGenLevel, pos, h);
+                        genRadius3(pContext, level, pos, h);
                     }
                     if (h == 1 || h == maxHeight) {
-                        genRadius4(pContext, worldGenLevel, pos, h);
+                        genRadius4(pContext, level, pos, h);
                     }
                 } else if (radius == 2 && h == 1) {
-                    genRadius3(pContext, worldGenLevel, pos, h);
+                    genRadius3(pContext, level, pos, h);
                 } else if (radius == 2 && h == maxHeight) {
-                    genRadius3(pContext, worldGenLevel, pos, h);
+                    genRadius3(pContext, level, pos, h);
                 }
             }
         }
         return true;
     }
 
-    private void genAnorexicRadius1(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel worldGenLevel, BlockPos blockpos, int h) {
+    private void genAnorexicRadius1(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel level, BlockPos blockpos, int h) {
         h--;
-        worldGenLevel.setBlock(blockpos.offset(0, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
     }
 
-    private void genNarrowRadius1(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel worldGenLevel, BlockPos blockpos, int h) {
+    private void genNarrowRadius1(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel level, BlockPos blockpos, int h) {
         h--;
-        worldGenLevel.setBlock(blockpos.offset(0, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
     }
 
-    private void genRadius1(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel worldGenLevel, BlockPos blockpos, int h) {
+    private void genRadius1(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel level, BlockPos blockpos, int h) {
         h--;
-        worldGenLevel.setBlock(blockpos.offset(0, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
     }
 
-    private void genObeseRadius1(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel worldGenLevel, BlockPos blockpos, int h) {
+    private void genObeseRadius1(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel level, BlockPos blockpos, int h) {
         h--;
-        worldGenLevel.setBlock(blockpos.offset(0, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
 
-        worldGenLevel.setBlock(blockpos.offset(2, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, 2), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, -2), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, 2), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, -2), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, 2), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, -2), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 2), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, 0), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, -2), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, 2), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, 1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, -2), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, 2), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, -1), getState(pContext, blockpos.offset(0, h, 0)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, -2), getState(pContext, blockpos.offset(0, h, 0)), 2);
     }
 
-    private void genNarrowRadius2(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel worldGenLevel, BlockPos blockpos, int h) {
+    private void genNarrowRadius2(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel level, BlockPos blockpos, int h) {
         h--;
-        worldGenLevel.setBlock(blockpos.offset(0, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
     }
 
-    private void genRadius2(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel worldGenLevel, BlockPos blockpos, int h) {
+    private void genRadius2(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel level, BlockPos blockpos, int h) {
         h--;
-        worldGenLevel.setBlock(blockpos.offset(0, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, 1), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, 1), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, -1), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, -1), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, 1), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, 1), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, -1), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, -1), getState(pContext, blockpos.offset(1, h, 1)), 2);
     }
 
-    private void genObeseRadius2(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel worldGenLevel, BlockPos blockpos, int h) {
+    private void genObeseRadius2(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel level, BlockPos blockpos, int h) {
         h--;
-        worldGenLevel.setBlock(blockpos.offset(0, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, 1), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, 1), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, -1), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, -1), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, 1), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, 1), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, 2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, -1), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, -2), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, -1), getState(pContext, blockpos.offset(1, h, 1)), 2);
 
-        worldGenLevel.setBlock(blockpos.offset(0, h, 3), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, -3), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, 3), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, 1), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, -3), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, 1), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, 3), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, -1), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, -3), getState(pContext, blockpos.offset(1, h, 1)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, -1), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 3), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, -3), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, 0), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, 3), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, 1), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, -3), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, 1), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, 3), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, -1), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, -3), getState(pContext, blockpos.offset(1, h, 1)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, -1), getState(pContext, blockpos.offset(1, h, 1)), 2);
     }
 
-    private void genRadius3(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel worldGenLevel, BlockPos blockpos, int h) {
+    private void genRadius3(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel level, BlockPos blockpos, int h) {
         h--;
-        worldGenLevel.setBlock(blockpos.offset(2, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
 
-        worldGenLevel.setBlock(blockpos.offset(0, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, 0), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, 0), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, 1), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, 1), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, -1), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, -1), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, 0), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, 0), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, 1), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, 1), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, -1), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, -1), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
     }
 
-    private void genObeseRadius3(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel worldGenLevel, BlockPos blockpos, int h) {
+    private void genObeseRadius3(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel level, BlockPos blockpos, int h) {
         h--;
-        worldGenLevel.setBlock(blockpos.offset(2, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
 
-        worldGenLevel.setBlock(blockpos.offset(0, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, 0), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, 0), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, 1), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, 1), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, -1), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, -1), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, 0), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, 0), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, 1), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, 1), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, -1), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, -1), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
 
-        worldGenLevel.setBlock(blockpos.offset(3, h+1, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h+1, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h+1, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h+1, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h-1, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h-1, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h-1, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h-1, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, 4), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(4, h, 0), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, -4), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-4, h, 0), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h+1, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h+1, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h+1, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h+1, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h-1, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h-1, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h-1, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h-1, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, 3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, -3), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 4), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(4, h, 0), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, -4), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-4, h, 0), getState(pContext, blockpos.offset(2, h, 2)), 2);
 
-        worldGenLevel.setBlock(blockpos.offset(1, h, 4), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(4, h, 1), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, -4), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-4, h, 1), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, 4), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(4, h, -1), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, -4), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-4, h, -1), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, 4), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(4, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, -4), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-4, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, 4), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(4, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, -4), getState(pContext, blockpos.offset(2, h, 2)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-4, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, 4), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(4, h, 1), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, -4), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-4, h, 1), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, 4), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(4, h, -1), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, -4), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-4, h, -1), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, 4), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(4, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, -4), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-4, h, 2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, 4), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(4, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, -4), getState(pContext, blockpos.offset(2, h, 2)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-4, h, -2), getState(pContext, blockpos.offset(2, h, 2)), 2);
     }
 
-    private void genRadius4(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel worldGenLevel, BlockPos blockpos, int h) {
+    private void genRadius4(FeaturePlaceContext<AnvilRockConfiguration> pContext, WorldGenLevel level, BlockPos blockpos, int h) {
         h--;
-        worldGenLevel.setBlock(blockpos.offset(3, h, 3), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, -3), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, 3), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, -3), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, 3), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, -3), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, 3), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, -3), getState(pContext, blockpos.offset(3, h, 3)), 2);
 
-        worldGenLevel.setBlock(blockpos.offset(0, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(4, h, 0), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(0, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-4, h, 0), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(4, h, 1), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(1, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-4, h, 1), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(4, h, -1), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-1, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-4, h, -1), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(4, h, 2), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(2, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-4, h, 2), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(4, h, -2), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-2, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-4, h, -2), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(4, h, 3), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(3, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-4, h, 3), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(4, h, -3), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-3, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
-        worldGenLevel.setBlock(blockpos.offset(-4, h, -3), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(4, h, 0), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(0, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-4, h, 0), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(4, h, 1), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(1, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-4, h, 1), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(4, h, -1), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-1, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-4, h, -1), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(4, h, 2), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(2, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-4, h, 2), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(4, h, -2), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-2, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-4, h, -2), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(4, h, 3), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(3, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-4, h, 3), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, 4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(4, h, -3), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-3, h, -4), getState(pContext, blockpos.offset(3, h, 3)), 2);
+        FeatureHelper.setBlock(level, blockpos.offset(-4, h, -3), getState(pContext, blockpos.offset(3, h, 3)), 2);
     }
 
     private BlockState getState(FeaturePlaceContext<AnvilRockConfiguration> pContext, BlockPos pos) {

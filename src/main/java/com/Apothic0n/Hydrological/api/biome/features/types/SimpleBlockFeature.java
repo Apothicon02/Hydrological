@@ -1,5 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.types;
 
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
+
 import com.Apothic0n.Hydrological.api.biome.features.configurations.ReplaceableBlockConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
@@ -22,13 +24,13 @@ public class SimpleBlockFeature extends Feature<ReplaceableBlockConfiguration> {
         WorldGenLevel level = context.level();
         BlockPos pos = context.origin();
         BlockState block = config.toPlace().getState(context.random(), pos);
-        BlockState state = level.getBlockState(pos);
+        BlockState state = FeatureHelper.getBlockState(level, pos);
         if ((((state.canBeReplaced() && !block.isSolid()) || config.replace()) || state.isAir() || state.is(Blocks.WATER))) {
             if (block.hasProperty(BlockStateProperties.WATERLOGGED) && state.is(Blocks.WATER)) {
                 block = block.setValue(BlockStateProperties.WATERLOGGED, true);
             }
             if (block.getBlock() instanceof DoublePlantBlock) {
-                if (!level.getBlockState(pos.above()).canBeReplaced()) {
+                if (!FeatureHelper.getBlockState(level, pos.above()).canBeReplaced()) {
                     return false;
                 }
 
@@ -53,7 +55,7 @@ public class SimpleBlockFeature extends Feature<ReplaceableBlockConfiguration> {
                         block = Blocks.DEEPSLATE_COPPER_ORE.defaultBlockState();
                     }
                 }
-                level.setBlock(pos, block, 2);
+                FeatureHelper.setBlock(level, pos, block, 2);
             }
             return true;
         }

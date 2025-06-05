@@ -1,5 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.decorations;
 
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
+
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
@@ -44,10 +46,10 @@ public class HangingLeavesDecorationType extends Decoration {
             existing.forEach((BlockPos pos, BlockState state) -> {
                 int length = this.length.sample(random);
                 if (length > 0) {
-                    if (state.is(BlockTags.LEAVES) && existing.get(pos.below()) == null && (level.getBlockState(pos.below()).isAir() || level.getBlockState(pos.below()).is(Blocks.WATER))) {
+                    if (state.is(BlockTags.LEAVES) && existing.get(pos.below()) == null && (FeatureHelper.getBlockState(level, pos.below()).isAir() || FeatureHelper.getBlockState(level, pos.below()).is(Blocks.WATER))) {
                         for (int y = 1; y <= length; y++) {
                             BlockPos newPos = pos.below(y);
-                            if (existing.get(newPos) == null && (level.getBlockState(newPos).isAir() || level.getBlockState(newPos).is(Blocks.WATER))) {
+                            if (existing.get(newPos) == null && (FeatureHelper.getBlockState(level, newPos).isAir() || FeatureHelper.getBlockState(level, newPos).is(Blocks.WATER))) {
                                 addToMap(map, newPos, random, leaves);
                             } else {
                                 y = 69420;

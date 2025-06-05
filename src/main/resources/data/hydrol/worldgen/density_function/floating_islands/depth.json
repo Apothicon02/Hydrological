@@ -1,0 +1,10 @@
+{
+  "type": "hydrol:gradient",
+  "from_y": 320,
+  "to_y": 64,
+  "from_value": {
+    "type": "hydrol:floating_beaches",
+    "input": 0
+  },
+  "to_value": 0.5
+}

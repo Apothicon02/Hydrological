@@ -1,5 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.decorations;
 
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
+
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;

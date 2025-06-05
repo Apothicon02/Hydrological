@@ -1,5 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.decorations;
 
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
+
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
@@ -35,7 +37,7 @@ public class RootsDecorationType extends Decoration {
     }
 
     private boolean addToMap(Map<BlockPos, BlockState> existing, Map<BlockPos, BlockState> map, BlockPos pos, RandomSource random, BlockStateProvider roots, WorldGenLevel level) {
-        if (!existing.containsKey(pos) && level.getBlockState(pos).canBeReplaced()) {
+        if (!existing.containsKey(pos) && FeatureHelper.getBlockState(level, pos).canBeReplaced()) {
             map.put(pos, roots.getState(random, pos));
         }
         return true;

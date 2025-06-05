@@ -1,5 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.decorations;
 
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
+
 import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.api.biome.features.placement_modifiers.NoiseCoverPlacement;
 import com.mojang.serialization.MapCodec;
@@ -54,8 +56,8 @@ public class LeafPilesDecorationType extends Decoration {
                     if (length > 0) {
                         for (int y = pos.getY() - 1; y >= pos.getY() - length; y--) {
                             BlockPos newPos = pos.atY(y);
-                            BlockState existingState = level.getBlockState(newPos);
-                            if (existing.get(newPos) == null && (existingState.isAir() || existingState.canBeReplaced()) && !existingState.is(Blocks.SNOW) && !existingState.is(Blocks.WATER) && level.getBlockState(newPos.below()).isSolid() && level.getBlockState(newPos.above()).isAir()) {
+                            BlockState existingState = FeatureHelper.getBlockState(level, newPos);
+                            if (existing.get(newPos) == null && (existingState.isAir() || existingState.canBeReplaced()) && !existingState.is(Blocks.SNOW) && !existingState.is(Blocks.WATER) && FeatureHelper.getBlockState(level, newPos.below()).isSolid() && FeatureHelper.getBlockState(level, newPos.above()).isAir()) {
                                 addToMap(map, newPos, random, leaves);
                             }
                         }

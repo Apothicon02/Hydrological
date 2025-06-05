@@ -1,5 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.types;
 
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
+
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -18,7 +20,7 @@ public class BlockColumnFeature extends Feature<BlockColumnConfiguration> {
 
     @Override
     public boolean place(FeaturePlaceContext<BlockColumnConfiguration> p_190791_) {
-        WorldGenLevel worldgenlevel = p_190791_.level();
+        WorldGenLevel level = p_190791_.level();
         BlockColumnConfiguration blockcolumnconfiguration = p_190791_.config();
         RandomSource randomsource = p_190791_.random();
         int i = blockcolumnconfiguration.layers().size();
@@ -37,7 +39,7 @@ public class BlockColumnFeature extends Feature<BlockColumnConfiguration> {
             BlockPos.MutableBlockPos blockpos$mutableblockpos = blockpos$mutableblockpos1.mutable().move(blockcolumnconfiguration.direction());
 
             for(int l = 0; l < j; ++l) {
-                if (!blockcolumnconfiguration.allowedPlacement().test(worldgenlevel, blockpos$mutableblockpos)) {
+                if (!blockcolumnconfiguration.allowedPlacement().test(level, blockpos$mutableblockpos)) {
                     truncate(aint, j, l, blockcolumnconfiguration.prioritizeTip());
                     break;
                 }
@@ -52,10 +54,10 @@ public class BlockColumnFeature extends Feature<BlockColumnConfiguration> {
 
                     for(int j1 = 0; j1 < i1; ++j1) {
                         BlockState block = blockcolumnconfiguration$layer.state().getState(randomsource, blockpos$mutableblockpos1);
-                        if (block.hasProperty(BlockStateProperties.WATERLOGGED) && worldgenlevel.getBlockState(blockpos$mutableblockpos1).is(Blocks.WATER)) {
+                        if (block.hasProperty(BlockStateProperties.WATERLOGGED) && FeatureHelper.getBlockState(level, blockpos$mutableblockpos1).is(Blocks.WATER)) {
                             block = block.setValue(BlockStateProperties.WATERLOGGED, true);
                         }
-                        worldgenlevel.setBlock(blockpos$mutableblockpos1, block, 2);
+                        FeatureHelper.setBlock(level, blockpos$mutableblockpos1, block, 2);
                         blockpos$mutableblockpos1.move(blockcolumnconfiguration.direction());
                     }
                 }

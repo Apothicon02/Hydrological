@@ -32,27 +32,32 @@
           "min_inclusive": 7,
           "max_inclusive": 9
       },
-      "canopy": {
-        "type": "hydrol:sphere_canopy",
-        "height": {
-          "type": "minecraft:uniform",
-          "min_inclusive": 3,
-          "max_inclusive": 6
-        },
-        "radius": {
-          "type": "minecraft:uniform",
-          "min_inclusive": 6,
-          "max_inclusive": 10
-        },
-        "leaves": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "minecraft:oak_leaves",
-            "Properties": {
-              "persistent": "false"
-            }
+      "leaves": {
+        "type": "minecraft:weighted_state_provider",
+        "entries": [
+          {
+            "data": {
+              "Name": "minecraft:azalea_leaves",
+              "Properties": {
+                "distance": "7",
+                "persistent": "false",
+                "waterlogged": "false"
+              }
+            },
+            "weight": 83
+          },
+          {
+            "data": {
+              "Name": "minecraft:flowering_azalea_leaves",
+              "Properties": {
+                "distance": "7",
+                "persistent": "false",
+                "waterlogged": "false"
+              }
+            },
+            "weight": 17
           }
-        }
+        ]
       }
     },
     "decorations": [

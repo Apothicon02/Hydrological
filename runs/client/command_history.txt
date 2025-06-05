@@ -1,3 +1,50 @@
-/gamerule randomTickSpeed 130
+/time set 23800
+/time set 12800
+/time set 13800
+/time set 11800
+/time set 13800
+/time set 23800
+/gamemode spectator
+/locate biome minecraft:plains
+/time set midnight
+/time set 23800
+/time set 13800
+/time set 13500
+/time set 13200
+/time set noon
+/tp @s -2070 161 42
+/seed
+/tp ~ ~ ~
+/tp -1825 146 -205
+/locate biome minecraft:old_growth_pine_taiga
+/tp @s -2086 185 -489
+/locate biome minecraft:old_growth_spruce_taiga
+/tp @s -1860 132 -686
+/tp @s -1860 132 -6861351
+/locate biome minecraft:old_growth_spruce_taiga
+/tp @s -1764 132 -6860711
+/locate biome minecraft:old_growth_pine_taiga
+/tp @s -3483 145 -6858842
 /gamemode spectator
 /time set 0
+/time set 12000
+/time set 10000
+/time set 1000
+/locate biome minecraft:jungle
+/tp @s 725 44 198
+/gamemode spectator
+/gamemode creative
+/gamemode spectator
+/gamemode creative
+/gamemode spectator
+/gamemode creative
+/gamemode spectator
+/locate biome minecraft:jungle
+/gamemode spectator
+/locate biome minecraft:jungle
+/gamemode spectator
+/gamemode sp
+/gamemode spectator
+/seed
+/gamemode creative
+/gamemode spectator

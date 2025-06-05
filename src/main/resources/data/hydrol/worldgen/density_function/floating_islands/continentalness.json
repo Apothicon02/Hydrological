@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:range_choice",
+  "input": {
+    "type": "minecraft:y_clamped_gradient",
+    "from_y": 31,
+    "to_y": 32,
+    "from_value": -1,
+    "to_value": 1
+  },
+  "min_inclusive": -100,
+  "max_exclusive": -0.01,
+  "when_in_range": -1,
+  "when_out_of_range": {
+    "type": "minecraft:range_choice",
+    "input": {
+      "type": "hydrol:shift",
+      "input": "hydrol:floating_islands/final_density",
+      "shift_x": 0,
+      "shift_y": 12,
+      "shift_z": 0
+    },
+    "min_inclusive": 0.01,
+    "max_exclusive": 100,
+    "when_in_range": -1,
+    "when_out_of_range": {
+      "type": "minecraft:max",
+      "argument1": 0.251,
+      "argument2": {
+        "type": "hydrol:to_heightmap",
+        "input": "hydrol:floating_islands/final_density",
+        "min_y": 48,
+        "max_y": 320
+      }
+    }
+  }
+}

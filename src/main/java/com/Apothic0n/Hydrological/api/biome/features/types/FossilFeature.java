@@ -1,5 +1,7 @@
 package com.Apothic0n.Hydrological.api.biome.features.types;
 
+import com.Apothic0n.Hydrological.api.biome.features.FeatureHelper;
+
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
@@ -27,29 +29,29 @@ public class FossilFeature extends Feature<FossilFeatureConfiguration> {
 
     public boolean place(FeaturePlaceContext<FossilFeatureConfiguration> context) {
         RandomSource randomsource = context.random();
-        WorldGenLevel worldgenlevel = context.level();
+        WorldGenLevel level = context.level();
         BlockPos blockpos = context.origin();
         Rotation rotation = Rotation.getRandom(randomsource);
         FossilFeatureConfiguration fossilfeatureconfiguration = context.config();
         int i = randomsource.nextInt(fossilfeatureconfiguration.fossilStructures.size());
-        StructureTemplateManager structuretemplatemanager = worldgenlevel.getLevel().getServer().getStructureManager();
+        StructureTemplateManager structuretemplatemanager = level.getLevel().getServer().getStructureManager();
         StructureTemplate structuretemplate = structuretemplatemanager.getOrCreate(fossilfeatureconfiguration.fossilStructures.get(i));
         StructureTemplate structuretemplate1 = structuretemplatemanager.getOrCreate(fossilfeatureconfiguration.overlayStructures.get(i));
         ChunkPos chunkpos = new ChunkPos(blockpos);
-        BoundingBox boundingbox = new BoundingBox(chunkpos.getMinBlockX() - 16, worldgenlevel.getMinBuildHeight(), chunkpos.getMinBlockZ() - 16, chunkpos.getMaxBlockX() + 16, worldgenlevel.getMaxBuildHeight(), chunkpos.getMaxBlockZ() + 16);
+        BoundingBox boundingbox = new BoundingBox(chunkpos.getMinBlockX() - 16, level.getMinBuildHeight(), chunkpos.getMinBlockZ() - 16, chunkpos.getMaxBlockX() + 16, level.getMaxBuildHeight(), chunkpos.getMaxBlockZ() + 16);
         StructurePlaceSettings structureplacesettings = (new StructurePlaceSettings()).setRotation(rotation).setBoundingBox(boundingbox).setRandom(randomsource);
         Vec3i vec3i = structuretemplate.getSize(rotation);
         BlockPos blockpos1 = blockpos.offset(-vec3i.getX() / 2, 0, -vec3i.getZ() / 2);
         BlockPos blockpos2 = structuretemplate.getZeroPositionWithTransform(blockpos1.atY(blockpos.getY()), Mirror.NONE, rotation);
-        if (countEmptyCorners(worldgenlevel, structuretemplate.getBoundingBox(structureplacesettings, blockpos2)) > fossilfeatureconfiguration.maxEmptyCornersAllowed) {
+        if (countEmptyCorners(level, structuretemplate.getBoundingBox(structureplacesettings, blockpos2)) > fossilfeatureconfiguration.maxEmptyCornersAllowed) {
             return false;
         } else {
             structureplacesettings.clearProcessors();
             fossilfeatureconfiguration.fossilProcessors.value().list().forEach(structureplacesettings::addProcessor);
-            structuretemplate.placeInWorld(worldgenlevel, blockpos2, blockpos2, structureplacesettings, randomsource, 4);
+            structuretemplate.placeInWorld(level, blockpos2, blockpos2, structureplacesettings, randomsource, 4);
             structureplacesettings.clearProcessors();
             fossilfeatureconfiguration.overlayProcessors.value().list().forEach(structureplacesettings::addProcessor);
-            structuretemplate1.placeInWorld(worldgenlevel, blockpos2, blockpos2, structureplacesettings, randomsource, 4);
+            structuretemplate1.placeInWorld(level, blockpos2, blockpos2, structureplacesettings, randomsource, 4);
             return true;
         }
     }
