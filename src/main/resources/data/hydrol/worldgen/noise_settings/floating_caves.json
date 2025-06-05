@@ -30,20 +30,7 @@
     "continents": "hydrol:floating_caves/continentalness",
     "depth": "hydrol:floating_caves/heightmap",
     "ridges": 0,
-    "initial_density_without_jaggedness": {
-      "type": "minecraft:range_choice",
-      "input": {
-        "type": "minecraft:y_clamped_gradient",
-        "from_y": 15,
-        "to_y": 16,
-        "from_value": 0,
-        "to_value": 1
-      },
-      "min_inclusive": 0,
-      "max_exclusive": 0.1,
-      "when_in_range": 1,
-      "when_out_of_range": -1
-    },
+    "initial_density_without_jaggedness": 0,
     "final_density": "hydrol:floating_caves/final_density",
     "vein_toggle": 0,
     "vein_ridged": 0,

@@ -1,5 +1,3 @@
-/time set 23800
-/time set 12800
 /time set 13800
 /time set 11800
 /time set 13800
@@ -46,5 +44,7 @@
 /gamemode sp
 /gamemode spectator
 /seed
+/gamemode creative
+/gamemode spectator
 /gamemode creative
 /gamemode spectator

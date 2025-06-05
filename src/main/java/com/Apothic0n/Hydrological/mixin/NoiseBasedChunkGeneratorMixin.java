@@ -94,7 +94,7 @@ public abstract class NoiseBasedChunkGeneratorMixin {
 
                                 state = this.debugPreliminarySurfaceLevel($$6, $$29, $$24, $$33, state);
                                 if (HydrolDensityFunctions.isFloatingIslands) {
-                                    if (state == Blocks.AIR.defaultBlockState()) {
+                                    if (state.isAir()) {
                                         int newY = (42+(floatingIslandsSeaOffset/2)) - (int)(Math.abs(SimplexNoise.noise($$29*0.0007F, $$33*0.0007F)) * 128);
                                         if (newY > $$24) {
                                             state = Blocks.WATER.defaultBlockState();
@@ -118,9 +118,9 @@ public abstract class NoiseBasedChunkGeneratorMixin {
                                             }
                                         }
                                     }
-                                }
-                                if (state.isAir() && $$24 < -55) {
-                                    state = Blocks.LAVA.defaultBlockState();
+                                    if (state.isAir() && $$24 < -55 && chunkAccess.getBlockState(new BlockPos($$29, chunkAccess.getMinBuildHeight(), $$33)).isSolid()) {
+                                        state = Blocks.LAVA.defaultBlockState();
+                                    }
                                 }
                                 $$21.setBlockState($$30, $$25, $$34, state, false);
                                 $$7.update($$30, $$24, $$34, state);

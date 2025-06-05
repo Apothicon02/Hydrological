@@ -17,10 +17,10 @@
     "size_vertical": 1
   },
   "noise_router": {
-    "barrier": 1,
+    "barrier": -1,
     "fluid_level_floodedness": -1,
     "fluid_level_spread": -1,
-    "lava": 0,
+    "lava": -1,
     "temperature": {
       "type": "hydrol:store_temperature",
       "input": "hydrol:normal/temperature"
