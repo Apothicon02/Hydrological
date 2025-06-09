@@ -1,22 +1,3 @@
-/time set 13800
-/time set 11800
-/time set 13800
-/time set 23800
-/gamemode spectator
-/locate biome minecraft:plains
-/time set midnight
-/time set 23800
-/time set 13800
-/time set 13500
-/time set 13200
-/time set noon
-/tp @s -2070 161 42
-/seed
-/tp ~ ~ ~
-/tp -1825 146 -205
-/locate biome minecraft:old_growth_pine_taiga
-/tp @s -2086 185 -489
-/locate biome minecraft:old_growth_spruce_taiga
 /tp @s -1860 132 -686
 /tp @s -1860 132 -6861351
 /locate biome minecraft:old_growth_spruce_taiga
@@ -48,3 +29,22 @@
 /gamemode spectator
 /gamemode creative
 /gamemode spectator
+/locate biome minecraft:lush_caves
+/locate biome minecraft:dripstone_caves
+/locate biome minecraft:badlands
+/tp @s 1180 201 -1014
+/gamemode spectator
+/locate biome minecraft:badlands
+/gamemode spectator
+/locate biome minecraft:deep_dark
+/locate biome minecraft:frozen_ocean
+/tp @s -503 28 -1679
+/locate biome minecraft:frozen_ocean
+/locate biome minecraft:deep_dark
+/gamemode sp
+/gamemode spe
+/gamemode spectator
+/locate biome minecraft:deep_dark
+/gamemode spectator
+/locate biome minecraft:deep_dark
+/tp @s 99 -24 102

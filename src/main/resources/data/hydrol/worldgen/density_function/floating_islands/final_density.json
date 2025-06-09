@@ -1,11 +1,8 @@
 {
-  "type": "hydrol:floating_islands",
-  "hollow": true,
+  "type": "hydrol:cubical_scale",
   "input": {
-    "type": "minecraft:y_clamped_gradient",
-    "from_y": -65,
-    "to_y": -63,
-    "from_value": 1,
-    "to_value": 0
+    "type": "minecraft:min",
+    "argument1": "hydrol:floating_islands/noodle_caves",
+    "argument2": "hydrol:floating_islands/final_density_caveless"
   }
 }

@@ -113,7 +113,7 @@ public final class HydrolDensityFunctions {
                     }
                     double caves = 0;
                     if (hollow()) {
-                        caves = Math.min(0, ((floatingIsland - 0.2) * -5));
+                        caves = Math.min(0, ((floatingIsland - 0.2) * -5000));
                     }
                     return caves + floatingIsland + input().compute(context);
                 } else {

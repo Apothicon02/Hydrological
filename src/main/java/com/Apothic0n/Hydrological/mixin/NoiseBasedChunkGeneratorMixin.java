@@ -21,7 +21,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static com.Apothic0n.Hydrological.api.HydrolDensityFunctions.floatingIslandsSeaOffset;
-import static com.Apothic0n.Hydrological.api.HydrolMath.unprogressBetweenInts;
 
 @Mixin(NoiseBasedChunkGenerator.class)
 public abstract class NoiseBasedChunkGeneratorMixin {
@@ -93,7 +92,7 @@ public abstract class NoiseBasedChunkGeneratorMixin {
                                 }
 
                                 state = this.debugPreliminarySurfaceLevel($$6, $$29, $$24, $$33, state);
-                                if (HydrolDensityFunctions.isFloatingIslands) {
+                                if (HydrolDensityFunctions.isFloatingIslands && $$24 > 0) {
                                     if (state.isAir()) {
                                         int newY = (42+(floatingIslandsSeaOffset/2)) - (int)(Math.abs(SimplexNoise.noise($$29*0.0007F, $$33*0.0007F)) * 128);
                                         if (newY > $$24) {
