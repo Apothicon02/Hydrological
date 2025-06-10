@@ -1,0 +1,8 @@
+{
+  "type": "hydrol:cubical_scale",
+  "input": {
+    "type": "minecraft:min",
+    "argument1": "hydrol:floating_islands/noodle_caves",
+    "argument2": "hydrol:floating_islands/final_density_caveless"
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "type": "hydrol:tree",
+  "config": {
+    "must_be_fully_submerged": false,
+    "intersect": false,
+    "canopy_offset": 0,
+    "trunk": {
+      "type": "hydrol:twisting_trunk",
+      "min_branch_height": 8,
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 12,
+          "max_inclusive": 18
+        }
+      },
+      "overgrown_chance": 1,
+      "wood": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:oak_wood"
+        }
+      }
+    },
+    "canopy": {
+      "type": "hydrol:drooping_canopy",
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 4,
+          "max_inclusive": 6
+        }
+      },
+      "radius": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 7,
+          "max_inclusive": 9
+        }
+      },
+      "leaves": {
+        "type": "minecraft:weighted_state_provider",
+        "entries": [
+          {
+            "data": {
+              "Name": "minecraft:azalea_leaves",
+              "Properties": {
+                "distance": "7",
+                "persistent": "false",
+                "waterlogged": "false"
+              }
+            },
+            "weight": 83
+          },
+          {
+            "data": {
+              "Name": "minecraft:flowering_azalea_leaves",
+              "Properties": {
+                "distance": "7",
+                "persistent": "false",
+                "waterlogged": "false"
+              }
+            },
+            "weight": 17
+          }
+        ]
+      }
+    },
+    "decorations": [
+      {
+        "type": "hydrol:ground",
+        "offset": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": -2,
+            "max_inclusive": 2
+          }
+        },
+        "radius": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": 13,
+            "max_inclusive": 16
+          }
+        },
+        "replace_with": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:moss_block"
+          }
+        }
+      },
+      {
+        "type": "hydrol:hanging_leaves",
+        "length": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": -6,
+            "max_inclusive": 6
+          }
+        },
+        "leaves": {
+          "type": "minecraft:weighted_state_provider",
+          "entries": [
+            {
+              "data": {
+                "Name": "hydrol:azalea_leaves_wall",
+                "Properties": {
+                  "distance": "7",
+                  "persistent": "false",
+                  "waterlogged": "false"
+                }
+              },
+              "weight": 83
+            },
+            {
+              "data": {
+                "Name": "hydrol:flowering_azalea_leaves_wall",
+                "Properties": {
+                  "distance": "7",
+                  "persistent": "false",
+                  "waterlogged": "false"
+                }
+              },
+              "weight": 17
+            }
+          ]
+        }
+      },
+      {
+        "type": "hydrol:roots",
+        "length": {
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": 2,
+            "max_inclusive": 6
+          }
+        },
+        "roots": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:mangrove_roots"
+          }
+        }
+      },
+      {
+        "type": "hydrol:leaf_piles",
+        "length": 22,
+        "leaves": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "hydrol:azalea_leaves_pile"
+          }
+        }
+      }
+    ]
+  }
+}

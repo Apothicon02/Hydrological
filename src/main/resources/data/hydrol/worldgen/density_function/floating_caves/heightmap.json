@@ -1,0 +1,6 @@
+{
+  "type": "hydrol:to_heightmap",
+  "input": "hydrol:floating_caves/final_density",
+  "min_y": -48,
+  "max_y": 320
+}

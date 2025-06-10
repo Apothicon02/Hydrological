@@ -41,9 +41,10 @@ public final class HydrolDensityFunctions {
         DENSITY_FUNCTION_TYPES.register(eventBus);
     }
 
-    public static final Long2DoubleOpenHashMap heightmap = new Long2DoubleOpenHashMap();
+    public static Long2DoubleOpenHashMap heightmap = new Long2DoubleOpenHashMap();
     public static DensityFunction temperature;
     public static boolean isFloatingIslands = false;
+    public static int floatingIslandsSeaOffset = 63;
 
     protected record FloatingBeaches(DensityFunction input) implements DensityFunction {
         private static final MapCodec<FloatingBeaches> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
@@ -56,11 +57,11 @@ public final class HydrolDensityFunctions {
             int x = context.blockX();
             int y = context.blockY();
             int z = context.blockZ();
-            double floor = 36 - (Math.abs(SimplexNoise.noise(x*0.0007F, z*0.0007F)) * 128);
+            double floor = (36+(floatingIslandsSeaOffset/2f)) - (Math.abs(SimplexNoise.noise(x*0.0007F, z*0.0007F)) * 128);
             if (floor < y) {
                 return 0.24D;
             } else {
-                return 0.2D;
+                return 0.18D;
             }
         }
 
@@ -103,7 +104,7 @@ public final class HydrolDensityFunctions {
             int y = context.blockY();
             int z = context.blockZ();
             if (y < 256) {
-                if (y > -32) {
+                if (y > (-32)+floatingIslandsSeaOffset) {
                     double airPart = SimplexNoise.noise(x * 0.02F, y * 0.005F, z * 0.02F);
                     double solidPart = SimplexNoise.noise(x * 0.0024F, y * 0.0016F, z * 0.0024F);
                     if (context.blockY() > 162) {
@@ -115,11 +116,11 @@ public final class HydrolDensityFunctions {
                     }
                     double caves = 0;
                     if (hollow()) {
-                        caves = Math.min(0, ((floatingIsland - 0.2) * -5));
+                        caves = Math.min(0, ((floatingIsland - 0.2) * -5000));
                     }
                     return caves + floatingIsland + input().compute(context);
                 } else {
-                    double floor = (Math.abs(SimplexNoise.noise(x * 0.007F, z * 0.007F)) + (HydrolMath.gradient(y, -64, -50, 0.35F, 0.25F) - (2 * (0.1 + HydrolMath.gradient(y, -52, -36, 0.76F, 0F))))) * HydrolMath.gradient(y, -64, -36, 1F, 0F);
+                    double floor = (Math.abs(SimplexNoise.noise(x * 0.007F, z * 0.007F)) + (HydrolMath.gradient(y, -64+floatingIslandsSeaOffset, -50+floatingIslandsSeaOffset, 0.35F, 0.25F) - (2 * (0.1 + HydrolMath.gradient(y, -52+floatingIslandsSeaOffset, -36+floatingIslandsSeaOffset, 0.76F, 0F))))) * HydrolMath.gradient(y, -64, -36+floatingIslandsSeaOffset, 1F, 0F);
                     return floor + input().compute(context);
                 }
             } else {
