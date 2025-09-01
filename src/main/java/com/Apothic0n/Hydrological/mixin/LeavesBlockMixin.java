@@ -52,17 +52,21 @@ public abstract class LeavesBlockMixin extends Block implements SimpleWaterlogge
 
     @Inject(at = @At("HEAD"), method = "randomTick", cancellable = true)
     private void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, CallbackInfo ci) {
-        state = hydrological$getDistance(state, level, pos);
-        if (this.decaying(state)) {
-            dropResources(state, level, pos);
-            level.removeBlock(pos, false);
+        if (state.hasProperty(hydrological$DISTANCE)) {
+            state = hydrological$getDistance(state, level, pos);
+            if (this.decaying(state)) {
+                dropResources(state, level, pos);
+                level.removeBlock(pos, false);
+            }
+            ci.cancel();
         }
-        ci.cancel();
     }
 
     @Inject(at = @At("HEAD"), method = "updateDistance", cancellable = true)
     private static void updateDistance(BlockState state, LevelAccessor level, BlockPos pos, CallbackInfoReturnable<BlockState> ci) {
-        ci.setReturnValue(hydrological$getDistance(state, level, pos));
+        if (state.hasProperty(hydrological$DISTANCE)) {
+            ci.setReturnValue(hydrological$getDistance(state, level, pos));
+        }
     }
 
     @Unique
@@ -71,14 +75,16 @@ public abstract class LeavesBlockMixin extends Block implements SimpleWaterlogge
                 hydrological$getThing(level.getBlockState(pos.above()), hydrological$getThing(level.getBlockState(pos.below()), hydrological$getThing(level.getBlockState(pos.north().east()),
                         hydrological$getThing(level.getBlockState(pos.north().west()), hydrological$getThing(level.getBlockState(pos.south().east()), hydrological$getThing(level.getBlockState(pos.south().west()), 14))))))))));
 
-        return state.setValue(LeavesBlock.DISTANCE, Math.max(1, e/2)).setValue(hydrological$DISTANCE, e);
+        return state.setValue(LeavesBlock.DISTANCE, Math.max(1, e / 2)).setValue(hydrological$DISTANCE, e);
     }
 
     @Inject(at = @At("HEAD"), method = "getStateForPlacement", cancellable = true)
     public void getStateForPlacement(BlockPlaceContext context, CallbackInfoReturnable<BlockState> ci) {
-        LevelAccessor level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
+        if (this.defaultBlockState().hasProperty(hydrological$DISTANCE)) {
+            LevelAccessor level = context.getLevel();
+            BlockPos pos = context.getClickedPos();
 
-        ci.setReturnValue(LeavesBlock.updateDistance(this.defaultBlockState().setValue(LeavesBlock.PERSISTENT, Boolean.valueOf(true)).setValue(LeavesBlock.WATERLOGGED, Boolean.valueOf(level.getFluidState(pos).getType() == Fluids.WATER)), level, pos));
+            ci.setReturnValue(LeavesBlock.updateDistance(this.defaultBlockState().setValue(LeavesBlock.PERSISTENT, Boolean.valueOf(true)).setValue(LeavesBlock.WATERLOGGED, Boolean.valueOf(level.getFluidState(pos).getType() == Fluids.WATER)), level, pos));
+        }
     }
 }
