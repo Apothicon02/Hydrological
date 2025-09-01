@@ -53,12 +53,14 @@ public abstract class LeavesBlockMixin extends Block implements SimpleWaterlogge
 
     @Inject(at = @At("HEAD"), method = "randomTick", cancellable = true)
     private void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, CallbackInfo ci) {
-        state = hydrological$getDistance(state, level, pos);
-        if (this.decaying(state)) {
-            dropResources(state, level, pos);
-            level.removeBlock(pos, false);
+        if (state.hasProperty(hydrological$DISTANCE)) {
+            state = hydrological$getDistance(state, level, pos);
+            if (this.decaying(state)) {
+                dropResources(state, level, pos);
+                level.removeBlock(pos, false);
+            }
+            ci.cancel();
         }
-        ci.cancel();
     }
 
     @Inject(at = @At("HEAD"), method = "updateDistance", cancellable = true)
