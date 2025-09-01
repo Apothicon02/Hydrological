@@ -63,7 +63,10 @@ public abstract class LeavesBlockMixin extends Block implements SimpleWaterlogge
 
     @Inject(at = @At("HEAD"), method = "updateDistance", cancellable = true)
     private static void updateDistance(BlockState state, LevelAccessor level, BlockPos pos, CallbackInfoReturnable<BlockState> ci) {
-        ci.setReturnValue(hydrological$getDistance(state, level, pos));
+        if (state.hasProperty(hydrological$DISTANCE)) {
+            ci.setReturnValue(hydrological$getDistance(state, level, pos));
+        }
+
     }
 
     @Unique
@@ -77,20 +80,22 @@ public abstract class LeavesBlockMixin extends Block implements SimpleWaterlogge
 
     @Inject(at = @At("HEAD"), method = "getStateForPlacement", cancellable = true)
     public void getStateForPlacement(BlockPlaceContext context, CallbackInfoReturnable<BlockState> ci) {
-        LevelAccessor level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
+        if (this.defaultBlockState().hasProperty(hydrological$DISTANCE)) {
+            LevelAccessor level = context.getLevel();
+            BlockPos pos = context.getClickedPos();
 
-        int i = 7;
-        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+            int i = 7;
+            BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
 
-        for (Direction direction : Direction.values()) {
-            blockpos$mutableblockpos.setWithOffset(pos, direction);
-            i = Math.min(i, LeavesBlock.getOptionalDistanceAt(level.getBlockState(blockpos$mutableblockpos)).orElse(13) + 1);
-            if (i == 1) {
-                break;
+            for (Direction direction : Direction.values()) {
+                blockpos$mutableblockpos.setWithOffset(pos, direction);
+                i = Math.min(i, LeavesBlock.getOptionalDistanceAt(level.getBlockState(blockpos$mutableblockpos)).orElse(13) + 1);
+                if (i == 1) {
+                    break;
+                }
             }
-        }
 
-        ci.setReturnValue(this.defaultBlockState().setValue(LeavesBlock.PERSISTENT, Boolean.valueOf(true)).setValue(LeavesBlock.WATERLOGGED, Boolean.valueOf(level.getFluidState(pos).getType() == Fluids.WATER)).setValue(LeavesBlock.DISTANCE, Integer.valueOf(i)));
+            ci.setReturnValue(this.defaultBlockState().setValue(LeavesBlock.PERSISTENT, Boolean.valueOf(true)).setValue(LeavesBlock.WATERLOGGED, Boolean.valueOf(level.getFluidState(pos).getType() == Fluids.WATER)).setValue(LeavesBlock.DISTANCE, Integer.valueOf(i)));
+        }
     }
 }
