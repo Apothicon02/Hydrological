@@ -4,7 +4,7 @@
     {
       "type": "hydrol:noise_cover",
       "min": -10,
-      "max": -0.05,
+      "max": 0.05,
       "chance": 1,
       "multilpier": 1
     },

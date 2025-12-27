@@ -40,6 +40,10 @@
     [
     ],
     [
+      "hydrol:geological/deepslate_anvil_rocks_low",
+      "hydrol:geological/mossy_rocks_small",
+      "hydrol:geological/mossy_rocks_small_extra",
+      "hydrol:geological/andesite_anvil_rocks_low",
       "hydrol:geological/cliff_carvings"
     ],
     [

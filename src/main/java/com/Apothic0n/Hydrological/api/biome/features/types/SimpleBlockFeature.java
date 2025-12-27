@@ -1,14 +1,16 @@
 package com.Apothic0n.Hydrological.api.biome.features.types;
 
+import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
+
 import com.Apothic0n.Hydrological.api.biome.features.configurations.ReplaceableBlockConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
@@ -24,6 +26,14 @@ public class SimpleBlockFeature extends Feature<ReplaceableBlockConfiguration> {
         BlockPos pos = context.origin();
         BlockState block = config.toPlace().getState(context.random(), pos);
         BlockState state = level.getBlockState(pos);
+        if (block.is(Blocks.SNOW)) {
+            if (HydrolDensityFunctions.temperature != null && HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext(pos.getX(), pos.getY(), pos.getZ())) > -0.8) {
+                return false;
+            }
+            if (level.getBlockState(pos.below()).is(Blocks.GRASS_BLOCK)) {
+                level.setBlock(pos.below(), Blocks.GRASS_BLOCK.defaultBlockState().setValue(BlockStateProperties.SNOWY, true), 2);
+            }
+        }
         if ((((state.canBeReplaced() && !block.isSolid()) || config.replace()) || state.isAir() || state.is(Blocks.WATER))) {
             if (block.hasProperty(BlockStateProperties.WATERLOGGED) && state.is(Blocks.WATER)) {
                 block = block.setValue(BlockStateProperties.WATERLOGGED, true);
