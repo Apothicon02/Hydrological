@@ -1,12 +1,22 @@
 {
-  "feature": "hydrol:cover/small_dripleaf",
+  "feature": "hydrol:geological/sandstone_anvil_rock_short",
   "placement": [
     {
-      "type": "hydrol:noise_cover",
-      "min": -10,
-      "max": 0.05,
-      "chance": 1,
-      "multilpier": 1
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:uniform",
+          "min_inclusive": 24,
+          "max_inclusive": 36
+      }
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": {
+        "type": "minecraft:uniform",
+          "min_inclusive": 2,
+          "max_inclusive": 12
+      },
+      "y_spread": 0
     },
     {
       "type": "minecraft:heightmap",
@@ -24,11 +34,7 @@
               -1,
               0
             ],
-            "blocks": "minecraft:grass_block"
-          },
-          {
-            "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:air"
+            "blocks": "minecraft:sandstone"
           }
         ]
       }

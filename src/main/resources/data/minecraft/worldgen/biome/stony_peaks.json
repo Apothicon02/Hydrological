@@ -42,6 +42,8 @@
     [
       "hydrol:cover/moss_roots",
       "hydrol:cover/moss_roots_edge",
+      "hydrol:geological/sandstone_rocks",
+      "hydrol:geological/sandstone_rocks_extra",
       "hydrol:geological/cliff_carvings"
     ],
     [

@@ -1,50 +1,50 @@
-/tp @s -1860 132 -686
-/tp @s -1860 132 -6861351
-/locate biome minecraft:old_growth_spruce_taiga
-/tp @s -1764 132 -6860711
-/locate biome minecraft:old_growth_pine_taiga
-/tp @s -3483 145 -6858842
-/gamemode spectator
-/time set 0
-/time set 12000
-/time set 10000
-/time set 1000
-/locate biome minecraft:jungle
-/tp @s 725 44 198
-/gamemode spectator
-/gamemode creative
-/gamemode spectator
-/gamemode creative
-/gamemode spectator
-/gamemode creative
-/gamemode spectator
-/locate biome minecraft:jungle
-/gamemode spectator
-/locate biome minecraft:jungle
-/gamemode spectator
-/gamemode sp
+/tp @s 344 140 -286
 /gamemode spectator
 /seed
+/gamemode spectator
+/locate biome minecraft:taiga
+/tp @s -27 121 2312
 /gamemode creative
 /gamemode spectator
-/gamemode creative
+/tp ~ ~ ~
+/seed
+/tp 172 103 2262
 /gamemode spectator
-/locate biome minecraft:lush_caves
-/locate biome minecraft:dripstone_caves
-/locate biome minecraft:badlands
-/tp @s 1180 201 -1014
+/tp 172 103 2262
 /gamemode spectator
-/locate biome minecraft:badlands
+/tp 172 103 2262
 /gamemode spectator
-/locate biome minecraft:deep_dark
-/locate biome minecraft:frozen_ocean
-/tp @s -503 28 -1679
-/locate biome minecraft:frozen_ocean
-/locate biome minecraft:deep_dark
-/gamemode sp
-/gamemode spe
+/time set 0
+/time set 23800
+/time set 23300
+/time set 23500
+/time set 23700
+/time set 23100
+/time set 22600
+/time set 21600
+/time set 25600
+/time set midnight
+/time set 0
+/time set 23800
+/time set 23100
+/locate biome minecraft:frozen_peaks
+/tp @s 107 135 -640
 /gamemode spectator
-/locate biome minecraft:deep_dark
+/locate biome minecraft:snowy_plains
+/tp @s -511 86 787
 /gamemode spectator
-/locate biome minecraft:deep_dark
-/tp @s 99 -24 102
+/locate biome minecraft:snowy_plains
+/tp @s -265 82 1614
+/locate biome minecraft:snowy_plains
+/tp @s -2759 89 1853
+/gamemode spectator
+/locate biome minecraft:snowy_plains
+/seed
+/gamemode spectator
+/time set midnight
+/time set 1200
+/time set midnight
+/time set noon
+/locate biome minecraft:snowy_plains
+/tp @s -2549 72 -927
+/time set noon
