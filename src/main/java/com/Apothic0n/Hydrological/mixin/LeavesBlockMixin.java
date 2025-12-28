@@ -72,7 +72,7 @@ public abstract class LeavesBlockMixin extends Block implements SimpleWaterlogge
     private static BlockState hydrological$getDistance(BlockState state, LevelAccessor level, BlockPos pos) {
         int e = hydrological$getThing(level.getBlockState(pos.north()), hydrological$getThing(level.getBlockState(pos.east()),
                 hydrological$getThing(level.getBlockState(pos.south()), hydrological$getThing(level.getBlockState(pos.west()),
-                        hydrological$getThing(level.getBlockState(pos.above()), hydrological$getThing(level.getBlockState(pos.below()), 14))))));
+                        hydrological$getThing(level.getBlockState(pos.above()), hydrological$getThing(level.getBlockState(pos.below()), 21))))));
 
         return state.setValue(LeavesBlock.DISTANCE, Math.max(1, e / 3)).setValue(hydrological$DISTANCE, e);
     }
