@@ -1,4 +1,3 @@
-/tp @s 344 140 -286
 /gamemode spectator
 /seed
 /gamemode spectator
@@ -48,3 +47,4 @@
 /locate biome minecraft:snowy_plains
 /tp @s -2549 72 -927
 /time set noon
+/gamemode creative
