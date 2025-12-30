@@ -1,10 +1,3 @@
-/gamemode spectator
-/seed
-/gamemode spectator
-/locate biome minecraft:taiga
-/tp @s -27 121 2312
-/gamemode creative
-/gamemode spectator
 /tp ~ ~ ~
 /seed
 /tp 172 103 2262
@@ -48,3 +41,10 @@
 /tp @s -2549 72 -927
 /time set noon
 /gamemode creative
+/gamemode spectator
+/gamemode creative
+/gamemode spectator
+/locate biome minecraft:forest
+/tp @s 382 80 -14
+/time set midnight
+/gamemode spectator
