@@ -3,9 +3,11 @@
     "air": [
     ]
   },
+  "creature_spawn_probability": 0.3,
   "downfall": 0.9,
   "effects": {
     "fog_color": 12638463,
+    "grass_color": 37952,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -82,7 +84,7 @@
         "type": "minecraft:zombie",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 95
+        "weight": 75
       },
       {
         "type": "minecraft:zombie_villager",
@@ -91,7 +93,7 @@
         "weight": 5
       },
       {
-        "type": "minecraft:skeleton",
+        "type": "minecraft:stray",
         "maxCount": 4,
         "minCount": 4,
         "weight": 100
@@ -118,7 +120,7 @@
         "type": "minecraft:witch",
         "maxCount": 1,
         "minCount": 1,
-        "weight": 5
+        "weight": 25
       }
     ],
     "underground_water_creature": [

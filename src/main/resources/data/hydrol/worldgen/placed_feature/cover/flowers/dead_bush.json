@@ -1,0 +1,28 @@
+{
+  "feature": "hydrol:cover/flowers/dead_bush",
+  "placement": [
+    {
+      "type": "hydrol:noise_cover",
+      "min": -0.31,
+      "max": -0.27,
+      "chance": 0.175,
+      "multilpier": 1
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+          "type": "minecraft:would_survive",
+          "state": {
+            "Name": "minecraft:dead_bush"
+          }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

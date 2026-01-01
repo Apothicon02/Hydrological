@@ -1,50 +1,50 @@
-/tp ~ ~ ~
+/gamemode spectator
+/time set midnight
+/time set 1000
 /seed
-/tp 172 103 2262
 /gamemode spectator
-/tp 172 103 2262
+/locate biome minecraft:plains
+/tp @s -1610 66 552
 /gamemode spectator
-/tp 172 103 2262
-/gamemode spectator
+/locate biome minecraft:taiga
+/tp @s 1127 71 1347
 /time set 0
 /time set 23800
-/time set 23300
+/time set 23400
+/time set 23600
+/time set 13600
+/time set 12600
+/time set 11600
+/time set 11900
+/time set 12200
+/time set 11200
+/time set 11500
+/time set 0
+/time set 22000
+/time set 21000
+/time set 19000
+/time set 0
 /time set 23500
-/time set 23700
-/time set 23100
-/time set 22600
-/time set 21600
-/time set 25600
-/time set midnight
-/time set 0
-/time set 23800
-/time set 23100
-/locate biome minecraft:frozen_peaks
-/tp @s 107 135 -640
+/time set 23200
+/time set 23400
+/locate biome minecraft:badlands
+/time set 2000
+/locate biome minecraft:badlands
+/tp @s -276 131 -597
 /gamemode spectator
-/locate biome minecraft:snowy_plains
-/tp @s -511 86 787
+/gamemode creative
 /gamemode spectator
-/locate biome minecraft:snowy_plains
-/tp @s -265 82 1614
-/locate biome minecraft:snowy_plains
-/tp @s -2759 89 1853
-/gamemode spectator
-/locate biome minecraft:snowy_plains
 /seed
-/gamemode spectator
-/time set midnight
-/time set 1200
-/time set midnight
-/time set noon
-/locate biome minecraft:snowy_plains
-/tp @s -2549 72 -927
-/time set noon
-/gamemode creative
-/gamemode spectator
-/gamemode creative
-/gamemode spectator
-/locate biome minecraft:forest
-/tp @s 382 80 -14
-/time set midnight
-/gamemode spectator
+/locate biome minecraft:wooded_badlands
+/tp @s 249 112 321
+/time set 0
+/time set 22500
+/time set 22800
+/time set 23100
+/time set 23500
+/time set 23400
+/time set 23500
+/time set 22500
+/time set 20500
+/time set 22500
+/time set 20500

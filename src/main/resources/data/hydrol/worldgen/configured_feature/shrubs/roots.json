@@ -1,0 +1,36 @@
+{
+  "type": "hydrol:tree",
+  "config": {
+    "must_be_fully_submerged": false,
+    "intersect": true,
+    "canopy_offset": -1,
+    "trunk": {
+      "type": "hydrol:straight_trunk",
+      "height": 1,
+      "wood": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:oak_wood"
+        }
+      }
+    },
+    "canopy": {
+      "type": "hydrol:square_canopy",
+      "height": 2,
+      "radius": {
+        "type": "minecraft:uniform",
+          "min_inclusive": 1,
+          "max_inclusive": 2
+      },
+      "leaves": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:mangrove_roots"
+        }
+      }
+    },
+    "decorations": [
+
+    ]
+  }
+}

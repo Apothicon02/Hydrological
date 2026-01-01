@@ -4,9 +4,11 @@
     ]
   },
   "creature_spawn_probability": 0.3,
-  "downfall": 0.9,
+  "downfall": 0.0,
   "effects": {
     "fog_color": 12638463,
+    "foliage_color": 10387789,
+    "grass_color": 9470285,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -17,9 +19,9 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:music.overworld.jagged_peaks"
+      "sound": "minecraft:music.overworld.badlands"
     },
-    "sky_color": 8756735,
+    "sky_color": 7254527,
     "water_color": 4159204,
     "water_fog_color": 329011
   },
@@ -38,23 +40,19 @@
     [],
     [
     ],
+    [],
     [
     ],
     [
-      "hydrol:geological/deepslate_anvil_rocks_low",
-      "hydrol:geological/mossy_rocks_small",
-      "hydrol:geological/mossy_rocks_small_extra",
-      "hydrol:geological/andesite_anvil_rocks_low",
-      "hydrol:geological/cliff_carvings"
-    ],
-    [
-      "minecraft:glow_lichen"
+      "minecraft:glow_lichen",
+      "hydrol:cover/flowers/dead_bush",
+      "hydrol:shrubs/roots"
     ],
     [
       "hydrol:cover/freeze"
     ]
   ],
-  "has_precipitation": true,
+  "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {
     "ambient": [
@@ -66,14 +64,7 @@
       }
     ],
     "axolotls": [],
-    "creature": [
-      {
-        "type": "minecraft:goat",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 5
-      }
-    ],
+    "creature": [],
     "misc": [],
     "monster": [
       {
@@ -136,5 +127,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.25
+  "temperature": 2.0
 }

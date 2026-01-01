@@ -634,10 +634,37 @@
             },
 
             {
-              "biome": "minecraft:jungle",
+              "biome": "minecraft:wooded_badlands",
               "parameters": {
                 "temperature": [
                   0.75,
+                  0.78
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  0.3
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:jungle",
+              "parameters": {
+                "temperature": [
+                  0.78,
                   1
                 ],
                 "humidity": [
@@ -661,10 +688,37 @@
               }
             },
             {
-              "biome": "minecraft:cherry_grove",
+              "biome": "minecraft:wooded_badlands",
               "parameters": {
                 "temperature": [
                   0.75,
+                  0.78
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  0.4,
+                  1
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.3,
+                  1
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:cherry_grove",
+              "parameters": {
+                "temperature": [
+                  0.78,
                   1
                 ],
                 "humidity": [
