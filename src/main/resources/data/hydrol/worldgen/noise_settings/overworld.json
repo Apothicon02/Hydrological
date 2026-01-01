@@ -27,59 +27,9 @@
     },
     "vegetation": "hydrol:normal/vegetation",
     "erosion": {
-      "type": "minecraft:add",
-      "argument1": {
-        "type": "minecraft:mul",
-        "argument1": 0.01,
-        "argument2": "hydrol:normal/rivers"
-      },
-      "argument2": {
-        "type": "minecraft:mul",
-        "argument1": {
-          "type": "minecraft:add",
-          "argument1": 1,
-          "argument2": {
-            "type": "minecraft:mul",
-            "argument1": -10,
-            "argument2": {
-              "type": "minecraft:add",
-              "argument1": -0.65,
-              "argument2": {
-                "type": "minecraft:min",
-                "argument1": 0.75,
-                "argument2": {
-                  "type": "minecraft:max",
-                  "argument1": 0.65,
-                  "argument2": "hydrol:normal/temperature"
-                }
-              }
-            }
-          }
-        },
-        "argument2": {
-          "type": "minecraft:mul",
-          "argument1": {
-            "type": "minecraft:y_clamped_gradient",
-            "from_y": 65,
-            "to_y": 69,
-            "from_value": 0,
-            "to_value": -2.8
-          },
-          "argument2": {
-            "type": "minecraft:add",
-            "argument1": -0.5,
-            "argument2": {
-              "type": "minecraft:max",
-              "argument1": 0,
-              "argument2": {
-                "type": "minecraft:min",
-                "argument1": 1,
-                "argument2": "hydrol:normal/heightmap"
-              }
-            }
-          }
-        }
-      }
+      "type": "minecraft:mul",
+      "argument1": 0.01,
+      "argument2": "hydrol:normal/rivers"
     },
     "continents": "hydrol:normal/continentalness",
     "depth": "hydrol:normal/heightmap",

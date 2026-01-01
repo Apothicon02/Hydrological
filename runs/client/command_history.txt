@@ -1,31 +1,3 @@
-/gamemode spectator
-/time set midnight
-/time set 1000
-/seed
-/gamemode spectator
-/locate biome minecraft:plains
-/tp @s -1610 66 552
-/gamemode spectator
-/locate biome minecraft:taiga
-/tp @s 1127 71 1347
-/time set 0
-/time set 23800
-/time set 23400
-/time set 23600
-/time set 13600
-/time set 12600
-/time set 11600
-/time set 11900
-/time set 12200
-/time set 11200
-/time set 11500
-/time set 0
-/time set 22000
-/time set 21000
-/time set 19000
-/time set 0
-/time set 23500
-/time set 23200
 /time set 23400
 /locate biome minecraft:badlands
 /time set 2000
@@ -48,3 +20,31 @@
 /time set 20500
 /time set 22500
 /time set 20500
+/locate biome minecraft:plains
+/tp @s 590 116 -638
+/gamemode spectator
+/locate biome minecraft:plains
+/tp @s -798 76 -571
+/gamemode spectator
+/time set midnight
+/time set 100
+/time set 1200
+/time set 2200
+/time set 22200
+/time set 23200
+/time set 23500
+/time set 23400
+/time set 23100
+/time set 23400
+/time set 23150
+/time set 0
+/gamemode spectato
+/gamemode spectator
+/locate biome minecraft:plains
+/tp @s 82 84 -373
+/time set 0
+/kill
+/tp 13085 ~ -9315
+/locate biome minecraft:jungle
+/tp @s 13053 135 -9315
+/gamemode spectator
