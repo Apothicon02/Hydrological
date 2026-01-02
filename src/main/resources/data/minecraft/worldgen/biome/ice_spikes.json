@@ -30,7 +30,7 @@
       "minecraft:monster_room_deep"
     ],
     [
-      "minecraft:ice_spike",
+      "hydrol:geological/ice_spikes_dense",
       "minecraft:ice_patch"
     ],
     [],
@@ -38,12 +38,6 @@
     ],
     [],
     [
-      "hydrol:cover/snow/snow_4",
-      "hydrol:cover/snow/snow_inv_4",
-      "hydrol:cover/snow/snow_3",
-      "hydrol:cover/snow/snow_inv_3",
-      "hydrol:cover/snow/snow_2",
-      "hydrol:cover/snow/snow_inv_2",
       "hydrol:cover/snow/snow_1",
       "hydrol:cover/snow/snow_inv_1"
     ],
