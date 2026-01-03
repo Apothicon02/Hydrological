@@ -1094,6 +1094,21 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
+                  "minecraft:ice_spikes"
+                ]
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "minecraft:ice"
+                }
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:biome",
+                "biome_is": [
                   "minecraft:beach"
                 ]
               },
@@ -1719,6 +1734,21 @@
                 "type": "minecraft:block",
                 "result_state": {
                   "Name": "minecraft:snow_block"
+                }
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:biome",
+                "biome_is": [
+                  "minecraft:ice_spikes"
+                ]
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "minecraft:packed_ice"
                 }
               }
             },
@@ -2406,9 +2436,23 @@
                 "add_stone_depth": false
               },
               "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "minecraft:gravel"
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:not",
+                  "invert": {
+                    "type": "minecraft:y_above",
+                    "anchor": {
+                      "absolute": 72
+                    },
+                    "surface_depth_multiplier": 0,
+                    "add_stone_depth": false
+                  }
+                },
+                "then_run": {
+                  "type": "minecraft:block",
+                  "result_state": {
+                    "Name": "minecraft:gravel"
+                  }
                 }
               }
             }
@@ -2452,9 +2496,23 @@
                 "add_stone_depth": false
               },
               "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "minecraft:gravel"
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:not",
+                  "invert": {
+                    "type": "minecraft:y_above",
+                    "anchor": {
+                      "absolute": 72
+                    },
+                    "surface_depth_multiplier": 0,
+                    "add_stone_depth": false
+                  }
+                },
+                "then_run": {
+                  "type": "minecraft:block",
+                  "result_state": {
+                    "Name": "minecraft:gravel"
+                  }
                 }
               }
             }
@@ -2498,9 +2556,23 @@
                 "add_stone_depth": false
               },
               "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "minecraft:gravel"
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:not",
+                  "invert": {
+                    "type": "minecraft:y_above",
+                    "anchor": {
+                      "absolute": 72
+                    },
+                    "surface_depth_multiplier": 0,
+                    "add_stone_depth": false
+                  }
+                },
+                "then_run": {
+                  "type": "minecraft:block",
+                  "result_state": {
+                    "Name": "minecraft:gravel"
+                  }
                 }
               }
             }

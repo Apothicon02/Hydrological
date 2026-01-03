@@ -1476,7 +1476,34 @@
               "parameters": {
                 "temperature": [
                   -1,
-                  -0.8
+                  -0.9
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.3,
+                  1
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:ice_spikes",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  -0.9
                 ],
                 "humidity": [
                   -1,

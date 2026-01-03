@@ -1,50 +1,50 @@
-/time set 23400
-/locate biome minecraft:badlands
-/time set 2000
-/locate biome minecraft:badlands
-/tp @s -276 131 -597
-/gamemode spectator
-/gamemode creative
-/gamemode spectator
-/seed
-/locate biome minecraft:wooded_badlands
-/tp @s 249 112 321
-/time set 0
-/time set 22500
-/time set 22800
-/time set 23100
+/time set 14000
+/time set 13000
+/time set 12600
+/time set 12900
+/time set 22900
+/time set 23300
 /time set 23500
 /time set 23400
 /time set 23500
-/time set 22500
-/time set 20500
-/time set 22500
-/time set 20500
-/locate biome minecraft:plains
-/tp @s 590 116 -638
+/time set 23800
+/time set 23900
+/time set 24300
+/time set 24500
 /gamemode spectator
-/locate biome minecraft:plains
-/tp @s -798 76 -571
-/gamemode spectator
+/locate biome minecraft:frozen_ocean
 /time set midnight
 /time set 100
 /time set 1200
-/time set 2200
-/time set 22200
-/time set 23200
-/time set 23500
-/time set 23400
-/time set 23100
-/time set 23400
-/time set 23150
+/time set 12000
+/time set 12800
+/time set 12500
+/time set 500
 /time set 0
-/gamemode spectato
-/gamemode spectator
-/locate biome minecraft:plains
-/tp @s 82 84 -373
+/time set 23800
+/time set 23400
+/time set 12400
+/time set 11400
+/time set 13400
+/time set 12400
 /time set 0
-/kill
-/tp 13085 ~ -9315
-/locate biome minecraft:jungle
-/tp @s 13053 135 -9315
+/time set 200
 /gamemode spectator
+/locate biome minecraft:frozen_ocean
+/tp @s 1934 73 2295
+/locate biome minecraft:ice_spikes
+/gamemode spectator
+/locate biome minecraft:ice_spikes
+/gamemode spectator
+/time set 0
+/time set 12000
+/time set 13000
+/time set 12500
+/time set 12800
+/time set 12700
+/time set 0
+/gamemode creative
+/gamemode spectator
+/gamemode creative
+/gamemode spectator
+/locate biome minecraft:ice_spikes

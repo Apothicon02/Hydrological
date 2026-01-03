@@ -1,4 +1,12 @@
 {
-  "type": "minecraft:abs",
-  "argument": "hydrol:normal/continentalness"
+  "type": "minecraft:mul",
+  "argument1": 1.03,
+  "argument2": {
+    "type": "minecraft:add",
+    "argument1": -0.03,
+    "argument2": {
+      "type": "minecraft:abs",
+      "argument": "hydrol:normal/continentalness"
+    }
+  }
 }
