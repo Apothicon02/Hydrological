@@ -12,15 +12,9 @@
   "when_in_range": {
     "type": "hydrol:floating_islands",
     "hollow": true,
-    "ocean": true,
-    "input": {
-      "type": "minecraft:y_clamped_gradient",
-      "from_y": -65,
-      "to_y": -63,
-      "from_value": 1,
-      "to_value": 0
-    },
-    "lower_elevation": 64
+    "ocean": false,
+    "input": 0,
+    "lower_elevation": 48
   },
   "when_out_of_range": 0
 }

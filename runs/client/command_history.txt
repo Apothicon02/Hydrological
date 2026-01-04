@@ -1,30 +1,3 @@
-/time set 14000
-/time set 13000
-/time set 12600
-/time set 12900
-/time set 22900
-/time set 23300
-/time set 23500
-/time set 23400
-/time set 23500
-/time set 23800
-/time set 23900
-/time set 24300
-/time set 24500
-/gamemode spectator
-/locate biome minecraft:frozen_ocean
-/time set midnight
-/time set 100
-/time set 1200
-/time set 12000
-/time set 12800
-/time set 12500
-/time set 500
-/time set 0
-/time set 23800
-/time set 23400
-/time set 12400
-/time set 11400
 /time set 13400
 /time set 12400
 /time set 0
@@ -48,3 +21,30 @@
 /gamemode creative
 /gamemode spectator
 /locate biome minecraft:ice_spikes
+/gamemode spectator
+/time set 0
+/time set 23500
+/gamemode spectator
+/time set midnight
+/gamemode creative
+/gamemode spectator
+/gamemode ps
+/gamemode spectator
+/time set 22500
+/time set 22900
+/time set 23400
+/time set 23600
+/time set 23400
+/locate biome minecraft:birch_forest
+/tp @s -886 116 456
+/gamemode spectator
+/tp 319851 ~ ~
+/locate biome minecraft:birch_forest
+/tp @s 319467 110 540
+/locate biome minecraft:birch_forest
+/tp @s 367 115 197
+/gamemode spectator
+/gamemode creative
+/gamemode spectator
+/locate biome minecraft:sunflower_plains
+/tp @s 539 154 760

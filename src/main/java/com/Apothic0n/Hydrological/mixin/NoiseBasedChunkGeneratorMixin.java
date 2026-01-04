@@ -92,33 +92,35 @@ public abstract class NoiseBasedChunkGeneratorMixin {
                                 }
 
                                 state = this.debugPreliminarySurfaceLevel($$6, $$29, $$24, $$33, state);
-                                if (HydrolDensityFunctions.isFloatingIslands && $$24 > 0) {
-                                    if (state.isAir()) {
-                                        int newY = (42+(floatingIslandsSeaOffset/2)) - (int)(Math.abs(SimplexNoise.noise($$29*0.0007F, $$33*0.0007F)) * 128);
-                                        if (newY > $$24) {
-                                            state = Blocks.WATER.defaultBlockState();
-                                        }
-                                    }
-                                } else {
-                                    if (state != Blocks.AIR.defaultBlockState() && !SharedConstants.debugVoidTerrain(chunkAccess.getPos())) {
-                                        if (state == Blocks.WATER.defaultBlockState() || state == Blocks.LAVA.defaultBlockState()) {
-                                            int newY = 16;
-                                            for (int currentY = 240; currentY > 16; currentY = currentY - 4) {
-                                                if (chunkAccess.getBlockState(new BlockPos($$29, currentY, $$33)).isSolid()) {
-                                                    newY = currentY;
-                                                    currentY = 0;
-                                                }
-                                            }
-                                            if (newY - 20 > $$24) {
-                                                state = Blocks.CAVE_AIR.defaultBlockState();
-                                            }
-                                            if (newY <= 48 && $$24 < -55) {
+                                if (HydrolDensityFunctions.generateAquifers) {
+                                    if (HydrolDensityFunctions.isFloatingIslands && $$24 > 0) {
+                                        if (state.isAir()) {
+                                            int newY = (42 + (floatingIslandsSeaOffset / 2)) - (int) (Math.abs(SimplexNoise.noise($$29 * 0.0007F, $$33 * 0.0007F)) * 128);
+                                            if (newY > $$24) {
                                                 state = Blocks.WATER.defaultBlockState();
                                             }
                                         }
-                                    }
-                                    if (state.isAir() && $$24 < -55 && chunkAccess.getBlockState(new BlockPos($$29, chunkAccess.getMinBuildHeight(), $$33)).isSolid()) {
-                                        state = Blocks.LAVA.defaultBlockState();
+                                    } else {
+                                        if (state != Blocks.AIR.defaultBlockState() && !SharedConstants.debugVoidTerrain(chunkAccess.getPos())) {
+                                            if (state == Blocks.WATER.defaultBlockState() || state == Blocks.LAVA.defaultBlockState()) {
+                                                int newY = 16;
+                                                for (int currentY = 240; currentY > 16; currentY = currentY - 4) {
+                                                    if (chunkAccess.getBlockState(new BlockPos($$29, currentY, $$33)).isSolid()) {
+                                                        newY = currentY;
+                                                        currentY = 0;
+                                                    }
+                                                }
+                                                if (newY - 20 > $$24) {
+                                                    state = Blocks.CAVE_AIR.defaultBlockState();
+                                                }
+                                                if (newY <= 48 && $$24 < -55) {
+                                                    state = Blocks.WATER.defaultBlockState();
+                                                }
+                                            }
+                                        }
+                                        if (state.isAir() && $$24 < -55 && chunkAccess.getBlockState(new BlockPos($$29, chunkAccess.getMinBuildHeight(), $$33)).isSolid()) {
+                                            state = Blocks.LAVA.defaultBlockState();
+                                        }
                                     }
                                 }
                                 $$21.setBlockState($$30, $$25, $$34, state, false);

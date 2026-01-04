@@ -1,0 +1,4 @@
+{
+  "type": "hydrol:cubical_scale",
+  "input": "hydrol:floating_islands_oceanless/final_density_caveless"
+}

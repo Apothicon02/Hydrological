@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:max",
+  "argument1": 0.251,
+  "argument2": {
+    "type": "hydrol:to_heightmap",
+    "input": "hydrol:floating_islands_oceanless/final_density_caveless",
+    "min_y": 48,
+    "max_y": 320
+  }
+}

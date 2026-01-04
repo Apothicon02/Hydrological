@@ -4,7 +4,7 @@
       "type": "hydrol:overworld",
       "generator": {
         "type": "minecraft:noise",
-        "settings": "hydrol:floating_islands",
+        "settings": "hydrol:floating_islands_oceanless",
         "biome_source": {
           "type": "minecraft:multi_noise",
           "biomes": [

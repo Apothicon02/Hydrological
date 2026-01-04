@@ -41,6 +41,8 @@ public final class HydrolDensityFunctions {
     public static Long2DoubleOpenHashMap heightmap = new Long2DoubleOpenHashMap();
     public static DensityFunction temperature;
     public static boolean isFloatingIslands = false;
+    public static boolean generateAquifers = true;
+    public static boolean changeWaterBehavior = false;
     public static int floatingIslandsSeaOffset = 63;
 
     protected record FloatingBeaches(DensityFunction input) implements DensityFunction {
@@ -87,15 +89,17 @@ public final class HydrolDensityFunctions {
             return CODEC;
         }
     }
-    protected record FloatingIslands(DensityFunction input, boolean hollow) implements DensityFunction {
+    protected record FloatingIslands(DensityFunction input, boolean hollow, boolean ocean, DensityFunction lowerElevation) implements DensityFunction {
         private static final MapCodec<FloatingIslands> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
-            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(FloatingIslands::input), Codec.BOOL.fieldOf("hollow").forGetter(FloatingIslands::hollow)).apply(data, FloatingIslands::new);
+            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(FloatingIslands::input), Codec.BOOL.fieldOf("hollow").forGetter(FloatingIslands::hollow), Codec.BOOL.fieldOf("ocean").forGetter(FloatingIslands::hollow), DensityFunction.HOLDER_HELPER_CODEC.fieldOf("lower_elevation").forGetter(FloatingIslands::input)).apply(data, FloatingIslands::new);
         });
         public static final KeyDispatchDataCodec<FloatingIslands> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
 
         @Override
         public double compute(@NotNull FunctionContext context) {
             isFloatingIslands = true;
+            generateAquifers = ocean();
+            changeWaterBehavior = ocean();
             double floatingIsland;
             int x = context.blockX();
             int y = context.blockY();
@@ -108,21 +112,21 @@ public final class HydrolDensityFunctions {
                         floatingIsland = Math.min(0.5 - (airPart * -1 + HydrolMath.gradient(y, 164, 292, -1, 1.5F)),
                                 solidPart * -1 + (HydrolMath.gradient(y, 228, 356, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 169, 259, 0.76F, 0F)))));
                     } else {
-                        floatingIsland = Math.min(0.5 - (airPart + HydrolMath.gradient(y, 64, 192, -1, 1.5F)),
-                                solidPart + (HydrolMath.gradient(y, 128, 256, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, 69, 159, 0.76F, 0F)))));
+                        int lowerElevationValue = (int)(lowerElevation().compute(context));
+                        floatingIsland = Math.min(0.5 - (airPart + HydrolMath.gradient(y, lowerElevationValue, lowerElevationValue+128, -1, 1.5F)),
+                                solidPart + (HydrolMath.gradient(y, lowerElevationValue+64, lowerElevationValue+192, 0.75F, 0.5F) - (2 * (0.1 + HydrolMath.gradient(y, lowerElevationValue+5, lowerElevationValue+95, 0.76F, 0F)))));
                     }
                     double caves = 0;
                     if (hollow()) {
                         caves = Math.min(0, ((floatingIsland - 0.2) * -5000));
                     }
                     return caves + floatingIsland + input().compute(context);
-                } else {
+                } else if (ocean()) {
                     double floor = (Math.abs(SimplexNoise.noise(x * 0.007F, z * 0.007F)) + (HydrolMath.gradient(y, -64+floatingIslandsSeaOffset, -50+floatingIslandsSeaOffset, 0.35F, 0.25F) - (2 * (0.1 + HydrolMath.gradient(y, -52+floatingIslandsSeaOffset, -36+floatingIslandsSeaOffset, 0.76F, 0F))))) * HydrolMath.gradient(y, -64, -36+floatingIslandsSeaOffset, 1F, 0F);
                     return floor + input().compute(context);
                 }
-            } else {
-                return input().compute(context);
             }
+            return input().compute(context);
         }
 
         @Override
@@ -132,7 +136,7 @@ public final class HydrolDensityFunctions {
 
         @Override
         public @NotNull DensityFunction mapAll(Visitor visitor) {
-            return visitor.apply(new FloatingIslands(this.input().mapAll(visitor), hollow()));
+            return visitor.apply(new FloatingIslands(this.input().mapAll(visitor), hollow(), ocean(), this.lowerElevation().mapAll(visitor)));
         }
 
         @Override
