@@ -1,0 +1,5 @@
+{
+  "type": "minecraft:mul",
+  "argument1": 0.01,
+  "argument2": "hydrol:normal/rivers"
+}

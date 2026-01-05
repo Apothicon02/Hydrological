@@ -25,7 +25,7 @@
       "type": "hydrol:store_temperature",
       "input": "hydrol:normal/temperature"
     },
-    "vegetation": "hydrol:normal/vegetation",
+    "vegetation": "hydrol:global/surface_variation",
     "erosion": "hydrol:floating_caves/erosion",
     "continents": "hydrol:floating_caves/continentalness",
     "depth": {

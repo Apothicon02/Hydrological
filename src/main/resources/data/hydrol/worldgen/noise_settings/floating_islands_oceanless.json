@@ -25,7 +25,7 @@
       "type": "hydrol:store_temperature",
       "input": "hydrol:normal/temperature"
     },
-    "vegetation": "hydrol:normal/vegetation",
+    "vegetation": "hydrol:global/surface_variation",
     "erosion": "hydrol:floating_islands/erosion",
     "continents": "hydrol:floating_islands_oceanless/continentalness",
     "depth": "hydrol:floating_islands_oceanless/depth",

@@ -460,6 +460,33 @@
                 ],
                 "continentalness": [
                   0,
+                  0.9
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0,
+                  0.243
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:mangrove_swamp",
+              "parameters": {
+                "temperature": [
+                  0.75,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0.9,
                   1
                 ],
                 "weirdness": 0,
@@ -676,35 +703,8 @@
                   0.4
                 ],
                 "continentalness": [
-                  0.2,
-                  1
-                ],
-                "weirdness": 0,
-                "depth": [
-                  0.243,
-                  0.3
-                ],
-                "offset": 0
-              }
-            },
-            {
-              "biome": "minecraft:mangrove_swamp",
-              "parameters": {
-                "temperature": [
-                  0.78,
-                  1
-                ],
-                "humidity": [
-                  -1,
-                  1
-                ],
-                "erosion": [
-                  -1,
-                  0.4
-                ],
-                "continentalness": [
                   0,
-                  0.2
+                  1
                 ],
                 "weirdness": 0,
                 "depth": [

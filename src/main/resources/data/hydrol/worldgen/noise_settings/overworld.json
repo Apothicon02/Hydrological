@@ -25,12 +25,8 @@
       "type": "hydrol:store_temperature",
       "input": "hydrol:normal/temperature"
     },
-    "vegetation": "hydrol:normal/vegetation",
-    "erosion": {
-      "type": "minecraft:mul",
-      "argument1": 0.01,
-      "argument2": "hydrol:normal/rivers"
-    },
+    "vegetation": "hydrol:global/surface_variation",
+    "erosion": "hydrol:normal/final_erosion",
     "continents": "hydrol:normal/continentalness",
     "depth": "hydrol:normal/heightmap",
     "ridges": 0,
