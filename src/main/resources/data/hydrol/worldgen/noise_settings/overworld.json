@@ -693,7 +693,9 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
+                  "minecraft:old_growth_birch_forest",
                   "minecraft:cherry_grove",
+                  "minecraft:meadow",
                   "minecraft:plains",
                   "minecraft:birch_forest",
                   "minecraft:taiga",
@@ -860,7 +862,8 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
-                  "minecraft:mangrove_swamp"
+                  "minecraft:mangrove_swamp",
+                  "minecraft:swamp"
                 ]
               },
               "then_run": {
@@ -1568,7 +1571,9 @@
                 "type": "minecraft:biome",
                 "biome_is": [
                   "minecraft:wooded_badlands",
+                  "minecraft:old_growth_birch_forest",
                   "minecraft:cherry_grove",
+                  "minecraft:meadow",
                   "minecraft:plains",
                   "minecraft:birch_forest",
                   "minecraft:taiga",
@@ -1659,7 +1664,8 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
-                  "minecraft:mangrove_swamp"
+                  "minecraft:mangrove_swamp",
+                  "minecraft:swamp"
                 ]
               },
               "then_run": {

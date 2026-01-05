@@ -471,7 +471,7 @@
               }
             },
             {
-              "biome": "minecraft:mangrove_swamp",
+              "biome": "minecraft:swamp",
               "parameters": {
                 "temperature": [
                   0,
@@ -649,8 +649,35 @@
                   0.4
                 ],
                 "continentalness": [
-                  0,
+                  0.2,
                   1
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.243,
+                  0.3
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:mangrove_swamp",
+              "parameters": {
+                "temperature": [
+                  0.78,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.4
+                ],
+                "continentalness": [
+                  0,
+                  0.2
                 ],
                 "weirdness": 0,
                 "depth": [
@@ -704,6 +731,33 @@
                 ],
                 "continentalness": [
                   0,
+                  0.33
+                ],
+                "weirdness": 0,
+                "depth": [
+                  0.3,
+                  1
+                ],
+                "offset": 0
+              }
+            },
+            {
+              "biome": "minecraft:old_growth_birch_forest",
+              "parameters": {
+                "temperature": [
+                  0.78,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  0.4,
+                  1
+                ],
+                "continentalness": [
+                  0.33,
                   1
                 ],
                 "weirdness": 0,
