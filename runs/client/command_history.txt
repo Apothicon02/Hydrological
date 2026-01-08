@@ -1,6 +1,3 @@
-/tp @s 33 66 -376
-/locate biome minecraft:mangrove_swamp
-/tp @s -303 67 -391
 /gamemode spectator
 /locate biome minecraft:mangrove_swamp
 /gamemode spectator
@@ -47,4 +44,7 @@
 /locate biome minecraft:river
 /tp @s 1044 83 -235
 /gamemode creative
+/gamemode spectator
+/locate biome minecraft:forest
+/tp @s -48 73 -111
 /gamemode spectator
