@@ -7,7 +7,7 @@
   "downfall": 0.4,
   "effects": {
     "fog_color": 12638463,
-    "grass_color": 9371474,
+    "grass_color": 7265330,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -36,7 +36,7 @@
     ],
     [],
     [
-
+      "hydrol:geological/mossy_rocks_small_dense"
     ],
     [
       "minecraft:glow_lichen",
@@ -50,8 +50,12 @@
       "hydrol:cover/grass_positive",
       "hydrol:shrubs/dark_oak",
       "hydrol:shrubs/birch",
+      "hydrol:trees/oak",
       "hydrol:trees/willow_unlimited",
-      "hydrol:trees/dark_willow_unlimited"
+      "hydrol:trees/dark_willow_unlimited",
+      "hydrol:trees/spruce_noise",
+      "hydrol:trees/pine",
+      "hydrol:trees/fir"
     ],
     [
       "hydrol:cover/freeze"

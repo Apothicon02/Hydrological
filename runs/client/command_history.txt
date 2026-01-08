@@ -1,29 +1,3 @@
-/tp @s 33 66 -376
-/locate biome minecraft:mangrove_swamp
-/tp @s -303 67 -391
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/tp @s -709 69 873
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/tp @s -1488 149 561
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/gamemode spectator
-/tp @s 2201 76 -2141
-/locate biome minecraft:bamboo_jungle
-/tp @s 149 66 -2242
-/locate biome minecraft:mangrove_swamp
-/tp @s 2024 68 387
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/tp @s -1720 65 2696
-/locate biome minecraft:mangrove_swamp
-/tp @s 2419 90 824
 /gamemode spectator
 /locate biome minecraft:mangrove_swamp
 /gamemode spectator
@@ -48,3 +22,29 @@
 /tp @s 1044 83 -235
 /gamemode creative
 /gamemode spectator
+/gamemode creative
+/tp 13958 ~ -13895
+/gamemode spectator
+/tp 200 300 200
+/gamemode spectator
+/tp 500 200 500
+/gamemode spectator
+/gamemode creative
+/gamemode spectator
+/tp 500 200 500
+/gamemode spectator
+/tp -500 100 -500
+/tp 500 200 500
+/tp 500 100 500
+/gamemode spectator
+/tp 500 100 500
+/gamemode spectator
+/time set 5000
+/gamemode spectator
+/tp 500 100 500
+/gamemode creative
+/gamemode spectator
+/tp 500 100 500
+/gamemode spectator
+/tp 500 0 500
+/tp 500 100 500

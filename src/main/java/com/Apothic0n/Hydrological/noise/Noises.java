@@ -10,14 +10,20 @@ import java.util.Map;
 
 public class Noises {
     public static Map<Integer, Noise> noiseMap = new HashMap<>(Map.of());
-    public static Noise VARIATION_NOISE;
-    public static Noise BASE_NOISE;
-    public static Noise TEMPERATURE_NOISE;
+    public static Noise COHERERENT_NOISE;
+    public static Noise CELLULAR_NOISE;
+    public static Noise WHITE_NOISE;
+    public static Noise NOODLE_NOISE;
+    public static Noise CLOUD_NOISE;
+    public static Noise SPIRAL_NOISE;
 
     public static void init() throws IOException {
-        VARIATION_NOISE = create(new Noise(loadImage("variation_noise")));
-        BASE_NOISE = create(new Noise(loadImage("base_noise")));
-        TEMPERATURE_NOISE = create(new Noise(loadImage("temperature_noise")));
+        COHERERENT_NOISE = create(new Noise(loadImage("coherent_noise")));
+        CELLULAR_NOISE = create(new Noise(loadImage("cellular_noise")));
+        WHITE_NOISE = create(new Noise(loadImage("white_noise")));
+        NOODLE_NOISE = create(new Noise(loadImage("noodle_noise")));
+        CLOUD_NOISE = create(new Noise(loadImage("cloud_noise")));
+        SPIRAL_NOISE = create(new Noise(loadImage("spiral_noise")));
     }
 
     private static Noise create(Noise type) {

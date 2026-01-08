@@ -35,11 +35,7 @@
               0
             ],
             "blocks": [
-              "minecraft:stone",
-              "minecraft:mossy_cobblestone",
-              "minecraft:andesite",
-              "minecraft:diorite",
-              "minecraft:calcite"
+              "minecraft:gravel"
             ]
           }
         ]

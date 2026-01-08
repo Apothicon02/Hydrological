@@ -3,6 +3,7 @@ package com.Apothic0n.Hydrological;
 import com.Apothic0n.Hydrological.api.HydrolChunkGenerators;
 import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
 import com.Apothic0n.Hydrological.api.HydrolJsonReader;
+import com.Apothic0n.Hydrological.api.Worldgen;
 import com.Apothic0n.Hydrological.api.biome.HydrolSurfaceRules;
 import com.Apothic0n.Hydrological.api.biome.features.HydrolFeatureRegistry;
 import com.Apothic0n.Hydrological.api.biome.features.canopies.CanopyType;
@@ -49,6 +50,7 @@ public class Hydrological {
         CanopyType.register(eventBus);
         DecorationType.register(eventBus);
         Noises.init();
+        Worldgen.generate();
         HydrolChunkGenerators.register(eventBus);
         HydrolDensityFunctions.register(eventBus);
         HydrolSurfaceRules.register(eventBus);

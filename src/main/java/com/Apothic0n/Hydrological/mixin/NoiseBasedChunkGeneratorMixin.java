@@ -1,6 +1,7 @@
 package com.Apothic0n.Hydrological.mixin;
 
 import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
+import com.Apothic0n.Hydrological.api.Worldgen;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -64,39 +65,44 @@ public abstract class NoiseBasedChunkGeneratorMixin {
                     $$6.selectCellYZ($$22, $$19);
 
                     for(int $$23 = $$15 - 1; $$23 >= 0; --$$23) {
-                        int $$24 = (p_224289_ + $$22) * $$15 + $$23;
-                        int $$25 = $$24 & 15;
-                        int $$26 = chunkAccess.getSectionIndex($$24);
+                        int y = (p_224289_ + $$22) * $$15 + $$23;
+                        int $$25 = y & 15;
+                        int $$26 = chunkAccess.getSectionIndex(y);
                         if ($$20 != $$26) {
                             $$20 = $$26;
                             $$21 = chunkAccess.getSection($$26);
                         }
 
                         double $$27 = (double)$$23 / (double)$$15;
-                        $$6.updateForY($$24, $$27);
+                        $$6.updateForY(y, $$27);
 
                         for(int $$28 = 0; $$28 < $$14; ++$$28) {
-                            int $$29 = $$10 + $$18 * $$14 + $$28;
-                            int $$30 = $$29 & 15;
+                            int x = $$10 + $$18 * $$14 + $$28;
+                            int $$30 = x & 15;
                             double $$31 = (double)$$28 / (double)$$14;
-                            $$6.updateForX($$29, $$31);
+                            $$6.updateForX(x, $$31);
 
                             for(int $$32 = 0; $$32 < $$14; ++$$32) {
-                                int $$33 = $$11 + $$19 * $$14 + $$32;
-                                int $$34 = $$33 & 15;
+                                int z = $$11 + $$19 * $$14 + $$32;
+                                int $$34 = z & 15;
                                 double $$35 = (double)$$32 / (double)$$14;
-                                $$6.updateForZ($$33, $$35);
+                                $$6.updateForZ(z, $$35);
                                 BlockState state = $$6.getInterpolatedState();
                                 if (state == null) {
                                     state = ((NoiseGeneratorSettings)this.settings.value()).defaultBlock();
                                 }
 
-                                state = this.debugPreliminarySurfaceLevel($$6, $$29, $$24, $$33, state);
+                                if (x >= 0 && x < Worldgen.size && y >= 0 && y < Worldgen.height && z >= 0 && z < Worldgen.size) {
+                                    BlockState pregenState = Worldgen.blocks[Worldgen.condensePos(x, y, z)];
+                                    if (pregenState != null) {
+                                        state = pregenState;
+                                    }
+                                }
                                 if (HydrolDensityFunctions.generateAquifers) {
-                                    if (HydrolDensityFunctions.isFloatingIslands && $$24 > 0) {
+                                    if (HydrolDensityFunctions.isFloatingIslands && y > 0) {
                                         if (state.isAir()) {
-                                            int newY = (42 + (floatingIslandsSeaOffset / 2)) - (int) (Math.abs(SimplexNoise.noise($$29 * 0.0007F, $$33 * 0.0007F)) * 128);
-                                            if (newY > $$24) {
+                                            int newY = (42 + (floatingIslandsSeaOffset / 2)) - (int) (Math.abs(SimplexNoise.noise(x * 0.0007F, z * 0.0007F)) * 128);
+                                            if (newY > y) {
                                                 state = Blocks.WATER.defaultBlockState();
                                             }
                                         }
@@ -105,29 +111,29 @@ public abstract class NoiseBasedChunkGeneratorMixin {
                                             if (state == Blocks.WATER.defaultBlockState() || state == Blocks.LAVA.defaultBlockState()) {
                                                 int newY = 16;
                                                 for (int currentY = 240; currentY > 16; currentY = currentY - 4) {
-                                                    if (chunkAccess.getBlockState(new BlockPos($$29, currentY, $$33)).isSolid()) {
+                                                    if (chunkAccess.getBlockState(new BlockPos(x, currentY, z)).isSolid()) {
                                                         newY = currentY;
                                                         currentY = 0;
                                                     }
                                                 }
-                                                if (newY - 20 > $$24) {
+                                                if (newY - 20 > y) {
                                                     state = Blocks.CAVE_AIR.defaultBlockState();
                                                 }
-                                                if (newY <= 48 && $$24 < -55) {
+                                                if (newY <= 48 && y < -55) {
                                                     state = Blocks.WATER.defaultBlockState();
                                                 }
                                             }
                                         }
-                                        if (state.isAir() && $$24 < -55 && chunkAccess.getBlockState(new BlockPos($$29, chunkAccess.getMinBuildHeight(), $$33)).isSolid()) {
+                                        if (state.isAir() && y < -55 && chunkAccess.getBlockState(new BlockPos(x, chunkAccess.getMinBuildHeight(), z)).isSolid()) {
                                             state = Blocks.LAVA.defaultBlockState();
                                         }
                                     }
                                 }
                                 $$21.setBlockState($$30, $$25, $$34, state, false);
-                                $$7.update($$30, $$24, $$34, state);
-                                $$8.update($$30, $$24, $$34, state);
+                                $$7.update($$30, y, $$34, state);
+                                $$8.update($$30, y, $$34, state);
                                 if ($$12.shouldScheduleFluidUpdate() && !state.getFluidState().isEmpty()) {
-                                    $$13.set($$29, $$24, $$33);
+                                    $$13.set(x, y, z);
                                     chunkAccess.markPosForPostprocessing($$13);
                                 }
                             }
@@ -141,5 +147,6 @@ public abstract class NoiseBasedChunkGeneratorMixin {
 
         $$6.stopInterpolation();
         ci.setReturnValue(chunkAccess);
+        ci.cancel();
     }
 }
