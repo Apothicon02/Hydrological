@@ -14,13 +14,8 @@
     },
     {
       "type": "hydrol:height_based_chance",
-      "impossible": 90,
-      "guaranteed": 70
-    },
-    {
-      "type": "hydrol:height_based_chance",
-      "impossible": 63,
-      "guaranteed": 66
+      "impossible": 82,
+      "guaranteed": 100
     },
     {
       "type": "minecraft:block_predicate_filter",

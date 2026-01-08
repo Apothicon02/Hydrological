@@ -2,8 +2,10 @@
   "feature": "hydrol:trees/oak",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 7
+      "type": "minecraft:noise_based_count",
+      "noise_to_count_ratio": 32,
+      "noise_factor": 256,
+      "noise_offset": 0.1
     },
     {
       "type": "minecraft:random_offset",
@@ -17,6 +19,16 @@
     {
       "type": "minecraft:heightmap",
       "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "hydrol:height_based_chance",
+      "impossible": 92,
+      "guaranteed": 82
+    },
+    {
+      "type": "hydrol:height_based_chance",
+      "impossible": 66,
+      "guaranteed": 68
     },
     {
       "type": "minecraft:block_predicate_filter",

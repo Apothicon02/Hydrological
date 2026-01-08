@@ -1,8 +1,4 @@
 {
-  "type": "hydrol:cubical_scale",
-  "input": {
-    "type": "minecraft:min",
-    "argument1": "hydrol:normal/noodle_caves",
-    "argument2": "hydrol:normal/final_density_caveless"
-  }
+  "type": "minecraft:abs",
+  "argument": 0
 }

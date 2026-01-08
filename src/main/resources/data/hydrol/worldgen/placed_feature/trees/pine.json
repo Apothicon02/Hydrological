@@ -5,12 +5,17 @@
       "type": "hydrol:noise_cover",
       "min": -0.15,
       "max": 0.15,
-      "chance": 0.006,
+      "chance": 0.018,
       "multilpier": 1
     },
     {
       "type": "minecraft:heightmap",
       "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "hydrol:height_based_chance",
+      "impossible": 82,
+      "guaranteed": 100
     },
     {
       "type": "minecraft:block_predicate_filter",

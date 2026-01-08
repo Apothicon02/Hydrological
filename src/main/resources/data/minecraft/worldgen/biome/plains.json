@@ -36,7 +36,7 @@
     ],
     [],
     [
-
+      "hydrol:geological/mossy_rocks_small_dense"
     ],
     [
       "minecraft:glow_lichen",
@@ -50,8 +50,12 @@
       "hydrol:cover/grass_positive",
       "hydrol:shrubs/dark_oak",
       "hydrol:shrubs/birch",
+      "hydrol:trees/oak",
       "hydrol:trees/willow_unlimited",
-      "hydrol:trees/dark_willow_unlimited"
+      "hydrol:trees/dark_willow_unlimited",
+      "hydrol:trees/spruce_noise",
+      "hydrol:trees/pine",
+      "hydrol:trees/fir"
     ],
     [
       "hydrol:cover/freeze"
