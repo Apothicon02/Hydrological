@@ -17,18 +17,18 @@
     "size_vertical": 1
   },
   "noise_router": {
-    "barrier": -1,
-    "fluid_level_floodedness": -1,
-    "fluid_level_spread": -1,
+    "barrier": "hydrol:normal/heightmap",
+    "fluid_level_floodedness": "hydrol:normal/heightmap",
+    "fluid_level_spread": "hydrol:normal/heightmap",
     "lava": -1,
     "temperature": {
       "type": "hydrol:store_temperature",
-      "input": 0.15
+      "input": "hydrol:normal/temperature"
     },
-    "vegetation": 0.5,
-    "erosion": 0,
-    "continents": 0,
-    "depth": 0,
+    "vegetation": "hydrol:global/surface_variation",
+    "erosion": "hydrol:normal/final_erosion",
+    "continents": "hydrol:normal/continentalness",
+    "depth": "hydrol:normal/heightmap",
     "ridges": 0,
     "initial_density_without_jaggedness": {
       "type": "minecraft:range_choice",

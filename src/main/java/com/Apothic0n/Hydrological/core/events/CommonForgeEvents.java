@@ -2,9 +2,6 @@ package com.Apothic0n.Hydrological.core.events;
 
 import com.Apothic0n.Hydrological.Hydrological;
 import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
-import com.Apothic0n.Hydrological.api.HydrolMath;
-import com.Apothic0n.Hydrological.api.Worldgen;
-import com.Apothic0n.Hydrological.noise.Noises;
 import it.unimi.dsi.fastutil.longs.Long2DoubleOpenHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -31,7 +28,6 @@ import net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent;
 import net.neoforged.neoforge.event.level.BlockGrowFeatureEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
-import org.joml.Vector3i;
 
 import static net.minecraft.world.level.block.Block.UPDATE_ALL;
 
@@ -111,10 +107,6 @@ public class CommonForgeEvents {
     @SubscribeEvent
     public static void onCreateSpawnPosition(LevelEvent.CreateSpawnPosition event) {
         if (event.getLevel() instanceof ServerLevel level && !level.isClientSide()) {
-            if (level.dimension().equals(Level.OVERWORLD)) {
-                event.getSettings().setSpawn(new BlockPos(512, 256, 512), 0.f);
-            }
-
             if (HydrolDensityFunctions.isFloatingIslands) {
                 BlockPos pos = new BlockPos(event.getSettings().getSpawnPos().getX(), 256, event.getSettings().getSpawnPos().getZ());
                 boolean overVoid = true;

@@ -4,10 +4,6 @@ import it.unimi.dsi.fastutil.longs.LongArrayList;
 import net.minecraft.core.BlockPos;
 
 public class HydrolMath {
-    public static double distance(double x1, double y1, double x2, double y2) {
-        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-    }
-
     public static double averageLongs(LongArrayList numbers) {
         double sum = 0.0;
         for (double num : numbers) {

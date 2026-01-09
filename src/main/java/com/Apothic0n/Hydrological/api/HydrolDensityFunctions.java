@@ -1,7 +1,6 @@
 package com.Apothic0n.Hydrological.api;
 
 import com.Apothic0n.Hydrological.Hydrological;
-import com.Apothic0n.Hydrological.noise.Noises;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -22,7 +21,6 @@ import static com.Apothic0n.Hydrological.api.HydrolMath.unprogressBetweenInts;
 public final class HydrolDensityFunctions {
     public static final DeferredRegister<MapCodec<? extends DensityFunction>> DENSITY_FUNCTION_TYPES = DeferredRegister.create(Registries.DENSITY_FUNCTION_TYPE, Hydrological.MODID);
 
-    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> CENTER_ISLAND_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("center_island", CenterIsland.CODEC::codec);
     public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> FLOATING_BEACHES_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_beaches", FloatingBeaches.CODEC::codec);
     public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> FLOATING_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("floating_islands", FloatingIslands.CODEC::codec);
     public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> CUBICAL_SCALE_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("cubical_scale", CubicalScale.CODEC::codec);
@@ -47,58 +45,6 @@ public final class HydrolDensityFunctions {
     public static boolean changeWaterBehavior = false;
     public static int floatingIslandsSeaOffset = 63;
 
-    public static int size = 1024;
-    public static int halfSize = 1024/2;
-    public static int height = 320;
-    public static int seaLevel = 63;
-    public static int baseHeight = 0;
-    protected record CenterIsland(DensityFunction input) implements DensityFunction {
-        private static final MapCodec<CenterIsland> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
-            return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(CenterIsland::input)).apply(data, CenterIsland::new);
-        });
-        public static final KeyDispatchDataCodec<CenterIsland> CODEC = HydrolDensityFunctions.makeCodec(DATA_CODEC);
-
-        @Override
-        public double compute(@NotNull FunctionContext context) {
-            int x = context.blockX();
-            int y = context.blockY();
-            int z = context.blockZ();
-            float basePerlinNoise = (Noises.COHERERENT_NOISE.sample(x, z)+0.5f)/2;
-            float baseCellularNoise = Noises.CELLULAR_NOISE.sample(x, z)/2;
-            float centDist = (float) (HydrolMath.distance(x, z, size/2, size/2)/halfSize);
-            float centDistExp = (Math.max(0.5f, centDist)-0.5f);
-            centDistExp *= centDistExp;
-            int surface = (int)(((200*(Math.max(0.1f, baseCellularNoise)*basePerlinNoise))+70)-(centDistExp*300));
-            surface = Math.max(8, surface);
-            baseHeight = surface;
-            return (double) (surface - y) /height;
-        }
-
-        @Override
-        public void fillArray(double @NotNull [] densities, ContextProvider context) {
-            context.fillAllDirectly(densities, this);
-        }
-
-        @Override
-        public @NotNull DensityFunction mapAll(Visitor visitor) {
-            return visitor.apply(new CenterIsland(this.input().mapAll(visitor)));
-        }
-
-        @Override
-        public double minValue() {
-            return -1875000d;
-        }
-
-        @Override
-        public double maxValue() {
-            return 1875000d;
-        }
-
-        @Override
-        public KeyDispatchDataCodec<? extends DensityFunction> codec() {
-            return CODEC;
-        }
-    }
     protected record FloatingBeaches(DensityFunction input) implements DensityFunction {
         private static final MapCodec<FloatingBeaches> DATA_CODEC = RecordCodecBuilder.mapCodec((data) -> {
             return data.group(DensityFunction.HOLDER_HELPER_CODEC.fieldOf("input").forGetter(FloatingBeaches::input)).apply(data, FloatingBeaches::new);
