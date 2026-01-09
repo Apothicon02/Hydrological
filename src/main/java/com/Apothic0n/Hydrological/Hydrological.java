@@ -1,6 +1,5 @@
 package com.Apothic0n.Hydrological;
 
-import com.Apothic0n.Hydrological.api.HydrolChunkGenerators;
 import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
 import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.api.biome.HydrolSurfaceRules;
@@ -12,10 +11,7 @@ import com.Apothic0n.Hydrological.api.biome.features.trunks.TrunkType;
 import com.Apothic0n.Hydrological.core.objects.HydrolBlocks;
 import com.Apothic0n.Hydrological.core.objects.HydrolItems;
 import com.Apothic0n.Hydrological.core.objects.HydrolParticleTypes;
-import com.Apothic0n.Hydrological.noise.Noises;
 import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.IEventBus;
@@ -29,18 +25,6 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 public class Hydrological {
     public static final String MODID = "hydrol";
 
-    public static int timesSincePrintedLight = 60;
-    public static long lightStart = 0;
-    public static LongArrayList lightTimes = LongArrayList.of();
-    public static long biomesStart = 0;
-    public static LongArrayList biomesTimes = LongArrayList.of();
-    public static long noiseStart = 0;
-    public static LongArrayList noiseTimes = LongArrayList.of();
-    public static long surfaceStart = 0;
-    public static LongArrayList surfaceTimes = LongArrayList.of();
-    public static long featuresStart = 0;
-    public static LongArrayList featuresTimes = LongArrayList.of();
-
     public Hydrological(IEventBus eventBus, ModContainer container) throws Exception {
         eventBus.register(this);
 
@@ -48,8 +32,6 @@ public class Hydrological {
         TrunkType.register(eventBus);
         CanopyType.register(eventBus);
         DecorationType.register(eventBus);
-        Noises.init();
-        HydrolChunkGenerators.register(eventBus);
         HydrolDensityFunctions.register(eventBus);
         HydrolSurfaceRules.register(eventBus);
         if (!HydrolJsonReader.serverSidedOnlyMode) {

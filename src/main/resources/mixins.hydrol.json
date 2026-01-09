@@ -10,8 +10,6 @@
     "BeehiveDecoratorMixin",
     "BiomeMixin",
     "BlockItemMixin",
-    "ChunkMapMixin",
-    "ChunkStatusTasksMixin",
     "DripstoneUtilsMixin",
     "GrowingPlantBlockMixin",
     "LeavesBlockMixin",

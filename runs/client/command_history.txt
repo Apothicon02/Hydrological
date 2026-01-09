@@ -1,3 +1,17 @@
+/time set 23500
+/time set 23300
+/time set 23200
+/time set 23000
+/time set 22500
+/time set 22300
+/time set 22000
+/time set 21000
+/time set 21500
+/time set 21800
+/time set 22200
+/time set 22000
+/gamemode spectator
+/locate biome minecraft:mangrove_swamp
 /tp @s 33 66 -376
 /locate biome minecraft:mangrove_swamp
 /tp @s -303 67 -391
@@ -34,17 +48,3 @@
 /locate biome minecraft:mangrove_swamp
 /tp @s -1199 74 1118
 /time set 250
-/gamemode spectator
-/gamemode creative
-/gamemode spectator
-/locate biome minecraft:river
-/tp @s 1052 80 -212
-/gamemode spectator
-/locate biome minecraft:river
-/gamemode spectator
-/locate biome minecraft:river
-/gamemode spectator
-/locate biome minecraft:river
-/tp @s 1044 83 -235
-/gamemode creative
-/gamemode spectator

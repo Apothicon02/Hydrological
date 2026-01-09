@@ -1,18 +1,8 @@
 package com.Apothic0n.Hydrological.api;
 
-import it.unimi.dsi.fastutil.longs.LongArrayList;
 import net.minecraft.core.BlockPos;
 
 public class HydrolMath {
-    public static double averageLongs(LongArrayList numbers) {
-        double sum = 0.0;
-        for (double num : numbers) {
-            sum += num;
-        }
-
-        return sum / numbers.size();
-    }
-
     public static long longToBlockPos(BlockPos pos) {
         return BlockPos.asLong(pos.getX(), pos.getY(), pos.getZ());
     }
