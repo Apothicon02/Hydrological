@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:clamp",
+    "input": {
+      "type": "minecraft:add",
+      "argument1": 0,
+      "argument2": "hydrol:test/continentalness"
+    },
+    "min": -0.75,
+    "max": 0.75
+  },
+  "argument2": {
+    "type": "minecraft:mul",
+    "argument1": 0.2,
+    "argument2": {
+      "type": "minecraft:interpolated",
+      "argument": {
+        "type": "minecraft:cache_2d",
+        "argument": {
+          "type": "minecraft:noise",
+          "noise": "hydrol:normal/temperature",
+          "xz_scale": 1,
+          "y_scale": 0
+        }
+      }
+    }
+  }
+}

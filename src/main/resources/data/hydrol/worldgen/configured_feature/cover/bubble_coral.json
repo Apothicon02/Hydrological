@@ -7,7 +7,7 @@
       "state": {
         "Name": "minecraft:bubble_coral",
         "Properties": {
-          "waterlogged": "false"
+          "waterlogged": "true"
         }
       }
     }

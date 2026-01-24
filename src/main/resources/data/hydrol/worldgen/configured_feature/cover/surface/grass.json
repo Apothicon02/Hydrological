@@ -1,14 +1,11 @@
 {
   "type": "hydrol:simple_block",
   "config": {
-    "replace": false,
+    "replace": true,
     "to_place": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "minecraft:horn_coral",
-        "Properties": {
-          "waterlogged": "true"
-        }
+        "Name": "minecraft:grass_block"
       }
     }
   }

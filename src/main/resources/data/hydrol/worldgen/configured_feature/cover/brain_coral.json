@@ -7,7 +7,7 @@
       "state": {
         "Name": "minecraft:brain_coral",
         "Properties": {
-          "waterlogged": "false"
+          "waterlogged": "true"
         }
       }
     }

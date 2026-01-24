@@ -7,7 +7,7 @@
       "state": {
         "Name": "minecraft:tube_coral",
         "Properties": {
-          "waterlogged": "false"
+          "waterlogged": "true"
         }
       }
     }

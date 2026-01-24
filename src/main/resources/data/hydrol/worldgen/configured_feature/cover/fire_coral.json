@@ -7,7 +7,7 @@
       "state": {
         "Name": "minecraft:fire_coral",
         "Properties": {
-          "waterlogged": "false"
+          "waterlogged": "true"
         }
       }
     }

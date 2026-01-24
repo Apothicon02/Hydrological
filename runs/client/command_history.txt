@@ -1,50 +1,50 @@
-/time set 23500
-/time set 23300
-/time set 23200
+/tp @s -170 156 -136
+/gamemode spectator
+/locate biome minecraft:plains
+/seed
+/tp ~ ~ ~
+/tp -618 107 -72
+/gamemode spectator
+/tp -618 107 -72
+/gamemode spectator
+/tp -618 107 -72
+/gamemode spectator
+/tp -618 107 -72
+/gamemode spectator
+/tp -618 107 -72
+/gamemode spectator
+/tp -618 107 -72
+/gamemode spectator
+/locate biome minecraft:beach
+/tp @s 126 135 -155
+/gamemode spectator
+/locate biome minecraft:beach
+/tp @s 355 119 418
+/gamemode spectator
+/locate biome minecraft:beach
+/tp @s -415 133 551
+/gamemode spectator
+/time set 0
+/time set 1200
+/time set 12000
+/time set 13000
 /time set 23000
-/time set 22500
-/time set 22300
-/time set 22000
-/time set 21000
-/time set 21500
-/time set 21800
-/time set 22200
-/time set 22000
+/time set 23500
+/time set 23400
+/time set midnight
+/time set 12000
+/time set 11000
+/time set 13000
+/time set 12700
+/time set 12300
+/time set 10300
+/time set midnight
+/time set noon
+/time set midnight
+/time set 0
+/time set 12000
+/time set 7000
 /gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/tp @s 33 66 -376
-/locate biome minecraft:mangrove_swamp
-/tp @s -303 67 -391
+/time set 0
+/time set noon
 /gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/tp @s -709 69 873
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/tp @s -1488 149 561
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/gamemode spectator
-/tp @s 2201 76 -2141
-/locate biome minecraft:bamboo_jungle
-/tp @s 149 66 -2242
-/locate biome minecraft:mangrove_swamp
-/tp @s 2024 68 387
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/tp @s -1720 65 2696
-/locate biome minecraft:mangrove_swamp
-/tp @s 2419 90 824
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/tp @s -1620 66 796
-/locate biome minecraft:mangrove_swamp
-/gamemode spectator
-/locate biome minecraft:mangrove_swamp
-/tp @s -1199 74 1118
-/time set 250

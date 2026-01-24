@@ -34,6 +34,7 @@
     ],
     [],
     [
+      "hydrol:cover/surface/gravel",
       "hydrol:geological/deepslate_anvil_rocks_low",
       "hydrol:geological/stone_mossy_copper_rocks_low",
       "hydrol:geological/mossy_rocks_small",

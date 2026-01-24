@@ -39,7 +39,8 @@
               "minecraft:mossy_cobblestone",
               "minecraft:andesite",
               "minecraft:diorite",
-              "minecraft:calcite"
+              "minecraft:calcite",
+              "minecraft:gravel"
             ]
           }
         ]

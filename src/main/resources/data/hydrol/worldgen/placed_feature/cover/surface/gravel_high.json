@@ -1,11 +1,11 @@
 {
-  "feature": "hydrol:cover/tube_coral",
+  "feature": "hydrol:cover/surface/gravel",
   "placement": [
     {
       "type": "hydrol:noise_cover",
-      "min": 0,
-      "max": 0.02,
-      "chance": 0.05,
+      "min": -10,
+      "max": 10,
+      "chance": 1,
       "multilpier": 1
     },
     {
@@ -13,10 +13,20 @@
       "heightmap": "OCEAN_SURFACE_WG"
     },
     {
+      "type": "minecraft:random_offset",
+      "xz_spread": 0,
+      "y_spread": -1
+    },
+    {
+      "type": "hydrol:height_based_chance",
+      "impossible": 65,
+      "guaranteed": 66
+    },
+    {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:matching_blocks",
-        "blocks": "minecraft:water"
+        "blocks": "minecraft:rooted_dirt"
       }
     },
     {

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:interpolated",
+  "argument": {
+    "type": "minecraft:cache_2d",
+    "argument": {
+      "type": "minecraft:noise",
+      "noise": "minecraft:gravel",
+      "xz_scale": 1,
+      "y_scale": 0
+    }
+  }
+}
