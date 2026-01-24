@@ -22,7 +22,6 @@
     "WaterFluidMixin"
   ],
   "client": [
-    "BiomeClientMixin",
     "FoliageColorMixin",
     "ItemBlockRenderTypesMixin",
     "ScreenEffectRendererMixin"
