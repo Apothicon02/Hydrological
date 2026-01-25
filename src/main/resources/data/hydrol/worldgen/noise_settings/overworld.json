@@ -25,7 +25,7 @@
       "type": "hydrol:store_temperature",
       "input": "hydrol:test/temperature"
     },
-    "vegetation": 0,
+    "vegetation": "hydrol:test/detail_noise",
     "erosion": 0.2,
     "continents": {
       "type": "minecraft:add",

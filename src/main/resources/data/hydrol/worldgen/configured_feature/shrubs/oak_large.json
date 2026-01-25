@@ -1,0 +1,43 @@
+{
+  "type": "hydrol:tree",
+  "config": {
+    "must_be_fully_submerged": false,
+    "intersect": true,
+    "canopy_offset": 0,
+    "trunk": {
+      "type": "hydrol:straight_trunk",
+      "height": 1,
+      "wood": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:oak_wood"
+        }
+      }
+    },
+    "canopy": {
+      "type": "hydrol:square_canopy",
+      "height": {
+        "type": "minecraft:uniform",
+          "min_inclusive": 3,
+          "max_inclusive": 7
+      },
+      "radius": {
+        "type": "minecraft:uniform",
+          "min_inclusive": 3,
+          "max_inclusive": 5
+      },
+      "leaves": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:oak_leaves",
+          "Properties": {
+            "persistent": "false"
+          }
+        }
+      }
+    },
+    "decorations": [
+
+    ]
+  }
+}

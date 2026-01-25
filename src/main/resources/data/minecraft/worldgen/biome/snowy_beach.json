@@ -37,7 +37,8 @@
     [
     ],
     [
-      "minecraft:glow_lichen"
+      "minecraft:glow_lichen",
+      "hydrol:cover/surface/gravel"
     ],
     [
       "hydrol:cover/freeze"

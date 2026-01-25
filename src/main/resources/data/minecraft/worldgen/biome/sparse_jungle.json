@@ -45,6 +45,7 @@
     ],
     [
       "minecraft:glow_lichen",
+      "hydrol:cover/surface/grass",
       "hydrol:cover/flowers/orange_tulip",
       "hydrol:cover/flowers/poppy",
       "hydrol:cover/flowers/red_tulip",
