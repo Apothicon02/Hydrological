@@ -4,9 +4,10 @@
     ]
   },
   "creature_spawn_probability": 0.3,
-  "downfall": 0.8,
+  "downfall": 0.9,
   "effects": {
     "fog_color": 12638463,
+    "grass_color": 7265330,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -38,7 +39,9 @@
     [],
     [
     ],
-    [],
+    [
+      "hydrol:surface/grass"
+    ],
     [
     ],
     [
@@ -60,11 +63,11 @@
       "hydrol:cover/tall_grass_middle",
       "hydrol:cover/grass_negative",
       "hydrol:cover/grass_positive",
-      "hydrol:shrubs/mangrove_square",
-      "hydrol:shrubs/birch",
-      "hydrol:trees/red_mushroom_sparse",
-      "hydrol:trees/dark_willow_extra",
-      "hydrol:trees/dark_oak"
+      "hydrol:shrubs/melons",
+      "hydrol:shrubs/melons_extra",
+      "hydrol:shrubs/mangrove_kinda_sparse",
+      "hydrol:trees/dark_willow",
+      "hydrol:trees/palm_noise_extra"
     ],
     [
       "hydrol:cover/freeze"

@@ -1,5 +1,5 @@
 {
-  "feature": "hydrol:cover/surface/gravel",
+  "feature": "hydrol:surface/gravel",
   "placement": [
     {
       "type": "hydrol:noise_cover",

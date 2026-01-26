@@ -33,12 +33,13 @@
     [],
     [
     ],
-    [],
+    [
+      "hydrol:surface/gravel"
+    ],
     [
     ],
     [
-      "minecraft:glow_lichen",
-      "hydrol:cover/surface/gravel"
+      "minecraft:glow_lichen"
     ],
     [
       "hydrol:cover/freeze"

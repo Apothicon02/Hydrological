@@ -41,7 +41,9 @@
     [],
     [
     ],
-    [],
+    [
+      "hydrol:surface/sand"
+    ],
     [
       "hydrol:geological/red_sandstone_anvil_rocks_sparse"
     ],

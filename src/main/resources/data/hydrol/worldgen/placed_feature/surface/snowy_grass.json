@@ -1,5 +1,5 @@
 {
-  "feature": "hydrol:cover/surface/grass",
+  "feature": "hydrol:surface/snowy_grass",
   "placement": [
     {
       "type": "hydrol:noise_cover",

@@ -1,5 +1,5 @@
 {
   "type": "minecraft:mul",
   "argument1": -232,
-  "argument2": "hydrol:test/base_noise"
+  "argument2": "hydrol:test/base_noise_modified"
 }

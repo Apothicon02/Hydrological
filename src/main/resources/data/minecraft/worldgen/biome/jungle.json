@@ -38,7 +38,9 @@
     [],
     [
     ],
-    [],
+    [
+      "hydrol:surface/grass"
+    ],
     [
       "hydrol:cover/jungle_roots",
       "hydrol:cover/jungle_roots_edge",

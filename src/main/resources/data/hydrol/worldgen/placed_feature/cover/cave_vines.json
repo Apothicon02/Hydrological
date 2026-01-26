@@ -38,7 +38,12 @@
           1,
           0
         ],
-        "blocks": "minecraft:moss_block"
+        "blocks": [
+          "minecraft:moss_block",
+          "minecraft:rooted_dirt",
+          "minecraft:coarse_dirt",
+          "minecraft:dirt"
+        ]
       }
     },
     {

@@ -1,0 +1,54 @@
+{
+  "type": "hydrol:spike",
+  "config": {
+    "material": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 99,
+          "data": {
+            "Name": "minecraft:diorite"
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:calcite"
+          }
+        }
+      ]
+    },
+    "lowerState": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 99,
+          "data": {
+            "Name": "minecraft:calcite"
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:diorite"
+          }
+        }
+      ]
+    },
+    "mass": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 4,
+      "max_inclusive": 15
+    },
+    "width": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 6,
+      "max_inclusive": 9
+    },
+    "height": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 1,
+      "max_inclusive": 13
+    }
+  }
+}

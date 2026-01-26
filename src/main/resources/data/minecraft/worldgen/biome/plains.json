@@ -34,13 +34,13 @@
     [
 
     ],
-    [],
     [
-
+      "hydrol:surface/grass"
+    ],
+    [
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/surface/grass",
       "hydrol:cover/flowers/azure_bluet",
       "hydrol:cover/flowers/lily_of_the_valley",
       "hydrol:cover/flowers/oxeye_daisy",

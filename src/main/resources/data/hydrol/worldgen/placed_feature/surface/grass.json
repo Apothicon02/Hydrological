@@ -1,5 +1,5 @@
 {
-  "feature": "hydrol:cover/surface/gravel",
+  "feature": "hydrol:surface/grass",
   "placement": [
     {
       "type": "hydrol:noise_cover",
@@ -16,11 +16,6 @@
       "type": "minecraft:random_offset",
       "xz_spread": 0,
       "y_spread": -1
-    },
-    {
-      "type": "hydrol:height_based_chance",
-      "impossible": 65,
-      "guaranteed": 66
     },
     {
       "type": "minecraft:block_predicate_filter",

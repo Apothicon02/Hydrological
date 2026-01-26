@@ -1,50 +1,50 @@
-/tp @s -170 156 -136
 /gamemode spectator
-/locate biome minecraft:plains
 /seed
-/tp ~ ~ ~
-/tp -618 107 -72
 /gamemode spectator
-/tp -618 107 -72
+/locate biome minecraft:savanna
+/tp @s -175 187 -216
 /gamemode spectator
-/tp -618 107 -72
+/locate biome minecraft:cherry_grove
+/tp @s 48 99 4175
 /gamemode spectator
-/tp -618 107 -72
+/locate biome minecraft:cherry_grove
+/tp @s 249 89 -3512
 /gamemode spectator
-/tp -618 107 -72
+/locate biome minecraft:cherry_grove
+/tp @s 4537 132 255
 /gamemode spectator
-/tp -618 107 -72
+/locate biome minecraft:cherry_grove
+/tp @s 72 53 -184
 /gamemode spectator
-/locate biome minecraft:beach
-/tp @s 126 135 -155
+/locate biome minecraft:mangrove_swamp
 /gamemode spectator
-/locate biome minecraft:beach
-/tp @s 355 119 418
-/gamemode spectator
-/locate biome minecraft:beach
-/tp @s -415 133 551
-/gamemode spectator
-/time set 0
-/time set 1200
-/time set 12000
-/time set 13000
-/time set 23000
-/time set 23500
-/time set 23400
+/tp @s -1328 139 553
+/time set mi
 /time set midnight
-/time set 12000
-/time set 11000
-/time set 13000
-/time set 12700
+/time set 0
+/time set 23800
+/time set 23300
 /time set 12300
-/time set 10300
-/time set midnight
-/time set noon
-/time set midnight
+/time set 12800
+/time set 12400
+/time set 12100
+/time set 12400
 /time set 0
-/time set 12000
-/time set 7000
+/gamemode spectator
+/locate biome minecraft:flower_forest
+/tp @s 456 69 -440
+/gamemode spectator
+/locate biome minecraft:flower_forest
+/tp @s 217 195 -465
+/gamemode spectator
+/locate biome minecraft:sparse_jungle
+/tp @s -287 90 -426
+/locate biome minecraft:flower_forest
+/tp @s -291 143 -618
+/locate biome minecraft:flower_forest
+/tp @s 58 179 72
 /gamemode spectator
 /time set 0
-/time set noon
-/gamemode spectator
+/time set 2350
+/time set 23050
+/time set 1050

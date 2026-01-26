@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:mul",
+  "argument1": -3.34,
+  "argument2": {
+    "type": "minecraft:add",
+    "argument1": -0.3,
+    "argument2": {
+      "type": "minecraft:clamp",
+      "min": 0,
+      "max": 0.3,
+      "input": {
+        "type": "minecraft:add",
+        "argument1": -0.05,
+        "argument2": "hydrol:test/ridges"
+      }
+    }
+  }
+}

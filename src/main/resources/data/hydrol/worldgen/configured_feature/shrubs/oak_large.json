@@ -24,7 +24,7 @@
       "radius": {
         "type": "minecraft:uniform",
           "min_inclusive": 3,
-          "max_inclusive": 5
+          "max_inclusive": 7
       },
       "leaves": {
         "type": "minecraft:simple_state_provider",

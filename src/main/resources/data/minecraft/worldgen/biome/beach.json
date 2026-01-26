@@ -32,13 +32,16 @@
     [],
     [
     ],
-    [],
+    [
+      "hydrol:surface/sand_low",
+      "hydrol:surface/gravel_high"
+    ],
     [
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/surface/sand_low",
-      "hydrol:cover/surface/gravel_high",
+      "hydrol:geological/diorite_rocks_small",
+      "hydrol:geological/calcite_rocks_small",
       "hydrol:cover/dry_grass_patches",
       "hydrol:cover/tube_coral",
       "hydrol:cover/brain_coral",

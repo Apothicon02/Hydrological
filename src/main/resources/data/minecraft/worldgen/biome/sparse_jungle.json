@@ -39,13 +39,14 @@
     [
 
     ],
-    [],
     [
-
+      "hydrol:surface/grass"
+    ],
+    [
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/surface/grass",
+      "hydrol:cover/cave_vines",
       "hydrol:cover/flowers/orange_tulip",
       "hydrol:cover/flowers/poppy",
       "hydrol:cover/flowers/red_tulip",

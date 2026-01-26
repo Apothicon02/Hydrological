@@ -1,0 +1,31 @@
+{
+  "feature": "hydrol:surface/red_sand",
+  "placement": [
+    {
+      "type": "hydrol:noise_cover",
+      "min": -10,
+      "max": 10,
+      "chance": 1,
+      "multilpier": 1
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": 0,
+      "y_spread": -1
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:rooted_dirt"
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
