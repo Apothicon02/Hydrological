@@ -39,6 +39,36 @@
               }
             },
             {
+              "biome": "minecraft:river",
+              "parameters": {
+                "temperature": [
+                  -1,
+                  1
+                ],
+                "humidity": [
+                  -1,
+                  1
+                ],
+                "erosion": [
+                  -1,
+                  0.04
+                ],
+                "continentalness": [
+                  -0.085,
+                  1
+                ],
+                "weirdness": [
+                  -1,
+                  1
+                ],
+                "depth": [
+                  -1,
+                  1
+                ],
+                "offset": 0
+              }
+            },
+            {
               "biome": "minecraft:snowy_beach",
               "parameters": {
                 "temperature": [
@@ -50,7 +80,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -80,7 +110,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -110,7 +140,7 @@
                   0
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -140,7 +170,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -170,7 +200,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -200,7 +230,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -230,7 +260,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -260,7 +290,7 @@
                   0
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -290,7 +320,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -320,7 +350,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -350,7 +380,7 @@
                   0
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -380,7 +410,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -410,7 +440,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -440,7 +470,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -470,7 +500,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -500,7 +530,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -530,7 +560,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -560,7 +590,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
@@ -590,7 +620,7 @@
                   1
                 ],
                 "erosion": [
-                  -1,
+                  0.04,
                   1
                 ],
                 "continentalness": [
