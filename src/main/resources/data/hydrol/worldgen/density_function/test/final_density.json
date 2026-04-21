@@ -1,5 +1,0 @@
-{
-  "type": "minecraft:add",
-  "argument1": "hydrol:test/continents",
-  "argument2": "hydrol:test/base_terrain"
-}
