@@ -1,6 +1,7 @@
 package com.Apothic0n.Hydrological.mixin;
 
 import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
+import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.WaterFluid;
 import org.spongepowered.asm.mixin.Mixin;
@@ -12,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class WaterFluidMixin {
     @Inject(method = "canConvertToSource", at = @At("HEAD"), cancellable = true)
     public void canConvertToSource(Level level, CallbackInfoReturnable<Boolean> ci) {
-        if (HydrolDensityFunctions.changeWaterBehavior && level.dimension().equals(Level.OVERWORLD)) {
+        if (HydrolJsonReader.wavyOcean && HydrolDensityFunctions.changeWaterBehavior && level.dimension().equals(Level.OVERWORLD)) {
             ci.setReturnValue(false);
         }
     }

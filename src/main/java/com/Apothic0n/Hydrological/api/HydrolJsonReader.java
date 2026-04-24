@@ -19,6 +19,7 @@ public class HydrolJsonReader {
     public static float noiseScale = 1;
     public static boolean removeCollisionFromSnowLayers = true;
     public static boolean addLightEmissionToVanillaBlocks = true;
+    public static boolean wavyOcean = true;
 
     //Client
     public static boolean customOverworldFog = true;
@@ -73,6 +74,11 @@ public class HydrolJsonReader {
             addLightEmissionToVanillaBlocks = data.get("addLightEmissionToVanillaBlocks").getAsBoolean();
         } else {
             data.addProperty("addLightEmissionToVanillaBlocks", true);
+        }
+        if (data.get("wavyOcean") != null) {
+            wavyOcean = data.get("wavyOcean").getAsBoolean();
+        } else {
+            data.addProperty("wavyOcean", true);
         }
         JsonWriter writer = new JsonWriter(new FileWriter(path.toString()));
         gson.toJson(data, writer);

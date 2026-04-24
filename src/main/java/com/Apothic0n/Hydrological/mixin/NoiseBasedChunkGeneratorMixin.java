@@ -1,6 +1,7 @@
 package com.Apothic0n.Hydrological.mixin;
 
 import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
+import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -95,7 +96,7 @@ public abstract class NoiseBasedChunkGeneratorMixin {
                                 if (HydrolDensityFunctions.generateAquifers) {
                                     if (HydrolDensityFunctions.isFloatingIslands && $$24 > 0) {
                                         if (state.isAir()) {
-                                            int newY = (42 + (floatingIslandsSeaOffset / 2)) - (int) (Math.abs(SimplexNoise.noise($$29 * 0.0007F, $$33 * 0.0007F)) * 128);
+                                            int newY = !HydrolJsonReader.wavyOcean ? 63 : (42 + (floatingIslandsSeaOffset / 2)) - (int) (Math.abs(SimplexNoise.noise($$29 * 0.0007F, $$33 * 0.0007F)) * 128);
                                             if (newY > $$24) {
                                                 state = Blocks.WATER.defaultBlockState();
                                             }
