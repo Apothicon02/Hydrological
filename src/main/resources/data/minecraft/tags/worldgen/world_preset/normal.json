@@ -3,6 +3,7 @@
   "values": [
     "hydrol:floating_caves",
     "hydrol:floating_islands",
-    "hydrol:floating_islands_oceanless"
+    "hydrol:floating_islands_oceanless",
+    "hydrol:floating_islands_sparse"
   ]
 }

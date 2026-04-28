@@ -1,0 +1,18 @@
+{
+  "type": "hydrol:cubical_scale",
+  "input": {
+    "type": "minecraft:interpolated",
+    "argument": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:range_choice",
+        "input": "hydrol:floating_islands_sparse/caves",
+        "min_inclusive": -1,
+        "max_exclusive": 0,
+        "when_in_range": -1,
+        "when_out_of_range": 0
+      },
+      "argument2": "hydrol:floating_islands_sparse/final_density_caveless"
+    }
+  }
+}

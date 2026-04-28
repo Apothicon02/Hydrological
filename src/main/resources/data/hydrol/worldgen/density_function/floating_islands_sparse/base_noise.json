@@ -2,8 +2,8 @@
   "type": "minecraft:cache_2d",
   "argument": {
     "type": "hydrol:scalable_noise",
-    "noise": "hydrol:global/surface_variation",
-    "xz_scale": 1,
+    "noise": "minecraft:gravel",
+    "xz_scale": 0.4,
     "y_scale": 0
   }
 }

@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:cache_once",
+  "type": "minecraft:cache_2d",
   "argument": {
     "type": "hydrol:scalable_noise",
     "noise": "hydrol:normal/base_noise",

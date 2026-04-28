@@ -1,36 +1,3 @@
-/gamemode spectator
-/locate biome minecraft:flower_forest
-/tp @s 217 195 -465
-/gamemode spectator
-/locate biome minecraft:sparse_jungle
-/tp @s -287 90 -426
-/locate biome minecraft:flower_forest
-/tp @s -291 143 -618
-/locate biome minecraft:flower_forest
-/tp @s 58 179 72
-/gamemode spectator
-/time set 0
-/time set 2350
-/time set 23050
-/time set 1050
-/gamemode spectator
-/locate biome minecraft:sparse_jungle
-/tp @s 1687 116 296
-/locate biome minecraft:badlands
-/time set 12000
-/time set 1000
-/time set 23600
-/time set 23900
-/time set 23300
-/time set 23500
-/time set 23200
-/time set 2200
-/locate biome minecraft:snowy_taiga
-/tp @s 3867 135 -1931
-/locate biome minecraft:warm_ocean
-/gamemode spectator
-/locate biome minecraft:badlands
-/tp @s 55 78 -128
 /locate biome minecraft:mangrove_swamp
 /tp @s 272 85 -79
 /gamemode spectator
@@ -47,4 +14,37 @@
 /gamemode sp
 /gamemode spectator
 /locate biome minecraft:small_end_islands
+/gamemode spectator
+/gamemode spectatorW
+/gamemode spectator
+/seed
+/gamemode spectator
+/locate biome minecraft:jungle
+/tp 13591 ~ -139951
+/locate biome minecraft:jungle
+/gamemode spectator
+/locate biome minecraft:jungle
+/tp @s -29 65 92
+/gamemode creative
+/gamemode spectator
+/time set 0
+/gamemode spectator
+/gamemode sp
+/gamemode spectator
+/locate biome minecraft:birch_forest
+/locate biome minecraft:taiga
+/locate biome minecraft:old_growth_pine_taiga
+/locate biome minecraft:old_growth_spruce_taiga
+/gamemode spectator
+/locate biome minecraft:taiga
+/gamemode spectator
+/locate biome minecraft:jungle
+/locate biome minecraft:desert
+/tp @s -1557 205 276
+/time set midnight
+/time set 12500
+/time set 12800
+/time set 13800
+/time set 11800
+/time set 12200
 /gamemode spectator

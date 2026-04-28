@@ -1,0 +1,5 @@
+{
+  "type": "minecraft:max",
+  "argument1": "hydrol:floating_islands_sparse/upper_islands",
+  "argument2": "hydrol:floating_islands_sparse/lower_islands"
+}

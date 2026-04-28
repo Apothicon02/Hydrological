@@ -2,6 +2,7 @@
   "generator.hydrol.floating_caves": "Floating Caves",
   "generator.hydrol.floating_islands": "(Sea) Floating Islands",
   "generator.hydrol.floating_islands_oceanless": "(Void) Floating Islands",
+  "generator.hydrol.floating_islands_sparse": "(Sparse) Floating Islands",
   "generator.hydrol.caves": "Caves",
 
   "block.hydrol.amethyst_vines": "Amethyst Vines",
