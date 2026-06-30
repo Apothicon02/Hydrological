@@ -72,10 +72,12 @@ public class CocoaDecorationType extends Decoration {
                     }
                 }
             }
-            int placed = 0;
-            for (int i = 0; i < 32 && placed < max; i++) {
-                if (addToMap(map, highestLog.below(3), random)) {
-                    placed += 1;
+            if (highestLog != null) {
+                int placed = 0;
+                for (int i = 0; i < 32 && placed < max; i++) {
+                    if (addToMap(map, highestLog.below(3), random)) {
+                        placed += 1;
+                    }
                 }
             }
         }
