@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/block",
+  "render_type": "cutout",
   "textures": {
     "all": "hydrol:block/flowering_azalea_leaves_bare"
   },

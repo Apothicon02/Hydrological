@@ -2,6 +2,8 @@ package com.Apothic0n.Hydrological.core.objects;
 
 import com.Apothic0n.Hydrological.Hydrological;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -18,10 +20,18 @@ import static com.Apothic0n.Hydrological.core.objects.HydrolBlocks.*;
 public final class HydrolItems extends Items {
     private HydrolItems() {}
 
+    private static ResourceKey<Item> itemKey(String name) {
+        return ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Hydrological.MODID, name));
+    }
+
+    private static Item.Properties itemProps(String name) {
+        return new Item.Properties().setId(itemKey(name));
+    }
+
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, Hydrological.MODID);
 
     public static final DeferredHolder<Item, Item> DRY_GRASS = ITEMS.register("dry_grass", () ->
-            new BlockItem(HydrolBlocks.DRY_GRASS.get(), new Item.Properties()));
+            new BlockItem(HydrolBlocks.DRY_GRASS.get(), itemProps("dry_grass")));
 
     public static final List<DeferredHolder<Item, Item>> wallItems = new ArrayList<>(List.of());
     public static final List<DeferredHolder<Item, Item>> stairItems = new ArrayList<>(List.of());
@@ -51,29 +61,33 @@ public final class HydrolItems extends Items {
 
     public static DeferredHolder<Item, Item> createPileItems(Block baseBlock) {
         DeferredHolder<Block, Block> block = getBlock(baseBlock, pileBlocks);
-        return ITEMS.register(block.getId().toString().substring(7), () ->
-                new BlockItem(block.get(), new Item.Properties())
+        String itemName = block.getId().toString().substring(7);
+        return ITEMS.register(itemName, () ->
+                new BlockItem(block.get(), itemProps(itemName))
         );
     }
 
     public static DeferredHolder<Item, Item> createWallItems(Block baseBlock) {
         DeferredHolder<Block, Block> block = getBlock(baseBlock, wallBlocks);
-        return ITEMS.register(block.getId().toString().substring(7), () ->
-                new BlockItem(block.get(), new Item.Properties())
+        String itemName = block.getId().toString().substring(7);
+        return ITEMS.register(itemName, () ->
+                new BlockItem(block.get(), itemProps(itemName))
         );
     }
 
     public static DeferredHolder<Item, Item> createStairItems(Block baseBlock) {
         DeferredHolder<Block, Block> block = getBlock(baseBlock, stairBlocks);
-        return ITEMS.register(block.getId().toString().substring(7), () ->
-                new BlockItem(block.get(), new Item.Properties())
+        String itemName = block.getId().toString().substring(7);
+        return ITEMS.register(itemName, () ->
+                new BlockItem(block.get(), itemProps(itemName))
         );
     }
 
     public static DeferredHolder<Item, Item> createSlabItems(Block baseBlock) {
         DeferredHolder<Block, Block> block = getBlock(baseBlock, slabBlocks);
-        return ITEMS.register(block.getId().toString().substring(7), () ->
-                new BlockItem(block.get(), new Item.Properties())
+        String itemName = block.getId().toString().substring(7);
+        return ITEMS.register(itemName, () ->
+                new BlockItem(block.get(), itemProps(itemName))
         );
     }
 

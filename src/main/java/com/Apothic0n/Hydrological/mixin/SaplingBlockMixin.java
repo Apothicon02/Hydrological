@@ -5,19 +5,16 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(SaplingBlock.class)
-public abstract class SaplingBlockMixin extends BushBlock {
+public abstract class SaplingBlockMixin extends VegetationBlock {
     public SaplingBlockMixin(Properties p_51021_) {
         super(p_51021_);
     }
-
-    @Override
-    public abstract MapCodec<? extends BushBlock> codec();
 
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {

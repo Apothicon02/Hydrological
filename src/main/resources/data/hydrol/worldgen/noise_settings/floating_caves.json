@@ -37,6 +37,7 @@
       "when_out_of_range": 1
     },
     "ridges": 0,
+    "preliminary_surface_level": 0,
     "initial_density_without_jaggedness": 0,
     "final_density": "hydrol:floating_caves/final_density",
     "vein_toggle": 0,

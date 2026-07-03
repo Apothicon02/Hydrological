@@ -70,7 +70,7 @@ public class NewTreeFeature extends Feature<NewTreeConfiguration> {
                 int z = pos.getZ();
                 if (x >= minX && x <= maxX && z >= minZ && z <= maxZ && (FeatureHelper.getBlockState(level, pos).canBeReplaced() || (pos.getY() <= origin.getY() && state.isSolid() && !state.is(BlockTags.LEAVES)))) {
                     if (state.getBlock() instanceof WallBlock) {
-                        state = state.updateShape(Direction.UP, state, level, pos, pos);
+                        state = state.updateShape(level, level, pos, Direction.UP, pos, state, random);
                     }
                     if (state.hasProperty(BlockStateProperties.WATERLOGGED) && FeatureHelper.getBlockState(level, pos).is(Blocks.WATER)) {
                         state = state.setValue(BlockStateProperties.WATERLOGGED, true);

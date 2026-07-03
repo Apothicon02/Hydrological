@@ -27,7 +27,7 @@ public abstract class BiomeMixin {
         boolean shouldFreeze = false;
         if (HydrolDensityFunctions.temperature != null) {
             if (HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext(blockPos.getX(), blockPos.getY(), blockPos.getZ())) < -0.8) {
-                if (blockPos.getY() >= level.getMinBuildHeight() && blockPos.getY() < level.getMaxBuildHeight() && level.getBrightness(LightLayer.BLOCK, blockPos) < 10) {
+                if (blockPos.getY() >= level.getMinY() && blockPos.getY() < level.getMaxY() && level.getBrightness(LightLayer.BLOCK, blockPos) < 10) {
                     BlockState blockstate = level.getBlockState(blockPos);
                     FluidState fluidstate = level.getFluidState(blockPos);
                     if (fluidstate.getType() == Fluids.WATER && blockstate.getBlock() instanceof LiquidBlock) {

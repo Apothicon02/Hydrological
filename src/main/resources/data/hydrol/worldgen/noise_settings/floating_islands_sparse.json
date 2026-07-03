@@ -34,6 +34,7 @@
       "argument2": "hydrol:floating_islands_sparse/depth"
     },
     "ridges": 0,
+    "preliminary_surface_level": 0,
     "initial_density_without_jaggedness": -1,
     "final_density": "hydrol:floating_islands_sparse/final_density",
     "vein_toggle": 0,

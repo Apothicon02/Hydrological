@@ -22,8 +22,6 @@
     "WaterFluidMixin"
   ],
   "client": [
-    "FoliageColorMixin",
-    "ItemBlockRenderTypesMixin",
     "ScreenEffectRendererMixin"
   ],
   "server": [

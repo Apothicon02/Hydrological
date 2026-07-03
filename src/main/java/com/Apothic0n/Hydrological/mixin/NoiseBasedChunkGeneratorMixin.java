@@ -119,7 +119,7 @@ public abstract class NoiseBasedChunkGeneratorMixin {
                                                 }
                                             }
                                         }
-                                        if (state.isAir() && $$24 < -55 && chunkAccess.getBlockState(new BlockPos($$29, chunkAccess.getMinBuildHeight(), $$33)).isSolid()) {
+                                        if (state.isAir() && $$24 < -55 && chunkAccess.getBlockState(new BlockPos($$29, chunkAccess.getMinY(), $$33)).isSolid()) {
                                             state = Blocks.LAVA.defaultBlockState();
                                         }
                                     }

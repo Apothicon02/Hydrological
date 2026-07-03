@@ -13,6 +13,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -167,11 +168,11 @@ public class FragileWallBlock extends Block implements SimpleWaterloggedBlock {
         return this.updateShape(levelAccessor, blockState5, blockPos5, blockState4, flag, flag1, flag2, flag3);
     }
 
-    public BlockState updateShape(BlockState blockState, Direction p_58015_, BlockState p_58016_, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos p_58019_) {
-        RandomSource randomSource = levelAccessor.getRandom();
+    @Override
+    protected BlockState updateShape(BlockState blockState, LevelReader level, ScheduledTickAccess tickAccess, BlockPos blockPos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
         Boolean supported = false;
         for (int i = 1; i < 48; i++) {
-            BlockState block = levelAccessor.getBlockState(blockPos.above(i));
+            BlockState block = level.getBlockState(blockPos.above(i));
             if (!(block.getBlock() instanceof FragileWallBlock)) {
                 supported = block.isSolid();
                 break;
@@ -179,7 +180,7 @@ public class FragileWallBlock extends Block implements SimpleWaterloggedBlock {
         }
         if (!supported) {
             for (int i = 1; i < 48; i++) {
-                BlockState block = levelAccessor.getBlockState(blockPos.below(i));
+                BlockState block = level.getBlockState(blockPos.below(i));
                 if (!(block.getBlock() instanceof FragileWallBlock)) {
                     supported = block.isSolid();
                     break;
@@ -187,18 +188,18 @@ public class FragileWallBlock extends Block implements SimpleWaterloggedBlock {
             }
         }
         if (!supported) {
-            return breakBlock(levelAccessor, blockPos, blockState, randomSource);
+            LevelAccessor levelAccessor = (LevelAccessor) level;
+            return breakBlock(levelAccessor, blockPos, blockState, random);
         }
-
 
         if (blockState.getValue(WATERLOGGED)) {
-            levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
+            tickAccess.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
-        if (p_58015_ == Direction.DOWN) {
-            return super.updateShape(blockState, p_58015_, p_58016_, levelAccessor, blockPos, p_58019_);
+        if (direction == Direction.DOWN) {
+            return super.updateShape(blockState, level, tickAccess, blockPos, direction, neighborPos, neighborState, random);
         } else {
-            return p_58015_ == Direction.UP ? this.topUpdate(levelAccessor, blockState, p_58019_, p_58016_) : this.sideUpdate(levelAccessor, blockPos, blockState, p_58019_, p_58016_, p_58015_);
+            return direction == Direction.UP ? this.topUpdate(level, blockState, neighborPos, neighborState) : this.sideUpdate(level, blockPos, blockState, neighborPos, neighborState, direction);
         }
     }
 

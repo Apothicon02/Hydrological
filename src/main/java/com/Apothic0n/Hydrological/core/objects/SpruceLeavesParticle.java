@@ -1,14 +1,12 @@
 package com.Apothic0n.Hydrological.core.objects;
 
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.ParticleRenderType;
+import net.minecraft.client.particle.SingleQuadParticle;
 import net.minecraft.client.particle.SpriteSet;
-import net.minecraft.client.particle.TextureSheetParticle;
-import net.minecraft.util.FastColor;
-import net.minecraft.world.level.FoliageColor;
 
 
-public class SpruceLeavesParticle extends TextureSheetParticle {
+
+public class SpruceLeavesParticle extends SingleQuadParticle {
     private static final float ACCELERATION_SCALE = 0.0025F;
     private static final int INITIAL_LIFETIME = 300;
     private static final int CURVE_ENDPOINT_TIME = 300;
@@ -19,8 +17,7 @@ public class SpruceLeavesParticle extends TextureSheetParticle {
     private final float spinAcceleration;
 
     public SpruceLeavesParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
-        super(level, x, y, z);
-        this.setSprite(spriteSet.get(this.random.nextInt(12), 12));
+        super(level, x, y, z, spriteSet.get(level.getRandom().nextInt(12), 12));
         this.rotSpeed = (float)Math.toRadians(this.random.nextBoolean() ? -30.0D : 30.0D);
         this.particleRandom = this.random.nextFloat();
         this.spinAcceleration = (float)Math.toRadians(this.random.nextBoolean() ? -5.0D : 5.0D);
@@ -35,8 +32,9 @@ public class SpruceLeavesParticle extends TextureSheetParticle {
         this.friction = 1.0F;
     }
 
-    public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
+    @Override
+    protected SingleQuadParticle.Layer getLayer() {
+        return SingleQuadParticle.Layer.OPAQUE;
     }
 
     public void tick() {

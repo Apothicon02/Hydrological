@@ -1,26 +1,12 @@
 {
-  "carvers": {
-    "air": [
-    ]
-  },
-  "creature_spawn_probability": 0.3,
+  "carvers": [],
   "downfall": 0.5,
   "effects": {
-    "fog_color": 12638463,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "sky_color": 8103167,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_color": "#3f76e4"
   },
   "features": [
     [],
-    [
-    ],
+    [],
     [
       "minecraft:amethyst_geode",
       "hydrol:geological/magma_vent",
@@ -32,11 +18,9 @@
     ],
     [],
     [],
-    [
-    ],
     [],
-    [
-    ],
+    [],
+    [],
     [
       "minecraft:glow_lichen",
       "hydrol:cover/seagrass_middle",
@@ -148,5 +132,9 @@
       }
     ]
   },
-  "temperature": 0.5
+  "temperature": 0.5,
+  "attributes": {
+    "minecraft:visual/sky_color": "#7ba4ff",
+    "minecraft:visual/water_fog_color": "#050533"
+  }
 }

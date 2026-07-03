@@ -1,27 +1,13 @@
 {
-  "carvers": {
-    "air": [
-    ]
-  },
-  "creature_spawn_probability": 0.3,
+  "carvers": [],
   "downfall": 0.5,
   "effects": {
-    "fog_color": 12638463,
-    "grass_color": 37952,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "sky_color": 8364543,
-    "water_color": 3750089,
-    "water_fog_color": 329011
+    "water_color": "#3938c9",
+    "grass_color": "#009440"
   },
   "features": [
     [],
-    [
-    ],
+    [],
     [
       "minecraft:amethyst_geode",
       "hydrol:geological/mossy_rocks"
@@ -32,8 +18,7 @@
     ],
     [],
     [],
-    [
-    ],
+    [],
     [],
     [
       "hydrol:geological/mossy_rocks_small_dense"
@@ -151,5 +136,9 @@
       }
     ]
   },
-  "temperature": 0.25
+  "temperature": 0.25,
+  "attributes": {
+    "minecraft:visual/sky_color": "#7fa1ff",
+    "minecraft:visual/water_fog_color": "#050533"
+  }
 }

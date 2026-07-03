@@ -1,27 +1,14 @@
 {
-  "carvers": {
-    "air": [
-    ]
-  },
-  "creature_spawn_probability": 0.3,
+  "carvers": [],
   "downfall": 0.4,
   "effects": {
-    "fog_color": 12638463,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
     "music": {
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
       "sound": "minecraft:music.overworld.deep_dark"
     },
-    "sky_color": 7907327,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_color": "#3f76e4"
   },
   "features": [
     [],
@@ -43,8 +30,7 @@
     [
       "hydrol:mineral/diamond_lapis_frozen"
     ],
-    [
-    ],
+    [],
     [],
     [
       "minecraft:glow_lichen",
@@ -66,5 +52,9 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.8
+  "temperature": 0.8,
+  "attributes": {
+    "minecraft:visual/sky_color": "#78a7ff",
+    "minecraft:visual/water_fog_color": "#050533"
+  }
 }

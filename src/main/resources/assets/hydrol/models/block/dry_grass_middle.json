@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/crop",
+  "render_type": "cutout",
   "textures": {
     "crop": "hydrol:block/dry_grass_middle"
   },

@@ -7,7 +7,8 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
@@ -63,11 +64,11 @@ public class DryGrassBlock extends GrowingPlantHeadBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
-        return makeShape(levelAccessor, blockPos);
+    protected BlockState updateShape(BlockState blockState, LevelReader level, ScheduledTickAccess tickAccess, BlockPos blockPos, Direction direction, BlockPos blockPos2, BlockState blockState2, RandomSource random) {
+        return makeShape(level, blockPos);
     }
 
-    private BlockState makeShape(LevelAccessor levelAccessor, BlockPos blockPos) {
+    private BlockState makeShape(LevelReader levelAccessor, BlockPos blockPos) {
         BlockState belowState = levelAccessor.getBlockState(blockPos.below());
         if (!belowState.is(BlockTags.DIRT) && !belowState.is(BlockTags.SAND) && !belowState.is(HydrolBlocks.DRY_GRASS.get())) {
             return Blocks.AIR.defaultBlockState();

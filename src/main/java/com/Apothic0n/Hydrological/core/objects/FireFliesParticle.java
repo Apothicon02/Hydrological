@@ -1,17 +1,15 @@
 package com.Apothic0n.Hydrological.core.objects;
 
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.ParticleRenderType;
+import net.minecraft.client.particle.SingleQuadParticle;
 import net.minecraft.client.particle.SpriteSet;
-import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.client.renderer.LightTexture;
 
 
-public class FireFliesParticle extends TextureSheetParticle {
+public class FireFliesParticle extends SingleQuadParticle {
 
     public FireFliesParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
-        super(level, x, y, z);
-        this.setSprite(spriteSet.get(1, 1));
+        super(level, x, y, z, spriteSet.get(1, 1));
         this.lifetime = 50;
         this.gravity = 0;
         float f = this.random.nextBoolean() ? 0.2F : 0.25F;
@@ -28,8 +26,9 @@ public class FireFliesParticle extends TextureSheetParticle {
         return LightTexture.FULL_BRIGHT;
     }
 
-    public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+    @Override
+    protected SingleQuadParticle.Layer getLayer() {
+        return SingleQuadParticle.Layer.TRANSLUCENT;
     }
 
     public void tick() {

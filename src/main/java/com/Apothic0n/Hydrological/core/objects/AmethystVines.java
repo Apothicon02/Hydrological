@@ -27,7 +27,7 @@ public interface AmethystVines {
             float f = Mth.randomBetween(pLevel.random, 0.8F, 1.2F);
             pLevel.playSound((Player)null, pPos, SoundEvents.AMETHYST_BLOCK_FALL, SoundSource.BLOCKS, 1.0F, f);
             pLevel.setBlock(pPos, pState.setValue(BERRIES, Boolean.valueOf(true)), 2);
-            return InteractionResult.sidedSuccess(pLevel.isClientSide);
+            return pLevel.isClientSide() ? InteractionResult.SUCCESS : InteractionResult.CONSUME;
         } else {
             return InteractionResult.PASS;
         }

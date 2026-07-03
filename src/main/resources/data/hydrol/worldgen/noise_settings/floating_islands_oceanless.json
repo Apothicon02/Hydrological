@@ -30,6 +30,7 @@
     "continents": "hydrol:floating_islands_oceanless/continentalness",
     "depth": "hydrol:floating_islands_oceanless/depth",
     "ridges": 0,
+    "preliminary_surface_level": 0,
     "initial_density_without_jaggedness": -1,
     "final_density": "hydrol:floating_islands_oceanless/final_density",
     "vein_toggle": 0,

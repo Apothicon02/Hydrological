@@ -73,7 +73,7 @@ public class Hydrological {
     @SubscribeEvent
     private void clientSetup(final FMLClientSetupEvent event) {
         if (!HydrolJsonReader.serverSidedOnlyMode) {
-            HydrolBlocks.fixBlockRenderLayers();
+
         }
     }
 }

@@ -1,33 +1,19 @@
 {
-  "carvers": {
-    "air": [
-    ]
-  },
-  "creature_spawn_probability": 0.3,
+  "carvers": [],
   "downfall": 0.9,
   "effects": {
-    "fog_color": 12638463,
-    "grass_color": 7265330,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
     "music": {
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
       "sound": "minecraft:music.overworld.flower_forest"
     },
-    "sky_color": 7972607,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_color": "#3f76e4",
+    "grass_color": "#6edc32"
   },
   "features": [
     [],
-    [
-    ],
+    [],
     [
       "minecraft:amethyst_geode"
     ],
@@ -37,13 +23,11 @@
     ],
     [],
     [],
-    [
-    ],
+    [],
     [
       "hydrol:surface/grass"
     ],
-    [
-    ],
+    [],
     [
       "minecraft:glow_lichen",
       "hydrol:cover/flower_forest_flowers/allium",
@@ -179,5 +163,9 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.7
+  "temperature": 0.7,
+  "attributes": {
+    "minecraft:visual/sky_color": "#79a6ff",
+    "minecraft:visual/water_fog_color": "#050533"
+  }
 }

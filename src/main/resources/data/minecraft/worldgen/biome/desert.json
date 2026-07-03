@@ -1,32 +1,18 @@
 {
-  "carvers": {
-    "air": [
-    ]
-  },
-  "creature_spawn_probability": 0.3,
+  "carvers": [],
   "downfall": 0.0,
   "effects": {
-    "fog_color": 12638463,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
     "music": {
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
       "sound": "minecraft:music.overworld.desert"
     },
-    "sky_color": 7254527,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_color": "#3f76e4"
   },
   "features": [
     [],
-    [
-    ],
+    [],
     [
       "minecraft:amethyst_geode",
       "hydrol:geological/pits"
@@ -36,11 +22,9 @@
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
-    [
-    ],
     [],
-    [
-    ],
+    [],
+    [],
     [
       "hydrol:surface/sand"
     ],
@@ -145,5 +129,9 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 2.0
+  "temperature": 2.0,
+  "attributes": {
+    "minecraft:visual/sky_color": "#6eb1ff",
+    "minecraft:visual/water_fog_color": "#050533"
+  }
 }

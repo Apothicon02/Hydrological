@@ -1,21 +1,8 @@
 {
-  "carvers": {
-    "air": [
-    ]
-  },
-  "creature_spawn_probability": 0.3,
+  "carvers": [],
   "downfall": 0.85,
   "effects": {
-    "sky_color": 7842047,
-    "fog_color": 12638463,
-    "water_color": 4159204,
-    "water_fog_color": 329011,
-    "mood_sound": {
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000,
-      "block_search_extent": 8,
-      "offset": 2
-    },
+    "water_color": "#3f76e4",
     "music": {
       "sound": "minecraft:music.overworld.sparse_jungle",
       "min_delay": 12000,
@@ -25,8 +12,7 @@
   },
   "features": [
     [],
-    [
-    ],
+    [],
     [
       "minecraft:amethyst_geode"
     ],
@@ -36,14 +22,11 @@
     ],
     [],
     [],
-    [
-
-    ],
+    [],
     [
       "hydrol:surface/grass"
     ],
-    [
-    ],
+    [],
     [
       "minecraft:glow_lichen",
       "hydrol:cover/cave_vines",
@@ -170,5 +153,9 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.95
+  "temperature": 0.95,
+  "attributes": {
+    "minecraft:visual/sky_color": "#77a8ff",
+    "minecraft:visual/water_fog_color": "#050533"
+  }
 }

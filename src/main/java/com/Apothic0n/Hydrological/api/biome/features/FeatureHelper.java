@@ -9,7 +9,7 @@ import static net.minecraft.world.level.block.Block.UPDATE_ALL;
 
 public class FeatureHelper {
     public static BlockState getBlockState(WorldGenLevel level, BlockPos pos) {
-        if (pos.getY() < level.getMaxBuildHeight() && pos.getY() > level.getMinBuildHeight()) {
+        if (pos.getY() < level.getMaxY() && pos.getY() > level.getMinY()) {
             return level.getBlockState(pos);
         } else {
             return Blocks.VOID_AIR.defaultBlockState();
@@ -17,7 +17,7 @@ public class FeatureHelper {
     }
 
     public static void setBlock(WorldGenLevel level, BlockPos pos, BlockState state, int update) {
-        if (pos.getY() < level.getMaxBuildHeight() && pos.getY() > level.getMinBuildHeight()) {
+        if (pos.getY() < level.getMaxY() && pos.getY() > level.getMinY()) {
             level.setBlock(pos, state, update);
         }
     }

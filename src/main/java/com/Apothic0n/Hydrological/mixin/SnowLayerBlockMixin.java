@@ -9,12 +9,14 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.GameRules;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
@@ -46,14 +48,14 @@ public class SnowLayerBlockMixin extends Block {
     }
 
     @Override
-    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier p_405359_, boolean p_451772_) {
         if (!HydrolJsonReader.serverSidedOnlyMode && state.is(Blocks.SNOW) && HydrolJsonReader.removeCollisionFromSnowLayers) {
             double eye = entity.getEyeY();
             double snow = pos.getY() + (state.getValue(SnowLayerBlock.LAYERS).doubleValue() / 10) + 0.2;
             if (eye < snow) {
                 if (!(entity instanceof LivingEntity) || level.getBlockState(entity.getOnPos()).is(this)) {
                     entity.makeStuckInBlock(state, new Vec3((double) 0.9F, 1.5D, (double) 0.9F));
-                    if (level.isClientSide) {
+                    if (level.isClientSide()) {
                         RandomSource randomsource = level.getRandom();
                         boolean flag = entity.xOld != entity.getX() || entity.zOld != entity.getZ();
                         if (flag && randomsource.nextBoolean()) {
@@ -63,8 +65,8 @@ public class SnowLayerBlockMixin extends Block {
                 }
 
                 entity.setIsInPowderSnow(true);
-                if (!level.isClientSide) {
-                    if (entity.isOnFire() && (level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING) || entity instanceof Player) && entity.mayInteract(level, pos)) {
+                if (!level.isClientSide()) {
+                    if (entity.isOnFire() && (((ServerLevel)level).getGameRules().get(GameRules.MOB_GRIEFING) || entity instanceof Player) && entity.mayInteract((ServerLevel)level, pos)) {
                         level.destroyBlock(pos, false);
                     }
 

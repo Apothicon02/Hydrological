@@ -2,11 +2,14 @@ package com.Apothic0n.Hydrological.core.events;
 
 import com.Apothic0n.Hydrological.Hydrological;
 import com.Apothic0n.Hydrological.core.objects.HydrolBlocks;
+import com.google.gson.JsonObject;
 import com.mojang.serialization.JsonOps;
-import net.commoble.databuddy.datagen.BlockStateFile;
-import net.commoble.morered.datagen.SimpleModel;
-import net.minecraft.client.resources.model.BlockModelRotation;
+import net.commoble.databuddy.datagen.BlockStateBuilder;
+import net.commoble.databuddy.datagen.SimpleModel;
 import net.minecraft.core.Direction;
+import net.minecraft.data.CachedOutput;
+import net.minecraft.data.DataProvider;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Util;
 import net.minecraft.world.level.block.*;
@@ -16,16 +19,20 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 import static com.Apothic0n.Hydrological.core.objects.HydrolBlocks.*;
 
 @EventBusSubscriber(modid = Hydrological.MODID)
 public class CommonModEvents {
     @SubscribeEvent
-    public static void onGatherData(GatherDataEvent event) {
+    public static void onGatherData(GatherDataEvent.Client event) {
+        addItemDefinitions(event);
+
         // models
         SimpleModel.addDataProvider(event, Hydrological.MODID, JsonOps.INSTANCE, Util.make(new HashMap<>(), map ->
         {
@@ -64,7 +71,7 @@ public class CommonModEvents {
             }
         }));
         // blockstates
-        BlockStateFile.addDataProvider(event, Hydrological.MODID, JsonOps.INSTANCE, Util.make(new HashMap<>(), map -> {
+        BlockStateBuilder.addDataProvider(event, Util.make(new HashMap<>(), map -> {
             for (int i = 0; i < blocksWithStairsSlabsAndWalls.size(); i++) {
                 Block baseBlockBlock = blocksWithStairsSlabsAndWalls.get(i);
                 map = makeWallBlockstates(map, baseBlockBlock);
@@ -84,6 +91,54 @@ public class CommonModEvents {
                 map = makePileBlockstates(map, baseBlockBlock);
             }
         }));
+    }
+
+    private static void addItemDefinitions(GatherDataEvent.Client event) {
+        Map<Identifier, Identifier> itemModels = new HashMap<>();
+        itemModels.put(Identifier.fromNamespaceAndPath(Hydrological.MODID, "dry_grass"), Identifier.fromNamespaceAndPath(Hydrological.MODID, "item/dry_grass"));
+        addItemDefinitions(itemModels, wallBlocks);
+        addItemDefinitions(itemModels, stairBlocks);
+        addItemDefinitions(itemModels, slabBlocks);
+        addItemDefinitions(itemModels, pileBlocks);
+        DataProvider.Factory<DataProvider> factory = output -> new ItemDefinitionProvider(output, itemModels);
+        event.getGenerator().addProvider(true, factory);
+    }
+
+    private static void addItemDefinitions(Map<Identifier, Identifier> itemModels, List<Map<Block, DeferredHolder<Block, Block>>> blocks) {
+        for (Map<Block, DeferredHolder<Block, Block>> blockMap : blocks) {
+            for (DeferredHolder<Block, Block> block : blockMap.values()) {
+                String path = block.getId().getPath();
+                itemModels.put(Identifier.fromNamespaceAndPath(Hydrological.MODID, path), Identifier.fromNamespaceAndPath(Hydrological.MODID, "item/" + path));
+            }
+        }
+    }
+
+    private record ItemDefinitionProvider(PackOutput output, Map<Identifier, Identifier> itemModels) implements DataProvider {
+        @Override
+        public CompletableFuture<?> run(CachedOutput cache) {
+            PackOutput.PathProvider pathProvider = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "items");
+            List<CompletableFuture<?>> futures = new ArrayList<>();
+            for (Map.Entry<Identifier, Identifier> entry : itemModels.entrySet()) {
+                JsonObject root = new JsonObject();
+                JsonObject model = new JsonObject();
+                model.addProperty("type", "minecraft:model");
+                model.addProperty("model", entry.getValue().toString());
+                root.add("model", model);
+                futures.add(DataProvider.saveStable(cache, root, pathProvider.json(entry.getKey())));
+            }
+            return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
+        }
+
+        @Override
+        public String getName() {
+            return Hydrological.MODID + " item definitions";
+        }
+    }
+
+    private static SimpleModel simpleModel(Identifier parent, boolean cutout) {
+        return cutout
+                ? SimpleModel.create(parent, SimpleModel.RenderTypes.CUTOUT)
+                : SimpleModel.createWithoutRenderType(parent);
     }
 
     private static HashMap makePileModels(HashMap map, Block baseBlockBlock, Identifier baseBlock) {
@@ -120,28 +175,28 @@ public class CommonModEvents {
         Identifier pileBlock16 = tempPileBlock16;
         Identifier pileBlockItem = tempPileBlockItem;
         map.put(pileBlock2,
-                SimpleModel.createWithoutRenderType(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height2"))
+                simpleModel(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height2"), true)
                         .addTexture("texture", baseBlock));
         map.put(pileBlock4,
-                SimpleModel.createWithoutRenderType(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height4"))
+                simpleModel(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height4"), true)
                         .addTexture("texture", baseBlock));
         map.put(pileBlock6,
-                SimpleModel.createWithoutRenderType(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height6"))
+                simpleModel(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height6"), true)
                         .addTexture("texture", baseBlock));
         map.put(pileBlock8,
-                SimpleModel.createWithoutRenderType(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height8"))
+                simpleModel(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height8"), true)
                         .addTexture("texture", baseBlock));
         map.put(pileBlock10,
-                SimpleModel.createWithoutRenderType(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height10"))
+                simpleModel(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height10"), true)
                         .addTexture("texture", baseBlock));
         map.put(pileBlock12,
-                SimpleModel.createWithoutRenderType(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height12"))
+                simpleModel(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height12"), true)
                         .addTexture("texture", baseBlock));
         map.put(pileBlock14,
-                SimpleModel.createWithoutRenderType(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height14"))
+                simpleModel(Identifier.fromNamespaceAndPath("hydrol", "block/leaves_height14"), true)
                         .addTexture("texture", baseBlock));
         map.put(pileBlock16,
-                SimpleModel.createWithoutRenderType(Identifier.parse("block/cube_all"))
+                simpleModel(Identifier.parse("block/cube_all"), true)
                         .addTexture("all", baseBlock));
         map.put(pileBlockItem,
                 SimpleModel.createWithoutRenderType(pileBlock2));
@@ -166,14 +221,15 @@ public class CommonModEvents {
         Identifier wallBlockSide = tempWallBlockSide;
         Identifier wallBlockSideTall = tempWallBlockSideTall;
         Identifier wallBlockItem = tempWallBlockItem;
+        boolean cutout = blocksWithFragileWalls.contains(baseBlockBlock);
         map.put(wallBlock,
-                SimpleModel.createWithoutRenderType(Identifier.parse("block/template_wall_post"))
+                simpleModel(Identifier.parse("block/template_wall_post"), cutout)
                         .addTexture("wall", baseBlock));
         map.put(wallBlockSide,
-                SimpleModel.createWithoutRenderType(Identifier.parse("block/template_wall_side"))
+                simpleModel(Identifier.parse("block/template_wall_side"), cutout)
                         .addTexture("wall", baseBlock));
         map.put(wallBlockSideTall,
-                SimpleModel.createWithoutRenderType(Identifier.parse("block/template_wall_side_tall"))
+                simpleModel(Identifier.parse("block/template_wall_side_tall"), cutout)
                         .addTexture("wall", baseBlock));
         map.put(wallBlockItem,
                 SimpleModel.createWithoutRenderType(Identifier.parse("block/wall_inventory"))
@@ -283,31 +339,23 @@ public class CommonModEvents {
         Identifier pileBlock14 = tempPileBlock14;
         Identifier pileBlock16 = tempPileBlock16;
         map.put(blockstate,
-                BlockStateFile.variants(BlockStateFile.Variants.builder()
-                        .addVariant(
-                                BlockStateFile.PropertyValue.create(SnowLayerBlock.LAYERS, 1),
-                                BlockStateFile.Model.create(pileBlock2))
-                        .addVariant(
-                                BlockStateFile.PropertyValue.create(SnowLayerBlock.LAYERS, 2),
-                                BlockStateFile.Model.create(pileBlock4))
-                        .addVariant(
-                                BlockStateFile.PropertyValue.create(SnowLayerBlock.LAYERS, 3),
-                                BlockStateFile.Model.create(pileBlock6))
-                        .addVariant(
-                                BlockStateFile.PropertyValue.create(SnowLayerBlock.LAYERS, 4),
-                                BlockStateFile.Model.create(pileBlock8))
-                        .addVariant(
-                                BlockStateFile.PropertyValue.create(SnowLayerBlock.LAYERS, 5),
-                                BlockStateFile.Model.create(pileBlock10))
-                        .addVariant(
-                                BlockStateFile.PropertyValue.create(SnowLayerBlock.LAYERS, 6),
-                                BlockStateFile.Model.create(pileBlock12))
-                        .addVariant(
-                                BlockStateFile.PropertyValue.create(SnowLayerBlock.LAYERS, 7),
-                                BlockStateFile.Model.create(pileBlock14))
-                        .addVariant(
-                                BlockStateFile.PropertyValue.create(SnowLayerBlock.LAYERS, 8),
-                                BlockStateFile.Model.create(pileBlock16))));
+                BlockStateBuilder.variants(variants -> variants
+                        .addVariant(SnowLayerBlock.LAYERS, 1,
+                                BlockStateBuilder.model(pileBlock2))
+                        .addVariant(SnowLayerBlock.LAYERS, 2,
+                                BlockStateBuilder.model(pileBlock4))
+                        .addVariant(SnowLayerBlock.LAYERS, 3,
+                                BlockStateBuilder.model(pileBlock6))
+                        .addVariant(SnowLayerBlock.LAYERS, 4,
+                                BlockStateBuilder.model(pileBlock8))
+                        .addVariant(SnowLayerBlock.LAYERS, 5,
+                                BlockStateBuilder.model(pileBlock10))
+                        .addVariant(SnowLayerBlock.LAYERS, 6,
+                                BlockStateBuilder.model(pileBlock12))
+                        .addVariant(SnowLayerBlock.LAYERS, 7,
+                                BlockStateBuilder.model(pileBlock14))
+                        .addVariant(SnowLayerBlock.LAYERS, 8,
+                                BlockStateBuilder.model(pileBlock16))));
         return map;
     }
 
@@ -330,35 +378,16 @@ public class CommonModEvents {
         Identifier wallBlockSide = tempWallBlockSide;
         Identifier wallBlockSideTall = tempWallBlockSideTall;
         map.put(wallState,
-                BlockStateFile.multipart(BlockStateFile.Multipart.builder()
-                        .addWhenApply(BlockStateFile.WhenApply.when(
-                                BlockStateFile.Case.create(WallBlock.UP, true),
-                                BlockStateFile.Model.create(wallBlock)
-                        )).addWhenApply(BlockStateFile.WhenApply.when(
-                                BlockStateFile.Case.create(BlockStateProperties.NORTH_WALL, WallSide.LOW),
-                                BlockStateFile.Model.create(wallBlockSide)
-                        )).addWhenApply(BlockStateFile.WhenApply.when(
-                                BlockStateFile.Case.create(BlockStateProperties.EAST_WALL, WallSide.LOW),
-                                BlockStateFile.Model.create(wallBlockSide, BlockModelRotation.X0_Y90)
-                        )).addWhenApply(BlockStateFile.WhenApply.when(
-                                BlockStateFile.Case.create(BlockStateProperties.SOUTH_WALL, WallSide.LOW),
-                                BlockStateFile.Model.create(wallBlockSide, BlockModelRotation.X0_Y180)
-                        )).addWhenApply(BlockStateFile.WhenApply.when(
-                                BlockStateFile.Case.create(BlockStateProperties.WEST_WALL, WallSide.LOW),
-                                BlockStateFile.Model.create(wallBlockSide, BlockModelRotation.X0_Y270)
-                        )).addWhenApply(BlockStateFile.WhenApply.when(
-                                BlockStateFile.Case.create(BlockStateProperties.NORTH_WALL, WallSide.TALL),
-                                BlockStateFile.Model.create(wallBlockSideTall)
-                        )).addWhenApply(BlockStateFile.WhenApply.when(
-                                BlockStateFile.Case.create(BlockStateProperties.EAST_WALL, WallSide.TALL),
-                                BlockStateFile.Model.create(wallBlockSideTall, BlockModelRotation.X0_Y90)
-                        )).addWhenApply(BlockStateFile.WhenApply.when(
-                                BlockStateFile.Case.create(BlockStateProperties.SOUTH_WALL, WallSide.TALL),
-                                BlockStateFile.Model.create(wallBlockSideTall, BlockModelRotation.X0_Y180)
-                        )).addWhenApply(BlockStateFile.WhenApply.when(
-                                BlockStateFile.Case.create(BlockStateProperties.WEST_WALL, WallSide.TALL),
-                                BlockStateFile.Model.create(wallBlockSideTall, BlockModelRotation.X0_Y270)
-                        ))));
+                BlockStateBuilder.multipart(multipart -> multipart
+                        .applyWhen(BlockStateBuilder.model(wallBlock), WallBlock.UP, true)
+                        .applyWhen(BlockStateBuilder.model(wallBlockSide), BlockStateProperties.NORTH_WALL, WallSide.LOW)
+                        .applyWhen(BlockStateBuilder.model(wallBlockSide, 0, 90, false), BlockStateProperties.EAST_WALL, WallSide.LOW)
+                        .applyWhen(BlockStateBuilder.model(wallBlockSide, 0, 180, false), BlockStateProperties.SOUTH_WALL, WallSide.LOW)
+                        .applyWhen(BlockStateBuilder.model(wallBlockSide, 0, 270, false), BlockStateProperties.WEST_WALL, WallSide.LOW)
+                        .applyWhen(BlockStateBuilder.model(wallBlockSideTall), BlockStateProperties.NORTH_WALL, WallSide.TALL)
+                        .applyWhen(BlockStateBuilder.model(wallBlockSideTall, 0, 90, false), BlockStateProperties.EAST_WALL, WallSide.TALL)
+                        .applyWhen(BlockStateBuilder.model(wallBlockSideTall, 0, 180, false), BlockStateProperties.SOUTH_WALL, WallSide.TALL)
+                        .applyWhen(BlockStateBuilder.model(wallBlockSideTall, 0, 270, false), BlockStateProperties.WEST_WALL, WallSide.TALL)));
         return map;
     }
 
@@ -380,7 +409,7 @@ public class CommonModEvents {
         Identifier stairBlock = tempStairBlock;
         Identifier stairBlockInner = tempStairBlockInner;
         Identifier stairBlockOuter = tempStairBlockOuter;
-        BlockStateFile.Variants variants = BlockStateFile.Variants.builder();
+        BlockStateBuilder.Variants variants = BlockStateBuilder.Variants.builder();
         for (Direction facing : StairBlock.FACING.getPossibleValues()) {
             for (Half half : StairBlock.HALF.getPossibleValues()) {
                 for (StairsShape shape : StairBlock.SHAPE.getPossibleValues()) {
@@ -394,12 +423,15 @@ public class CommonModEvents {
                             + (half == Half.TOP && shape != StairsShape.STRAIGHT ? 90 : 0))
                             % 360;
                     boolean uvlock = x != 0 || y != 0;
-                    variants.addVariant(List.of(BlockStateFile.PropertyValue.create(StairBlock.FACING, facing), BlockStateFile.PropertyValue.create(StairBlock.HALF, half), BlockStateFile.PropertyValue.create(StairBlock.SHAPE, shape)),
-                            BlockStateFile.Model.create(model, BlockModelRotation.by(x, y), uvlock, 1));
+                    variants.addMultiPropertyVariant(propertyValues -> propertyValues
+                            .addPropertyValue(StairBlock.FACING, facing)
+                            .addPropertyValue(StairBlock.HALF, half)
+                            .addPropertyValue(StairBlock.SHAPE, shape),
+                            BlockStateBuilder.model(model, x, y, uvlock));
                 }
             }
         }
-        map.put(stairState, BlockStateFile.variants(variants));
+        map.put(stairState, BlockStateBuilder.variants(variants));
         return map;
     }
 
@@ -420,22 +452,22 @@ public class CommonModEvents {
         Identifier slabState = tempSlabState;
         Identifier slabBlock = tempSlabBlock;
         Identifier slabBlockTop = tempSlabBlockTop;
+        Identifier doubleSlabBlock;
         if (name.contains("red_mushroom_block")) {
-            baseBlock = Identifier.fromNamespaceAndPath("hydrol", "block/red_mushroom_block_double_slab");
+            doubleSlabBlock = Identifier.fromNamespaceAndPath("hydrol", "block/red_mushroom_block_double_slab");
         } else if (name.contains("brown_mushroom_block")) {
-            baseBlock = Identifier.fromNamespaceAndPath("hydrol", "block/brown_mushroom_block_double_slab");
+            doubleSlabBlock = Identifier.fromNamespaceAndPath("hydrol", "block/brown_mushroom_block_double_slab");
+        } else {
+            doubleSlabBlock = baseBlock;
         }
         map.put(slabState,
-                BlockStateFile.variants(BlockStateFile.Variants.builder()
-                        .addVariant(
-                                BlockStateFile.PropertyValue.create(SlabBlock.TYPE, SlabType.BOTTOM),
-                                BlockStateFile.Model.create(slabBlock))
-                        .addVariant(
-                                BlockStateFile.PropertyValue.create(SlabBlock.TYPE, SlabType.DOUBLE),
-                                BlockStateFile.Model.create(baseBlock))
-                        .addVariant(
-                                BlockStateFile.PropertyValue.create(SlabBlock.TYPE, SlabType.TOP),
-                                BlockStateFile.Model.create(slabBlockTop))));
+                BlockStateBuilder.variants(variants -> variants
+                        .addVariant(SlabBlock.TYPE, SlabType.BOTTOM,
+                                BlockStateBuilder.model(slabBlock))
+                        .addVariant(SlabBlock.TYPE, SlabType.DOUBLE,
+                                BlockStateBuilder.model(doubleSlabBlock))
+                        .addVariant(SlabBlock.TYPE, SlabType.TOP,
+                                BlockStateBuilder.model(slabBlockTop))));
         return map;
     }
 }

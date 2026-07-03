@@ -30,6 +30,7 @@
     "continents": "hydrol:floating_islands/continentalness",
     "depth": "hydrol:floating_islands/depth",
     "ridges": 0,
+    "preliminary_surface_level": 0,
     "initial_density_without_jaggedness": {
       "type": "minecraft:range_choice",
       "input": {
