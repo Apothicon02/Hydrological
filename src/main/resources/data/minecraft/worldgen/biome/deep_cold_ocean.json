@@ -7,20 +7,15 @@
   "downfall": 0.5,
   "effects": {
     "fog_color": 12638463,
+    "grass_color": 37952,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "minecraft:music.overworld.lush_caves"
-    },
     "sky_color": 8103167,
-    "water_color": 4159204,
+    "water_color": 3750089,
     "water_fog_color": 329011
   },
   "features": [
@@ -28,36 +23,24 @@
     [
     ],
     [
-      "minecraft:amethyst_geode",
-      "hydrol:geological/mangrove_roots_column"
+      "minecraft:amethyst_geode"
     ],
     [
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
     [
-      "hydrol:misc/clay_water_fall_sparse"
     ],
     [],
     [
-      "minecraft:ore_gravel",
-      "hydrol:mineral/iron",
-      "hydrol:mineral/coal",
-      "hydrol:mineral/redstone",
-      "hydrol:mineral/diamond",
-      "hydrol:mineral/emerald"
     ],
     [],
     [
     ],
     [
       "minecraft:glow_lichen",
-      "hydrol:cover/cave_vines",
-      "hydrol:cover/flowers/spore_blossom",
-      "hydrol:trees/mangrove_large_underground",
-      "hydrol:trees/azalea_underground",
-      "hydrol:trees/red_mushroom_underground",
-      "hydrol:trees/brown_mushroom_short_underground"
+      "hydrol:cover/seagrass_middle",
+      "hydrol:cover/kelp"
     ],
     [
       "hydrol:cover/freeze"
@@ -74,15 +57,15 @@
         "weight": 10
       }
     ],
-    "axolotls": [
+    "axolotls": [],
+    "creature": [
       {
-        "type": "minecraft:axolotl",
-        "maxCount": 6,
-        "minCount": 4,
-        "weight": 10
+        "type": "minecraft:polar_bear",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
       }
     ],
-    "creature": [],
     "misc": [],
     "monster": [
       {
@@ -132,6 +115,12 @@
         "maxCount": 1,
         "minCount": 1,
         "weight": 5
+      },
+      {
+        "type": "minecraft:drowned",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 5
       }
     ],
     "underground_water_creature": [
@@ -144,13 +133,21 @@
     ],
     "water_ambient": [
       {
-        "type": "minecraft:tropical_fish",
-        "maxCount": 8,
-        "minCount": 8,
-        "weight": 25
+        "type": "minecraft:salmon",
+        "maxCount": 5,
+        "minCount": 1,
+        "weight": 15
       }
     ],
-    "water_creature": []
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 1
+      }
+    ]
   },
-  "temperature": 0.5
+  "temperature": 0.5,
+  "temperature_modifier": "frozen"
 }

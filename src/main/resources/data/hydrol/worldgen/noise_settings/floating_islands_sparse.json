@@ -1199,7 +1199,8 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
-                  "minecraft:frozen_ocean"
+                  "minecraft:frozen_ocean",
+                  "minecraft:cold_ocean"
                 ]
               },
               "then_run": {
@@ -1214,7 +1215,8 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
-                  "minecraft:deep_frozen_ocean"
+                  "minecraft:deep_frozen_ocean",
+                  "minecraft:deep_cold_ocean"
                 ]
               },
               "then_run": {
@@ -1920,7 +1922,8 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
-                  "minecraft:frozen_ocean"
+                  "minecraft:frozen_ocean",
+                  "minecraft:cold_ocean"
                 ]
               },
               "then_run": {
@@ -1935,7 +1938,8 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
-                  "minecraft:deep_frozen_ocean"
+                  "minecraft:deep_frozen_ocean",
+                  "minecraft:deep_cold_ocean"
                 ]
               },
               "then_run": {
