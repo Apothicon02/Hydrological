@@ -7,14 +7,16 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.Boat;
-import net.minecraft.world.entity.vehicle.ChestBoat;
+import net.minecraft.world.entity.vehicle.boat.ChestRaft;
+import net.minecraft.world.entity.vehicle.boat.Raft;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -24,14 +26,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent;
 import net.neoforged.neoforge.event.level.BlockGrowFeatureEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 
 import static net.minecraft.world.level.block.Block.UPDATE_ALL;
 
-@EventBusSubscriber(modid = Hydrological.MODID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = Hydrological.MODID)
 public class CommonForgeEvents {
 
     @SubscribeEvent
@@ -48,57 +49,57 @@ public class CommonForgeEvents {
         if (!below.is(Blocks.DIRT) && !below.is(Blocks.GRASS_BLOCK)) {
             if (sapling.is(Blocks.OAK_SAPLING)) {
                 if (below.is(Blocks.PODZOL)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/oak")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/oak")));
                 } else if (below.is(Blocks.COARSE_DIRT)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/willow")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/willow")));
                 }
             } else if (sapling.is(Blocks.DARK_OAK_SAPLING)) {
                 if (below.is(Blocks.PODZOL)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/dark_oak")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/dark_oak")));
                 } else if (below.is(Blocks.COARSE_DIRT)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/dark_willow")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/dark_willow")));
                 }
             } else if (sapling.is(Blocks.BIRCH_SAPLING)) {
                 if (below.is(Blocks.COARSE_DIRT)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/birch_fir")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/birch_fir")));
                 } else if (below.is(Blocks.SAND) || below.is(Blocks.GRAVEL)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/birch_spruce")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/birch_spruce")));
                 }
             } else if (sapling.is(Blocks.SPRUCE_SAPLING)) {
                 if (below.is(Blocks.PODZOL)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/redwood")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/redwood")));
                 } else if (below.is(Blocks.COARSE_DIRT)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/fir")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/fir")));
                 } else if (below.is(BlockTags.SNOW)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/pine")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/pine")));
                 } else if (below.is(Blocks.SAND) || below.is(Blocks.GRAVEL)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/spruce")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/spruce")));
                 }
             } else if (sapling.is(Blocks.ACACIA_SAPLING)) {
                 if (below.is(Blocks.COARSE_DIRT)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/acacia")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/acacia")));
                 }
             } else if (sapling.is(Blocks.JUNGLE_SAPLING)) {
                 if (below.is(Blocks.PODZOL)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/jungle")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/jungle")));
                 } else if (below.is(BlockTags.SAND)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/palm")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/palm")));
                 }
             } else if (sapling.is(Blocks.CHERRY_SAPLING)) {
                 if (below.is(Blocks.PODZOL)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/cherry")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/cherry")));
                 }
             } else if (sapling.is(Blocks.MANGROVE_PROPAGULE)) {
                 if (below.is(Blocks.MANGROVE_ROOTS) || below.is(Blocks.MUDDY_MANGROVE_ROOTS)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/mangrove")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/mangrove")));
                 }
             } else if (sapling.is(Blocks.RED_MUSHROOM)) {
                 if (below.is(Blocks.MYCELIUM)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/red_mushroom")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/red_mushroom")));
                 }
             } else if (sapling.is(Blocks.BROWN_MUSHROOM)) {
                 if (below.is(Blocks.MYCELIUM)) {
-                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath("hydrol", "trees/brown_mushroom")));
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath("hydrol", "trees/brown_mushroom")));
                 }
             }
         }
@@ -108,9 +109,9 @@ public class CommonForgeEvents {
     public static void onCreateSpawnPosition(LevelEvent.CreateSpawnPosition event) {
         if (event.getLevel() instanceof ServerLevel level && !level.isClientSide()) {
             if (HydrolDensityFunctions.isFloatingIslands) {
-                BlockPos pos = new BlockPos(event.getSettings().getSpawnPos().getX(), 256, event.getSettings().getSpawnPos().getZ());
+                BlockPos pos = new BlockPos(0, 256, 0);
                 boolean overVoid = true;
-                for (int i = level.getMinBuildHeight() - 1; i < level.getMaxBuildHeight(); i++) {
+                for (int i = level.getMinY() - 1; i < level.getMaxY(); i++) {
                     if (!level.getBlockState(new BlockPos(pos.getX(), i, pos.getZ())).isAir()) {
                         overVoid = false;
                     }
@@ -163,33 +164,33 @@ public class CommonForgeEvents {
                     level.setBlock(pos.west(1).below(), Blocks.AIR.defaultBlockState(), UPDATE_ALL);
                 }
             } else if (level.dimension().equals(Level.OVERWORLD) && level.dimensionType().hasCeiling()) {
-                BlockPos pos = new BlockPos(event.getSettings().getSpawnPos().getX(), level.getMaxBuildHeight()-64, event.getSettings().getSpawnPos().getZ());
+                BlockPos pos = new BlockPos(0, level.getMaxY()-64, 0);
                 generateSquare(level, pos.below(2), Blocks.OAK_WOOD.defaultBlockState());
                 generateSquare(level, pos.below(), Blocks.OAK_WOOD.defaultBlockState());
                 generateSquare(level, pos, Blocks.AIR.defaultBlockState());
                 generateSquare(level, pos.above(), Blocks.AIR.defaultBlockState());
                 level.setBlock(pos, Blocks.TORCH.defaultBlockState(), UPDATE_ALL);
             } else if (level.dimension().equals(Level.OVERWORLD)) {
-                BlockPos pos = new BlockPos(event.getSettings().getSpawnPos().getX(), 63, event.getSettings().getSpawnPos().getZ());
+                BlockPos pos = new BlockPos(0, 63, 0);
                 if (level.getBiome(pos).is(BiomeTags.IS_OCEAN)) {
-                    ChestBoat chestBoat = new ChestBoat(level, pos.getX(), pos.getY(), pos.getZ());
-                    chestBoat.setVariant(Boat.Type.BAMBOO);
+                    ChestRaft chestBoat = EntityType.BAMBOO_CHEST_RAFT.create(level, EntitySpawnReason.CHUNK_GENERATION);
+                    chestBoat.setPos(pos.getX(), pos.getY(), pos.getZ());
                     chestBoat.setChestVehicleItem(0, new ItemStack(Items.BREAD, 5));
                     chestBoat.setChestVehicleItem(11, new ItemStack(Items.BOW, 1));
                     chestBoat.setChestVehicleItem(2, new ItemStack(Items.ARROW, 23));
                     level.addFreshEntity(chestBoat);
-                    chestBoat = new ChestBoat(level, pos.getX()+3, pos.getY(), pos.getZ());
-                    chestBoat.setVariant(Boat.Type.BAMBOO);
+                    chestBoat = EntityType.BAMBOO_CHEST_RAFT.create(level, EntitySpawnReason.CHUNK_GENERATION);
+                    chestBoat.setPos(pos.getX()+3, pos.getY(), pos.getZ());
                     chestBoat.setChestVehicleItem(20, new ItemStack(Items.BREAD, 8));
                     chestBoat.setChestVehicleItem(14, new ItemStack(Items.STONE_AXE, 1));
                     level.addFreshEntity(chestBoat);
-                    chestBoat = new ChestBoat(level, pos.getX()+1, pos.getY(), pos.getZ()+3);
-                    chestBoat.setVariant(Boat.Type.BAMBOO);
+                    chestBoat = EntityType.BAMBOO_CHEST_RAFT.create(level, EntitySpawnReason.CHUNK_GENERATION);
+                    chestBoat.setPos(pos.getX()+1, pos.getY(), pos.getZ()+3);
                     chestBoat.setChestVehicleItem(10, new ItemStack(Items.BREAD, 2));
                     chestBoat.setChestVehicleItem(24, new ItemStack(Items.IRON_SWORD, 1));
                     level.addFreshEntity(chestBoat);
-                    Boat boat = new Boat(level, pos.getX()-5, pos.getY(), pos.getZ()+2);
-                    boat.setVariant(Boat.Type.BAMBOO);
+                    Raft boat = EntityType.BAMBOO_RAFT.create(level, EntitySpawnReason.CHUNK_GENERATION);
+                    chestBoat.setPos(pos.getX()-5, pos.getY(), pos.getZ()+2);
                     level.addFreshEntity(boat);
                 }
             }
@@ -201,7 +202,7 @@ public class CommonForgeEvents {
         Level level = event.level;
         Entity entity = event.entity;
         BlockPos pos = entity.blockPosition();
-        if (entity instanceof Player && level.dimension().equals(Level.OVERWORLD) && level.dimensionType().hasCeiling() && pos.getY() == level.getMaxBuildHeight() && level.getBlockState(pos.below(64)).is(Blocks.TORCH)) {
+        if (entity instanceof Player && level.dimension().equals(Level.OVERWORLD) && level.dimensionType().hasCeiling() && pos.getY() == level.getMaxY() && level.getBlockState(pos.below(64)).is(Blocks.TORCH)) {
             entity.teleportRelative(0, -64, 0);
         }
     }

@@ -5,7 +5,6 @@ import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.api.biome.features.placement_modifiers.NoiseCoverPlacement;
 import com.Apothic0n.Hydrological.core.objects.*;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -21,7 +20,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
 
-@EventBusSubscriber(modid = Hydrological.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Hydrological.MODID, value = Dist.CLIENT)
 public class ClientModEvents {
 
     @SubscribeEvent

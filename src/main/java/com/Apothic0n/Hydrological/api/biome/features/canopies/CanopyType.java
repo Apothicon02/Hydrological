@@ -2,7 +2,7 @@ package com.Apothic0n.Hydrological.api.biome.features.canopies;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import static com.Apothic0n.Hydrological.Hydrological.MODID;
 
 public class CanopyType<P extends Canopy> {
-    public static final DeferredRegister<CanopyType<?>> CANOPY_TYPES = DeferredRegister.create(ResourceLocation.fromNamespaceAndPath(MODID, "canopy_types"), MODID);
+    public static final DeferredRegister<CanopyType<?>> CANOPY_TYPES = DeferredRegister.create(Identifier.fromNamespaceAndPath(MODID, "canopy_types"), MODID);
     public static final Registry<CanopyType<?>> CANOPY_TYPE_REGISTRY = CANOPY_TYPES.makeRegistry(builder -> {});
 
     public static final DeferredHolder<CanopyType<?>, ?> PALM_CANOPY_TYPE = CANOPY_TYPES.register("palm_canopy", () -> new CanopyType<>(PalmCanopyType.CODEC));

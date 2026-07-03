@@ -4,7 +4,6 @@ import com.Apothic0n.Hydrological.Hydrological;
 import com.Apothic0n.Hydrological.api.HydrolDensityFunctions;
 import com.Apothic0n.Hydrological.api.HydrolJsonReader;
 import com.Apothic0n.Hydrological.api.HydrolMath;
-import com.mojang.blaze3d.shaders.FogShape;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.util.Mth;
@@ -15,18 +14,16 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 
-@EventBusSubscriber(modid = Hydrological.MODID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Hydrological.MODID, value = Dist.CLIENT)
 public class ClientForgeEvents {
     @SubscribeEvent
     public static void renderFog(ViewportEvent.RenderFog event) {
         if (HydrolJsonReader.customOverworldFog) {
             Minecraft instance = Minecraft.getInstance();
             ClientLevel level = instance.level;
-            if (event.getType() == FogType.NONE && level != null && level.dimension().location().toString().contains("overworld")) {
+            if (event.getType() == FogType.NONE && level != null && level.dimension().identifier().toString().contains("overworld")) {
                 float distance = event.getNearPlaneDistance() / getTimeOffset(level, 32, 3);
                 event.setNearPlaneDistance(distance);
-                event.setFogShape(FogShape.SPHERE);
-                event.setCanceled(true);
             }
         }
     }
@@ -36,11 +33,11 @@ public class ClientForgeEvents {
         if (HydrolJsonReader.customOverworldFog) {
             Minecraft instance = Minecraft.getInstance();
             ClientLevel level = instance.level;
-            if (level != null && level.dimension().location().toString().contains("overworld") && event.getCamera().getFluidInCamera() == FogType.NONE) {
-                float y = (float) event.getCamera().getPosition().y();
-                float temp = level.getBiome(event.getCamera().getBlockPosition()).value().getBaseTemperature() * 3;
+            if (level != null && level.dimension().identifier().toString().contains("overworld") && event.getCamera().getFluidInCamera() == FogType.NONE) {
+                float y = (float) event.getCamera().position().y();
+                float temp = level.getBiome(event.getCamera().blockPosition()).value().getBaseTemperature() * 3;
                 if (HydrolDensityFunctions.temperature != null) { //smoother transitions if this is here
-                    temp = (float) HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext((int) event.getCamera().getPosition().x(), (int) y, (int) event.getCamera().getPosition().z())) * 3;
+                    temp = (float) HydrolDensityFunctions.temperature.compute(new DensityFunction.SinglePointContext((int) event.getCamera().position().x(), (int) y, (int) event.getCamera().position().z())) * 3;
                 }
                 float brightness = (getTimeOffset(level, 5, 0)/10) + ((Math.max(-0.75f, Math.min(-0.7f, temp/3))+0.7f)*getTimeOffsetInv(level, 5f, 0));
                 event.setRed(Math.min(0.95f, 0.7f - brightness));

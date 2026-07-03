@@ -2,7 +2,7 @@ package com.Apothic0n.Hydrological.api.biome.features.trunks;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import static com.Apothic0n.Hydrological.Hydrological.MODID;
 
 public class TrunkType<P extends Trunk> {
-    public static final DeferredRegister<TrunkType<?>> TRUNK_TYPES = DeferredRegister.create(ResourceLocation.fromNamespaceAndPath(MODID, "trunk_types"), MODID);
+    public static final DeferredRegister<TrunkType<?>> TRUNK_TYPES = DeferredRegister.create(Identifier.fromNamespaceAndPath(MODID, "trunk_types"), MODID);
     public static final Registry<TrunkType<?>> TRUNK_TYPE_REGISTRY = TRUNK_TYPES.makeRegistry(builder -> {});
 
     public static final DeferredHolder<TrunkType<?>, ?> BENDING_TRNUK_TYPE = TRUNK_TYPES.register("bending_trunk", () -> new TrunkType<>(BendingTrunkType.CODEC));
