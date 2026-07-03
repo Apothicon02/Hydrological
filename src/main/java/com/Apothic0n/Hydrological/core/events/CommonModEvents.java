@@ -4,7 +4,7 @@ import com.Apothic0n.Hydrological.Hydrological;
 import com.Apothic0n.Hydrological.core.objects.HydrolBlocks;
 import com.mojang.serialization.JsonOps;
 import net.commoble.databuddy.datagen.BlockStateFile;
-import net.commoble.databuddy.datagen.SimpleModel;
+import net.commoble.morered.datagen.SimpleModel;
 import net.minecraft.client.resources.model.BlockModelRotation;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
