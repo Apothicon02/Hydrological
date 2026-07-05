@@ -99,7 +99,7 @@ public abstract class NoiseBasedChunkGeneratorMixin {
                                             state = Blocks.WATER.defaultBlockState();
                                         }
                                     }
-                                } else {
+                                } else if (this.settings.value().isAquifersEnabled()) {
                                     if (state != Blocks.AIR.defaultBlockState() && !SharedConstants.debugVoidTerrain(chunkAccess.getPos())) {
                                         if (state == Blocks.WATER.defaultBlockState() || state == Blocks.LAVA.defaultBlockState()) {
                                             int newY = 16;
@@ -117,7 +117,7 @@ public abstract class NoiseBasedChunkGeneratorMixin {
                                             }
                                         }
                                     }
-                                    if (state.isAir() && $$24 < -55 && chunkAccess.getBlockState(new BlockPos($$29, chunkAccess.getMinBuildHeight(), $$33)).isSolid()) {
+                                    if (state.isAir() && $$24 < -55) {
                                         state = Blocks.LAVA.defaultBlockState();
                                     }
                                 }
